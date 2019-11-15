@@ -1,0 +1,5683 @@
+fileFormatVersion: 2
+guid: 16528a141c6152c43866ef6664815bb1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4566283474696927795
+    second: PlayStation - Mega Man X4 - Cyber Peacock_0
+  - first:
+      213: -3505333309601484644
+    second: PlayStation - Mega Man X4 - Cyber Peacock_1
+  - first:
+      213: 1597256829628962703
+    second: PlayStation - Mega Man X4 - Cyber Peacock_2
+  - first:
+      213: -4956292472855326087
+    second: PlayStation - Mega Man X4 - Cyber Peacock_3
+  - first:
+      213: -5280284836470368651
+    second: PlayStation - Mega Man X4 - Cyber Peacock_4
+  - first:
+      213: -5440030338542566323
+    second: PlayStation - Mega Man X4 - Cyber Peacock_5
+  - first:
+      213: -8042254837216745479
+    second: PlayStation - Mega Man X4 - Cyber Peacock_6
+  - first:
+      213: -6062638737959211277
+    second: PlayStation - Mega Man X4 - Cyber Peacock_7
+  - first:
+      213: 5317827336810854914
+    second: PlayStation - Mega Man X4 - Cyber Peacock_8
+  - first:
+      213: 8699439065823020447
+    second: PlayStation - Mega Man X4 - Cyber Peacock_9
+  - first:
+      213: 8824600862928889143
+    second: PlayStation - Mega Man X4 - Cyber Peacock_10
+  - first:
+      213: 6989756070418667052
+    second: PlayStation - Mega Man X4 - Cyber Peacock_11
+  - first:
+      213: 6040948962470153693
+    second: PlayStation - Mega Man X4 - Cyber Peacock_12
+  - first:
+      213: 5364546074952129870
+    second: PlayStation - Mega Man X4 - Cyber Peacock_13
+  - first:
+      213: 5890850626055572473
+    second: PlayStation - Mega Man X4 - Cyber Peacock_14
+  - first:
+      213: -6707591072132959445
+    second: PlayStation - Mega Man X4 - Cyber Peacock_15
+  - first:
+      213: -3601427400124771750
+    second: PlayStation - Mega Man X4 - Cyber Peacock_16
+  - first:
+      213: -5765527144462725050
+    second: PlayStation - Mega Man X4 - Cyber Peacock_17
+  - first:
+      213: -2221694509221084209
+    second: PlayStation - Mega Man X4 - Cyber Peacock_18
+  - first:
+      213: 9032265186322500377
+    second: PlayStation - Mega Man X4 - Cyber Peacock_19
+  - first:
+      213: -5090703137707960627
+    second: PlayStation - Mega Man X4 - Cyber Peacock_20
+  - first:
+      213: 2129318259935984532
+    second: PlayStation - Mega Man X4 - Cyber Peacock_21
+  - first:
+      213: 312583963293737190
+    second: PlayStation - Mega Man X4 - Cyber Peacock_22
+  - first:
+      213: 4354062961494157316
+    second: PlayStation - Mega Man X4 - Cyber Peacock_23
+  - first:
+      213: 7723216563933276544
+    second: PlayStation - Mega Man X4 - Cyber Peacock_24
+  - first:
+      213: -7108267299827140624
+    second: PlayStation - Mega Man X4 - Cyber Peacock_25
+  - first:
+      213: -4219808033490411464
+    second: PlayStation - Mega Man X4 - Cyber Peacock_26
+  - first:
+      213: -1212453877056572671
+    second: PlayStation - Mega Man X4 - Cyber Peacock_27
+  - first:
+      213: -8176132131891154026
+    second: PlayStation - Mega Man X4 - Cyber Peacock_28
+  - first:
+      213: -4778547390799801132
+    second: PlayStation - Mega Man X4 - Cyber Peacock_29
+  - first:
+      213: -7348630881317005006
+    second: PlayStation - Mega Man X4 - Cyber Peacock_30
+  - first:
+      213: 7103454976516962484
+    second: PlayStation - Mega Man X4 - Cyber Peacock_31
+  - first:
+      213: -1937338957100699090
+    second: PlayStation - Mega Man X4 - Cyber Peacock_32
+  - first:
+      213: 5288940895266101444
+    second: PlayStation - Mega Man X4 - Cyber Peacock_33
+  - first:
+      213: 5111653629936950221
+    second: PlayStation - Mega Man X4 - Cyber Peacock_34
+  - first:
+      213: -989127153976855985
+    second: PlayStation - Mega Man X4 - Cyber Peacock_35
+  - first:
+      213: -4114586469031070216
+    second: PlayStation - Mega Man X4 - Cyber Peacock_36
+  - first:
+      213: 7624062402989119331
+    second: PlayStation - Mega Man X4 - Cyber Peacock_37
+  - first:
+      213: -2836249977739910128
+    second: PlayStation - Mega Man X4 - Cyber Peacock_38
+  - first:
+      213: -9019386117445931525
+    second: PlayStation - Mega Man X4 - Cyber Peacock_39
+  - first:
+      213: -2081977975072361371
+    second: PlayStation - Mega Man X4 - Cyber Peacock_40
+  - first:
+      213: -7030378873791705197
+    second: PlayStation - Mega Man X4 - Cyber Peacock_41
+  - first:
+      213: 1815676261058355809
+    second: PlayStation - Mega Man X4 - Cyber Peacock_42
+  - first:
+      213: -6097291867593066284
+    second: PlayStation - Mega Man X4 - Cyber Peacock_43
+  - first:
+      213: 1912738709845944337
+    second: PlayStation - Mega Man X4 - Cyber Peacock_44
+  - first:
+      213: -2231700522301082203
+    second: PlayStation - Mega Man X4 - Cyber Peacock_45
+  - first:
+      213: 8481842637809891011
+    second: PlayStation - Mega Man X4 - Cyber Peacock_46
+  - first:
+      213: 2363601634502796566
+    second: PlayStation - Mega Man X4 - Cyber Peacock_47
+  - first:
+      213: 5198446705368875232
+    second: PlayStation - Mega Man X4 - Cyber Peacock_48
+  - first:
+      213: -5975833320232559882
+    second: PlayStation - Mega Man X4 - Cyber Peacock_49
+  - first:
+      213: -6546660111004520638
+    second: PlayStation - Mega Man X4 - Cyber Peacock_50
+  - first:
+      213: 7736023115952046934
+    second: PlayStation - Mega Man X4 - Cyber Peacock_51
+  - first:
+      213: -2351445470451050067
+    second: PlayStation - Mega Man X4 - Cyber Peacock_52
+  - first:
+      213: 2249177382213957955
+    second: PlayStation - Mega Man X4 - Cyber Peacock_53
+  - first:
+      213: -5827684799490167977
+    second: PlayStation - Mega Man X4 - Cyber Peacock_54
+  - first:
+      213: -799866910908754483
+    second: PlayStation - Mega Man X4 - Cyber Peacock_55
+  - first:
+      213: 1499856307843855520
+    second: PlayStation - Mega Man X4 - Cyber Peacock_56
+  - first:
+      213: -4598495662926552417
+    second: PlayStation - Mega Man X4 - Cyber Peacock_57
+  - first:
+      213: -4411079430128910972
+    second: PlayStation - Mega Man X4 - Cyber Peacock_58
+  - first:
+      213: 6401864700921564559
+    second: PlayStation - Mega Man X4 - Cyber Peacock_59
+  - first:
+      213: 4753986745414000981
+    second: PlayStation - Mega Man X4 - Cyber Peacock_60
+  - first:
+      213: -8183760704062732122
+    second: PlayStation - Mega Man X4 - Cyber Peacock_61
+  - first:
+      213: -1753956889170263435
+    second: PlayStation - Mega Man X4 - Cyber Peacock_62
+  - first:
+      213: 8192596159122268505
+    second: PlayStation - Mega Man X4 - Cyber Peacock_63
+  - first:
+      213: 1492086213591385309
+    second: PlayStation - Mega Man X4 - Cyber Peacock_64
+  - first:
+      213: 8418027321507040982
+    second: PlayStation - Mega Man X4 - Cyber Peacock_65
+  - first:
+      213: -3120148624131543209
+    second: PlayStation - Mega Man X4 - Cyber Peacock_66
+  - first:
+      213: -6137425055251387502
+    second: PlayStation - Mega Man X4 - Cyber Peacock_67
+  - first:
+      213: 4824213059593358926
+    second: PlayStation - Mega Man X4 - Cyber Peacock_68
+  - first:
+      213: 9101570712819588994
+    second: PlayStation - Mega Man X4 - Cyber Peacock_69
+  - first:
+      213: -2786940603385937991
+    second: PlayStation - Mega Man X4 - Cyber Peacock_70
+  - first:
+      213: 5208694415731940895
+    second: PlayStation - Mega Man X4 - Cyber Peacock_71
+  - first:
+      213: -5297740290032560170
+    second: PlayStation - Mega Man X4 - Cyber Peacock_72
+  - first:
+      213: 1736926775025600889
+    second: PlayStation - Mega Man X4 - Cyber Peacock_73
+  - first:
+      213: -5122971169124364621
+    second: PlayStation - Mega Man X4 - Cyber Peacock_74
+  - first:
+      213: -2233048457708057113
+    second: PlayStation - Mega Man X4 - Cyber Peacock_75
+  - first:
+      213: -2684796324503180720
+    second: PlayStation - Mega Man X4 - Cyber Peacock_76
+  - first:
+      213: -3607201578716663688
+    second: PlayStation - Mega Man X4 - Cyber Peacock_77
+  - first:
+      213: -5065780133300962228
+    second: PlayStation - Mega Man X4 - Cyber Peacock_78
+  - first:
+      213: 6532885351986332902
+    second: PlayStation - Mega Man X4 - Cyber Peacock_79
+  - first:
+      213: 6475873988855868206
+    second: PlayStation - Mega Man X4 - Cyber Peacock_80
+  - first:
+      213: 457836505630631565
+    second: PlayStation - Mega Man X4 - Cyber Peacock_81
+  - first:
+      213: 7988308291476520546
+    second: PlayStation - Mega Man X4 - Cyber Peacock_82
+  - first:
+      213: -4154408118964952020
+    second: PlayStation - Mega Man X4 - Cyber Peacock_83
+  - first:
+      213: 6698090188560569944
+    second: PlayStation - Mega Man X4 - Cyber Peacock_84
+  - first:
+      213: 4023073980816801049
+    second: PlayStation - Mega Man X4 - Cyber Peacock_85
+  - first:
+      213: 6600056579277484661
+    second: PlayStation - Mega Man X4 - Cyber Peacock_86
+  - first:
+      213: 4990385938427879561
+    second: PlayStation - Mega Man X4 - Cyber Peacock_87
+  - first:
+      213: 1665689878950212490
+    second: PlayStation - Mega Man X4 - Cyber Peacock_88
+  - first:
+      213: -2203831611449630304
+    second: PlayStation - Mega Man X4 - Cyber Peacock_89
+  - first:
+      213: 5558749480926849699
+    second: PlayStation - Mega Man X4 - Cyber Peacock_90
+  - first:
+      213: -1947080814520197951
+    second: PlayStation - Mega Man X4 - Cyber Peacock_91
+  - first:
+      213: 5119914710553462299
+    second: PlayStation - Mega Man X4 - Cyber Peacock_92
+  - first:
+      213: 5959542505251248329
+    second: PlayStation - Mega Man X4 - Cyber Peacock_93
+  - first:
+      213: -2229498278396996790
+    second: PlayStation - Mega Man X4 - Cyber Peacock_94
+  - first:
+      213: 1930613817558030473
+    second: PlayStation - Mega Man X4 - Cyber Peacock_95
+  - first:
+      213: -7122864495707278180
+    second: PlayStation - Mega Man X4 - Cyber Peacock_96
+  - first:
+      213: -1476402192615914255
+    second: PlayStation - Mega Man X4 - Cyber Peacock_97
+  - first:
+      213: -1952786495522813631
+    second: PlayStation - Mega Man X4 - Cyber Peacock_98
+  - first:
+      213: -6565526912452573320
+    second: PlayStation - Mega Man X4 - Cyber Peacock_99
+  - first:
+      213: 7275969279889431045
+    second: PlayStation - Mega Man X4 - Cyber Peacock_100
+  - first:
+      213: 2839388478364258078
+    second: PlayStation - Mega Man X4 - Cyber Peacock_101
+  - first:
+      213: 1029811109141377280
+    second: PlayStation - Mega Man X4 - Cyber Peacock_102
+  - first:
+      213: 6464992823026658044
+    second: PlayStation - Mega Man X4 - Cyber Peacock_103
+  - first:
+      213: 2325182126932225882
+    second: PlayStation - Mega Man X4 - Cyber Peacock_104
+  - first:
+      213: 3536769402442309977
+    second: PlayStation - Mega Man X4 - Cyber Peacock_105
+  - first:
+      213: -8480836712906233773
+    second: PlayStation - Mega Man X4 - Cyber Peacock_106
+  - first:
+      213: -181107396365797993
+    second: PlayStation - Mega Man X4 - Cyber Peacock_107
+  - first:
+      213: -2372999737994525832
+    second: PlayStation - Mega Man X4 - Cyber Peacock_108
+  - first:
+      213: -3265988218767955723
+    second: PlayStation - Mega Man X4 - Cyber Peacock_109
+  - first:
+      213: 3001258847596770537
+    second: PlayStation - Mega Man X4 - Cyber Peacock_110
+  - first:
+      213: -5284150184782648496
+    second: PlayStation - Mega Man X4 - Cyber Peacock_111
+  - first:
+      213: 4618261665436212825
+    second: PlayStation - Mega Man X4 - Cyber Peacock_112
+  - first:
+      213: 376862352581310250
+    second: PlayStation - Mega Man X4 - Cyber Peacock_113
+  - first:
+      213: -2066136597127965159
+    second: PlayStation - Mega Man X4 - Cyber Peacock_114
+  - first:
+      213: 5017484271869194663
+    second: PlayStation - Mega Man X4 - Cyber Peacock_115
+  - first:
+      213: -5842603441640515111
+    second: PlayStation - Mega Man X4 - Cyber Peacock_116
+  - first:
+      213: -7351750903665674529
+    second: PlayStation - Mega Man X4 - Cyber Peacock_117
+  - first:
+      213: -964212025106382532
+    second: PlayStation - Mega Man X4 - Cyber Peacock_118
+  - first:
+      213: 2900418589007824243
+    second: PlayStation - Mega Man X4 - Cyber Peacock_119
+  - first:
+      213: 3795764145996307476
+    second: PlayStation - Mega Man X4 - Cyber Peacock_120
+  - first:
+      213: -3303725747738320781
+    second: PlayStation - Mega Man X4 - Cyber Peacock_121
+  - first:
+      213: 2476237830421165971
+    second: PlayStation - Mega Man X4 - Cyber Peacock_122
+  - first:
+      213: -6070018893840790613
+    second: PlayStation - Mega Man X4 - Cyber Peacock_123
+  - first:
+      213: -6885261451034705953
+    second: PlayStation - Mega Man X4 - Cyber Peacock_124
+  - first:
+      213: 5226653850491478854
+    second: PlayStation - Mega Man X4 - Cyber Peacock_125
+  - first:
+      213: -4856714075739602781
+    second: PlayStation - Mega Man X4 - Cyber Peacock_126
+  - first:
+      213: -1135546744266721362
+    second: PlayStation - Mega Man X4 - Cyber Peacock_127
+  - first:
+      213: 2027614456794374559
+    second: PlayStation - Mega Man X4 - Cyber Peacock_128
+  - first:
+      213: -2477639213038308797
+    second: PlayStation - Mega Man X4 - Cyber Peacock_129
+  - first:
+      213: 7871523447605237863
+    second: PlayStation - Mega Man X4 - Cyber Peacock_130
+  - first:
+      213: -1817638707138442646
+    second: PlayStation - Mega Man X4 - Cyber Peacock_131
+  - first:
+      213: 719990498139230
+    second: PlayStation - Mega Man X4 - Cyber Peacock_132
+  - first:
+      213: -2510647446485532706
+    second: PlayStation - Mega Man X4 - Cyber Peacock_133
+  - first:
+      213: 3522035143760098258
+    second: PlayStation - Mega Man X4 - Cyber Peacock_134
+  - first:
+      213: 1986026464092360135
+    second: PlayStation - Mega Man X4 - Cyber Peacock_135
+  - first:
+      213: 7554530381539071673
+    second: PlayStation - Mega Man X4 - Cyber Peacock_136
+  - first:
+      213: -4546988085112133117
+    second: PlayStation - Mega Man X4 - Cyber Peacock_137
+  - first:
+      213: 7505299597501852819
+    second: PlayStation - Mega Man X4 - Cyber Peacock_138
+  - first:
+      213: 2326003236990904556
+    second: PlayStation - Mega Man X4 - Cyber Peacock_139
+  - first:
+      213: -7362659451025774907
+    second: PlayStation - Mega Man X4 - Cyber Peacock_140
+  - first:
+      213: 3186494092496691618
+    second: PlayStation - Mega Man X4 - Cyber Peacock_141
+  - first:
+      213: 7448679294556281695
+    second: PlayStation - Mega Man X4 - Cyber Peacock_142
+  - first:
+      213: -2872124479046365678
+    second: PlayStation - Mega Man X4 - Cyber Peacock_143
+  - first:
+      213: -2394232440640343417
+    second: PlayStation - Mega Man X4 - Cyber Peacock_144
+  - first:
+      213: 2061588897821285532
+    second: PlayStation - Mega Man X4 - Cyber Peacock_145
+  - first:
+      213: -5008118856090106414
+    second: PlayStation - Mega Man X4 - Cyber Peacock_146
+  - first:
+      213: 7044301445991810086
+    second: PlayStation - Mega Man X4 - Cyber Peacock_147
+  - first:
+      213: -3968097767940649777
+    second: PlayStation - Mega Man X4 - Cyber Peacock_148
+  - first:
+      213: -373019502895945455
+    second: PlayStation - Mega Man X4 - Cyber Peacock_149
+  - first:
+      213: -8657613446124914972
+    second: PlayStation - Mega Man X4 - Cyber Peacock_150
+  - first:
+      213: 7471453109960210337
+    second: PlayStation - Mega Man X4 - Cyber Peacock_151
+  - first:
+      213: 2410411031012661838
+    second: PlayStation - Mega Man X4 - Cyber Peacock_152
+  - first:
+      213: 1316702699010593779
+    second: PlayStation - Mega Man X4 - Cyber Peacock_153
+  - first:
+      213: -5577068441239160112
+    second: PlayStation - Mega Man X4 - Cyber Peacock_154
+  - first:
+      213: 3141296594450152966
+    second: PlayStation - Mega Man X4 - Cyber Peacock_155
+  - first:
+      213: -1293260598989543797
+    second: PlayStation - Mega Man X4 - Cyber Peacock_156
+  - first:
+      213: 5480745570536628888
+    second: PlayStation - Mega Man X4 - Cyber Peacock_157
+  - first:
+      213: -7160077367337781656
+    second: PlayStation - Mega Man X4 - Cyber Peacock_158
+  - first:
+      213: -5834066012722469160
+    second: PlayStation - Mega Man X4 - Cyber Peacock_159
+  - first:
+      213: -2132408770918318893
+    second: PlayStation - Mega Man X4 - Cyber Peacock_160
+  - first:
+      213: -8864794743718315610
+    second: PlayStation - Mega Man X4 - Cyber Peacock_161
+  - first:
+      213: -7611990503642869525
+    second: PlayStation - Mega Man X4 - Cyber Peacock_162
+  - first:
+      213: 4241566115396861968
+    second: PlayStation - Mega Man X4 - Cyber Peacock_163
+  - first:
+      213: 1192276857007749370
+    second: PlayStation - Mega Man X4 - Cyber Peacock_164
+  - first:
+      213: 2955379285924540545
+    second: PlayStation - Mega Man X4 - Cyber Peacock_165
+  - first:
+      213: 6897717415682314256
+    second: PlayStation - Mega Man X4 - Cyber Peacock_166
+  - first:
+      213: -951203825860402539
+    second: PlayStation - Mega Man X4 - Cyber Peacock_167
+  - first:
+      213: -2754784258338203874
+    second: PlayStation - Mega Man X4 - Cyber Peacock_168
+  - first:
+      213: -4990736445497290087
+    second: PlayStation - Mega Man X4 - Cyber Peacock_169
+  - first:
+      213: -5422317825043492353
+    second: PlayStation - Mega Man X4 - Cyber Peacock_170
+  - first:
+      213: 9048077745603914215
+    second: PlayStation - Mega Man X4 - Cyber Peacock_171
+  - first:
+      213: -4321532715804875143
+    second: PlayStation - Mega Man X4 - Cyber Peacock_172
+  - first:
+      213: -2035430165488197184
+    second: PlayStation - Mega Man X4 - Cyber Peacock_173
+  - first:
+      213: -6150111009984078920
+    second: PlayStation - Mega Man X4 - Cyber Peacock_174
+  - first:
+      213: 2351262478654251486
+    second: PlayStation - Mega Man X4 - Cyber Peacock_175
+  - first:
+      213: 2539805951331504105
+    second: PlayStation - Mega Man X4 - Cyber Peacock_176
+  - first:
+      213: -1617123057584871168
+    second: PlayStation - Mega Man X4 - Cyber Peacock_177
+  - first:
+      213: -6560267926783514884
+    second: PlayStation - Mega Man X4 - Cyber Peacock_178
+  - first:
+      213: -7729262547812628249
+    second: PlayStation - Mega Man X4 - Cyber Peacock_179
+  - first:
+      213: 604922834745540580
+    second: PlayStation - Mega Man X4 - Cyber Peacock_180
+  - first:
+      213: -6797776074235376346
+    second: PlayStation - Mega Man X4 - Cyber Peacock_181
+  - first:
+      213: -6113785565523947546
+    second: PlayStation - Mega Man X4 - Cyber Peacock_182
+  - first:
+      213: -4383621033740069937
+    second: PlayStation - Mega Man X4 - Cyber Peacock_183
+  - first:
+      213: -6677173659920856597
+    second: PlayStation - Mega Man X4 - Cyber Peacock_184
+  - first:
+      213: 6785734603289177613
+    second: PlayStation - Mega Man X4 - Cyber Peacock_185
+  - first:
+      213: -8769807520929132276
+    second: PlayStation - Mega Man X4 - Cyber Peacock_186
+  - first:
+      213: 2305540466134353632
+    second: PlayStation - Mega Man X4 - Cyber Peacock_187
+  - first:
+      213: 435529744611477671
+    second: PlayStation - Mega Man X4 - Cyber Peacock_188
+  - first:
+      213: 2079388848824947410
+    second: PlayStation - Mega Man X4 - Cyber Peacock_189
+  - first:
+      213: 7150315618426646991
+    second: PlayStation - Mega Man X4 - Cyber Peacock_190
+  - first:
+      213: -8554950110442957421
+    second: PlayStation - Mega Man X4 - Cyber Peacock_191
+  - first:
+      213: -5346896337331488768
+    second: PlayStation - Mega Man X4 - Cyber Peacock_192
+  - first:
+      213: 4438930243503034174
+    second: PlayStation - Mega Man X4 - Cyber Peacock_193
+  - first:
+      213: 113761317957633308
+    second: PlayStation - Mega Man X4 - Cyber Peacock_194
+  - first:
+      213: 7665147976760175191
+    second: PlayStation - Mega Man X4 - Cyber Peacock_195
+  - first:
+      213: 5239019161217902003
+    second: PlayStation - Mega Man X4 - Cyber Peacock_196
+  - first:
+      213: 6202799423720391905
+    second: PlayStation - Mega Man X4 - Cyber Peacock_197
+  - first:
+      213: 1938485689192855318
+    second: PlayStation - Mega Man X4 - Cyber Peacock_198
+  - first:
+      213: -5492168233182992504
+    second: PlayStation - Mega Man X4 - Cyber Peacock_199
+  - first:
+      213: 6919149902029837411
+    second: PlayStation - Mega Man X4 - Cyber Peacock_200
+  - first:
+      213: -1772346090030629894
+    second: PlayStation - Mega Man X4 - Cyber Peacock_201
+  - first:
+      213: -3606272657245132141
+    second: PlayStation - Mega Man X4 - Cyber Peacock_202
+  - first:
+      213: 3397194616712571675
+    second: PlayStation - Mega Man X4 - Cyber Peacock_203
+  - first:
+      213: 7729516917537596324
+    second: PlayStation - Mega Man X4 - Cyber Peacock_204
+  - first:
+      213: -8117623622832123285
+    second: PlayStation - Mega Man X4 - Cyber Peacock_205
+  - first:
+      213: 2055886456560692554
+    second: PlayStation - Mega Man X4 - Cyber Peacock_206
+  - first:
+      213: 3830353543782406444
+    second: PlayStation - Mega Man X4 - Cyber Peacock_207
+  - first:
+      213: -7176033495417752953
+    second: PlayStation - Mega Man X4 - Cyber Peacock_208
+  - first:
+      213: 1398315952512513317
+    second: PlayStation - Mega Man X4 - Cyber Peacock_209
+  - first:
+      213: -90033942814252666
+    second: PlayStation - Mega Man X4 - Cyber Peacock_210
+  - first:
+      213: 5513882283092801999
+    second: PlayStation - Mega Man X4 - Cyber Peacock_211
+  - first:
+      213: -8449126076359182852
+    second: PlayStation - Mega Man X4 - Cyber Peacock_212
+  - first:
+      213: -9045011933618439285
+    second: PlayStation - Mega Man X4 - Cyber Peacock_213
+  - first:
+      213: 7664087667450525505
+    second: PlayStation - Mega Man X4 - Cyber Peacock_214
+  - first:
+      213: 940585429806172351
+    second: PlayStation - Mega Man X4 - Cyber Peacock_215
+  - first:
+      213: -5936412755285870882
+    second: PlayStation - Mega Man X4 - Cyber Peacock_216
+  - first:
+      213: 7854088196133329540
+    second: PlayStation - Mega Man X4 - Cyber Peacock_217
+  - first:
+      213: 1908839609325625658
+    second: PlayStation - Mega Man X4 - Cyber Peacock_218
+  - first:
+      213: 4448793777803051473
+    second: PlayStation - Mega Man X4 - Cyber Peacock_219
+  - first:
+      213: -4599196401331434015
+    second: PlayStation - Mega Man X4 - Cyber Peacock_220
+  - first:
+      213: 2612978959639198527
+    second: PlayStation - Mega Man X4 - Cyber Peacock_221
+  - first:
+      213: -2061075152017964178
+    second: PlayStation - Mega Man X4 - Cyber Peacock_222
+  - first:
+      213: 7051993764170957320
+    second: PlayStation - Mega Man X4 - Cyber Peacock_223
+  - first:
+      213: -4822267424643033364
+    second: PlayStation - Mega Man X4 - Cyber Peacock_224
+  - first:
+      213: -3280301110901224660
+    second: PlayStation - Mega Man X4 - Cyber Peacock_225
+  - first:
+      213: 3595146005024181438
+    second: PlayStation - Mega Man X4 - Cyber Peacock_226
+  - first:
+      213: -218739479847882509
+    second: PlayStation - Mega Man X4 - Cyber Peacock_227
+  - first:
+      213: -2466999539361839763
+    second: PlayStation - Mega Man X4 - Cyber Peacock_228
+  - first:
+      213: 7949796930012515463
+    second: PlayStation - Mega Man X4 - Cyber Peacock_229
+  - first:
+      213: 4271377502816026888
+    second: PlayStation - Mega Man X4 - Cyber Peacock_230
+  - first:
+      213: 8907429783564800186
+    second: PlayStation - Mega Man X4 - Cyber Peacock_231
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 936
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 913afac9dc4f7b24aaa935803783f896
+      internalID: -4566283474696927795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_1
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 936
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4cdcd8acbb17e84eb6e36daa5346a95
+      internalID: -3505333309601484644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 936
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09128ddb4d5e7504cafeb9726af3747f
+      internalID: 1597256829628962703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 936
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d1444afa7e866b4095cc5524ad30ab7
+      internalID: -4956292472855326087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_4
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 936
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be5b990d5fe241e4b8a0df977973c73e
+      internalID: -5280284836470368651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_5
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 935
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f7ba4a7e9c0c3c40b54b40c5c83d903
+      internalID: -5440030338542566323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_6
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 936
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a196bf8f7ba0744e964cb4445f7a4fb
+      internalID: -8042254837216745479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_7
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 935
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f1d7c30fbeeac141b696499b5551fd8
+      internalID: -6062638737959211277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_8
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 935
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ae3c8edc18450a469f5ca7f092ceed8
+      internalID: 5317827336810854914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_9
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 935
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90a9bd882c7dae940b09f28c674ccb17
+      internalID: 8699439065823020447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_10
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 935
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80fc82ec6fa704e46affed875f3a9394
+      internalID: 8824600862928889143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_11
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 935
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc735539553f7fd46b3f12a67c905d3b
+      internalID: 6989756070418667052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_12
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 879
+        width: 43
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fde753d79cd58047b842172bd9ec2f2
+      internalID: 6040948962470153693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_13
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 935
+        width: 30
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6be8c3e608e228540b924ddd569ef5e4
+      internalID: 5364546074952129870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_14
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 879
+        width: 43
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38072e0b6bb82364db57ed34ba052c6d
+      internalID: 5890850626055572473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_15
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 935
+        width: 30
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 529c2c1c3ee0cf24bbd14f68805166a5
+      internalID: -6707591072132959445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_16
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 879
+        width: 77
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 599eb8a95be6b974c82b9d2ce534805c
+      internalID: -3601427400124771750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_17
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 879
+        width: 77
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060fe071e76de294bacd9c8955b9150c
+      internalID: -5765527144462725050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_18
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 880
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e22d1a57525c04aa3335759227c2e0
+      internalID: -2221694509221084209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 879
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76599513914625845bc3cc2a2503eed6
+      internalID: 9032265186322500377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_20
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 880
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81dc42e1b185c4a4dab3539322d76deb
+      internalID: -5090703137707960627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_21
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 879
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 465a28ffd4a75474a80b45e545613517
+      internalID: 2129318259935984532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_22
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 880
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e792bd5cceee3c42aad01a5959a4aa2
+      internalID: 312583963293737190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_23
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 879
+        width: 21
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 502aefa5f60253342934c577d56eec56
+      internalID: 4354062961494157316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_24
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 880
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0b089b3544643642b5b9aca63df1df2
+      internalID: 7723216563933276544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_25
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 879
+        width: 21
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f1878630848fd24e963e18e1efb0ef1
+      internalID: -7108267299827140624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_26
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 879
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f31180116cb9c2243aa8dfd6447855c8
+      internalID: -4219808033490411464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_27
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 879
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5acf78d7f0df1d4b859c31d7b08f22d
+      internalID: -1212453877056572671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_28
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 788
+        width: 77
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad52b483b25c34e4798aaee3aaa18255
+      internalID: -8176132131891154026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_29
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 788
+        width: 77
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80be1f87c1cf95f4cac7568600692507
+      internalID: -4778547390799801132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_30
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 788
+        width: 77
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ece222887f98ce418bd82117a3715cc
+      internalID: -7348630881317005006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_31
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 788
+        width: 77
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3365d7c1dded274dbfa5eaed764c1d2
+      internalID: 7103454976516962484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_32
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 788
+        width: 77
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e27489a51baf344f80eae34015ad4bc
+      internalID: -1937338957100699090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_33
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 788
+        width: 77
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1984b1d6a764d63448296c4024ed2b1c
+      internalID: 5288940895266101444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_34
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 788
+        width: 77
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 036bfccf929610349823b3253a869350
+      internalID: 5111653629936950221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_35
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 788
+        width: 77
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87bfcf5e60c1b7040a42b123970fd225
+      internalID: -989127153976855985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_36
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 788
+        width: 77
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e021ed5a76a0438459302c8866d19502
+      internalID: -4114586469031070216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_37
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 788
+        width: 77
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d071158655aef744890c54f0af987abd
+      internalID: 7624062402989119331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_38
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 681
+        width: 77
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79c5ff5365ac3674ea101339391dad47
+      internalID: -2836249977739910128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_39
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 681
+        width: 77
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b135fca1c6ecb864fb5dd7a2d9f7685b
+      internalID: -9019386117445931525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_40
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 715
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc39253f364ae6c46a5400a82f1fc228
+      internalID: -2081977975072361371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_41
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 698
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc482a774a224649b46b0f11435f72b
+      internalID: -7030378873791705197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_42
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 684
+        width: 80
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c6b457350aca9448f20de31f7f62d8
+      internalID: 1815676261058355809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_43
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 675
+        width: 102
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29830488fc47161408fa59472cebbdde
+      internalID: -6097291867593066284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_44
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 667
+        width: 116
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd2f8e37bdbe244baecbfcee309accb
+      internalID: 1912738709845944337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_45
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 662
+        width: 124
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d15b3119f880b640a1c6ba67deef091
+      internalID: -2231700522301082203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_46
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 662
+        width: 124
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2975730759cd5c64d8d3f0c89eed2573
+      internalID: 8481842637809891011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_47
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 536
+        width: 124
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 969505ce475af0343aa703202b977c11
+      internalID: 2363601634502796566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_48
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 536
+        width: 124
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fd8720fb8055b44887b7bb93520b30b
+      internalID: 5198446705368875232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_49
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 537
+        width: 124
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca1f03cd433653e43a2fa197e0e28ce5
+      internalID: -5975833320232559882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_50
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 536
+        width: 124
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cfe7494cdf07474c9ca5d32988f8300
+      internalID: -6546660111004520638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_51
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 537
+        width: 124
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adeeffda7b89ab546bf52dd008c2fc2b
+      internalID: 7736023115952046934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_52
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 536
+        width: 126
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02698c022f2188741b4ca99067122452
+      internalID: -2351445470451050067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_53
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 444
+        width: 78
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f1299567307994d9a7f629719153dd
+      internalID: 2249177382213957955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_54
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 447
+        width: 49
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0622aeaf48dadb7468975c17eaf98a4b
+      internalID: -5827684799490167977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_55
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 456
+        width: 43
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 807d3516851224c4797f165031d6dfed
+      internalID: -799866910908754483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_56
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 447
+        width: 38
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9215b582fed7fd4e9c92a13b2a0c325
+      internalID: 1499856307843855520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_57
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 441
+        width: 60
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13e9fb6ab1b70a74c99cfb45e9b0882f
+      internalID: -4598495662926552417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_58
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 439
+        width: 46
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4332acd65c310c4e82344304621693a
+      internalID: -4411079430128910972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_59
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 439
+        width: 46
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23a218db9b4714c4aa14892b7e47fc45
+      internalID: 6401864700921564559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_60
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 439
+        width: 46
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46213f5215f1a074b9d84ba05473879f
+      internalID: 4753986745414000981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_61
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 439
+        width: 46
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196244a51929fdd4d84853b35baf340f
+      internalID: -8183760704062732122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_62
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 439
+        width: 55
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a62bdf6ce05a6e47817365681371a2d
+      internalID: -1753956889170263435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_63
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 439
+        width: 52
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85013dbe95b976340a42c1878d8c0e5c
+      internalID: 8192596159122268505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_64
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 439
+        width: 45
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79df55258ff050c44903482264e4a542
+      internalID: 1492086213591385309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_65
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 439
+        width: 35
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 484bc052c25f62c4988aeaa6143af1ac
+      internalID: 8418027321507040982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_66
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 494
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c2dac66175b0b84b8ef042b24b53b4c
+      internalID: -3120148624131543209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_67
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 493
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 534218e0d37b76441a011e53c770c930
+      internalID: -6137425055251387502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_68
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 492
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2764c3c8d1027364a9add1da8bc87f27
+      internalID: 4824213059593358926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_69
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 495
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50639459fdb09444194386a03bcc0d1e
+      internalID: 9101570712819588994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_70
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 492
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f105ea31886074993197a4f9ff2961
+      internalID: -2786940603385937991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_71
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 489
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb936c38e9e844948b0b2a85405a1700
+      internalID: 5208694415731940895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_72
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 453
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be6f71c95437c134f94de8b4a0231bdb
+      internalID: -5297740290032560170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_73
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 456
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 795c65f403b3bca499edb5dcde2e593a
+      internalID: 1736926775025600889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_74
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 461
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8cca514b4cb9d42bd402300ac9d18d
+      internalID: -5122971169124364621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_75
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 464
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75dea6241b67d3f42b5510a2696b662c
+      internalID: -2233048457708057113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_76
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 454
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b3f7f9697677ca4b938cb7acf801f29
+      internalID: -2684796324503180720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_77
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 454
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df532912a3b3ecb458475221d194da16
+      internalID: -3607201578716663688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_78
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 340
+        width: 63
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd47f024a878a1498aa428071e48cf5
+      internalID: -5065780133300962228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_79
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 340
+        width: 57
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4cc0089770f2db48925e69007139c94
+      internalID: 6532885351986332902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_80
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 340
+        width: 70
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61260443dcb8c7a4ab90144c8b5acfe3
+      internalID: 6475873988855868206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_81
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 340
+        width: 43
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c74360072fadd4e867ed1af93f88aa
+      internalID: 457836505630631565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_82
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 351
+        width: 51
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b249636edf07694ebfc24cca5420bbf
+      internalID: 7988308291476520546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_83
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 357
+        width: 57
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 822a0f2e1b01af240b3929826284fcdb
+      internalID: -4154408118964952020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_84
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 365
+        width: 58
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3719d97f236449042afce50a437c05c4
+      internalID: 6698090188560569944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_85
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 365
+        width: 62
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a48ce2885891884788ca0de456d16c7
+      internalID: 4023073980816801049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_86
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 365
+        width: 62
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2975c6cbc3204174c975383d9729df77
+      internalID: 6600056579277484661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_87
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 366
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01fd8d0e039d2e445bd654419c791e1b
+      internalID: 4990385938427879561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_88
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 289
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66752b0c7df85614fbf334abfc79e0a3
+      internalID: 1665689878950212490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_89
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 245
+        width: 47
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f76894ffa5e885479f999f37fb21daa
+      internalID: -2203831611449630304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_90
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 245
+        width: 64
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4f1a805bda6ad04598412e8e28d702f
+      internalID: 5558749480926849699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_91
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 260
+        width: 45
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e607044eeb07094bab4d2354ef6b827
+      internalID: -1947080814520197951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_92
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 309
+        width: 82
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a54ffd58ea22c419eb887a6261310f
+      internalID: 5119914710553462299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_93
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 305
+        width: 39
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cb38337c90dff848b1ab6bf9f49666f
+      internalID: 5959542505251248329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_94
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 297
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c330ef8f407b2b34cb23d391286becf8
+      internalID: -2229498278396996790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_95
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 323
+        width: 23
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bc191fb67393cf44a2279221ee46719
+      internalID: 1930613817558030473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_96
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 311
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04838ccb1c5ad014fb2d5ed2028e3758
+      internalID: -7122864495707278180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_97
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 305
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 874c8ad76c59ded40b6d082dde09e137
+      internalID: -1476402192615914255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_98
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 297
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d3eff7e17c7d0e44b8b7971c3e38638
+      internalID: -1952786495522813631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_99
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 297
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c9b9aaf3cdbaa54782de6ca2cbfd472
+      internalID: -6565526912452573320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_100
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 309
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a25281563a2914d4d8d2afafb9cee46d
+      internalID: 7275969279889431045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_101
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 309
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83c4ab7a89afb0c4abd8fadb658ff0c9
+      internalID: 2839388478364258078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_102
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 297
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f609d52e647574b948a6ea2d253e2c
+      internalID: 1029811109141377280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_103
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 297
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32bbdd31c998a1146be3076bf3980db5
+      internalID: 6464992823026658044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_104
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 323
+        width: 23
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03e1846548a31784daff0c3197f893e7
+      internalID: 2325182126932225882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_105
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 305
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f343f0773e5a5104c842706371d1977e
+      internalID: 3536769402442309977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_106
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 305
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82cc2dceeb865a8489aa8b3da9d055e1
+      internalID: -8480836712906233773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_107
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 297
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7a689529aaf7c54fb6141c5b256c375
+      internalID: -181107396365797993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_108
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 297
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c8a689a876cf04cb6c61d481727197
+      internalID: -2372999737994525832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_109
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 309
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39171dedf25fddc4d94054d86854ab4e
+      internalID: -3265988218767955723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_110
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 309
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd43aad4b7ac114d9bcaaa266e52f1b
+      internalID: 3001258847596770537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_111
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 297
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3687f48d343a8854b8b486e8c40bc644
+      internalID: -5284150184782648496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_112
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 297
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f916ec56d8f91df468c00447d69f57e9
+      internalID: 4618261665436212825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_113
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 303
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 836e9078c6254d846901115f9455227c
+      internalID: 376862352581310250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_114
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 309
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be06dd2f3fafd8346a9096ea7629252e
+      internalID: -2066136597127965159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_115
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 297
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0af628ffcc7d1c43bfa663656b9cda0
+      internalID: 5017484271869194663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_116
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 304
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3cb86a8f2f47514ba216fbe765e7c17
+      internalID: -5842603441640515111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_117
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 303
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61da5a86d50ad6f4e8098c04fc5d9d31
+      internalID: -7351750903665674529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_118
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 302
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4501f5ffc6afb14a896c5731ffe76e3
+      internalID: -964212025106382532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_119
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 289
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b732a34ab43c2d4987e1afd3f59a1fc
+      internalID: 2900418589007824243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_120
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 305
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec3e3a43e2b487042bc8d6e78b017e35
+      internalID: 3795764145996307476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_121
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 297
+        width: 23
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: affcebfcc221eb349ada7be25b43f1e5
+      internalID: -3303725747738320781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_122
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 297
+        width: 23
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f20a9f3191a09cc48874005d63640d10
+      internalID: 2476237830421165971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_123
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 297
+        width: 23
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f06863718fae84b4e9fc3dcda2d7c470
+      internalID: -6070018893840790613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_124
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 254
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fefc880eb83b854b881883a5a657c41
+      internalID: -6885261451034705953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_125
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 262
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db3073ffb8397b24e9932b57e5d77ce6
+      internalID: 5226653850491478854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_126
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 262
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d4f1b633d4104e4993b6b0e10bf44ec
+      internalID: -4856714075739602781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_127
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 260
+        width: 45
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f97d9d8682a16f04d801d13f77d23673
+      internalID: -1135546744266721362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_128
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 257
+        width: 42
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e54df134d9471674dae7505fce136e96
+      internalID: 2027614456794374559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_129
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 257
+        width: 42
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a78e87f27b917f4cbad5b12a44c0a79
+      internalID: -2477639213038308797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_130
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 253
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5db2befa71c71b4cb289771ca3d91dd
+      internalID: 7871523447605237863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_131
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 253
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b453068ff6def64190269fd18e3ecc2
+      internalID: -1817638707138442646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_132
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 248
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03319666496da047b3e49821a49ebb2
+      internalID: 719990498139230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_133
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 248
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab623dc53786a7146a2ae92f1e5e494a
+      internalID: -2510647446485532706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_134
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 248
+        width: 16
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d439251a1ee756a448973c40c68aefa5
+      internalID: 3522035143760098258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_135
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 248
+        width: 16
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76391f5159768304197b635b489910bf
+      internalID: 1986026464092360135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_136
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 170
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1589cf1e432f984da3f929c7d590d4d
+      internalID: 7554530381539071673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_137
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 173
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d781f11b080aa468a562d6d19d1c40
+      internalID: -4546988085112133117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_138
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 166
+        width: 90
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b84abb7333979c54da4e9370ec505764
+      internalID: 7505299597501852819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_139
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 180
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0a4dbb21bf08f74089a1cc5b9ce9821
+      internalID: 2326003236990904556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_140
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 171
+        width: 65
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a05f4172614c6b4a97ac0d33ed1a6d8
+      internalID: -7362659451025774907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_141
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 179
+        width: 47
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b240459daac4914c8d5885bc9f81b74
+      internalID: 3186494092496691618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_142
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 166
+        width: 88
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84913f885f3e65c4ca2219144e6497fd
+      internalID: 7448679294556281695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_143
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 149
+        width: 44
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25a38b936b9793c48905bac5d3b38c0e
+      internalID: -2872124479046365678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_144
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 168
+        width: 12
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f947c6f02b97214893c0be6383370f1
+      internalID: -2394232440640343417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_145
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 168
+        width: 20
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2227dc3268d809c4abb3d73502478395
+      internalID: 2061588897821285532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_146
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 168
+        width: 25
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27d19acc09e2c7c4db18d7b14c20816b
+      internalID: -5008118856090106414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_147
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 168
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8772d891710aa684bbac6d0587461aa1
+      internalID: 7044301445991810086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_148
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 168
+        width: 40
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1cd476d0466a564e8e056ac00715edf
+      internalID: -3968097767940649777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_149
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 162
+        width: 40
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7ade1fa6876964ea3bc94a35f7ac33
+      internalID: -373019502895945455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_150
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 162
+        width: 40
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bcede75a0e21f348918ad1ab9909a87
+      internalID: -8657613446124914972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_151
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 162
+        width: 40
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d14371eee993477439bac80012542fcd
+      internalID: 7471453109960210337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_152
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 89
+        width: 92
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b64365d38c872d4fbbdd83b5dd3dac0
+      internalID: 2410411031012661838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_153
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 29
+        width: 112
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e53eb9dd8ae73049930d6ff0273cebc
+      internalID: 1316702699010593779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_154
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 29
+        width: 111
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57425c72333a70848a40f5c5aa085c4c
+      internalID: -5577068441239160112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_155
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 29
+        width: 71
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a59f3da7c38e9f46a3ecc016fd8328d
+      internalID: 3141296594450152966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_156
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 56
+        width: 49
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06f92929b4e61784ea21d5a9894bbbae
+      internalID: -1293260598989543797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_157
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 113
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 678ec9106e064c44382ddbc578186bc5
+      internalID: 5480745570536628888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_158
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 91
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 024babd60a287e9408d5611d29397d05
+      internalID: -7160077367337781656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_159
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 29
+        width: 92
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 105d2f847fec0134baf8173446be2c54
+      internalID: -5834066012722469160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_160
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 29
+        width: 76
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fba5b1e6acc13e469ddcb8654481fd2
+      internalID: -2132408770918318893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_161
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 62
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88bac0e2d2b48b242a5a4602fc2718b3
+      internalID: -8864794743718315610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_162
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 29
+        width: 51
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b65f78e1eb8ff4ba520da30ebca87e
+      internalID: -7611990503642869525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_163
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 30
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eff84ce92df8f1438d295761b539aba
+      internalID: 4241566115396861968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_164
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 11
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 493c8057faf0f9d40b1e45de5189b302
+      internalID: 1192276857007749370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_165
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 9
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b72398676584a4984cf1f5440c555f
+      internalID: 2955379285924540545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_166
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 11
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a26e6747f737984c8b1c6200b6be628
+      internalID: 6897717415682314256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_167
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 11
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97154a64ae7b9e44e8fd64d283f31886
+      internalID: -951203825860402539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_168
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 11
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f0c98f1a96f6b4daefc6a4168c211b
+      internalID: -2754784258338203874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_169
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fea01b32a128292459eb8acba3c9b93f
+      internalID: -4990736445497290087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_170
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b11470e02acb14fa132bc74ec287b5
+      internalID: -5422317825043492353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_171
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cde348e373d049f49a1e2709896f0676
+      internalID: 9048077745603914215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_172
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c809ff969ad3d0846a1ea815f66b8b42
+      internalID: -4321532715804875143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_173
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6385937fa32af4e83e61384cc754fb
+      internalID: -2035430165488197184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_174
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 11
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d72f9a9ecb5fa6348a19c93f49295b67
+      internalID: -6150111009984078920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_175
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 11
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8290302a4e4c063468624ea680b72e05
+      internalID: 2351262478654251486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_176
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c73c6bf23fa2743bbc59653e4e89f2
+      internalID: 2539805951331504105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_177
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 11
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9f402a541d3a2442be3aa76c1c86400
+      internalID: -1617123057584871168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_178
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 11
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cebb04dc1715dc48962ffb91568f223
+      internalID: -6560267926783514884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_179
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3334cc983c69d440be44e3ba599d86e
+      internalID: -7729262547812628249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_180
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 9
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51c5c14bf90a9e642bf3ffb13ea89420
+      internalID: 604922834745540580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_181
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f63491d1896898744bc8354221042312
+      internalID: -6797776074235376346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_182
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 11
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fd41421be1115b46b8367789262cd77
+      internalID: -6113785565523947546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_183
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c20a4c8e4c639094eaed92ebe0dea175
+      internalID: -4383621033740069937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_184
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e600b63bfbb8d74a9adc1c5a1aac4fc
+      internalID: -6677173659920856597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_185
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 11
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 229328f34f1920a42862a46ea2d49f43
+      internalID: 6785734603289177613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_186
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 11
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5606bed84e299145ae99d8dd936eeaf
+      internalID: -8769807520929132276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_187
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 11
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c451b580a26d49b42b91ee1a52e9b676
+      internalID: 2305540466134353632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_188
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 9
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcb42f3859f970d47932fcbfe2ad0c0c
+      internalID: 435529744611477671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_189
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 9
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d784dac8d283e74891811ba84e1eff2
+      internalID: 2079388848824947410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_190
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6561cf030197caa44bea348477b135bf
+      internalID: 7150315618426646991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_191
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 11
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e941f58b11419ab4a93ae6b3a2aa8519
+      internalID: -8554950110442957421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_192
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 11
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc68fc56d0147b4ebcfa866bd9dc90b
+      internalID: -5346896337331488768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_193
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 9
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5da3eba48fd6b0439ba12a224f24d3c
+      internalID: 4438930243503034174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_194
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 11
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 088082ccdb1151c4095896e2c307ecbd
+      internalID: 113761317957633308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_195
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 10
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1948980b0998bf044b53bad591e73799
+      internalID: 7665147976760175191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_196
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 11
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab1b7acd94c98bd4aa00de2c105f01a9
+      internalID: 5239019161217902003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_197
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2aa81f853f419d41b5e194ed5c32625
+      internalID: 6202799423720391905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_198
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 9
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f399c1eeb41751b4f8d37fc3781479fc
+      internalID: 1938485689192855318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_199
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 11
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e71b78778dbc1b341a19451f53ca3741
+      internalID: -5492168233182992504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_200
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fc5e1855c9d2e245b024e442a519a40
+      internalID: 6919149902029837411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_201
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 11
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1df0b0c6b9d037a4897c0358200c8511
+      internalID: -1772346090030629894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_202
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 11
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 549e50f09d658f14ca7fe41754c8a7d4
+      internalID: -3606272657245132141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_203
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 11
+        width: 22
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e03d04e677da0b449cbc36d677f929d
+      internalID: 3397194616712571675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_204
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 233608234f64bee43862f8600c6fb05f
+      internalID: 7729516917537596324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_205
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 9
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a75bdcd88e7dda498de1aaa8ec14b2a
+      internalID: -8117623622832123285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_206
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 9
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bb8a7f4173faa342b7d691079346778
+      internalID: 2055886456560692554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_207
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 9
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fc597686674a134abea5dd16fdd7398
+      internalID: 3830353543782406444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_208
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 11
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cbfb5701dd88f5489117d5bd7b069f3
+      internalID: -7176033495417752953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_209
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 11
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b7b9a5ab0df5c44791ecf903b25cd6f
+      internalID: 1398315952512513317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_210
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 11
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67066130efabedd47a525a13d314b042
+      internalID: -90033942814252666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_211
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5adae778976f47b4aad780e482dce7a5
+      internalID: 5513882283092801999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_212
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 9
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b539cafb806de664d940dea25a57a304
+      internalID: -8449126076359182852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_213
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75132bea18eb59a46933ecd51e5233c4
+      internalID: -9045011933618439285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_214
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ab0d46945562e428282674710984a4
+      internalID: 7664087667450525505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_215
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 11
+        width: 15
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88d04f0b490e901479611d0de6c29e8c
+      internalID: 940585429806172351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_216
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 11
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffbf6db00adc59e4f89d9d9c5ff68226
+      internalID: -5936412755285870882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_217
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 11
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e06da7806fce524c9a263fdab761ba2
+      internalID: 7854088196133329540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_218
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 11
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3004104683879404e8c1f9920d69ab22
+      internalID: 1908839609325625658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_219
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 11
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2718da3d3963394ca0331d927a26e3f
+      internalID: 4448793777803051473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_220
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b141aff3e479f04aa13dec5e5158e13
+      internalID: -4599196401331434015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_221
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b4e0796ffbbcc4881d49889b604bcf
+      internalID: 2612978959639198527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_222
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1fd062fbc0558148a3724b414aaa067
+      internalID: -2061075152017964178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_223
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 11
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edbb66703bd306948979ce4bb18d9ac4
+      internalID: 7051993764170957320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_224
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9df433a039b2774409dfd2e3bf8a76d8
+      internalID: -4822267424643033364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_225
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42bd25e3b0fd92243bbd3ddc0cf22d08
+      internalID: -3280301110901224660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_226
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 154e86cbe64a50649bda2bf776872820
+      internalID: 3595146005024181438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_227
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3064e2281d669c243b2e7e5453d1ddae
+      internalID: -218739479847882509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_228
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e91f5f16d74767747acb2c7a5510dd75
+      internalID: -2466999539361839763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_229
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4521cc4bdfe3af4fbf155f0f704e11b
+      internalID: 7949796930012515463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_230
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 11
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f56c2d9597fbcab49acc9e3aafb3aedd
+      internalID: 4271377502816026888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayStation - Mega Man X4 - Cyber Peacock_231
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 9
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96b0fccda4b5fa429892d65619947b0
+      internalID: 8907429783564800186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

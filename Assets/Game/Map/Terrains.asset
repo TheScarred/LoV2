@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5dc7cf103e119845b1f54623a127efd, type: 3}
+  m_Name: Terrains
+  m_EditorClassIdentifier: 
+  terrenos:
+  - {fileID: 761604033020014550, guid: 2fdf2a46283b5934eaba8e33a197a0db, type: 3}
+  - {fileID: 761604033020014550, guid: 2fdf2a46283b5934eaba8e33a197a0db, type: 3}
+  - {fileID: 761604033020014550, guid: 2fdf2a46283b5934eaba8e33a197a0db, type: 3}
+  - {fileID: 761604033020014550, guid: 2fdf2a46283b5934eaba8e33a197a0db, type: 3}
+  - {fileID: 761604033020014550, guid: 2fdf2a46283b5934eaba8e33a197a0db, type: 3}
+  - {fileID: 761604033020014550, guid: 2fdf2a46283b5934eaba8e33a197a0db, type: 3}
+  EnemySpawners:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  PlayerSpawners:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  advancePosX: {x: 10, y: 0, z: 0}
+  advancePosY: {x: 0, y: 0, z: 10}
+  numberOfTerrains: 0
+  maxNumberX: 3
