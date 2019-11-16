@@ -231,7 +231,7 @@ MonoBehaviour:
   prefab_range_attack: {fileID: 8701324102084865613, guid: 78a366842ebc8804683c4478b815439b,
     type: 3}
   player_rigidbody: {fileID: 2814614972184391142}
-  terreno: {fileID: 0}
+  terreno: {fileID: 11400000, guid: 85c46e013eb9f9246bb60a21dbdccd47, type: 2}
   posicionJugador: {x: 0, y: 0, z: 0}
   ID: 0
   BasicHitBox: {fileID: 3045176174394309520}
