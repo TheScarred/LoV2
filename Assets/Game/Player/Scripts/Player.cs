@@ -32,6 +32,7 @@ public class Player : PunBehaviour
 
     //melee attack HIT BOX
     public GameObject BasicHitBox;
+    float hit_cooldown;
 
     //JOYSTICK
     public Joystick theJoystick;
@@ -65,6 +66,7 @@ public class Player : PunBehaviour
         //hit box is deactivated unless the player hits
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
         BasicHitBox.GetComponent<Collider>().enabled = false;
+        hit_cooldown = 1.5f;
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -166,8 +168,11 @@ public class Player : PunBehaviour
         //Primary Attack
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
-            //StartCoroutine(BasicAttack());
+            if (hit_cooldown <= 0)
+            {
+                hit_cooldown = 1.5f;
+                PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
+            }
         }
 
         //Secondary attack
@@ -209,6 +214,10 @@ public class Player : PunBehaviour
         {
             _myPlayerStats.m_ShootingSpeed += Time.deltaTime;
         }
+        if(hit_cooldown >= 0)
+        {
+            hit_cooldown -= Time.deltaTime;
+        }
 
     }
 
@@ -240,38 +249,9 @@ public class Player : PunBehaviour
 
                 StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
             }
-
     }
 
-    /* void InitRandomWeapons(Weapon melee, Weapon ranged)
-     {
-         melee.rarity = (Items.WeaponRarity)Random.Range(1, 5);
-         melee.sprite = meleeSprites[(int)melee.rarity];
-         melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity);
-
-         ranged.rarity = (Items.WeaponRarity)Random.Range(1, 5);
-         ranged.sprite = rangedSprites[(int)ranged.rarity];
-         ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity);
-
-         if ((int)melee.rarity > 1)
-         {
-             WeaponStats.SetMeleeModifier(ref melee.stats, melee.stats.mod1);
-             if (melee.rarity != Items.WeaponRarity.RARE)
-             {
-                 WeaponStats.SetMeleeModifier(ref melee.stats, melee.stats.mod2);
-             }
-         }
-
-         if ((int)ranged.rarity > 1)
-         {
-             WeaponStats.SetMeleeModifier(ref ranged.stats, ranged.stats.mod1);
-             if (ranged.rarity != Items.WeaponRarity.RARE)
-             {
-                 WeaponStats.SetMeleeModifier(ref ranged.stats, ranged.stats.mod2);
-             }
-         }
-     }*/
-
+  
     void InitBaseWeapons(Weapon melee, Weapon ranged)
     {
         melee.type = Items.WeaponType.MELEE;
