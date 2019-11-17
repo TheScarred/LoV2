@@ -17,7 +17,7 @@ public class Player : PunBehaviour
     public Sprite[] meleeSprites;
     public Sprite[] rangedSprites;
     public PlayerState myState;
-    PlayerStats _myPlayerStats;
+    public PlayerStats _myPlayerStats;
     List<GameObject> range_attack_Objects = new List<GameObject>();
     public GameObject prefab_range_attack;
     public Rigidbody player_rigidbody;
@@ -66,6 +66,7 @@ public class Player : PunBehaviour
         //hit box is deactivated unless the player hits
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
         BasicHitBox.GetComponent<Collider>().enabled = false;
+        BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
         hit_cooldown = 1.5f;
     }
 
@@ -223,11 +224,6 @@ public class Player : PunBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("HitMelee"))
-        {
-            int damage = (int)(col.gameObject.transform.parent.gameObject.GetComponent<PlayerStats>().m_DamageMelee);
-            _myPlayerStats.ReceiveDamage(damage);
-        }
         if (col.CompareTag("Food"))
         {
             Food food = col.GetComponent<Food>();

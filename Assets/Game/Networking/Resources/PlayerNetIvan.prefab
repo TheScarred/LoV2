@@ -228,6 +228,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 83c13461f5ceda543b5c6ad994b2e12f, type: 3}
   - {fileID: 21300000, guid: 656e30ac198541240808e6de76b4af08, type: 3}
   myState: 0
+  _myPlayerStats: {fileID: 0}
   prefab_range_attack: {fileID: 8701324102084865613, guid: 78a366842ebc8804683c4478b815439b,
     type: 3}
   player_rigidbody: {fileID: 2814614972184391142}
@@ -544,6 +545,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2814614972184391143}
   m_Enabled: 1
+--- !u!114 &1800627012811326262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3045176174394309520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abe1e581818fee4e95096bbecdd6ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2814614972184391141}
 --- !u!1001 &2684425966632174307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -551,6 +565,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2814614972184391137}
     m_Modifications:
+    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
+        type: 3}
+      propertyPath: m_Name
+      value: SimpleHitBoX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
+        type: 3}
+      propertyPath: m_TagString
+      value: HitMelee
+      objectReference: {fileID: 0}
     - target: {fileID: 2347147620951989393, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -621,21 +650,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.7841932
       objectReference: {fileID: 0}
-    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
-        type: 3}
-      propertyPath: m_Name
-      value: SimpleHitBoX
-      objectReference: {fileID: 0}
-    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
-        type: 3}
-      propertyPath: m_TagString
-      value: HitMelee
-      objectReference: {fileID: 0}
     - target: {fileID: 8857501381546306251, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
         type: 3}
       propertyPath: m_Enabled
@@ -662,6 +676,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2814614972184391137}
     m_Modifications:
+    - target: {fileID: 4249170665657334300, guid: 97a29a3a83f9c384a804ee586ca9d18b,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas_HP
+      objectReference: {fileID: 0}
     - target: {fileID: 5181803502354884221, guid: 97a29a3a83f9c384a804ee586ca9d18b,
         type: 3}
       propertyPath: m_Sprite
@@ -677,11 +696,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FillMethod
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249170665657334300, guid: 97a29a3a83f9c384a804ee586ca9d18b,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas_HP
       objectReference: {fileID: 0}
     - target: {fileID: 68925779592913769, guid: 97a29a3a83f9c384a804ee586ca9d18b,
         type: 3}
@@ -845,6 +859,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2814614972184391137}
     m_Modifications:
+    - target: {fileID: 5879330391763664427, guid: 2d540e5cb74762c44bdfd95dd3e8ee7c,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 5879330391763664431, guid: 2d540e5cb74762c44bdfd95dd3e8ee7c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -950,11 +969,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5879330391763664427, guid: 2d540e5cb74762c44bdfd95dd3e8ee7c,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
     - target: {fileID: 9198863915057266085, guid: 2d540e5cb74762c44bdfd95dd3e8ee7c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1011,6 +1025,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2814614972184391137}
     m_Modifications:
+    - target: {fileID: 4249170665657334300, guid: 97a29a3a83f9c384a804ee586ca9d18b,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas_armor
+      objectReference: {fileID: 0}
     - target: {fileID: 5181803502354884221, guid: 97a29a3a83f9c384a804ee586ca9d18b,
         type: 3}
       propertyPath: m_Color.r
@@ -1041,11 +1060,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FillMethod
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249170665657334300, guid: 97a29a3a83f9c384a804ee586ca9d18b,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas_armor
       objectReference: {fileID: 0}
     - target: {fileID: 68925779592913769, guid: 97a29a3a83f9c384a804ee586ca9d18b,
         type: 3}
