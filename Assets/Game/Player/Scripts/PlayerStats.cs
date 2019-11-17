@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon;
 using System.Text;
+using SimpleHealthBar_SpaceshipExample;
 public class PlayerStats : PunBehaviour
 {
     public float base_HP;
@@ -36,6 +37,9 @@ public class PlayerStats : PunBehaviour
     public Image HP_bar;
     public Image Armor_bar;
 
+    //Connect to PlayerHealth Script
+    public PlayerHealth player_health;
+
     void Start()
     {
         ResetStats();
@@ -62,7 +66,7 @@ public class PlayerStats : PunBehaviour
     public void ReceiveDamage(int damage)
     {
 
-        m_HP -= damage;
+        player_health.TakeDamage(damage);
         float fillmount;
         fillmount = HP_bar.fillAmount = (m_HP / base_HP);
 

@@ -311,6 +311,7 @@ MonoBehaviour:
   UI_Score: {fileID: 488763593247955}
   HP_bar: {fileID: 7992099855816585950}
   Armor_bar: {fileID: 631676390501054677}
+  player_health: {fileID: 1384256105}
 --- !u!114 &1976399032
 MonoBehaviour:
   m_ObjectHideFlags: 0
