@@ -21,6 +21,13 @@ public class EnemyIA : PunBehaviour
         Ammo
     }
 
+    public enum TypeOfEnemy
+    {
+        Melee,
+        Range,
+        Both
+    }
+
     //EnemyStats
     int base_HP;
 
@@ -67,6 +74,7 @@ public class EnemyIA : PunBehaviour
     bool TranslatedRight;
     bool can_attack;
     WaitForSeconds CoolDown;
+    TypeOfEnemy enemy_Type;
 
     //Communicate that player has been hit by enemy (Melee):
     PlayerStats player_stats;
@@ -88,6 +96,8 @@ public class EnemyIA : PunBehaviour
     }
     void Start()
     {
+        enemy_Type = (TypeOfEnemy)Random.Range(0, 2);
+
         Random.InitState(PhotonConnection.GetInstance().randomSeed);
         //contains = (Contains)Random.Range(0, 3);
         contains = Contains.Weapon;
@@ -299,17 +309,35 @@ public void OnTriggerEnter(Collider other)
 
             if (can_attack)
             {
-                animator.SetTrigger("ataque");
-                StartCoroutine(Attack());
-                can_attack = false;
+                if (enemy_Type == TypeOfEnemy.Melee)
+                {
+                    animator.SetTrigger("ataque");
+                    StartCoroutine(Attack());
+                    can_attack = false;
 
-            animator.SetTrigger("attak");
-            audio.PlayOneShot(sword);
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Attack1"))
-            {
-                return;
+                    animator.SetTrigger("attak");
+                    audio.PlayOneShot(sword);
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Attack1"))
+                    {
+                        return;
 
-            }
+                    }
+                }
+                else if (enemy_Type == TypeOfEnemy.Range)
+                {
+                    animator.SetTrigger("ataque");
+                    StartCoroutine(AttackRanged());
+                    can_attack = false;
+
+                    animator.SetTrigger("attak");
+                    audio.PlayOneShot(sword);
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Attack1"))
+                    {
+                        return;
+
+                    }
+                }
+                
         }
 
 
@@ -344,7 +372,33 @@ public void OnTriggerEnter(Collider other)
            
         }
     }
+
+        IEnumerator AttackRanged()
+        {
+            yield return CoolDown;
+            if (playertoChase != null && Vector3.Distance(transform.position, playertoChase.transform.position) < stoppingDistance)    //puede ser muy muy pesado
+            {
+                if (this.transform.position.x > playertoChase.transform.position.x)   //player is on the left
+                {
+                    //Debug.Log("Attacked Player on left!");
+                }
+                else  // player is on the right
+                {
+                    //Debug.Log("Attacked player on right!");
+                }
+                if (player_stats != null)
+                {
+                    player_stats.ReceiveDamage(Damage);
+                }
+                can_attack = true;
+
+            }
+        }
     }
+
+    
+
+
 
     /*void CreatePatrolPattern()
     {
