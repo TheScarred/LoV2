@@ -22,7 +22,7 @@ public class EnemyIA : PunBehaviour
     }
 
     //EnemyStats
-    int base_HP;
+    float base_HP;
 
     AudioSource audio;
     public float timeToSound = 0.5f;
@@ -31,7 +31,7 @@ public class EnemyIA : PunBehaviour
     [SerializeField]
     AudioClip sword,death,hit;
 
-    public int HP = 100;
+    public float HP = 100;
     public int Damage = 10;
     public int killed_points = 25;
     public float CoolDownTime = 1.5f;  //how often can it make damage
@@ -199,9 +199,24 @@ public void OnTriggerEnter(Collider other)
         {
             if (player_stats != null)
             {
-                float damage = (player_stats.m_DamageMelee);
-                HP -= (int)damage;
-                script_HP.ModifyHpBar(damage, base_HP);
+                Attack attack = other.GetComponent<Attack>();
+                Debug.Log("Damage Done: " + attack.damage);
+
+                if (attack.isCrit)
+                {
+                    HP -= (attack.damage * 2);
+                    Debug.Log(" CRIT! x 2");
+                }
+                else
+                    HP -= attack.damage;
+
+                if (attack.GetComponentInParent<Player>().melee.stats.id >= 0)
+                    attack.GetComponentInParent<Player>().melee.stats.wear--;
+
+                if (attack.GetComponentInParent<Player>().melee.stats.wear <= 0 && attack.GetComponentInParent<Player>().melee.stats.id >= 0)
+                    attack.GetComponentInParent<Player>().BreakMeleeWeapon();
+
+                script_HP.ModifyHpBar(attack.damage, base_HP);
                 audio.PlayOneShot(hit);
                 animator.SetTrigger("hit");
 
@@ -217,7 +232,7 @@ public void OnTriggerEnter(Collider other)
         else if (other.gameObject.CompareTag("Proyectile"))
         {
             float damage = player_stats.base_DamageMeele;
-            HP -= (int)damage;
+            HP -= damage;
             script_HP.ModifyHpBar(damage, base_HP);
             animator.SetTrigger("hit");
 
@@ -260,7 +275,6 @@ public void OnTriggerEnter(Collider other)
 
     void ChasePlayer()
     {
-
         bool didMove = false;
 
         //Persigo a jugador
@@ -283,7 +297,6 @@ public void OnTriggerEnter(Collider other)
                 facingRight = false;
                 scale.x *= -1;
                 transform.localScale = scale;
-                Debug.Log("Attacked Player on left!");
             }
             if (this.transform.position.x > playertoChase.transform.position.x && !facingRight)  // player is on the right
             {
@@ -291,25 +304,20 @@ public void OnTriggerEnter(Collider other)
                 facingRight = true;
                 scale.x *= -1;
                 transform.localScale = scale;
-                Debug.Log("Attacked player on right!");
             }
         }
         else
         {
-
             if (can_attack)
             {
                 animator.SetTrigger("ataque");
                 StartCoroutine(Attack());
                 can_attack = false;
-
-            animator.SetTrigger("attak");
-            audio.PlayOneShot(sword);
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Attack1"))
-            {
-                return;
-
+                audio.PlayOneShot(sword);
             }
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Attack1"))
+                return;
         }
 
 
@@ -340,10 +348,9 @@ public void OnTriggerEnter(Collider other)
             {
                 player_stats.ReceiveDamage(Damage);
             }
-                can_attack = true;
+            can_attack = true;
            
         }
-    }
     }
 
     /*void CreatePatrolPattern()
@@ -508,51 +515,55 @@ public void OnTriggerEnter(Collider other)
                     if (type == 0)
                     {
                         GameObject go = Instantiate(melee, transform.position, transform.rotation);
-                        go.GetComponent<WeaponPickup>().type = Items.WeaponType.MELEE;
-                        go.GetComponent<WeaponPickup>().ID = PhotonConnection.GetInstance().WeaponID;
+                        WeaponPickup weapon = go.GetComponent<WeaponPickup>();
+                        weapon.type = Items.WeaponType.MELEE;
+                        weapon.ID = PhotonConnection.GetInstance().WeaponID;
+                        weapon.lastWear = 30;
                         PhotonConnection.GetInstance().weaponList.Add(go.GetComponent<WeaponPickup>());
                         PhotonConnection.GetInstance().WeaponID++;
 
                         if (roll <= 40)
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.UNCOMMON;
+                            weapon.rarity = Items.WeaponRarity.UNCOMMON;
                         }
                         else if (roll <= 70)
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.RARE;
+                            weapon.rarity = Items.WeaponRarity.RARE;
                         }
                         else if (roll <= 90)
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.EPIC;
+                            weapon.rarity = Items.WeaponRarity.EPIC;
                         }
                         else
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.LEGENDARY;
+                            weapon.rarity = Items.WeaponRarity.LEGENDARY;
                         }
                     }
                     else
                     {
                         GameObject go = Instantiate(ranged, transform.position, transform.rotation);
-                        go.GetComponent<WeaponPickup>().type = Items.WeaponType.RANGED;
-                        go.GetComponent<WeaponPickup>().ID = PhotonConnection.GetInstance().WeaponID;
+                        WeaponPickup weapon = go.GetComponent<WeaponPickup>();
+                        weapon.type = Items.WeaponType.RANGED;
+                        weapon.ID = PhotonConnection.GetInstance().WeaponID;
+                        weapon.lastWear = 30;
                         PhotonConnection.GetInstance().weaponList.Add(go.GetComponent<WeaponPickup>());
                         PhotonConnection.GetInstance().WeaponID++;
 
                         if (roll <= 40)
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.UNCOMMON;
+                            weapon.rarity = Items.WeaponRarity.UNCOMMON;
                         }
                         else if (roll <= 70)
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.RARE;
+                            weapon.rarity = Items.WeaponRarity.RARE;
                         }
                         else if (roll <= 90)
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.EPIC;
+                            weapon.rarity = Items.WeaponRarity.EPIC;
                         }
                         else
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.LEGENDARY;
+                            weapon.rarity = Items.WeaponRarity.LEGENDARY;
                         }
                     }
                     break;

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeeleAttack : MonoBehaviour
+public class Attack : MonoBehaviour
 {
-    public PlayerState effect;
+    public Items.Modifier effect;
+    public float damage;
     public bool isCrit;
 }

@@ -58,4 +58,6 @@ MonoBehaviour:
   - RevivePlayer
   - ToggleHitBox
   - RequestForPickupTimes
+  - ResetMeleeWeapon
+  - ResetRangedWeapon
   DisableAutoOpenWizard: 1

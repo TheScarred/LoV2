@@ -55,7 +55,7 @@ public class WeaponStats
         return stats;
     }
 
-    public static Stats SetStats(Stats stats, int seed, WeaponType type, WeaponRarity rarity, int id)
+    public static Stats SetStats(Stats stats, int seed, WeaponType type, WeaponRarity rarity, int id, int wear)
     {
         Random.InitState(seed);
         stats.id = id;
@@ -64,19 +64,19 @@ public class WeaponStats
         {
             if (rarity == WeaponRarity.UNCOMMON)
             {
-                SetAll(ref stats, type, rarity, 30, 1, 0.075f, 0.3f, 5.5f, 6.5f);
+                SetAll(ref stats, type, rarity, wear, 1, 0.075f, 0.3f, 5.5f, 6.5f);
             }
             else if (rarity == WeaponRarity.RARE)
             {
-                SetAll(ref stats, type, rarity, 30, 1, 0.1f, 0.35f, 6.0f, 7.0f);
+                SetAll(ref stats, type, rarity, wear, 1, 0.1f, 0.35f, 6.0f, 7.0f);
             }
             else if (rarity == WeaponRarity.EPIC)
             {
-                SetAll(ref stats, type, rarity, 30, 1, 0.125f, 0.4f, 6.5f, 7.5f);
+                SetAll(ref stats, type, rarity, wear, 1, 0.125f, 0.4f, 6.5f, 7.5f);
             }
             else if (rarity == WeaponRarity.LEGENDARY)
             {
-                SetAll(ref stats, type, rarity, 30, 1, 0.15f, 0.45f, 7.0f, 8.0f);
+                SetAll(ref stats, type, rarity, wear, 1, 0.15f, 0.45f, 7.0f, 8.0f);
             }
             else
             {
@@ -87,23 +87,23 @@ public class WeaponStats
         {
             if (rarity == WeaponRarity.UNCOMMON)
             {
-                SetAll(ref stats, type, rarity, 30, 1, 0.075f, 0.1f, 3.0f, 3.5f);
+                SetAll(ref stats, type, rarity, wear, 1, 0.075f, 0.1f, 3.0f, 3.5f);
             }
             else if (rarity == WeaponRarity.RARE)
             {
-                SetAll(ref stats, type, rarity, 30, 1, 0.1f, 0.15f, 3.5f, 4.0f);
+                SetAll(ref stats, type, rarity, wear, 1, 0.1f, 0.15f, 3.5f, 4.0f);
             }
             else if (rarity == WeaponRarity.EPIC)
             {
-                SetAll(ref stats, type, rarity, 30, 1, 0.125f, 0.2f, 4.0f, 4.5f);
+                SetAll(ref stats, type, rarity, wear, 1, 0.125f, 0.2f, 4.0f, 4.5f);
             }
             else if (rarity == WeaponRarity.LEGENDARY)
             {
-                SetAll(ref stats, type, rarity, 30, 1, 0.15f, 0.25f, 4.5f, 5.0f);
+                SetAll(ref stats, type, rarity, wear, 1, 0.15f, 0.25f, 4.5f, 5.0f);
             }
             else
             {
-                SetAll(ref stats, type, rarity, 10, 1, 0.05f, 0.05f, 2.5f, 2.5f);
+                SetAll(ref stats, type, rarity, -1, 1, 0.05f, 0.05f, 2.5f, 2.5f);
             }
         }
 
