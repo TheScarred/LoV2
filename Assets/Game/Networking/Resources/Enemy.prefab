@@ -340,7 +340,7 @@ MonoBehaviour:
   viewAngle: 360
   stoppingDistance: 1
   speed: -5.46
-  WalkDistance: 2
+  WalkDistance: 5
   startWaitTime: 2
   script_HP: {fileID: 3674029410777285953}
   HP_bar: {fileID: 8307317334197159499}
@@ -443,6 +443,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1832233238492437703}
     m_Modifications:
+    - target: {fileID: 4249170665657334300, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas_enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 68925779592913769, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -558,10 +563,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.0022787987
       objectReference: {fileID: 0}
-    - target: {fileID: 4249170665657334300, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}
-      propertyPath: m_Name
-      value: Canvas_enemy
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300002, guid: 2673cf64155f08c4e847edde1c08f8c1,
+        type: 3}
+    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+        type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+        type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3259277421883441139, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}
@@ -587,27 +608,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 44
-      objectReference: {fileID: 0}
-    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300002, guid: 2673cf64155f08c4e847edde1c08f8c1,
-        type: 3}
-    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
-        type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
-        type: 3}
-      propertyPath: m_FillMethod
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce3f39e8cf7db9146952cd8db2d45f4b, type: 3}
