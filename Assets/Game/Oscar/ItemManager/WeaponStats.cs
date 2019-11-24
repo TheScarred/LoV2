@@ -204,6 +204,11 @@ public class WeaponStats
                 SetRangedModifier(ref stats, stats.mod2);
             }
         }
+        else
+        {
+            stats.mod1 = Modifier.NONE;
+            stats.mod2 = Modifier.NONE;
+        }
     }
 
     public static void SetMeleeModifier(ref Stats stats, Modifier mod)
@@ -293,7 +298,7 @@ public class WeaponStats
     #region MODS
     public static void SetArmourSlayerMod(ref Stats stats)
     {
-        stats.armourPen += 0.3f;
+        stats.armourPen += 0.25f;
     }
     public static void SetFrenzyMod(ref Stats stats)
     {

@@ -303,6 +303,7 @@ public class Player : PunBehaviour
         melee.sprite = meleeSprites[(int)melee.rarity];
         melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity, -1, -1);
         meleeAttack.damage = melee.stats.damage;
+        
     }
 
     [PunRPC]
