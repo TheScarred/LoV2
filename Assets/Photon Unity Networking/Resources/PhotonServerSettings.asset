@@ -46,16 +46,14 @@ MonoBehaviour:
   - PunPickupSimple
   - PunRespawn
   - ReActivarFlecha
-  - RemoveEnemy
+  - RemoveEnemies
   - RequestForPickupItems
+  - RequestForPickupTimes
   - ReviveEnemy
+  - RevivePlayer
   - SwapMeleeWeapon
   - SwapRangedWeapon
   - TaggedPlayer
-  - UpdatePickupWeapon
-  - SpawnItem
-  - RemoveEnemies
-  - RevivePlayer
   - ToggleHitBox
-  - RequestForPickupTimes
+  - UpdatePickupWeapon
   DisableAutoOpenWizard: 1
