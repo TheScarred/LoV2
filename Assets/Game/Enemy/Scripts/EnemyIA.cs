@@ -166,7 +166,6 @@ public class EnemyIA : PunBehaviour
 
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-
                     visibleTargets.Add(target);
 
                     status = EnemyState.Chase;

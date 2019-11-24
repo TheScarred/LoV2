@@ -247,12 +247,7 @@ public class PhotonConnection : PunBehaviour
 
     void CrearMapa()
     {
-       
         Random.InitState(randomSeed);
-        Debug.Log(Random.Range(0, 1000));
-        Debug.Log(Random.Range(0, 1000));
-        Debug.Log(Random.Range(0, 1000));
-        Debug.Log(Random.Range(0, 1000));
     }
 
     public Player GetPlayerById(int id)

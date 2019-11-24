@@ -12,7 +12,6 @@ public enum PlayerState
 };
 public class Player : PunBehaviour
 {
-
     public Weapon melee, ranged;
     public Sprite[] meleeSprites;
     public Sprite[] rangedSprites;
@@ -26,6 +25,7 @@ public class Player : PunBehaviour
     WaitForSeconds melee_hitbox_Timer = new WaitForSeconds(0.5f);
     public Vector3 posicionJugador;
     private bool facingRight = true;
+    private bool weaponTrigger = false;
     bool vivo = true;
     public int ID;
     int DamageReceived;
@@ -33,6 +33,7 @@ public class Player : PunBehaviour
     // Melee attack hitbox & stat script
     public GameObject BasicHitBox;
     public Attack meleeAttack, rangedAttack;
+    Collider pickup = null;
 
     //JOYSTICK
     public Joystick theJoystick;
@@ -42,6 +43,9 @@ public class Player : PunBehaviour
     {
         melee = ScriptableObject.CreateInstance<Weapon>();
         ranged = ScriptableObject.CreateInstance<Weapon>();
+
+        if (photonView.isMine)
+            gameObject.AddComponent<AudioListener>();
 
         meleeAttack = BasicHitBox.GetComponent<Attack>();
 
@@ -184,7 +188,8 @@ public class Player : PunBehaviour
             if (_myPlayerStats.m_ShootingSpeed >= ranged.stats.rOF)
             {
                 _myPlayerStats.m_ShootingSpeed = 0f;
-                SpawnRangeAttackObject(prefab_range_attack, transform.position);
+                GameObject arrow = SpawnRangeAttackObject(prefab_range_attack, transform.position);
+                //arrow.GetComponent<Attack>().damage = 
             }
 
         }
@@ -220,6 +225,17 @@ public class Player : PunBehaviour
 
     }
 
+    void PickUpWeapon(Collider col)
+    {
+        if (Input.GetKeyDown(KeyCode.E) && weaponTrigger && (pickup != null))
+        {
+            WeaponPickup weapon = col.GetComponent<WeaponPickup>();
+            ChangeWeapon(ref weapon.type, ref weapon.rarity, PhotonConnection.GetInstance().randomSeed, ref weapon.ID, weapon.lastWear);
+
+            StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
+        }
+    }
+
     void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("HitMelee"))
@@ -231,25 +247,25 @@ public class Player : PunBehaviour
         {
             Food food = col.GetComponent<Food>();
             if (food.type == FoodType.SMALL)
-            {
-                Debug.Log("Se comio una banana jajajaja xd");
                 _myPlayerStats.base_HP += (int)FoodType.SMALL;
-            }
+        }
+        if (col.CompareTag("Melee") || col.CompareTag("Rango"))
+        {
+            weaponTrigger = true;
+            pickup = col;
+        }
+
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.CompareTag("Melee") || col.CompareTag("Rango"))
+        {
+            weaponTrigger = false;
+            pickup = null;
         }
     }
 
-    void OnTriggerStay(Collider objeto)
-    {
-        if (objeto.CompareTag("Melee") || objeto.CompareTag("Rango"))
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                WeaponPickup weapon = objeto.GetComponent<WeaponPickup>();
-                ChangeWeapon(ref weapon.type, ref weapon.rarity, PhotonConnection.GetInstance().randomSeed, ref weapon.ID, weapon.lastWear);
-
-                StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
-            }
-
-    }
 
     /* void InitRandomWeapons(Weapon melee, Weapon ranged)
      {
@@ -279,7 +295,7 @@ public class Player : PunBehaviour
              }
          }
      }*/
-    
+
 
     void InitBaseWeapons(Weapon melee, Weapon ranged)
     {
@@ -336,7 +352,6 @@ public class Player : PunBehaviour
             }
         }
     }
-
 
     public void ChangeWeapon(ref WeaponType type, ref WeaponRarity rarity, int seed, ref int weaponID, int wear)
     {
@@ -539,6 +554,7 @@ public class Player : PunBehaviour
                 Movement();
                 UpdateVariables();
                 AttackInput();
+                PickUpWeapon(pickup);
             }
             else if (vivo == true)
                 PhotonNetwork.RPC(photonView, "KillPlayer", PhotonTargets.AllBuffered, false);

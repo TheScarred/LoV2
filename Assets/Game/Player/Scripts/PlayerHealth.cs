@@ -21,8 +21,6 @@ namespace SimpleHealthBar_SpaceshipExample
 
         Player player;
 
-
-
         public SimpleHealthBar healthBar;
         public SimpleHealthBar shieldBar;
 
@@ -138,8 +136,8 @@ namespace SimpleHealthBar_SpaceshipExample
 
 		public void Death ()
 		{
-			//AQUI ENSEÑARIA LA ESCENA DE DEATH
-			
+            //AQUI ENSEÑARIA LA ESCENA DE DEATH
+            gameObject.transform.DetachChildren();
 			Destroy( gameObject );
 		}
 
