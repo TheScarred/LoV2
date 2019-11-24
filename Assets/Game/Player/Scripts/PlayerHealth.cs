@@ -2,6 +2,7 @@
 /* PlayerHealth.cs */
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace SimpleHealthBar_SpaceshipExample
 {
@@ -124,7 +125,8 @@ namespace SimpleHealthBar_SpaceshipExample
 
 				// CORRE LA FUNCION DE MORIR
 				Death();
-			}
+
+            }
 			
 		
 
@@ -141,8 +143,7 @@ namespace SimpleHealthBar_SpaceshipExample
 			//AQUI ENSEÑARIA LA ESCENA DE DEATH
 			
 			Destroy( gameObject );
-		}
-
-		
+            SceneManager.LoadScene("Game Over");    
+        }
 	}
 }

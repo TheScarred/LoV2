@@ -72,4 +72,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/Prototype_0.1.unity
     guid: 855c4288870b66748b04c8d8bba4f571
+  - enabled: 1
+    path: Assets/Game/Scenes/Game Over.unity
+    guid: 41d13a87745db09458b0a13f4fa823ed
+  - enabled: 1
+    path: Assets/Game/Scenes/LoadingScene.unity
+    guid: 0eabc750f9f3f364fa5978433e7e23e2
   m_configObjects: {}
