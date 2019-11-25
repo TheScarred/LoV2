@@ -358,7 +358,7 @@ public void OnTriggerEnter(Collider other)
         {
             if (can_attack)
             {
-                animator.SetTrigger("ataque");
+                animator.SetTrigger("attak");
                 StartCoroutine(Attack());
                 can_attack = false;
                 audio.PlayOneShot(sword);
