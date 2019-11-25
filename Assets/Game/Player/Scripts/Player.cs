@@ -16,7 +16,7 @@ public class Player : PunBehaviour
     public Sprite[] meleeSprites;
     public Sprite[] rangedSprites;
     public PlayerState myState;
-    PlayerStats _myPlayerStats;
+    public PlayerStats _myPlayerStats;
     List<GameObject> range_attack_Objects = new List<GameObject>();
     public GameObject prefab_range_attack;
     public Rigidbody player_rigidbody;
@@ -35,6 +35,7 @@ public class Player : PunBehaviour
     public GameObject BasicHitBox;
     public Attack meleeAttack, rangedAttack;
     Collider pickup = null;
+    float hit_cooldown;
 
     //JOYSTICK
     public Joystick theJoystick;
@@ -75,6 +76,8 @@ public class Player : PunBehaviour
         //hit box is deactivated unless the player hits
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
         BasicHitBox.GetComponent<Collider>().enabled = false;
+        BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
+        hit_cooldown = 1.5f;
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -235,6 +238,10 @@ public class Player : PunBehaviour
         {
             _myPlayerStats.m_ShootingSpeed += Time.deltaTime;
         }
+        if(hit_cooldown >= 0)
+        {
+            hit_cooldown -= Time.deltaTime;
+        }
 
     }
 
@@ -286,7 +293,6 @@ public class Player : PunBehaviour
         }
     }
 
-
     /* void InitRandomWeapons(Weapon melee, Weapon ranged)
      {
          melee.rarity = (Items.WeaponRarity)Random.Range(1, 5);
@@ -315,7 +321,6 @@ public class Player : PunBehaviour
              }
          }
      }*/
-
 
     void InitBaseWeapons(Weapon melee, Weapon ranged)
     {
