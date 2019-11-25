@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     public void StartGame()
     {
+        PhotonNetwork.Disconnect();
         SceneManager.LoadScene("LoadingScene");
     }
 }
