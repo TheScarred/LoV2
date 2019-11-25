@@ -13,14 +13,6 @@ public class EnemyIA : PunBehaviour
         Attacking
     }
 
-
-    public enum Contains
-    {
-        Weapon,
-        Food,
-        Ammo
-    }
-
     //EnemyStats
     float base_HP;
 
@@ -32,17 +24,22 @@ public class EnemyIA : PunBehaviour
     AudioClip sword,death,hit;
 
     public float HP = 100;
-    public int Damage = 10;
+    public float Damage = 10f;
+    public float ArmourPen = 0;
     public int killed_points = 25;
     public float CoolDownTime = 1.5f;  //how often can it make damage
 
     public GameObject melee;
     public GameObject ranged;
+    public GameObject consumable;
     public Sprite[] meleeSprites;
     public Sprite[] rangedSprites;
+    public Sprite[] foodSprites;
+    public Sprite[] armourSprites;
+    public Sprite[] ammoSprites;
 
     public Animator animator;
-    public Contains contains;
+    public Items.ItemType contains;
     public EnemyState status;
     public Rigidbody enemy_rigidbody;
     public LayerMask targetMask;
@@ -90,8 +87,7 @@ public class EnemyIA : PunBehaviour
     void Start()
     {
         Random.InitState(PhotonConnection.GetInstance().randomSeed);
-        //contains = (Contains)Random.Range(0, 3);
-        contains = Contains.Weapon;
+        contains = Items.ItemType.CONSUMABLE;
         minX = 4.75f;
         maxX = 24.75f;
         minY = 4.75f;
@@ -203,12 +199,12 @@ public void OnTriggerEnter(Collider other)
                 if (attack.isCrit)
                 {
                     HP -= (attack.damage * 2);
-                    Debug.Log("CRIT! Damage Done: " + attack.damage*2);
+                    //Debug.Log("CRIT! Damage Done: " + attack.damage*2);
                 }
                 else
                 {
                     HP -= attack.damage;
-                    Debug.Log("Damage Done: " + attack.damage);
+                    //Debug.Log("Damage Done: " + attack.damage);
                 }
 
                 if (attack.GetComponentInParent<Player>().melee.stats.id >= 0)
@@ -237,12 +233,12 @@ public void OnTriggerEnter(Collider other)
             if (attack.isCrit)
             {
                 HP -= (attack.damage * 2);
-                Debug.Log("CRIT! Damage Done: " + attack.damage * 2);
+                //Debug.Log("CRIT! Damage Done: " + attack.damage * 2);
             }
             else
             {
                 HP -= attack.damage;
-                Debug.Log("Damage Done: " + attack.damage);
+                //Debug.Log("Damage Done: " + attack.damage);
             }
 
             script_HP.ModifyHpBar(attack.damage, base_HP);
@@ -353,7 +349,7 @@ public void OnTriggerEnter(Collider other)
             }
             if (player_stats != null)
             {
-                player_stats.ReceiveDamage(Damage);
+                player_stats.ReceiveDamage(ArmourPen, Damage);
             }
             can_attack = true;
            
@@ -510,14 +506,15 @@ public void OnTriggerEnter(Collider other)
     void SpawnItem(byte seed)
     {
         Random.InitState(seed);
-        int type = Random.Range(0, 2);
+        //contains = (Items.ConsumeableType)Random.Range(0, 4);
         int roll = Random.Range(1, 101);
 
         switch (contains)
         {
-            case Contains.Weapon:
+            case Items.ItemType.WEAPON:
                 {
-                    if (type == 0)
+                    int type2 = Random.Range(0, 2);
+                    if (type2 == 0)
                     {
                         GameObject go = Instantiate(melee, transform.position, transform.rotation);
                         WeaponPickup weapon = go.GetComponent<WeaponPickup>();
@@ -557,32 +554,75 @@ public void OnTriggerEnter(Collider other)
                         PhotonConnection.GetInstance().WeaponID++;
 
                         if (roll <= 40)
-                        {
                             weapon.rarity = Items.WeaponRarity.UNCOMMON;
-                        }
                         else if (roll <= 70)
-                        {
                             weapon.rarity = Items.WeaponRarity.RARE;
-                        }
                         else if (roll <= 90)
-                        {
                             weapon.rarity = Items.WeaponRarity.EPIC;
-                        }
                         else
-                        {
                             weapon.rarity = Items.WeaponRarity.LEGENDARY;
-                        }
 
                         weapon.gameObject.GetComponent<SpriteRenderer>().sprite = rangedSprites[(int)weapon.rarity];
                     }
                     break;
                 }
-            case Contains.Food:
+            case Items.ItemType.CONSUMABLE:
                 {
-                    break;
-                }
-            case Contains.Ammo:
-                {
+                    GameObject go = Instantiate(consumable, transform.position, transform.rotation);
+                    int type2 = Random.Range(0, 3);
+                    if (type2 == 0)
+                    {
+                        go.AddComponent<Food>();
+                        go.tag = "Food";
+                        if (roll >= 80)
+                            go.GetComponent<Food>().type = Items.FoodType.MEAL;
+                        else
+                            go.GetComponent<Food>().type = Items.FoodType.SNACK;
+
+                        if (go.GetComponent<Food>().type == Items.FoodType.SNACK)
+                            go.GetComponent<SpriteRenderer>().sprite = foodSprites[0];
+                        else
+                            go.GetComponent<SpriteRenderer>().sprite = foodSprites[1];
+                    }
+                    else if (type2 == 1)
+                    {
+                        go.AddComponent<Armour>();
+                        go.tag = "Armour";
+                        if (roll <= 50)
+                            go.GetComponent<Armour>().type = Items.ArmourType.PLATE;
+                        else if (roll <= 85)
+                            go.GetComponent<Armour>().type = Items.ArmourType.VEST;
+                        else
+                            go.GetComponent<Armour>().type = Items.ArmourType.SUIT;
+
+                        if (go.GetComponent<Armour>().type == Items.ArmourType.PLATE)
+                            go.GetComponent<SpriteRenderer>().sprite = armourSprites[0];
+                        else if (go.GetComponent<Armour>().type == Items.ArmourType.VEST)
+                            go.GetComponent<SpriteRenderer>().sprite = armourSprites[1];
+                        else
+                            go.GetComponent<SpriteRenderer>().sprite = armourSprites[2];
+                    }
+                    else
+                    {
+                        go.AddComponent<Ammo>();
+                        go.tag = "Ammo";
+                        if (roll <= 40)
+                            go.GetComponent<Ammo>().type = Items.AmmoType.SINGLE;
+                        else if (roll <= 85)
+                            go.GetComponent<Ammo>().type = Items.AmmoType.BUNDLE;
+                        else
+                            go.GetComponent<Ammo>().type = Items.AmmoType.QUIVER;
+
+                        if (go.GetComponent<Ammo>().type == Items.AmmoType.SINGLE)
+                            go.GetComponent<SpriteRenderer>().sprite = ammoSprites[0];
+                        else if (go.GetComponent<Ammo>().type == Items.AmmoType.BUNDLE)
+                            go.GetComponent<SpriteRenderer>().sprite = ammoSprites[1];
+                        else
+                            go.GetComponent<SpriteRenderer>().sprite = ammoSprites[2];
+                    }
+                    go.GetComponent<Consumable>().id = PhotonConnection.GetInstance().ConsumableID;
+                    PhotonConnection.GetInstance().consumables.Add(go.GetComponent<Consumable>());
+                    PhotonConnection.GetInstance().ConsumableID++;
                     break;
                 }
         }

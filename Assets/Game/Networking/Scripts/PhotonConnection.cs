@@ -28,10 +28,17 @@ public class PhotonConnection : PunBehaviour
 
     //WEAPON ID
     private int weaponId;
+    private int consumableId;
     public int WeaponID
     {
         get { return weaponId; }
         set { weaponId = value; }
+    }
+
+    public int ConsumableID
+    {
+        get { return consumableId; }
+        set { consumableId = value; }
     }
 
     //ENEMIES
@@ -42,6 +49,7 @@ public class PhotonConnection : PunBehaviour
     public List<GameObject> patterPointsList;
     //SPAWNERS
     public List<WeaponPickup> weaponList;
+    public List<Consumable> consumables;
     public TerrainGenerator terreno;
     public string prefabACrear;
     
@@ -59,28 +67,24 @@ public class PhotonConnection : PunBehaviour
 
     public void Connect()
     {
-        
         PhotonNetwork.gameVersion = gameVersion;
         PhotonNetwork.ConnectUsingSettings(gameVersion);
     }
 
     public override void OnConnectedToPhoton()
     {
-
         Debug.Log("Conectado al Master");
         StartCoroutine(ConnectLobby());
     }
 
     IEnumerator ConnectLobby()
     {
-
         yield return new WaitForSeconds(1f);
         PhotonNetwork.JoinLobby();
     }
 
     public override void OnJoinedLobby()
     {
-
         Debug.Log("Conectado al lobby");
         PhotonNetwork.playerName = myServerName;
         StartCoroutine(ConnectRoom());
@@ -88,7 +92,6 @@ public class PhotonConnection : PunBehaviour
 
     IEnumerator ConnectRoom()
     {
-
         yield return new WaitForSeconds(2f);
         RoomInfo[] rooms = PhotonNetwork.GetRoomList();
         for (int i = 0; i < rooms.Length; i++)

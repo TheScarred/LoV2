@@ -7,13 +7,14 @@ using System.Text;
 using SimpleHealthBar_SpaceshipExample;
 public class PlayerStats : PunBehaviour
 {
-    public float base_HP;
-    public float base_Shield = 50;
+    public float base_HP = 50;
+    public float base_Shield = 100;
     public float base_DamageMeele = 20;   
     public float base_DamageRange = 20;
     public float base_MeleeSpeed = 2f;
     public float base_speed = 2f;    
     public float base_ShootingSpeed = 2f;
+    public int base_AmmoCap = 30;
 
     //Modifiers
     public float m_Speed;
@@ -23,6 +24,7 @@ public class PlayerStats : PunBehaviour
     public float m_MeeleSpeed;
     public float m_DamageRange;
     public float m_DamageMelee;
+    public int m_Ammo;
 
 
     //SCOREBOARD
@@ -56,17 +58,17 @@ public class PlayerStats : PunBehaviour
         scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
         m_Speed = base_speed;
         m_HP = base_HP;
-        m_Shield = base_Shield;
+        m_Shield = 0;
         m_DamageMelee = base_DamageMeele;
         m_DamageRange = base_DamageRange;
         m_MeeleSpeed = base_MeleeSpeed;
         m_ShootingSpeed = base_ShootingSpeed;
+        m_Ammo = base_AmmoCap / 3;
     }
 
-    public void ReceiveDamage(int damage)
+    public void ReceiveDamage(float armourPen, float damage)
     {
-
-        player_health.TakeDamage(damage);
+        player_health.TakeDamage(armourPen, damage);
         float fillmount;
         fillmount = HP_bar.fillAmount = (m_HP / base_HP);
 
@@ -85,6 +87,7 @@ public class PlayerStats : PunBehaviour
         {
             stream.SendNext(m_HP);
             stream.SendNext(Score);
+            stream.SendNext(m_Shield);
             //stream.SendNext(HP_bar);
             //stream.SendNext(Armor_bar);
         }
@@ -92,8 +95,7 @@ public class PlayerStats : PunBehaviour
         {
             m_HP = (float)stream.ReceiveNext();
             Score = (int)stream.ReceiveNext();
-
-
+            m_Shield = (float)stream.ReceiveNext();
 
         }
     }

@@ -23,7 +23,6 @@ public class projectile : PunBehaviour
         {
             if (other.GetComponent<Player>().ID != owner)
             {
-                other.gameObject.GetComponent<PlayerStats>().ReceiveDamage(damage);
                 StartCoroutine(DeathTime());
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
                 GetComponent<Rigidbody>().angularVelocity = Vector3.zero;

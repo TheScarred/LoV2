@@ -233,6 +233,7 @@ MonoBehaviour:
   terreno: {fileID: 11400000, guid: 85c46e013eb9f9246bb60a21dbdccd47, type: 2}
   posicionJugador: {x: 0, y: 0, z: 0}
   ID: 0
+  rangedAmmo: 0
   BasicHitBox: {fileID: 3045176174394309520}
   meleeAttack: {fileID: 0}
   rangedAttack: {fileID: 0}
@@ -279,7 +280,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jugadorsin: {fileID: 1976399023}
-  regenShieldTimerMax: 1
   healthBar: {fileID: 1221318151940206769}
   shieldBar: {fileID: 1221318150245617749}
 --- !u!114 &1976399023
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   base_HP: 50
-  base_Shield: 0
+  base_Shield: 100
   base_DamageMeele: 50
   base_DamageRange: 0
   base_MeleeSpeed: 2

@@ -99,6 +99,7 @@ public class Player : PunBehaviour
                         // range_attack_Objects[i].GetComponent<projectile>().moveProjectile(facingRight);
 
                         range_attack_Objects[i].GetComponent<Attack>().damage = ranged.stats.damage;
+                        range_attack_Objects[i].GetComponent<Attack>().armourPen = ranged.stats.armourPen;
 
                         if (ranged.rarity == WeaponRarity.LEGENDARY)
                             range_attack_Objects[i].GetComponent<Attack>().effect = ranged.stats.mod1;
@@ -250,23 +251,30 @@ public class Player : PunBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("HitMelee"))
+        if (col.CompareTag("HitMelee") || col.CompareTag("Proyectile"))
         {
-            int damage = (int)(col.gameObject.transform.parent.gameObject.GetComponent<PlayerStats>().m_DamageMelee);
-            _myPlayerStats.ReceiveDamage(damage);
+            _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
         }
-        if (col.CompareTag("Food"))
+        if (col.CompareTag("Food") && _myPlayerStats.m_HP < _myPlayerStats.base_HP)
         {
-            Food food = col.GetComponent<Food>();
-            if (food.type == FoodType.SMALL)
-                _myPlayerStats.base_HP += (int)FoodType.SMALL;
+            HealPlayer((int)col.GetComponent<Food>().type);
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
+        }
+        if (col.CompareTag("Armour") && _myPlayerStats.m_Shield < _myPlayerStats.base_Shield)
+        {
+            ArmourUp((int)col.GetComponent<Armour>().type);
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
+        }
+        if (col.CompareTag("Ammo") && rangedAmmo < 30)
+        {
+            Resuply((int)col.GetComponent<Ammo>().type);
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
         }
         if (col.CompareTag("Melee") || col.CompareTag("Rango"))
         {
             weaponTrigger = true;
             pickup = col;
         }
-
     }
 
     private void OnTriggerExit(Collider col)
@@ -316,12 +324,13 @@ public class Player : PunBehaviour
         melee.sprite = meleeSprites[(int)melee.rarity];
         melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity, -1, -1);
         meleeAttack.damage = melee.stats.damage;
+        meleeAttack.armourPen = melee.stats.armourPen;
 
         ranged.type = Items.WeaponType.RANGED;
         ranged.rarity = Items.WeaponRarity.COMMON;
         ranged.sprite = meleeSprites[(int)ranged.rarity];
         ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity, -2, -1);
-        rangedAttack.damage = ranged.stats.damage;
+        rangedAttack.armourPen = ranged.stats.armourPen;
     }
 
     [PunRPC]
@@ -332,6 +341,7 @@ public class Player : PunBehaviour
         melee.sprite = meleeSprites[(int)melee.rarity];
         melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity, -1, -1);
         meleeAttack.damage = melee.stats.damage;
+        meleeAttack.armourPen = melee.stats.armourPen;
         
     }
 
@@ -362,6 +372,18 @@ public class Player : PunBehaviour
             if (PhotonConnection.GetInstance().weaponList[i].ID == id)
             {
                 PhotonConnection.GetInstance().weaponList[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    [PunRPC]
+    public void DissappearConsumable(int id)
+    {
+        for (int i = 0; i < PhotonConnection.GetInstance().consumables.Count; i++)
+        {
+            if (PhotonConnection.GetInstance().consumables[i].id == id)
+            {
+                PhotonConnection.GetInstance().consumables[i].gameObject.SetActive(false);
             }
         }
     }
@@ -606,6 +628,34 @@ public class Player : PunBehaviour
         yield return melee_hitbox_Timer;
         BasicHitBox.GetComponent<Collider>().enabled = false;   //will go back to waiting if another object is hit after detecting one with space. Will need counter for animation
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    public void HealPlayer(int amount)
+    {
+        if (_myPlayerStats.m_HP + amount > _myPlayerStats.base_HP)
+            _myPlayerStats.m_HP = _myPlayerStats.base_HP;
+        else
+            _myPlayerStats.m_HP += amount;
+
+        //PlayerHealth.Instance.healthBar.UpdateBar(_myPlayerStats.m_HP, _myPlayerStats.base_HP);
+    }
+
+    public void ArmourUp(int amount)
+    {
+        if (_myPlayerStats.m_Shield + amount > _myPlayerStats.base_Shield)
+            _myPlayerStats.m_Shield = _myPlayerStats.base_Shield;
+        else
+            _myPlayerStats.m_Shield += amount;
+
+        //PlayerHealth.Instance.shieldBar.UpdateBar(_myPlayerStats.m_Shield, _myPlayerStats.base_Shield);
+    }
+
+    public void Resuply(int amount)
+    {
+        if (rangedAmmo + amount > 30)
+            rangedAmmo = 30;
+        else
+            rangedAmmo += (uint)amount;
     }
 
     [PunRPC]
