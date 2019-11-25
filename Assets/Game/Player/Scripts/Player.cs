@@ -56,12 +56,13 @@ public class Player : PunBehaviour
         meleeAttack = BasicHitBox.GetComponent<Attack>();
         rangedAttack = prefab_range_attack.GetComponent<Attack>();
 
+        health = GetComponent<PlayerHealth>();
+
         PhotonConnection.GetInstance().playerList.Add(this);
         if (photonView.isMine)
         {
             Camera.main.transform.parent = transform;
             Camera.main.transform.localPosition = new Vector3(0, 4, -7);
-            health = GetComponent<PlayerHealth>();
         }
 
         WeaponPickup[] weps = FindObjectsOfType<WeaponPickup>();
@@ -607,19 +608,10 @@ public class Player : PunBehaviour
                     PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false);
 
         }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            // Show scoreboard
-            _myPlayerStats.scoreboard.SetActive(true);
-            // Update scoreboard
             _myPlayerStats.UpdateScoreboard();
-        }
-
-        if (Input.GetKeyUp(KeyCode.Tab))
-        {
-            // esconder el scoreboard
-            _myPlayerStats.scoreboard.SetActive(false);
-        }
+       
+            // Update scoreboard
+       
         if (PhotonNetwork.player.NickName == "")
             PhotonNetwork.player.NickName = "Jugador #" + Random.Range(1.00f, 9.00f);
     }
