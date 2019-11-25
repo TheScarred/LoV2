@@ -17,8 +17,14 @@ public class animacionmonito : MonoBehaviour
 
     bool opcion = false;
 
-    [SerializeField]
+    
      PlayerHealth p;
+
+    void Start()
+    {
+        p = this.gameObject.GetComponent<PlayerHealth>();
+
+    }
 
     // Update is called once per frame
     void Update()

@@ -30,6 +30,8 @@ public class Player : PunBehaviour
     public int ID;
     int DamageReceived;
 
+ 
+
     //melee attack HIT BOX
     public GameObject BasicHitBox;
 
@@ -61,6 +63,10 @@ public class Player : PunBehaviour
         facingRight = false;
         player_rigidbody = GetComponent<Rigidbody>();
         _myPlayerStats = GetComponent<PlayerStats>();
+
+
+        
+
         ID = this.gameObject.GetComponent<PhotonView>().viewID;
         //hit box is deactivated unless the player hits
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
@@ -499,19 +505,18 @@ public class Player : PunBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
+        
             // Show scoreboard
-            _myPlayerStats.scoreboard.SetActive(true);
+           
             // Update scoreboard
+            
             _myPlayerStats.UpdateScoreboard();
-        }
+        
 
-        if (Input.GetKeyUp(KeyCode.Tab))
-        {
+        
             // esconder el scoreboard
-            _myPlayerStats.scoreboard.SetActive(false);
-        }
+            
+        
         if (PhotonNetwork.player.NickName == "")
         {
             PhotonNetwork.player.NickName = "Jugador #" + Random.Range(1.00f, 9.00f);

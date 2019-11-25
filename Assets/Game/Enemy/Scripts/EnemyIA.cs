@@ -33,7 +33,7 @@ public class EnemyIA : PunBehaviour
 
     public int HP = 100;
     public int Damage = 10;
-    public int killed_points = 25;
+    int killed_points = 25;
     public float CoolDownTime = 1.5f;  //how often can it make damage
 
     public GameObject melee;
@@ -226,8 +226,8 @@ public void OnTriggerEnter(Collider other)
                 int col_id = other.gameObject.GetComponent<projectile>().owner;
 
                 killer = PhotonConnection.GetInstance().GetPlayerById(col_id).GetComponent<PlayerStats>();
-                killer.KilledTarget(killed_points);
-                PhotonNetwork.player.AddScore(killed_points);
+                //killer.KilledTarget(killed_points);
+                
             }
             other.gameObject.SetActive(false);
         }
@@ -473,7 +473,8 @@ public void OnTriggerEnter(Collider other)
 
     public void RPCForEnemyDeath()
     {
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+
         byte seed = (byte)Random.Range(0, 256);
         PhotonNetwork.RPC(photonView, "RemoveEnemies", PhotonTargets.AllBuffered, false, seed);
     }

@@ -2,10 +2,11 @@
 /* PlayerHealth.cs */
 using UnityEngine;
 using System.Collections;
+using Photon;
 
 namespace SimpleHealthBar_SpaceshipExample
 {
-	public class PlayerHealth : MonoBehaviour
+	public class PlayerHealth : PunBehaviour
 	{
 		static PlayerHealth instance;
 		public static PlayerHealth Instance { get { return instance; } }
@@ -33,29 +34,38 @@ namespace SimpleHealthBar_SpaceshipExample
             if (instance != null)
                 //Debug.LogError( "Agregale primero la vida baboso en los prefabs" );
                
-            /*healthBar = GetComponent<SimpleHealthBar>();
-            shieldBar = GetComponent<SimpleHealthBar>();*/
             instance = GetComponent<PlayerHealth>();
+           
         }
 			
 		
 
 		void Start ()
 		{
-			// PARA ESTABLECER LA VIDA MAXIMA Y EL ESCUDO
-			jugadorsin.m_HP = jugadorsin.base_HP;
-			jugadorsin.m_Shield = jugadorsin.base_Shield;
+            // PARA ESTABLECER LA VIDA MAXIMA Y EL ESCUDO
+            if (photonView.isMine)
+            {
+                player = this.gameObject.GetComponent<Player>();
+                jugadorsin = this.gameObject.GetComponent<PlayerStats>();
+                healthBar = GameObject.Find("Health").GetComponent<SimpleHealthBar>();
 
-			// SE van actualizando la vida y los escudos
-		    healthBar.UpdateBar( jugadorsin.m_HP, jugadorsin.base_HP );
-			shieldBar.UpdateBar( jugadorsin.m_Shield, jugadorsin.base_Shield );
+                shieldBar = GameObject.Find("Shield").GetComponent<SimpleHealthBar>();
+                jugadorsin.m_HP = jugadorsin.base_HP;
+                jugadorsin.m_Shield = jugadorsin.base_Shield;
+
+                // SE van actualizando la vida y los escudos
+
+                healthBar.UpdateBar(jugadorsin.m_HP, jugadorsin.base_HP);
+                shieldBar.UpdateBar(jugadorsin.m_Shield, jugadorsin.base_Shield);
+            }
+            
 		}
 
 		void Update ()
 		{
 			
             //si el escudo es menor al maximo, y el cooldown del regenShield no esta aplicandose entonces : 
-			if( jugadorsin.m_Shield < jugadorsin.base_Shield && regenShieldTimer <= 0 )
+			if( jugadorsin.m_Shield < jugadorsin.base_Shield && regenShieldTimer <= 0 && photonView.isMine )
 			{
 				//Incrementa el escudo
 				jugadorsin.m_Shield += Time.deltaTime * 5;
@@ -129,8 +139,11 @@ namespace SimpleHealthBar_SpaceshipExample
 		
 
 			// UPDATE DE EL ESCUDO Y LA VIDA BARRAS
+            if(photonView.isMine)
+            {
 			healthBar.UpdateBar( jugadorsin.m_HP, jugadorsin.base_HP );
 			shieldBar.UpdateBar( jugadorsin.m_Shield, jugadorsin.base_Shield );
+            }
 
 			//RESETEAMOS EL REGENSHIELD
 			regenShieldTimer = regenShieldTimerMax;

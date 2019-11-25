@@ -26,9 +26,9 @@ public class PlayerStats : PunBehaviour
 
 
     //SCOREBOARD
-    public GameObject scoreboard;
+    GameObject scoreboard;
     int playerCount;
-    int Score;
+    public int Score;
 
     //Show Score in UI
     public Text UI_Score;
@@ -48,12 +48,18 @@ public class PlayerStats : PunBehaviour
         {
             HP_bar.gameObject.SetActive(false);
             Armor_bar.gameObject.SetActive(false);
+            scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
+
+            UI_Score = GameObject.Find("Canvas").transform.Find("Score").GetComponent<Text>();
         }
     }
 
     public void ResetStats()
     {
-        scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
+
+        
+       
+
         m_Speed = base_speed;
         m_HP = base_HP;
         m_Shield = base_Shield;
@@ -76,7 +82,12 @@ public class PlayerStats : PunBehaviour
     {
         Score += points;
         Debug.Log("Killed Target! Points: " + Score);
+       
+       
         UI_Score.text = "Score: " + Score;
+
+        
+        
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -84,14 +95,14 @@ public class PlayerStats : PunBehaviour
         if (stream.isWriting)
         {
             stream.SendNext(m_HP);
-            stream.SendNext(Score);
+            //stream.SendNext(Score);
             //stream.SendNext(HP_bar);
             //stream.SendNext(Armor_bar);
         }
         else
         {
             m_HP = (float)stream.ReceiveNext();
-            Score = (int)stream.ReceiveNext();
+            //Score = (int)stream.ReceiveNext();
 
 
 
@@ -100,6 +111,8 @@ public class PlayerStats : PunBehaviour
     public void UpdateScoreboard() // ESTA FUNCION SE LLAMA EN EL PLAYER.CS en el update cuando se activa el scoreboard
 
     {
+        
+
         // checar el contador de jugadores que hay
         playerCount = PhotonNetwork.playerList.Length;
         // obtener nombres de los jugadores
@@ -107,12 +120,15 @@ public class PlayerStats : PunBehaviour
         //mostrando la lista con sus respectivos scores
         foreach (PhotonPlayer p in PhotonNetwork.playerList)
         {
+            
             playerList.Append("Nick Jugador: " + p.NickName + " Score: " + p.GetScore() + "\n");
 
         }
         string output = "Numero de jugadores: " + playerCount.ToString() + "\n" + playerList.ToString();
+       if(photonView.isMine)
         scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
 
+        
     }
 
 }
