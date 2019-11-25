@@ -9,7 +9,7 @@ public class EnemyBar : PunBehaviour
     float damage_percentage;
     public Image bar_HP;
 
-    public void ModifyHpBar(float damage, int base_HP)
+    public void ModifyHpBar(float damage, float base_HP)
     {
         damage_percentage = (damage / base_HP);
         bar_HP.fillAmount -= damage_percentage;

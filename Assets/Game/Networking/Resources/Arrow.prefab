@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5738834837235076664}
   - component: {fileID: 5862211593960216485}
   - component: {fileID: 6681062611568295304}
+  - component: {fileID: 1900685212297345742}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Proyectile
@@ -124,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d3030ac3774bb4eb496bed73e87bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: 0
 --- !u!114 &6681062611568295304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,3 +154,18 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &1900685212297345742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8701324102084865613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0485e6a9401f719459bae94d3d0434c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: 0
+  damage: 0
+  isCrit: 0

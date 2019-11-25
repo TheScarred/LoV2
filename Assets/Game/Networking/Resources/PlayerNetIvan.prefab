@@ -175,7 +175,6 @@ GameObject:
   - component: {fileID: 3498117161281581906}
   - component: {fileID: 2209820538171303746}
   - component: {fileID: 8614886544045226218}
-  - component: {fileID: -8071485904352228335}
   m_Layer: 9
   m_Name: PlayerNetIvan
   m_TagString: Player
@@ -235,7 +234,10 @@ MonoBehaviour:
   terreno: {fileID: 11400000, guid: 85c46e013eb9f9246bb60a21dbdccd47, type: 2}
   posicionJugador: {x: 0, y: 0, z: 0}
   ID: 0
+  rangedAmmo: 0
   BasicHitBox: {fileID: 3045176174394309520}
+  meleeAttack: {fileID: 0}
+  rangedAttack: {fileID: 0}
   theJoystick: {fileID: 0}
 --- !u!54 &2814614972184391142
 Rigidbody:
@@ -295,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   base_HP: 50
-  base_Shield: 0
+  base_Shield: 100
   base_DamageMeele: 50
   base_DamageRange: 0
   base_MeleeSpeed: 2
@@ -537,27 +539,6 @@ MonoBehaviour:
   jugador: {fileID: 2814614972184391143}
   animator: {fileID: 8941741865211387443}
   p: {fileID: 1384256105}
---- !u!81 &-8071485904352228335
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2814614972184391143}
-  m_Enabled: 1
---- !u!114 &1800627012811326262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3045176174394309520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7abe1e581818fee4e95096bbecdd6ad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 2814614972184391141}
 --- !u!1001 &2684425966632174307
 PrefabInstance:
   m_ObjectHideFlags: 0

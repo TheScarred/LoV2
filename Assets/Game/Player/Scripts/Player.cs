@@ -12,7 +12,6 @@ public enum PlayerState
 };
 public class Player : PunBehaviour
 {
-
     public Weapon melee, ranged;
     public Sprite[] meleeSprites;
     public Sprite[] rangedSprites;
@@ -26,12 +25,16 @@ public class Player : PunBehaviour
     WaitForSeconds melee_hitbox_Timer = new WaitForSeconds(0.5f);
     public Vector3 posicionJugador;
     private bool facingRight = true;
+    private bool weaponTrigger = false;
     bool vivo = true;
     public int ID;
     int DamageReceived;
+    public uint rangedAmmo;
 
-    //melee attack HIT BOX
+    // Melee attack hitbox & stat script
     public GameObject BasicHitBox;
+    public Attack meleeAttack, rangedAttack;
+    Collider pickup = null;
     float hit_cooldown;
 
     //JOYSTICK
@@ -42,6 +45,13 @@ public class Player : PunBehaviour
     {
         melee = ScriptableObject.CreateInstance<Weapon>();
         ranged = ScriptableObject.CreateInstance<Weapon>();
+        rangedAmmo = 10;
+
+        if (photonView.isMine)
+            gameObject.AddComponent<AudioListener>();
+
+        meleeAttack = BasicHitBox.GetComponent<Attack>();
+        rangedAttack = prefab_range_attack.GetComponent<Attack>();
 
         PhotonConnection.GetInstance().playerList.Add(this);
         if (photonView.isMine)
@@ -82,7 +92,6 @@ public class Player : PunBehaviour
                 {
                     if (range_attack_Objects[i].gameObject.name == "Arrow(Clone)")
                     {
-
                         object[] parameters2 = new object[3];
 
                         parameters2[2] = position;
@@ -91,6 +100,19 @@ public class Player : PunBehaviour
                         // range_attack_Objects[i].GetComponent<Transform>().position = position;
                         //range_attack_Objects[i].SetActive(true);
                         // range_attack_Objects[i].GetComponent<projectile>().moveProjectile(facingRight);
+
+                        range_attack_Objects[i].GetComponent<Attack>().damage = ranged.stats.damage;
+                        range_attack_Objects[i].GetComponent<Attack>().armourPen = ranged.stats.armourPen;
+
+                        if (ranged.rarity == WeaponRarity.LEGENDARY)
+                            range_attack_Objects[i].GetComponent<Attack>().effect = ranged.stats.mod1;
+
+                        else
+                            prefab_range_attack.GetComponent<Attack>().effect = Modifier.NONE;
+                        if (Random.Range(1, 101) >= (100 - (100 * ranged.stats.critChance)))
+                            range_attack_Objects[i].GetComponent<Attack>().isCrit = true;
+                        else
+                            range_attack_Objects[i].GetComponent<Attack>().isCrit = false;
 
                         range_attack_Objects[i].GetComponent<projectile>().ReactivarFlecha(parameters2);
                         return range_attack_Objects[i];
@@ -162,18 +184,18 @@ public class Player : PunBehaviour
 
     }
 
-  
-
     void AttackInput()
     {
         //Primary Attack
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (hit_cooldown <= 0)
-            {
-                hit_cooldown = 1.5f;
-                PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
-            }
+            if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
+                meleeAttack.isCrit = true;
+
+            else
+                meleeAttack.isCrit = false;
+
+            PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
         }
 
         //Secondary attack
@@ -181,24 +203,25 @@ public class Player : PunBehaviour
         {
             if (_myPlayerStats.m_ShootingSpeed >= ranged.stats.rOF)
             {
-                _myPlayerStats.m_ShootingSpeed = 0f;
-                SpawnRangeAttackObject(prefab_range_attack, transform.position);
+                if (rangedAmmo > 0)
+                {
+                    _myPlayerStats.m_ShootingSpeed = 0f;
+                    SpawnRangeAttackObject(prefab_range_attack, transform.position);
+
+                    if (ranged.stats.id >= 0)
+                    {
+                        ranged.stats.wear--;
+                        if (ranged.stats.wear <= 0)
+                        {
+                            BreakRangedWeapon();
+                        }
+                    }
+
+                    rangedAmmo--;
+
+                }
             }
 
-        }
-    }
-
-    public void MeleeAttack()
-    {
-        StartCoroutine(ToggleHitBox());
-    }
-
-    public void RangedAttack()
-    {
-        if (_myPlayerStats.m_ShootingSpeed >= ranged.stats.rOF)
-        {
-            _myPlayerStats.m_ShootingSpeed = 0f;
-            SpawnRangeAttackObject(prefab_range_attack, transform.position);
         }
     }
 
@@ -222,43 +245,128 @@ public class Player : PunBehaviour
 
     }
 
-    void OnTriggerEnter(Collider col)
+    void PickUpWeapon(Collider col)
     {
-        if (col.CompareTag("Food"))
+        if (Input.GetKeyDown(KeyCode.E) && weaponTrigger && (pickup != null))
         {
-            Food food = col.GetComponent<Food>();
-            if (food.type == FoodType.SMALL)
-            {
-                Debug.Log("Se comio una banana jajajaja xd");
-                _myPlayerStats.base_HP += (int)FoodType.SMALL;
-            }
+            WeaponPickup weapon = col.GetComponent<WeaponPickup>();
+            ChangeWeapon(ref weapon.type, ref weapon.rarity, PhotonConnection.GetInstance().randomSeed, ref weapon.ID, weapon.lastWear);
+
+            StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
         }
     }
 
-    void OnTriggerStay(Collider objeto)
+    void OnTriggerEnter(Collider col)
     {
-        if (objeto.CompareTag("Melee") || objeto.CompareTag("Rango"))
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                WeaponPickup weapon = objeto.GetComponent<WeaponPickup>();
-                ChangeWeapon(ref weapon.type, ref weapon.rarity, PhotonConnection.GetInstance().randomSeed, ref weapon.ID);
-
-                StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
-            }
+        if (col.CompareTag("HitMelee") || col.CompareTag("Proyectile"))
+        {
+            _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
+        }
+        if (col.CompareTag("Food") && _myPlayerStats.m_HP < _myPlayerStats.base_HP)
+        {
+            HealPlayer((int)col.GetComponent<Food>().type);
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
+        }
+        if (col.CompareTag("Armour") && _myPlayerStats.m_Shield < _myPlayerStats.base_Shield)
+        {
+            ArmourUp((int)col.GetComponent<Armour>().type);
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
+        }
+        if (col.CompareTag("Ammo") && rangedAmmo < 30)
+        {
+            Resuply((int)col.GetComponent<Ammo>().type);
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
+        }
+        if (col.CompareTag("Melee") || col.CompareTag("Rango"))
+        {
+            weaponTrigger = true;
+            pickup = col;
+        }
     }
 
-  
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.CompareTag("Melee") || col.CompareTag("Rango"))
+        {
+            weaponTrigger = false;
+            pickup = null;
+        }
+    }
+
+    /* void InitRandomWeapons(Weapon melee, Weapon ranged)
+     {
+         melee.rarity = (Items.WeaponRarity)Random.Range(1, 5);
+         melee.sprite = meleeSprites[(int)melee.rarity];
+         melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity);
+
+         ranged.rarity = (Items.WeaponRarity)Random.Range(1, 5);
+         ranged.sprite = rangedSprites[(int)ranged.rarity];
+         ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity);
+
+         if ((int)melee.rarity > 1)
+         {
+             WeaponStats.SetMeleeModifier(ref melee.stats, melee.stats.mod1);
+             if (melee.rarity != Items.WeaponRarity.RARE)
+             {
+                 WeaponStats.SetMeleeModifier(ref melee.stats, melee.stats.mod2);
+             }
+         }
+
+         if ((int)ranged.rarity > 1)
+         {
+             WeaponStats.SetMeleeModifier(ref ranged.stats, ranged.stats.mod1);
+             if (ranged.rarity != Items.WeaponRarity.RARE)
+             {
+                 WeaponStats.SetMeleeModifier(ref ranged.stats, ranged.stats.mod2);
+             }
+         }
+     }*/
+
     void InitBaseWeapons(Weapon melee, Weapon ranged)
     {
         melee.type = Items.WeaponType.MELEE;
         melee.rarity = Items.WeaponRarity.COMMON;
         melee.sprite = meleeSprites[(int)melee.rarity];
-        melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity, -1);
+        melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity, -1, -1);
+        meleeAttack.damage = melee.stats.damage;
+        meleeAttack.armourPen = melee.stats.armourPen;
 
         ranged.type = Items.WeaponType.RANGED;
         ranged.rarity = Items.WeaponRarity.COMMON;
         ranged.sprite = meleeSprites[(int)ranged.rarity];
-        ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity, -2);
+        ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity, -2, -1);
+        rangedAttack.armourPen = ranged.stats.armourPen;
+    }
+
+    [PunRPC]
+    void ResetMeleeWeapon()
+    {
+        melee.type = Items.WeaponType.MELEE;
+        melee.rarity = Items.WeaponRarity.COMMON;
+        melee.sprite = meleeSprites[(int)melee.rarity];
+        melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity, -1, -1);
+        meleeAttack.damage = melee.stats.damage;
+        meleeAttack.armourPen = melee.stats.armourPen;
+        
+    }
+
+    [PunRPC]
+    void ResetRangedWeapon()
+    {
+        ranged.type = Items.WeaponType.RANGED;
+        ranged.rarity = Items.WeaponRarity.COMMON;
+        ranged.sprite = meleeSprites[(int)ranged.rarity];
+        ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity, -2, -1);
+    }
+
+    public void BreakMeleeWeapon()
+    {
+        PhotonNetwork.RPC(photonView, "ResetMeleeWeapon", PhotonTargets.All, false);
+    }
+
+    public void BreakRangedWeapon()
+    {
+        PhotonNetwork.RPC(photonView, "ResetRangedWeapon", PhotonTargets.All, false);
     }
 
     [PunRPC]
@@ -273,31 +381,44 @@ public class Player : PunBehaviour
         }
     }
 
-
-    public void ChangeWeapon(ref WeaponType type, ref WeaponRarity rarity, int seed, ref int weaponID)
+    [PunRPC]
+    public void DissappearConsumable(int id)
     {
-        object[] objects = new object[5];
+        for (int i = 0; i < PhotonConnection.GetInstance().consumables.Count; i++)
+        {
+            if (PhotonConnection.GetInstance().consumables[i].id == id)
+            {
+                PhotonConnection.GetInstance().consumables[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void ChangeWeapon(ref WeaponType type, ref WeaponRarity rarity, int seed, ref int weaponID, int wear)
+    {
+        object[] objects = new object[6];
 
         objects[0] = photonView.viewID;
         objects[1] = seed;
         objects[2] = type;
         objects[3] = rarity;
         objects[4] = weaponID;
-
+        objects[5] = wear;
 
         if (type == WeaponType.MELEE)
             if (melee.stats.id >= 0)
             {
                 int tempID = melee.stats.id;
                 WeaponRarity tempR = melee.rarity;
+                int tempWear = melee.stats.wear;
 
                 PhotonNetwork.RPC(photonView, "SwapMeleeWeapon", PhotonTargets.All, false, objects);
 
-                object[] objects2 = new object[4];
+                object[] objects2 = new object[5];
                 objects2[0] = tempID; //ID DE ARMA DEL JUGADOR
                 objects2[1] = tempR;
                 objects2[2] = weaponID; //ID DE ARMA DEL PISO
                 objects2[3] = type;
+                objects2[4] = tempWear;
 
                 PhotonNetwork.RPC(photonView, "UpdatePickupWeapon", PhotonTargets.All, false, objects2);
             }
@@ -312,13 +433,15 @@ public class Player : PunBehaviour
             {
                 int tempID = ranged.stats.id;
                 WeaponRarity tempR = ranged.rarity;
+                int tempWear = ranged.stats.wear;
                 PhotonNetwork.RPC(photonView, "SwapRangedWeapon", PhotonTargets.All, false, objects);
 
-                object[] objects2 = new object[4];
+                object[] objects2 = new object[5];
                 objects2[0] = tempID; //ID DE ARMA DEL JUGADOR
                 objects2[1] = tempR;
                 objects2[2] = weaponID; //ID DE ARMA DEL PISO
                 objects2[3] = type;
+                objects2[4] = tempWear;
 
                 PhotonNetwork.RPC(photonView, "UpdatePickupWeapon", PhotonTargets.All, false, objects2);
             }
@@ -328,9 +451,7 @@ public class Player : PunBehaviour
             PhotonNetwork.RPC(photonView, "DissappearWeapon", PhotonTargets.All, false, objects[4]);
             PhotonNetwork.RPC(photonView, "GetRangedWeapon", PhotonTargets.All, false, objects);
         }
-
     }
-
 
     [PunRPC]
     public void GetMeleeWeapon(object[] objects)
@@ -341,7 +462,14 @@ public class Player : PunBehaviour
             melee = ScriptableObject.CreateInstance<Weapon>();
             melee.type = (WeaponType)objects[2];
             melee.rarity = (WeaponRarity)objects[3];
-            melee.stats = WeaponStats.SetStats(melee.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4]);
+            melee.stats = WeaponStats.SetStats(melee.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4], (int)objects[5]);
+            meleeAttack.damage = melee.stats.damage;
+
+            if (melee.rarity == WeaponRarity.LEGENDARY)
+                meleeAttack.effect = melee.stats.mod1;
+
+            else
+                meleeAttack.effect = Modifier.NONE;
         }
     }
 
@@ -354,7 +482,7 @@ public class Player : PunBehaviour
             ranged = ScriptableObject.CreateInstance<Weapon>();
             ranged.type = (WeaponType)objects[2];
             ranged.rarity = (WeaponRarity)objects[3];
-            ranged.stats = WeaponStats.SetStats(ranged.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4]);
+            ranged.stats = WeaponStats.SetStats(ranged.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4], (int)objects[5]);
         }
     }
 
@@ -367,9 +495,15 @@ public class Player : PunBehaviour
             melee = ScriptableObject.CreateInstance<Weapon>();
             melee.type = (WeaponType)objects[2];
             melee.rarity = (WeaponRarity)objects[3];
-            melee.stats = WeaponStats.SetStats(melee.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4]);
-        }
+            melee.stats = WeaponStats.SetStats(melee.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4], (int)objects[5]);
+            meleeAttack.damage = melee.stats.damage;
 
+            if (melee.rarity == WeaponRarity.LEGENDARY)
+                meleeAttack.effect = melee.stats.mod1;
+
+            else
+                meleeAttack.effect = Modifier.NONE;
+        }
     }
 
     [PunRPC]
@@ -381,7 +515,7 @@ public class Player : PunBehaviour
             ranged = ScriptableObject.CreateInstance<Weapon>();
             ranged.type = (WeaponType)objects[2];
             ranged.rarity = (WeaponRarity)objects[3];
-            ranged.stats = WeaponStats.SetStats(ranged.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4]);
+            ranged.stats = WeaponStats.SetStats(ranged.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4], (int)objects[5]);
         }
 
     }
@@ -391,11 +525,12 @@ public class Player : PunBehaviour
     {
         for (int i = 0; i < PhotonConnection.GetInstance().weaponList.Count; i++)
         {
-            Debug.Log(PhotonConnection.GetInstance().weaponList[i].ID);
             if (PhotonConnection.GetInstance().weaponList[i].ID == (int)objects[2])
             {
                 PhotonConnection.GetInstance().weaponList[i].ID = (int)objects[0];
                 PhotonConnection.GetInstance().weaponList[i].rarity = (WeaponRarity)objects[1];
+                PhotonConnection.GetInstance().weaponList[i].lastWear = (int)objects[4];
+
                 if ((WeaponType)objects[3] == WeaponType.MELEE)
                     PhotonConnection.GetInstance().weaponList[i].GetComponent<SpriteRenderer>().sprite = meleeSprites[(int)objects[1]];
                 else
@@ -410,7 +545,6 @@ public class Player : PunBehaviour
     {
         if (stream.isWriting)
         {
-
             if (_myPlayerStats == null)
             {
                 Debug.Log("stats vacio writing");
@@ -427,7 +561,6 @@ public class Player : PunBehaviour
                 SendStream(stream, _myPlayerStats.m_DamageMelee);
               
             }
-
         }
         else
         {
@@ -447,7 +580,6 @@ public class Player : PunBehaviour
                 _myPlayerStats.m_DamageMelee = (float)stream.ReceiveNext();
          
             }
-
         }
     }
     #endregion
@@ -461,18 +593,14 @@ public class Player : PunBehaviour
                 Movement();
                 UpdateVariables();
                 AttackInput();
+                PickUpWeapon(pickup);
             }
             else if (vivo == true)
-            {
                 PhotonNetwork.RPC(photonView, "KillPlayer", PhotonTargets.AllBuffered, false);
-            }
+
             else
-            {
                 if (Input.GetKey(KeyCode.Space))
-                {
                     PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false);
-                }
-            }
 
         }
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -489,10 +617,7 @@ public class Player : PunBehaviour
             _myPlayerStats.scoreboard.SetActive(false);
         }
         if (PhotonNetwork.player.NickName == "")
-        {
             PhotonNetwork.player.NickName = "Jugador #" + Random.Range(1.00f, 9.00f);
-        }
-
     }
 
     public void SendStream(PhotonStream stream, float value)
@@ -510,8 +635,33 @@ public class Player : PunBehaviour
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
     }
 
+    public void HealPlayer(int amount)
+    {
+        if (_myPlayerStats.m_HP + amount > _myPlayerStats.base_HP)
+            _myPlayerStats.m_HP = _myPlayerStats.base_HP;
+        else
+            _myPlayerStats.m_HP += amount;
 
+        //PlayerHealth.Instance.healthBar.UpdateBar(_myPlayerStats.m_HP, _myPlayerStats.base_HP);
+    }
 
+    public void ArmourUp(int amount)
+    {
+        if (_myPlayerStats.m_Shield + amount > _myPlayerStats.base_Shield)
+            _myPlayerStats.m_Shield = _myPlayerStats.base_Shield;
+        else
+            _myPlayerStats.m_Shield += amount;
+
+        //PlayerHealth.Instance.shieldBar.UpdateBar(_myPlayerStats.m_Shield, _myPlayerStats.base_Shield);
+    }
+
+    public void Resuply(int amount)
+    {
+        if (rangedAmmo + amount > 30)
+            rangedAmmo = 30;
+        else
+            rangedAmmo += (uint)amount;
+    }
 
     [PunRPC]
     public void RevivePlayer()
@@ -531,7 +681,6 @@ public class Player : PunBehaviour
     [PunRPC]
     public void KillPlayer()
     {
-        Debug.Log("MATA");
         vivo = false;
         //animator.SetBool("Morir", true);
         gameObject.GetComponent<Rigidbody>().useGravity = false;

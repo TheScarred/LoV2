@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace Items
+﻿namespace Items
 {
     public enum WeaponType
     {
@@ -45,26 +42,30 @@ namespace Items
         HOMING                                                   // {13-14}
     };
 
-    public enum ConsumeableType
+    public enum ItemType
     {
-        AMMO,
-        HEALTH,
-        ARMOUR
+        WEAPON,
+        CONSUMABLE
     };
 
-    public enum GoldType
-    {
-        COIN,
-        BAG,
-        BAR,
-        CHEST
-    };
 
     public enum FoodType
     {
-        SMALL,
-        MEDIUM,
-        LARGE
+        SNACK = 5,
+        MEAL = 20,
     }
 
+    public enum ArmourType
+    {
+        PLATE = 5,
+        VEST = 15,
+        SUIT = 40
+    }
+
+    public enum AmmoType
+    {
+        SINGLE = 1,
+        BUNDLE = 5,
+        QUIVER = 15
+    }
 }
