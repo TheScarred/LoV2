@@ -80,7 +80,7 @@ public class Player : PunBehaviour
         //hit box is deactivated unless the player hits
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
         BasicHitBox.GetComponent<Collider>().enabled = false;
-        BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
+        //BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
         hit_cooldown = 1.5f;
     }
 

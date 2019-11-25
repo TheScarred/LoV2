@@ -229,7 +229,7 @@ public void OnTriggerEnter(Collider other)
                 audio.PlayOneShot(hit);
                 animator.SetTrigger("hit");
                 
-                if(HP <= 20)
+               /*if(HP <= 20)
                 {
                     int type = Random.Range(0, 10);
                     if(type >= 8)
@@ -252,7 +252,7 @@ public void OnTriggerEnter(Collider other)
                     script_HP.ModifyHpBar(damage, base_HP);
                     audio.PlayOneShot(hit);
                     animator.SetTrigger("hit");
-                }
+                }*/
 
                 if (HP <= 0)
                 {
