@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Photon;
+using UnityEngine.SceneManagement;
 
 namespace SimpleHealthBar_SpaceshipExample
 {
@@ -104,7 +105,8 @@ namespace SimpleHealthBar_SpaceshipExample
             //AQUI ENSEÑARIA LA ESCENA DE DEATH
             gameObject.transform.DetachChildren();
 			Destroy( gameObject );
-		}
+            SceneManager.LoadScene("Game Over");
+        }
 
 		
 	}
