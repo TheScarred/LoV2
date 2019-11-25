@@ -36,7 +36,7 @@ namespace SimpleHealthBar_SpaceshipExample
 
 			// SE van actualizando la vida y los escudos
 		    healthBar.UpdateBar( jugadorsin.m_HP, jugadorsin.base_HP );
-			shieldBar.UpdateBar( jugadorsin.m_Shield, jugadorsin.base_Shield );
+			shieldBar.UpdateBar( 0, jugadorsin.base_Shield );
 		}
 
         //FUNCION PARA HACER DAÑO 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon;
 using Items;
+using SimpleHealthBar_SpaceshipExample;
 
 public enum PlayerState
 {
@@ -31,6 +32,8 @@ public class Player : PunBehaviour
     int DamageReceived;
     public uint rangedAmmo;
 
+    PlayerHealth health;
+
     // Melee attack hitbox & stat script
     public GameObject BasicHitBox;
     public Attack meleeAttack, rangedAttack;
@@ -57,6 +60,7 @@ public class Player : PunBehaviour
         {
             Camera.main.transform.parent = transform;
             Camera.main.transform.localPosition = new Vector3(0, 4, -7);
+            health = GetComponent<PlayerHealth>();
         }
 
         WeaponPickup[] weps = FindObjectsOfType<WeaponPickup>();
@@ -103,9 +107,9 @@ public class Player : PunBehaviour
 
                         if (ranged.rarity == WeaponRarity.LEGENDARY)
                             range_attack_Objects[i].GetComponent<Attack>().effect = ranged.stats.mod1;
-
                         else
-                            prefab_range_attack.GetComponent<Attack>().effect = Modifier.NONE;
+                            range_attack_Objects[i].GetComponent<Attack>().effect = Modifier.NONE;
+
                         if (Random.Range(1, 101) >= (100 - (100 * ranged.stats.critChance)))
                             range_attack_Objects[i].GetComponent<Attack>().isCrit = true;
                         else
@@ -637,7 +641,7 @@ public class Player : PunBehaviour
         else
             _myPlayerStats.m_HP += amount;
 
-        //PlayerHealth.Instance.healthBar.UpdateBar(_myPlayerStats.m_HP, _myPlayerStats.base_HP);
+        health.healthBar.UpdateBar(_myPlayerStats.m_HP, _myPlayerStats.base_HP);
     }
 
     public void ArmourUp(int amount)
@@ -647,7 +651,7 @@ public class Player : PunBehaviour
         else
             _myPlayerStats.m_Shield += amount;
 
-        //PlayerHealth.Instance.shieldBar.UpdateBar(_myPlayerStats.m_Shield, _myPlayerStats.base_Shield);
+        health.shieldBar.UpdateBar(_myPlayerStats.m_Shield, _myPlayerStats.base_Shield);
     }
 
     public void Resuply(int amount)

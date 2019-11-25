@@ -14,7 +14,7 @@ public class EnemyIA : PunBehaviour
     }
 
     //EnemyStats
-    float base_HP;
+    float base_HP = 50;
 
     AudioSource audio;
     public float timeToSound = 0.5f;
@@ -23,7 +23,7 @@ public class EnemyIA : PunBehaviour
     [SerializeField]
     AudioClip sword,death,hit;
 
-    public float HP = 100;
+    public float HP = 50;
     public float Damage = 10f;
     public float ArmourPen = 0;
     public int killed_points = 25;
@@ -111,8 +111,7 @@ public class EnemyIA : PunBehaviour
         speed = 1f;
         status = EnemyState.Patrolling;
         StartCoroutine("FindTargets", .2f);
-        HP = 100;
-        base_HP = HP;
+        HP = base_HP;
 
         //HitPlayer
         TranslatedRight = true;
