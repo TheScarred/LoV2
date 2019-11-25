@@ -506,8 +506,13 @@ public void OnTriggerEnter(Collider other)
     void SpawnItem(byte seed)
     {
         Random.InitState(seed);
-        //contains = (Items.ConsumeableType)Random.Range(0, 4);
+        int type1 = Random.Range(0, 2);
         int roll = Random.Range(1, 101);
+
+        if (type1 == 0)
+            contains = Items.ItemType.CONSUMABLE;
+        else
+            contains = Items.ItemType.WEAPON;
 
         switch (contains)
         {
