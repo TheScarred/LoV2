@@ -227,6 +227,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 83c13461f5ceda543b5c6ad994b2e12f, type: 3}
   - {fileID: 21300000, guid: 656e30ac198541240808e6de76b4af08, type: 3}
   myState: 0
+  _myPlayerStats: {fileID: 0}
   prefab_range_attack: {fileID: 8701324102084865613, guid: 78a366842ebc8804683c4478b815439b,
     type: 3}
   player_rigidbody: {fileID: 2814614972184391142}

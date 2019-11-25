@@ -10,6 +10,8 @@ public class EnemyIA : PunBehaviour
     {
         Chase,
         Patrolling,
+        Rage,
+        Resting,
         Attacking
     }
 
@@ -59,7 +61,8 @@ public class EnemyIA : PunBehaviour
     private bool facingRight = false;
 
     float minX, maxX, minY, maxY;
-
+    float healTimer;
+    WaitForSeconds delayToSearchForPlayer;
 
     //HitPlayer
     bool TranslatedRight;
@@ -96,8 +99,9 @@ public class EnemyIA : PunBehaviour
         waitTime = startWaitTime;
         speed = 1f;
         status = EnemyState.Patrolling;
-        StartCoroutine("FindTargets", .2f);
-
+        delayToSearchForPlayer = new WaitForSeconds(0.3f);
+        StartCoroutine("FindTargets");
+        healTimer = 2f;
     }
     public void OnEnable()
     {
@@ -119,12 +123,12 @@ public class EnemyIA : PunBehaviour
         CoolDown = new WaitForSeconds(CoolDownTime);
     }
 
-    IEnumerator FindTargets(float delay)
+    IEnumerator FindTargets()
     {
         while (true)
         {
             //Cada cierto tiempo busco jugadores en mi rango de visión
-            yield return new WaitForSeconds(delay);
+            yield return delayToSearchForPlayer;
             FindVisibleTargets();
         }
     }
@@ -170,7 +174,7 @@ public class EnemyIA : PunBehaviour
                         playertoChase = target.gameObject;
                         player_stats = playertoChase.GetComponent<PlayerStats>(); // connect to target script
                     }
-                    else
+                    else 
                     {
                         for (int x = 0; x < visibleTargets.Count; x++)
                         {
@@ -182,6 +186,15 @@ public class EnemyIA : PunBehaviour
 
                     }
                 }
+            }
+        }
+
+        if(visibleTargets.Count == 0)
+        {    
+                playertoChase = null;
+            if(HP >= 50)
+            {
+                status = EnemyState.Patrolling;
             }
         }
     }
@@ -215,6 +228,31 @@ public void OnTriggerEnter(Collider other)
                 script_HP.ModifyHpBar(attack.damage, base_HP);
                 audio.PlayOneShot(hit);
                 animator.SetTrigger("hit");
+                
+                if(HP <= 20)
+                {
+                    int type = Random.Range(0, 10);
+                    if(type >= 8)
+                    {
+                        float damage = (player_stats.m_DamageMelee);
+                        HP -= (int)damage;
+                        script_HP.ModifyHpBar(damage, base_HP);
+                        audio.PlayOneShot(hit);
+                        animator.SetTrigger("hit");
+                    }
+                    else
+                    {
+                        //COLOCAR ANIMACIÓN O MENSAJE DE ESQUIVE AQUÍ
+                    }
+                }
+                else
+                {
+                    float damage = (player_stats.m_DamageMelee);
+                    HP -= (int)damage;
+                    script_HP.ModifyHpBar(damage, base_HP);
+                    audio.PlayOneShot(hit);
+                    animator.SetTrigger("hit");
+                }
 
                 if (HP <= 0)
                 {
@@ -255,11 +293,11 @@ public void OnTriggerEnter(Collider other)
             other.gameObject.SetActive(false);
         }
     }
-    void PatrolArea()
+    void PatrolArea(int modifier)
     {
         //Me muevo al patrollingPoint
-        transform.position = Vector3.MoveTowards(transform.position, patternPoint.position, speed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, patternPoint.position) < 3f)
+        transform.position = Vector3.MoveTowards(transform.position, patternPoint.position, speed * modifier * Time.deltaTime);
+        if (Vector3.Distance(transform.position, patternPoint.position) < WalkDistance)
         {
             if (waitTime <= 0)
             {
@@ -292,7 +330,15 @@ public void OnTriggerEnter(Collider other)
                     PlayWalking();
                 }
             }
-            transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed * Time.deltaTime);
+           
+            if(status == EnemyState.Rage)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed* 2f * Time.deltaTime);
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed * Time.deltaTime);
+            }
            if (this.transform.position.x < playertoChase.transform.position.x && facingRight)   //player is on the left
             {
                 Vector3 scale = transform.localScale;
@@ -355,72 +401,6 @@ public void OnTriggerEnter(Collider other)
         }
     }
 
-    /*void CreatePatrolPattern()
-    {
-        /*patternPoints.Clear();
-        //Notas para quienes lean: en los ejes X se dibujan lineas rojas si NO TOCAN TERRENOS/obstaculos
-        //Si chocan con algo, las lineas se pintan de amarillo indicando que ese es el limite
-        RaycastHit hit;
-        RaycastHit backHit;
-        RaycastHit rightHit;
-        RaycastHit leftHit;
-
-        //RAyo que va en dirección frontal
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5f) && hit.collider.CompareTag("Terrain"))
-        {
-
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            patternPoints.Add(hit.transform);
-        }
-        else
-        {
-            Debug.Log(hit.point);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 5, Color.black);
-        }
-
-        //Rayo que va en direción abajo
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out backHit, 5f) && backHit.collider.CompareTag("Terrain"))
-        {
-           Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * backHit.distance, Color.yellow);
-            patternPoints.Add(backHit.transform);
-        }
-        else
-        {
-            //patternPoints.Add(backHit.point);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * 5, Color.black);
-        }
-        //Rayo que va en direción derecha
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out rightHit, 5f) && rightHit.collider.CompareTag("Terrain"))
-        {
-
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * rightHit.distance, Color.yellow);
-            patternPoints.Add(rightHit.transform);
-        }
-        else
-        {
-            //patternPoints.Add(rightHit.point);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * 5, Color.red);
-        }
-
-
-        //Rayo que va en direción izquierda
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out leftHit, 5f) && leftHit.collider.CompareTag("Terrain"))
-        {
-
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * leftHit.distance, Color.yellow);
-            patternPoints.Add(leftHit.transform);
-        }
-        else
-        {
-            //patternPoints.Add(leftHit.point);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * 5, Color.red);
-        }
-
-        status = EnemyState.Patrolling;
-
-    }
-*/
-
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         /*if (stream.isWriting)
@@ -436,19 +416,30 @@ public void OnTriggerEnter(Collider other)
             //HP_bar = (float)stream.ReceiveNext();
         }*/
     }
-        void Update()
+
+    void HealSelf()
     {
-        /*if (status == EnemyState.Resting)
+        if(playertoChase == null)
         {
-            //TODO: Este metodo se encargará de castear raycast para ver en que direcciones puede moverse antes de entrar en modo
-            CreatePatrolPattern();
+            healTimer -= Time.deltaTime;
+            if(healTimer <= 0)
+            {
+                HP += 2;
+                healTimer = 2;
+                script_HP.bar_HP.fillAmount += 2;
+            }
         }
-        */
+        else
+        {
+            status = EnemyState.Chase;
+        }
+    }
 
-
+    void Update()
+    {
         if (photonView.isMine)
         {
-            if (status == EnemyState.Chase)
+            if (status == EnemyState.Chase || status == EnemyState.Rage)
             {
 
                 if (playertoChase != null)
@@ -457,25 +448,41 @@ public void OnTriggerEnter(Collider other)
                 }
                 else
                 {
-                    status = EnemyState.Patrolling;
+                    if (status == EnemyState.Rage)
+                    {
+                        PatrolArea(2);
+                    }  
                 }
 
-            }
-            else if (status == EnemyState.Patrolling)
+            }else if(status == EnemyState.Patrolling)
             {
-                PatrolArea();
+                PatrolArea(1);
             }
+            else if (status == EnemyState.Resting)
+            {
+                HealSelf();
+            }
+          
         }
         if (HP <= 0)
         {
             animator.SetBool("death", true);
-           
+
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Death") && photonView.isMine)
             {
                 audio.PlayOneShot(death);
                 RPCForEnemyDeath();
             }
         }
+        if (HP <= base_HP / 2)
+        {
+            status = EnemyState.Rage;
+        } else if (HP <= 20 && playertoChase == null)
+        {
+            status = EnemyState.Resting;
+        }
+
+
     }
 
     public void RPCForEnemyDeath()
