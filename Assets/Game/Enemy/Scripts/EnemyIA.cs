@@ -38,7 +38,8 @@ public class EnemyIA : PunBehaviour
 
     public GameObject melee;
     public GameObject ranged;
-
+    public Sprite[] meleeSprites;
+    public Sprite[] rangedSprites;
 
     public Animator animator;
     public Contains contains;
@@ -185,7 +186,6 @@ public class EnemyIA : PunBehaviour
                         }
 
                     }
-
                 }
             }
         }
@@ -199,15 +199,17 @@ public void OnTriggerEnter(Collider other)
             if (player_stats != null)
             {
                 Attack attack = other.GetComponent<Attack>();
-                Debug.Log("Damage Done: " + attack.damage);
 
                 if (attack.isCrit)
                 {
                     HP -= (attack.damage * 2);
-                    Debug.Log(" CRIT! x 2");
+                    Debug.Log("CRIT! Damage Done: " + attack.damage*2);
                 }
                 else
+                {
                     HP -= attack.damage;
+                    Debug.Log("Damage Done: " + attack.damage);
+                }
 
                 if (attack.GetComponentInParent<Player>().melee.stats.id >= 0)
                     attack.GetComponentInParent<Player>().melee.stats.wear--;
@@ -230,9 +232,21 @@ public void OnTriggerEnter(Collider other)
         }
         else if (other.gameObject.CompareTag("Proyectile"))
         {
-            float damage = player_stats.base_DamageMeele;
-            HP -= damage;
-            script_HP.ModifyHpBar(damage, base_HP);
+            Attack attack = other.GetComponent<Attack>();
+
+            if (attack.isCrit)
+            {
+                HP -= (attack.damage * 2);
+                Debug.Log("CRIT! Damage Done: " + attack.damage * 2);
+            }
+            else
+            {
+                HP -= attack.damage;
+                Debug.Log("Damage Done: " + attack.damage);
+            }
+
+            script_HP.ModifyHpBar(attack.damage, base_HP);
+            audio.PlayOneShot(hit);
             animator.SetTrigger("hit");
 
             if (HP <= 0)
@@ -246,12 +260,6 @@ public void OnTriggerEnter(Collider other)
             other.gameObject.SetActive(false);
         }
     }
-    public void ReceiveProyectileDamage(int damage)
-    {
-        HP -= damage;
-        script_HP.ModifyHpBar(damage, base_HP);
-    }
-
     void PatrolArea()
     {
         //Me muevo al patrollingPoint
@@ -474,8 +482,6 @@ public void OnTriggerEnter(Collider other)
             }
         }
     }
-    
-
 
     public void RPCForEnemyDeath()
     {
@@ -537,6 +543,8 @@ public void OnTriggerEnter(Collider other)
                         {
                             weapon.rarity = Items.WeaponRarity.LEGENDARY;
                         }
+
+                        weapon.gameObject.GetComponent<SpriteRenderer>().sprite = meleeSprites[(int)weapon.rarity];
                     }
                     else
                     {
@@ -564,6 +572,8 @@ public void OnTriggerEnter(Collider other)
                         {
                             weapon.rarity = Items.WeaponRarity.LEGENDARY;
                         }
+
+                        weapon.gameObject.GetComponent<SpriteRenderer>().sprite = rangedSprites[(int)weapon.rarity];
                     }
                     break;
                 }

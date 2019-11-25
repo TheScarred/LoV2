@@ -37,7 +37,6 @@ public class projectile : PunBehaviour
         {
             //DAÑO AÑ ENEMIGO
             StartCoroutine(DeathTime());
-            other.gameObject.GetComponent<EnemyIA>().ReceiveProyectileDamage(damage);
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             this.gameObject.SetActive(false);

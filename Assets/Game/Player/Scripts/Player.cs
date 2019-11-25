@@ -29,6 +29,7 @@ public class Player : PunBehaviour
     bool vivo = true;
     public int ID;
     int DamageReceived;
+    public uint rangedAmmo;
 
     // Melee attack hitbox & stat script
     public GameObject BasicHitBox;
@@ -43,11 +44,13 @@ public class Player : PunBehaviour
     {
         melee = ScriptableObject.CreateInstance<Weapon>();
         ranged = ScriptableObject.CreateInstance<Weapon>();
+        rangedAmmo = 10;
 
         if (photonView.isMine)
             gameObject.AddComponent<AudioListener>();
 
         meleeAttack = BasicHitBox.GetComponent<Attack>();
+        rangedAttack = prefab_range_attack.GetComponent<Attack>();
 
         PhotonConnection.GetInstance().playerList.Add(this);
         if (photonView.isMine)
@@ -86,7 +89,6 @@ public class Player : PunBehaviour
                 {
                     if (range_attack_Objects[i].gameObject.name == "Arrow(Clone)")
                     {
-
                         object[] parameters2 = new object[3];
 
                         parameters2[2] = position;
@@ -95,6 +97,18 @@ public class Player : PunBehaviour
                         // range_attack_Objects[i].GetComponent<Transform>().position = position;
                         //range_attack_Objects[i].SetActive(true);
                         // range_attack_Objects[i].GetComponent<projectile>().moveProjectile(facingRight);
+
+                        range_attack_Objects[i].GetComponent<Attack>().damage = ranged.stats.damage;
+
+                        if (ranged.rarity == WeaponRarity.LEGENDARY)
+                            range_attack_Objects[i].GetComponent<Attack>().effect = ranged.stats.mod1;
+
+                        else
+                            prefab_range_attack.GetComponent<Attack>().effect = Modifier.NONE;
+                        if (Random.Range(1, 101) >= (100 - (100 * ranged.stats.critChance)))
+                            range_attack_Objects[i].GetComponent<Attack>().isCrit = true;
+                        else
+                            range_attack_Objects[i].GetComponent<Attack>().isCrit = false;
 
                         range_attack_Objects[i].GetComponent<projectile>().ReactivarFlecha(parameters2);
                         return range_attack_Objects[i];
@@ -166,14 +180,12 @@ public class Player : PunBehaviour
 
     }
 
-  
-
     void AttackInput()
     {
         //Primary Attack
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Random.Range(1, 101) > (100 - (100 * melee.stats.critChance)))
+            if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
                 meleeAttack.isCrit = true;
 
             else
@@ -187,25 +199,25 @@ public class Player : PunBehaviour
         {
             if (_myPlayerStats.m_ShootingSpeed >= ranged.stats.rOF)
             {
-                _myPlayerStats.m_ShootingSpeed = 0f;
-                GameObject arrow = SpawnRangeAttackObject(prefab_range_attack, transform.position);
-                //arrow.GetComponent<Attack>().damage = 
+                if (rangedAmmo > 0)
+                {
+                    _myPlayerStats.m_ShootingSpeed = 0f;
+                    SpawnRangeAttackObject(prefab_range_attack, transform.position);
+
+                    if (ranged.stats.id >= 0)
+                    {
+                        ranged.stats.wear--;
+                        if (ranged.stats.wear <= 0)
+                        {
+                            BreakRangedWeapon();
+                        }
+                    }
+
+                    rangedAmmo--;
+
+                }
             }
 
-        }
-    }
-
-    public void MeleeAttack()
-    {
-        StartCoroutine(ToggleHitBox());
-    }
-
-    public void RangedAttack()
-    {
-        if (_myPlayerStats.m_ShootingSpeed >= ranged.stats.rOF)
-        {
-            _myPlayerStats.m_ShootingSpeed = 0f;
-            SpawnRangeAttackObject(prefab_range_attack, transform.position);
         }
     }
 
@@ -309,6 +321,7 @@ public class Player : PunBehaviour
         ranged.rarity = Items.WeaponRarity.COMMON;
         ranged.sprite = meleeSprites[(int)ranged.rarity];
         ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity, -2, -1);
+        rangedAttack.damage = ranged.stats.damage;
     }
 
     [PunRPC]
@@ -443,7 +456,6 @@ public class Player : PunBehaviour
             ranged.type = (WeaponType)objects[2];
             ranged.rarity = (WeaponRarity)objects[3];
             ranged.stats = WeaponStats.SetStats(ranged.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4], (int)objects[5]);
-            
         }
     }
 
