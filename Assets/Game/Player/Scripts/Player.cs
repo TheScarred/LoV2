@@ -262,7 +262,7 @@ public class Player : PunBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("HitMelee") || col.CompareTag("Proyectile"))
+        if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
         }
