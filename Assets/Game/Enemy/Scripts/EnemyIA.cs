@@ -487,7 +487,6 @@ public void OnTriggerEnter(Collider other)
 
     public void RPCForEnemyDeath()
     {
-        this.gameObject.SetActive(false);
         byte seed = (byte)Random.Range(0, 256);
         PhotonNetwork.RPC(photonView, "RemoveEnemies", PhotonTargets.AllBuffered, false, seed);
     }
