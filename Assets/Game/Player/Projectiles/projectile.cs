@@ -66,7 +66,7 @@ public class projectile : PunBehaviour
             this.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 350f);
         }
 
-
+     
     }
     public void Update()
     {

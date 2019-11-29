@@ -22,13 +22,13 @@ public class Player : PunBehaviour
     public GameObject prefab_range_attack;
     public Rigidbody player_rigidbody;
     public TerrainGenerator terreno;
-    WaitForSeconds proyectile_Timer = new WaitForSeconds(2.0f);
+    float delayMovement;
     WaitForSeconds melee_hitbox_Timer = new WaitForSeconds(0.5f);
     public Vector3 posicionJugador;
     private bool facingRight = true;
     private bool weaponTrigger = false;
     bool vivo = true;
-    bool imAttacking;
+    public bool imAttacking;
     public int ID;
     int DamageReceived;
     public uint rangedAmmo;
@@ -84,7 +84,7 @@ public class Player : PunBehaviour
         BasicHitBox.GetComponent<Collider>().enabled = false;
         //BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
         hit_cooldown = 1.5f;
-
+        delayMovement = 0.75f;
         imAttacking = false;
     }
 
@@ -149,7 +149,7 @@ public class Player : PunBehaviour
         //StartCoroutine(MoveProyectile(go));
         return go;
     }
-    public IEnumerator MoveProyectile(GameObject proyectile)
+   /* public IEnumerator MoveProyectile(GameObject proyectile)
     {
         //Mover el disparo y luego desactivarlo para volverse a usar en el futuro
         if (!facingRight)
@@ -166,7 +166,7 @@ public class Player : PunBehaviour
         proyectile.SetActive(false);
 
     }
-
+    */
     void Movement()
     {
         //Checar que lado esta mirando para cambiar su la escala (voltear)
@@ -214,11 +214,12 @@ public class Player : PunBehaviour
         //Secondary attack
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            imAttacking = true;
+           
             if (_myPlayerStats.m_ShootingSpeed >= ranged.stats.rOF)
             {
                 if (rangedAmmo > 0)
                 {
+                    imAttacking = true;
                     _myPlayerStats.m_ShootingSpeed = 0f;
                     SpawnRangeAttackObject(prefab_range_attack, transform.position);
 
@@ -257,6 +258,15 @@ public class Player : PunBehaviour
             hit_cooldown -= Time.deltaTime;
         }
 
+        if(imAttacking)
+        {
+            delayMovement -= Time.deltaTime;
+            if(delayMovement <= 0)
+            {
+                delayMovement = 0.75f;
+                imAttacking = false;
+            }
+        }
     }
 
     void PickUpWeapon(Collider col)
