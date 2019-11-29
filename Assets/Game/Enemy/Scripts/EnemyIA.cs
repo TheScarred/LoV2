@@ -80,8 +80,6 @@ public class EnemyIA : PunBehaviour
     public Image HP_bar;
     public float damage_percentage;
 
-
-
     void Awake()
     {
         HP_bar.fillAmount = 1;
@@ -202,11 +200,18 @@ public class EnemyIA : PunBehaviour
 
 public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("HitMelee"))
+        if (other.CompareTag("HitMelee"))
         {
             if (player_stats != null)
             {
                 Attack attack = other.GetComponent<Attack>();
+
+                if (transform.position.x > other.transform.position.x)
+                    KnockBack(new Vector2(1, /*Random.Range(-1, 1)*/0), 2);
+                else
+                    KnockBack(new Vector2(1, /*Random.Range(-1, 1)*/0), 2);
+
+
 
                 if (attack.isCrit)
                 {
@@ -481,8 +486,11 @@ public void OnTriggerEnter(Collider other)
         {
             status = EnemyState.Resting;
         }
+    }
 
-
+    public void KnockBack(Vector3 dir, int power)
+    {
+        transform.Translate(new Vector3(transform.position.x + (dir.x * power),0, transform.position.z + (dir.z * power)));
     }
 
     public void RPCForEnemyDeath()
