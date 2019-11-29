@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon;
+using UnityEngine.SceneManagement;
 
 namespace SimpleHealthBar_SpaceshipExample
 {
-	public class PlayerHealth : MonoBehaviour
+	public class PlayerHealth : PunBehaviour
 	{
 		static PlayerHealth instance;
 		public static PlayerHealth Instance { get { return instance; } }
@@ -23,21 +25,29 @@ namespace SimpleHealthBar_SpaceshipExample
             if (instance != null)
                 //Debug.LogError( "Agregale primero la vida baboso en los prefabs" );
                
-            /*healthBar = GetComponent<SimpleHealthBar>();
-            shieldBar = GetComponent<SimpleHealthBar>();*/
+           
             instance = GetComponent<PlayerHealth>();
         }
 
 		void Start ()
 		{
-			// PARA ESTABLECER LA VIDA MAXIMA Y EL ESCUDO
-			jugadorsin.m_HP = jugadorsin.base_HP;
-			jugadorsin.m_Shield = jugadorsin.base_Shield;
 
-			// SE van actualizando la vida y los escudos
-		    healthBar.UpdateBar( jugadorsin.m_HP, jugadorsin.base_HP );
-			shieldBar.UpdateBar( jugadorsin.m_Shield, jugadorsin.base_Shield );
-		}
+            if(photonView.isMine)
+            {
+                player = this.gameObject.GetComponent<Player>();
+                jugadorsin = this.gameObject.GetComponent<PlayerStats>();
+                healthBar = GameObject.Find("Health").GetComponent<SimpleHealthBar>();
+
+                shieldBar = GameObject.Find("Shield").GetComponent<SimpleHealthBar>();
+                jugadorsin.m_HP = jugadorsin.base_HP;
+                jugadorsin.m_Shield = jugadorsin.base_Shield;
+
+                // SE van actualizando la vida y los escudos
+
+                healthBar.UpdateBar(jugadorsin.m_HP, jugadorsin.base_HP);
+                shieldBar.UpdateBar(0, jugadorsin.base_Shield);
+            }
+        }
 
         //FUNCION PARA HACER DAÑO 
 		public void TakeDamage (float armourPen, float damage )
@@ -81,8 +91,12 @@ namespace SimpleHealthBar_SpaceshipExample
 			}
 			
 			// UPDATE DE EL ESCUDO Y LA VIDA BARRAS
-			healthBar.UpdateBar( jugadorsin.m_HP, jugadorsin.base_HP );
-			shieldBar.UpdateBar( jugadorsin.m_Shield, jugadorsin.base_Shield );
+            if(photonView.isMine)
+            {
+                healthBar.UpdateBar(jugadorsin.m_HP, jugadorsin.base_HP);
+                shieldBar.UpdateBar(jugadorsin.m_Shield, jugadorsin.base_Shield);
+            }
+			
 
 		}
 
@@ -91,7 +105,8 @@ namespace SimpleHealthBar_SpaceshipExample
             //AQUI ENSEÑARIA LA ESCENA DE DEATH
             gameObject.transform.DetachChildren();
 			Destroy( gameObject );
-		}
+            SceneManager.LoadScene("Game Over");
+        }
 
 		
 	}

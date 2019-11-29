@@ -50,12 +50,14 @@ public class PlayerStats : PunBehaviour
         {
             HP_bar.gameObject.SetActive(false);
             Armor_bar.gameObject.SetActive(false);
+            scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
+            UI_Score = GameObject.Find("Canvas").transform.Find("Score").GetComponent<Text>();
         }
     }
 
     public void ResetStats()
     {
-        scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
+       
         m_Speed = base_speed;
         m_HP = base_HP;
         m_Shield = 0;
@@ -77,7 +79,6 @@ public class PlayerStats : PunBehaviour
     public void KilledTarget(int points)
     {
         Score += points;
-        Debug.Log("Killed Target! Points: " + Score);
         UI_Score.text = "Score: " + Score;
     }
 
@@ -113,6 +114,7 @@ public class PlayerStats : PunBehaviour
 
         }
         string output = "Numero de jugadores: " + playerCount.ToString() + "\n" + playerList.ToString();
+        if(photonView.isMine)
         scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
 
     }

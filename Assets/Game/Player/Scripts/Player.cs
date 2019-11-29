@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon;
 using Items;
+using SimpleHealthBar_SpaceshipExample;
 
 public enum PlayerState
 {
@@ -31,6 +32,8 @@ public class Player : PunBehaviour
     int DamageReceived;
     public uint rangedAmmo;
 
+    PlayerHealth health;
+
     // Melee attack hitbox & stat script
     public GameObject BasicHitBox;
     public Attack meleeAttack, rangedAttack;
@@ -52,6 +55,8 @@ public class Player : PunBehaviour
 
         meleeAttack = BasicHitBox.GetComponent<Attack>();
         rangedAttack = prefab_range_attack.GetComponent<Attack>();
+
+        health = GetComponent<PlayerHealth>();
 
         PhotonConnection.GetInstance().playerList.Add(this);
         if (photonView.isMine)
@@ -76,7 +81,7 @@ public class Player : PunBehaviour
         //hit box is deactivated unless the player hits
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
         BasicHitBox.GetComponent<Collider>().enabled = false;
-        BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
+        //BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
         hit_cooldown = 1.5f;
     }
 
@@ -106,9 +111,9 @@ public class Player : PunBehaviour
 
                         if (ranged.rarity == WeaponRarity.LEGENDARY)
                             range_attack_Objects[i].GetComponent<Attack>().effect = ranged.stats.mod1;
-
                         else
-                            prefab_range_attack.GetComponent<Attack>().effect = Modifier.NONE;
+                            range_attack_Objects[i].GetComponent<Attack>().effect = Modifier.NONE;
+
                         if (Random.Range(1, 101) >= (100 - (100 * ranged.stats.critChance)))
                             range_attack_Objects[i].GetComponent<Attack>().isCrit = true;
                         else
@@ -258,7 +263,7 @@ public class Player : PunBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("HitMelee") || col.CompareTag("Proyectile"))
+        if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
         }
@@ -603,19 +608,10 @@ public class Player : PunBehaviour
                     PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false);
 
         }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            // Show scoreboard
-            _myPlayerStats.scoreboard.SetActive(true);
-            // Update scoreboard
             _myPlayerStats.UpdateScoreboard();
-        }
-
-        if (Input.GetKeyUp(KeyCode.Tab))
-        {
-            // esconder el scoreboard
-            _myPlayerStats.scoreboard.SetActive(false);
-        }
+       
+            // Update scoreboard
+       
         if (PhotonNetwork.player.NickName == "")
             PhotonNetwork.player.NickName = "Jugador #" + Random.Range(1.00f, 9.00f);
     }
@@ -642,7 +638,7 @@ public class Player : PunBehaviour
         else
             _myPlayerStats.m_HP += amount;
 
-        //PlayerHealth.Instance.healthBar.UpdateBar(_myPlayerStats.m_HP, _myPlayerStats.base_HP);
+        health.healthBar.UpdateBar(_myPlayerStats.m_HP, _myPlayerStats.base_HP);
     }
 
     public void ArmourUp(int amount)
@@ -652,7 +648,7 @@ public class Player : PunBehaviour
         else
             _myPlayerStats.m_Shield += amount;
 
-        //PlayerHealth.Instance.shieldBar.UpdateBar(_myPlayerStats.m_Shield, _myPlayerStats.base_Shield);
+        health.shieldBar.UpdateBar(_myPlayerStats.m_Shield, _myPlayerStats.base_Shield);
     }
 
     public void Resuply(int amount)

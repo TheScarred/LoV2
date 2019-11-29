@@ -4,7 +4,6 @@ using UnityEngine;
 using Photon;
 
 public class HitBoxPlayer : PunBehaviour
-
 {
     public Player player;
 
@@ -14,7 +13,7 @@ public class HitBoxPlayer : PunBehaviour
         {
             if (col.gameObject.GetComponent<Player>().ID != player.ID)
             {
-                col.gameObject.GetComponent<PlayerStats>().ReceiveDamage((int)(player._myPlayerStats.m_DamageMelee));
+                //col.gameObject.GetComponent<PlayerStats>().ReceiveDamage((int)(player._myPlayerStats.m_DamageMelee));
 
                 if (col.gameObject.GetComponent<PlayerStats>().m_HP <= 0)
                 {

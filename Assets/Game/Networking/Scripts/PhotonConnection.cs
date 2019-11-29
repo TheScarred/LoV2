@@ -145,8 +145,6 @@ public class PhotonConnection : PunBehaviour
             ExitGames.Client.Photon.Hashtable customRoomProperties = PhotonNetwork.room.CustomProperties;
             // randomSeed = (int)customRoomProperties["SeedMapa"];
 
-            //METODO CREAR MAPA
-            Debug.Log(randomSeed);
             CrearMapa();
             //Debug.Log((int)customRoomProperties["Dificultad"]);
 
