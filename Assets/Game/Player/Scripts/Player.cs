@@ -170,9 +170,8 @@ public class Player : PunBehaviour
     void Movement()
     {
         //Checar que lado esta mirando para cambiar su la escala (voltear)
-        if(imAttacking == false)
-        {
-            print(imAttacking);
+       
+       
             if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight /*|| theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight*/)
             {
                 facingRight = !facingRight;
@@ -181,7 +180,7 @@ public class Player : PunBehaviour
                 transform.localScale = scale;
 
             }
-        }
+        
        
 
         float h = _myPlayerStats.m_Speed * Input.GetAxis("Horizontal");
@@ -215,6 +214,7 @@ public class Player : PunBehaviour
         //Secondary attack
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            imAttacking = true;
             if (_myPlayerStats.m_ShootingSpeed >= ranged.stats.rOF)
             {
                 if (rangedAmmo > 0)
@@ -604,7 +604,10 @@ public class Player : PunBehaviour
         {
             if (_myPlayerStats.m_HP > 0)
             {
-                Movement();
+                if (imAttacking == false)
+                {
+                    Movement();
+                }
                 UpdateVariables();
                 AttackInput();
                 PickUpWeapon(pickup);
