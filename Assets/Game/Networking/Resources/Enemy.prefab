@@ -315,12 +315,37 @@ MonoBehaviour:
   sword: {fileID: 8300000, guid: 2ac6ae5f2114ec84cb4d112ffda20d7f, type: 3}
   death: {fileID: 8300000, guid: adfa7b344ad420f4cbd1f4b68644098b, type: 3}
   hit: {fileID: 8300000, guid: 14d328dc9d505e44b802146d6c453038, type: 3}
-  HP: 100
+  HP: 50
   Damage: 10
   killed_points: 25
   CoolDownTime: 1.5
   melee: {fileID: 1177971580014219319, guid: 1d0824cacd50e224eb227143677e0a31, type: 3}
   ranged: {fileID: 191856850463389956, guid: b636f4fc8aead2445b3719a91b66bd64, type: 3}
+  consumable: {fileID: 475191861266075891, guid: e0151ab40ed7f08468ccee2ae0021764,
+    type: 3}
+  meleeSprites:
+  - {fileID: 21300000, guid: 1771ec722ea9b344f8e731f66033408d, type: 3}
+  - {fileID: 21300000, guid: 9add74137a34ff448b2cd4c4197cb00a, type: 3}
+  - {fileID: 21300000, guid: 2aeef15cac7734a498b72e16041f2baa, type: 3}
+  - {fileID: 21300000, guid: 42c3c6785b7814048bd56724fea4eca4, type: 3}
+  - {fileID: 21300000, guid: 8765f2a483736bb44a1521ab07c5e3b3, type: 3}
+  rangedSprites:
+  - {fileID: 21300000, guid: ef01b799876bbc349a8d3a7c67762314, type: 3}
+  - {fileID: 21300000, guid: 8b58b39dc59dc384c821ffd643cff214, type: 3}
+  - {fileID: 21300000, guid: fcb98d8999571384cb475c196b8ee917, type: 3}
+  - {fileID: 21300000, guid: 83c13461f5ceda543b5c6ad994b2e12f, type: 3}
+  - {fileID: 21300000, guid: 656e30ac198541240808e6de76b4af08, type: 3}
+  foodSprites:
+  - {fileID: 21300000, guid: 514e729f7eee4bc4bb7472f4985531ac, type: 3}
+  - {fileID: 21300000, guid: f9ef7ebb4a42f1c4ba02aa1d2b9ea9ac, type: 3}
+  armourSprites:
+  - {fileID: 21300000, guid: a716ff23a256e3c4fb9ce3572cc8fc38, type: 3}
+  - {fileID: 21300000, guid: 27c3b1bef33077849af7c96fd092cb37, type: 3}
+  - {fileID: 21300000, guid: 32c03b3c821202a4cb7f53e3b1afbd11, type: 3}
+  ammoSprites:
+  - {fileID: 21300000, guid: becb9705e4ec8f5478526a0ca49f6718, type: 3}
+  - {fileID: 21300000, guid: 235d46a40460b7f44830981a04b1b5d4, type: 3}
+  - {fileID: 21300000, guid: dd8f31bd1fef6d04e96dcb05c055b14d, type: 3}
   animator: {fileID: 5557243330666865544}
   contains: 0
   status: 1
@@ -340,7 +365,7 @@ MonoBehaviour:
   viewAngle: 360
   stoppingDistance: 1
   speed: -5.46
-  WalkDistance: 2
+  WalkDistance: 5
   startWaitTime: 2
   script_HP: {fileID: 3674029410777285953}
   HP_bar: {fileID: 8307317334197159499}
@@ -443,6 +468,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1832233238492437703}
     m_Modifications:
+    - target: {fileID: 4249170665657334300, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas_enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 68925779592913769, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -558,10 +588,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.0022787987
       objectReference: {fileID: 0}
-    - target: {fileID: 4249170665657334300, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}
-      propertyPath: m_Name
-      value: Canvas_enemy
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300002, guid: 2673cf64155f08c4e847edde1c08f8c1,
+        type: 3}
+    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+        type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+        type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3259277421883441139, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}
@@ -587,27 +633,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 44
-      objectReference: {fileID: 0}
-    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300002, guid: 2673cf64155f08c4e847edde1c08f8c1,
-        type: 3}
-    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
-        type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
-        type: 3}
-      propertyPath: m_FillMethod
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce3f39e8cf7db9146952cd8db2d45f4b, type: 3}

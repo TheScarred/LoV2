@@ -18,7 +18,7 @@ public class animacionmonito : MonoBehaviour
     bool opcion = false;
 
     [SerializeField]
-     PlayerHealth p;
+    PlayerHealth p;
 
     // Update is called once per frame
     void Update()
@@ -128,21 +128,5 @@ public class animacionmonito : MonoBehaviour
 
         animator.SetBool("run", isMoving);
         #endregion
-    }
-
-
-    //OSCAR ESTA FUNCION ES NOMAS DE PRUEBA PUSE AQUI EL P.TAKEDAMAGE() PORQUE NOMAS QUERIA PROBAR QUE SE VIERA REFLEJADA EN LA UI, PERO ESTA DEBERIA IR DONDE TENDRIA QUE RECIBIR DAÑO
-    public void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("ENEMIES"))
-        {
-            animator.SetTrigger("hit");
-
-            Debug.Log(p.jugadorsin.m_HP);
-
-            animator.SetBool("Morir", vivo);
-            p.TakeDamage(5);
-            //Debug.Log(jugadorstats.m_HP);
-        }
     }
 }

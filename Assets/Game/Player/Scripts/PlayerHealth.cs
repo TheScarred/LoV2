@@ -1,27 +1,19 @@
-﻿/* Written by Kaz Crowe */
-/* PlayerHealth.cs */
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using Photon;
+using UnityEngine.SceneManagement;
 
 namespace SimpleHealthBar_SpaceshipExample
 {
-	public class PlayerHealth : MonoBehaviour
+	public class PlayerHealth : PunBehaviour
 	{
 		static PlayerHealth instance;
 		public static PlayerHealth Instance { get { return instance; } }
         
         //VIDA VARIABLES
         public PlayerStats jugadorsin;
-		
-
-        //ESCUDO VARIABLES 
-		
-		float regenShieldTimer = 0.0f;
-		public float regenShieldTimerMax = 1.0f;
 
         Player player;
-
-
 
         public SimpleHealthBar healthBar;
         public SimpleHealthBar shieldBar;
@@ -33,72 +25,42 @@ namespace SimpleHealthBar_SpaceshipExample
             if (instance != null)
                 //Debug.LogError( "Agregale primero la vida baboso en los prefabs" );
                
-            /*healthBar = GetComponent<SimpleHealthBar>();
-            shieldBar = GetComponent<SimpleHealthBar>();*/
+           
             instance = GetComponent<PlayerHealth>();
         }
-			
-		
 
 		void Start ()
 		{
-			// PARA ESTABLECER LA VIDA MAXIMA Y EL ESCUDO
-			jugadorsin.m_HP = jugadorsin.base_HP;
-			jugadorsin.m_Shield = jugadorsin.base_Shield;
 
-			// SE van actualizando la vida y los escudos
-		    healthBar.UpdateBar( jugadorsin.m_HP, jugadorsin.base_HP );
-			shieldBar.UpdateBar( jugadorsin.m_Shield, jugadorsin.base_Shield );
-		}
-
-		void Update ()
-		{
-			
-            //si el escudo es menor al maximo, y el cooldown del regenShield no esta aplicandose entonces : 
-			if( jugadorsin.m_Shield < jugadorsin.base_Shield && regenShieldTimer <= 0 )
-			{
-				//Incrementa el escudo
-				jugadorsin.m_Shield += Time.deltaTime * 5;
-
-				// ACTUALIZA LOS VALORES DEL ESCUDO
-				shieldBar.UpdateBar( jugadorsin.m_Shield, jugadorsin.base_Shield );
-			}
-            //AQUI TOMA EL DAÑO QUE SE REFLEJARA EN LA BARRA DE VIDA Y ESCUDO 
-            if(Input.GetKeyDown(KeyCode.Alpha1))
+            if(photonView.isMine)
             {
-                TakeDamage(10);
+                player = this.gameObject.GetComponent<Player>();
+                jugadorsin = this.gameObject.GetComponent<PlayerStats>();
+                healthBar = GameObject.Find("Health").GetComponent<SimpleHealthBar>();
+
+                shieldBar = GameObject.Find("Shield").GetComponent<SimpleHealthBar>();
+                jugadorsin.m_HP = jugadorsin.base_HP;
+                jugadorsin.m_Shield = jugadorsin.base_Shield;
+
+                // SE van actualizando la vida y los escudos
+
+                healthBar.UpdateBar(jugadorsin.m_HP, jugadorsin.base_HP);
+                shieldBar.UpdateBar(0, jugadorsin.base_Shield);
             }
+        }
 
-            
-			
-            //SI EL REGENERAR ESCUDO ES MAYOR DE 0 ENTONCES DECREMENTA EL TIEMPO
-			if( regenShieldTimer > 0 )
-				regenShieldTimer -= Time.deltaTime;
-		}
-        
-		public void HealPlayer ()
-		{
-			// incrementar la vida por un 25%
-			jugadorsin.m_HP += ( jugadorsin.base_HP / 4 );
-
-			
-            //SI LA VIDA ACTUAL ES MAYOR QUE LA MAX, ENTONCES SE ACTUALIZA A QUE ESA SERA LA MAX, EN CASO DE CURARSE CLARO
-			if( jugadorsin.m_HP > jugadorsin.base_HP )
-				jugadorsin.m_HP = jugadorsin.base_HP;
-
-			//SE ACTUALIZA LA BARRA
-			healthBar.UpdateBar( jugadorsin.m_HP, jugadorsin.base_HP );
-		}
         //FUNCION PARA HACER DAÑO 
-		public void TakeDamage ( int damage )
+		public void TakeDamage (float armourPen, float damage )
 		{
-			
+            float hpDamage = damage * armourPen;
+            float armourDamage = damage - hpDamage;
+
 			// SI EL ESCUDO ES MAYOR A 0 
 			if( jugadorsin.m_Shield > 0 )
 			{
 
 				// REDUCE EL ESCUDO DEL DAÑO HECHO
-				jugadorsin.m_Shield -= damage;
+				jugadorsin.m_Shield -= armourDamage;
 
 		
                 //SI EL ESCUDO ES MENOR A 0 
@@ -111,6 +73,8 @@ namespace SimpleHealthBar_SpaceshipExample
 					// ESCUDO A 0
 					jugadorsin.m_Shield = 0;
 				}
+
+                jugadorsin.m_HP -= hpDamage;
 			}
 			// SI NO HAY ESCUDO ENTONCES HAZLE DAÑO
 			else
@@ -126,22 +90,23 @@ namespace SimpleHealthBar_SpaceshipExample
 				Death();
 			}
 			
-		
-
 			// UPDATE DE EL ESCUDO Y LA VIDA BARRAS
-			healthBar.UpdateBar( jugadorsin.m_HP, jugadorsin.base_HP );
-			shieldBar.UpdateBar( jugadorsin.m_Shield, jugadorsin.base_Shield );
+            if(photonView.isMine)
+            {
+                healthBar.UpdateBar(jugadorsin.m_HP, jugadorsin.base_HP);
+                shieldBar.UpdateBar(jugadorsin.m_Shield, jugadorsin.base_Shield);
+            }
+			
 
-			//RESETEAMOS EL REGENSHIELD
-			regenShieldTimer = regenShieldTimerMax;
 		}
 
 		public void Death ()
 		{
-			//AQUI ENSEÑARIA LA ESCENA DE DEATH
-			
+            //AQUI ENSEÑARIA LA ESCENA DE DEATH
+            gameObject.transform.DetachChildren();
 			Destroy( gameObject );
-		}
+            SceneManager.LoadScene("Game Over");
+        }
 
 		
 	}

@@ -10,19 +10,13 @@ public class EnemyIA : PunBehaviour
     {
         Chase,
         Patrolling,
+        Rage,
+        Resting,
         Attacking
     }
 
-
-    public enum Contains
-    {
-        Weapon,
-        Food,
-        Ammo
-    }
-
     //EnemyStats
-    int base_HP;
+    float base_HP = 50;
 
     AudioSource audio;
     public float timeToSound = 0.5f;
@@ -31,17 +25,23 @@ public class EnemyIA : PunBehaviour
     [SerializeField]
     AudioClip sword,death,hit;
 
-    public int HP = 100;
-    public int Damage = 10;
+    public float HP = 50;
+    public float Damage = 10f;
+    public float ArmourPen = 0;
     public int killed_points = 25;
     public float CoolDownTime = 1.5f;  //how often can it make damage
 
     public GameObject melee;
     public GameObject ranged;
-
+    public GameObject consumable;
+    public Sprite[] meleeSprites;
+    public Sprite[] rangedSprites;
+    public Sprite[] foodSprites;
+    public Sprite[] armourSprites;
+    public Sprite[] ammoSprites;
 
     public Animator animator;
-    public Contains contains;
+    public Items.ItemType contains;
     public EnemyState status;
     public Rigidbody enemy_rigidbody;
     public LayerMask targetMask;
@@ -61,7 +61,8 @@ public class EnemyIA : PunBehaviour
     private bool facingRight = false;
 
     float minX, maxX, minY, maxY;
-
+    float healTimer;
+    WaitForSeconds delayToSearchForPlayer;
 
     //HitPlayer
     bool TranslatedRight;
@@ -89,8 +90,7 @@ public class EnemyIA : PunBehaviour
     void Start()
     {
         Random.InitState(PhotonConnection.GetInstance().randomSeed);
-        //contains = (Contains)Random.Range(0, 3);
-        contains = Contains.Weapon;
+        contains = Items.ItemType.CONSUMABLE;
         minX = 4.75f;
         maxX = 24.75f;
         minY = 4.75f;
@@ -99,8 +99,9 @@ public class EnemyIA : PunBehaviour
         waitTime = startWaitTime;
         speed = 1f;
         status = EnemyState.Patrolling;
-        StartCoroutine("FindTargets", .2f);
-
+        delayToSearchForPlayer = new WaitForSeconds(0.3f);
+        StartCoroutine("FindTargets");
+        healTimer = 2f;
     }
     public void OnEnable()
     {
@@ -114,8 +115,7 @@ public class EnemyIA : PunBehaviour
         speed = 1f;
         status = EnemyState.Patrolling;
         StartCoroutine("FindTargets", .2f);
-        HP = 100;
-        base_HP = HP;
+        HP = base_HP;
 
         //HitPlayer
         TranslatedRight = true;
@@ -123,12 +123,12 @@ public class EnemyIA : PunBehaviour
         CoolDown = new WaitForSeconds(CoolDownTime);
     }
 
-    IEnumerator FindTargets(float delay)
+    IEnumerator FindTargets()
     {
         while (true)
         {
             //Cada cierto tiempo busco jugadores en mi rango de visión
-            yield return new WaitForSeconds(delay);
+            yield return delayToSearchForPlayer;
             FindVisibleTargets();
         }
     }
@@ -166,7 +166,6 @@ public class EnemyIA : PunBehaviour
 
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-
                     visibleTargets.Add(target);
 
                     status = EnemyState.Chase;
@@ -175,7 +174,7 @@ public class EnemyIA : PunBehaviour
                         playertoChase = target.gameObject;
                         player_stats = playertoChase.GetComponent<PlayerStats>(); // connect to target script
                     }
-                    else
+                    else 
                     {
                         for (int x = 0; x < visibleTargets.Count; x++)
                         {
@@ -186,8 +185,16 @@ public class EnemyIA : PunBehaviour
                         }
 
                     }
-
                 }
+            }
+        }
+
+        if(visibleTargets.Count == 0)
+        {    
+                playertoChase = null;
+            if(HP >= 50)
+            {
+                status = EnemyState.Patrolling;
             }
         }
     }
@@ -199,11 +206,53 @@ public void OnTriggerEnter(Collider other)
         {
             if (player_stats != null)
             {
-                float damage = (player_stats.m_DamageMelee);
-                HP -= (int)damage;
-                script_HP.ModifyHpBar(damage, base_HP);
+                Attack attack = other.GetComponent<Attack>();
+
+                if (attack.isCrit)
+                {
+                    HP -= (attack.damage * 2);
+                    //Debug.Log("CRIT! Damage Done: " + attack.damage*2);
+                }
+                else
+                {
+                    HP -= attack.damage;
+                    //Debug.Log("Damage Done: " + attack.damage);
+                }
+
+                if (attack.GetComponentInParent<Player>().melee.stats.id >= 0)
+                    attack.GetComponentInParent<Player>().melee.stats.wear--;
+
+                if (attack.GetComponentInParent<Player>().melee.stats.wear <= 0 && attack.GetComponentInParent<Player>().melee.stats.id >= 0)
+                    attack.GetComponentInParent<Player>().BreakMeleeWeapon();
+
+                script_HP.ModifyHpBar(attack.damage, base_HP);
                 audio.PlayOneShot(hit);
                 animator.SetTrigger("hit");
+                
+               /*if(HP <= 20)
+                {
+                    int type = Random.Range(0, 10);
+                    if(type >= 8)
+                    {
+                        float damage = (player_stats.m_DamageMelee);
+                        HP -= (int)damage;
+                        script_HP.ModifyHpBar(damage, base_HP);
+                        audio.PlayOneShot(hit);
+                        animator.SetTrigger("hit");
+                    }
+                    else
+                    {
+                        //COLOCAR ANIMACIÓN O MENSAJE DE ESQUIVE AQUÍ
+                    }
+                }
+                else
+                {
+                    float damage = (player_stats.m_DamageMelee);
+                    HP -= (int)damage;
+                    script_HP.ModifyHpBar(damage, base_HP);
+                    audio.PlayOneShot(hit);
+                    animator.SetTrigger("hit");
+                }*/
 
                 if (HP <= 0)
                 {
@@ -216,9 +265,21 @@ public void OnTriggerEnter(Collider other)
         }
         else if (other.gameObject.CompareTag("Proyectile"))
         {
-            float damage = player_stats.base_DamageMeele;
-            HP -= (int)damage;
-            script_HP.ModifyHpBar(damage, base_HP);
+            Attack attack = other.GetComponent<Attack>();
+
+            if (attack.isCrit)
+            {
+                HP -= (attack.damage * 2);
+                //Debug.Log("CRIT! Damage Done: " + attack.damage * 2);
+            }
+            else
+            {
+                HP -= attack.damage;
+                //Debug.Log("Damage Done: " + attack.damage);
+            }
+
+            script_HP.ModifyHpBar(attack.damage, base_HP);
+            audio.PlayOneShot(hit);
             animator.SetTrigger("hit");
 
             if (HP <= 0)
@@ -232,17 +293,11 @@ public void OnTriggerEnter(Collider other)
             other.gameObject.SetActive(false);
         }
     }
-    public void ReceiveProyectileDamage(int damage)
-    {
-        HP -= damage;
-        script_HP.ModifyHpBar(damage, base_HP);
-    }
-
-    void PatrolArea()
+    void PatrolArea(int modifier)
     {
         //Me muevo al patrollingPoint
-        transform.position = Vector3.MoveTowards(transform.position, patternPoint.position, speed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, patternPoint.position) < 3f)
+        transform.position = Vector3.MoveTowards(transform.position, patternPoint.position, speed * modifier * Time.deltaTime);
+        if (Vector3.Distance(transform.position, patternPoint.position) < WalkDistance)
         {
             if (waitTime <= 0)
             {
@@ -260,7 +315,6 @@ public void OnTriggerEnter(Collider other)
 
     void ChasePlayer()
     {
-
         bool didMove = false;
 
         //Persigo a jugador
@@ -276,14 +330,21 @@ public void OnTriggerEnter(Collider other)
                     PlayWalking();
                 }
             }
-            transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed * Time.deltaTime);
+           
+            if(status == EnemyState.Rage)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed* 2f * Time.deltaTime);
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed * Time.deltaTime);
+            }
            if (this.transform.position.x < playertoChase.transform.position.x && facingRight)   //player is on the left
             {
                 Vector3 scale = transform.localScale;
                 facingRight = false;
                 scale.x *= -1;
                 transform.localScale = scale;
-                Debug.Log("Attacked Player on left!");
             }
             if (this.transform.position.x > playertoChase.transform.position.x && !facingRight)  // player is on the right
             {
@@ -291,25 +352,20 @@ public void OnTriggerEnter(Collider other)
                 facingRight = true;
                 scale.x *= -1;
                 transform.localScale = scale;
-                Debug.Log("Attacked player on right!");
             }
         }
         else
         {
-
             if (can_attack)
             {
-                animator.SetTrigger("ataque");
+                animator.SetTrigger("attak");
                 StartCoroutine(Attack());
                 can_attack = false;
-
-            animator.SetTrigger("attak");
-            audio.PlayOneShot(sword);
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Attack1"))
-            {
-                return;
-
+                audio.PlayOneShot(sword);
             }
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Attack1"))
+                return;
         }
 
 
@@ -338,79 +394,12 @@ public void OnTriggerEnter(Collider other)
             }
             if (player_stats != null)
             {
-                player_stats.ReceiveDamage(Damage);
+                player_stats.ReceiveDamage(ArmourPen, Damage);
             }
-                can_attack = true;
+            can_attack = true;
            
         }
     }
-    }
-
-    /*void CreatePatrolPattern()
-    {
-        /*patternPoints.Clear();
-        //Notas para quienes lean: en los ejes X se dibujan lineas rojas si NO TOCAN TERRENOS/obstaculos
-        //Si chocan con algo, las lineas se pintan de amarillo indicando que ese es el limite
-        RaycastHit hit;
-        RaycastHit backHit;
-        RaycastHit rightHit;
-        RaycastHit leftHit;
-
-        //RAyo que va en dirección frontal
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5f) && hit.collider.CompareTag("Terrain"))
-        {
-
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            patternPoints.Add(hit.transform);
-        }
-        else
-        {
-            Debug.Log(hit.point);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 5, Color.black);
-        }
-
-        //Rayo que va en direción abajo
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out backHit, 5f) && backHit.collider.CompareTag("Terrain"))
-        {
-           Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * backHit.distance, Color.yellow);
-            patternPoints.Add(backHit.transform);
-        }
-        else
-        {
-            //patternPoints.Add(backHit.point);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * 5, Color.black);
-        }
-        //Rayo que va en direción derecha
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out rightHit, 5f) && rightHit.collider.CompareTag("Terrain"))
-        {
-
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * rightHit.distance, Color.yellow);
-            patternPoints.Add(rightHit.transform);
-        }
-        else
-        {
-            //patternPoints.Add(rightHit.point);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * 5, Color.red);
-        }
-
-
-        //Rayo que va en direción izquierda
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out leftHit, 5f) && leftHit.collider.CompareTag("Terrain"))
-        {
-
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * leftHit.distance, Color.yellow);
-            patternPoints.Add(leftHit.transform);
-        }
-        else
-        {
-            //patternPoints.Add(leftHit.point);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * 5, Color.red);
-        }
-
-        status = EnemyState.Patrolling;
-
-    }
-*/
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -427,19 +416,30 @@ public void OnTriggerEnter(Collider other)
             //HP_bar = (float)stream.ReceiveNext();
         }*/
     }
-        void Update()
+
+    void HealSelf()
     {
-        /*if (status == EnemyState.Resting)
+        if(playertoChase == null)
         {
-            //TODO: Este metodo se encargará de castear raycast para ver en que direcciones puede moverse antes de entrar en modo
-            CreatePatrolPattern();
+            healTimer -= Time.deltaTime;
+            if(healTimer <= 0)
+            {
+                HP += 2;
+                healTimer = 2;
+                script_HP.bar_HP.fillAmount += 2;
+            }
         }
-        */
+        else
+        {
+            status = EnemyState.Chase;
+        }
+    }
 
-
+    void Update()
+    {
         if (photonView.isMine)
         {
-            if (status == EnemyState.Chase)
+            if (status == EnemyState.Chase || status == EnemyState.Rage)
             {
 
                 if (playertoChase != null)
@@ -448,28 +448,42 @@ public void OnTriggerEnter(Collider other)
                 }
                 else
                 {
-                    status = EnemyState.Patrolling;
+                    if (status == EnemyState.Rage)
+                    {
+                        PatrolArea(2);
+                    }  
                 }
 
-            }
-            else if (status == EnemyState.Patrolling)
+            }else if(status == EnemyState.Patrolling)
             {
-                PatrolArea();
+                PatrolArea(1);
             }
+            else if (status == EnemyState.Resting)
+            {
+                HealSelf();
+            }
+          
         }
         if (HP <= 0)
         {
             animator.SetBool("death", true);
-           
+
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Death") && photonView.isMine)
             {
                 audio.PlayOneShot(death);
                 RPCForEnemyDeath();
             }
         }
-    }
-    
+        if (HP <= base_HP / 2)
+        {
+            status = EnemyState.Rage;
+        } else if (HP <= 20 && playertoChase == null)
+        {
+            status = EnemyState.Resting;
+        }
 
+
+    }
 
     public void RPCForEnemyDeath()
     {
@@ -498,71 +512,128 @@ public void OnTriggerEnter(Collider other)
     void SpawnItem(byte seed)
     {
         Random.InitState(seed);
-        int type = Random.Range(0, 2);
+        int type1 = Random.Range(0, 2);
         int roll = Random.Range(1, 101);
+
+        if (type1 == 0)
+            contains = Items.ItemType.CONSUMABLE;
+        else
+            contains = Items.ItemType.WEAPON;
 
         switch (contains)
         {
-            case Contains.Weapon:
+            case Items.ItemType.WEAPON:
                 {
-                    if (type == 0)
+                    int type2 = Random.Range(0, 2);
+                    if (type2 == 0)
                     {
                         GameObject go = Instantiate(melee, transform.position, transform.rotation);
-                        go.GetComponent<WeaponPickup>().type = Items.WeaponType.MELEE;
-                        go.GetComponent<WeaponPickup>().ID = PhotonConnection.GetInstance().WeaponID;
+                        WeaponPickup weapon = go.GetComponent<WeaponPickup>();
+                        weapon.type = Items.WeaponType.MELEE;
+                        weapon.ID = PhotonConnection.GetInstance().WeaponID;
+                        weapon.lastWear = 30;
                         PhotonConnection.GetInstance().weaponList.Add(go.GetComponent<WeaponPickup>());
                         PhotonConnection.GetInstance().WeaponID++;
 
                         if (roll <= 40)
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.UNCOMMON;
+                            weapon.rarity = Items.WeaponRarity.UNCOMMON;
                         }
                         else if (roll <= 70)
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.RARE;
+                            weapon.rarity = Items.WeaponRarity.RARE;
                         }
                         else if (roll <= 90)
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.EPIC;
+                            weapon.rarity = Items.WeaponRarity.EPIC;
                         }
                         else
                         {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.LEGENDARY;
+                            weapon.rarity = Items.WeaponRarity.LEGENDARY;
                         }
+
+                        weapon.gameObject.GetComponent<SpriteRenderer>().sprite = meleeSprites[(int)weapon.rarity];
                     }
                     else
                     {
                         GameObject go = Instantiate(ranged, transform.position, transform.rotation);
-                        go.GetComponent<WeaponPickup>().type = Items.WeaponType.RANGED;
-                        go.GetComponent<WeaponPickup>().ID = PhotonConnection.GetInstance().WeaponID;
+                        WeaponPickup weapon = go.GetComponent<WeaponPickup>();
+                        weapon.type = Items.WeaponType.RANGED;
+                        weapon.ID = PhotonConnection.GetInstance().WeaponID;
+                        weapon.lastWear = 30;
                         PhotonConnection.GetInstance().weaponList.Add(go.GetComponent<WeaponPickup>());
                         PhotonConnection.GetInstance().WeaponID++;
 
                         if (roll <= 40)
-                        {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.UNCOMMON;
-                        }
+                            weapon.rarity = Items.WeaponRarity.UNCOMMON;
                         else if (roll <= 70)
-                        {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.RARE;
-                        }
+                            weapon.rarity = Items.WeaponRarity.RARE;
                         else if (roll <= 90)
-                        {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.EPIC;
-                        }
+                            weapon.rarity = Items.WeaponRarity.EPIC;
                         else
-                        {
-                            go.GetComponent<WeaponPickup>().rarity = Items.WeaponRarity.LEGENDARY;
-                        }
+                            weapon.rarity = Items.WeaponRarity.LEGENDARY;
+
+                        weapon.gameObject.GetComponent<SpriteRenderer>().sprite = rangedSprites[(int)weapon.rarity];
                     }
                     break;
                 }
-            case Contains.Food:
+            case Items.ItemType.CONSUMABLE:
                 {
-                    break;
-                }
-            case Contains.Ammo:
-                {
+                    GameObject go = Instantiate(consumable, transform.position, transform.rotation);
+                    int type2 = Random.Range(0, 3);
+                    if (type2 == 0)
+                    {
+                        go.AddComponent<Food>();
+                        go.tag = "Food";
+                        if (roll >= 80)
+                            go.GetComponent<Food>().type = Items.FoodType.MEAL;
+                        else
+                            go.GetComponent<Food>().type = Items.FoodType.SNACK;
+
+                        if (go.GetComponent<Food>().type == Items.FoodType.SNACK)
+                            go.GetComponent<SpriteRenderer>().sprite = foodSprites[0];
+                        else
+                            go.GetComponent<SpriteRenderer>().sprite = foodSprites[1];
+                    }
+                    else if (type2 == 1)
+                    {
+                        go.AddComponent<Armour>();
+                        go.tag = "Armour";
+                        if (roll <= 50)
+                            go.GetComponent<Armour>().type = Items.ArmourType.PLATE;
+                        else if (roll <= 85)
+                            go.GetComponent<Armour>().type = Items.ArmourType.VEST;
+                        else
+                            go.GetComponent<Armour>().type = Items.ArmourType.SUIT;
+
+                        if (go.GetComponent<Armour>().type == Items.ArmourType.PLATE)
+                            go.GetComponent<SpriteRenderer>().sprite = armourSprites[0];
+                        else if (go.GetComponent<Armour>().type == Items.ArmourType.VEST)
+                            go.GetComponent<SpriteRenderer>().sprite = armourSprites[1];
+                        else
+                            go.GetComponent<SpriteRenderer>().sprite = armourSprites[2];
+                    }
+                    else
+                    {
+                        go.AddComponent<Ammo>();
+                        go.tag = "Ammo";
+                        if (roll <= 40)
+                            go.GetComponent<Ammo>().type = Items.AmmoType.SINGLE;
+                        else if (roll <= 85)
+                            go.GetComponent<Ammo>().type = Items.AmmoType.BUNDLE;
+                        else
+                            go.GetComponent<Ammo>().type = Items.AmmoType.QUIVER;
+
+                        if (go.GetComponent<Ammo>().type == Items.AmmoType.SINGLE)
+                            go.GetComponent<SpriteRenderer>().sprite = ammoSprites[0];
+                        else if (go.GetComponent<Ammo>().type == Items.AmmoType.BUNDLE)
+                            go.GetComponent<SpriteRenderer>().sprite = ammoSprites[1];
+                        else
+                            go.GetComponent<SpriteRenderer>().sprite = ammoSprites[2];
+                    }
+                    go.GetComponent<Consumable>().id = PhotonConnection.GetInstance().ConsumableID;
+                    PhotonConnection.GetInstance().consumables.Add(go.GetComponent<Consumable>());
+                    PhotonConnection.GetInstance().ConsumableID++;
                     break;
                 }
         }
