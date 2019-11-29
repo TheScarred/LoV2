@@ -28,6 +28,7 @@ public class Player : PunBehaviour
     private bool facingRight = true;
     private bool weaponTrigger = false;
     bool vivo = true;
+    bool imAttacking;
     public int ID;
     int DamageReceived;
     public uint rangedAmmo;
@@ -83,6 +84,8 @@ public class Player : PunBehaviour
         BasicHitBox.GetComponent<Collider>().enabled = false;
         //BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
         hit_cooldown = 1.5f;
+
+        imAttacking = false;
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -167,14 +170,19 @@ public class Player : PunBehaviour
     void Movement()
     {
         //Checar que lado esta mirando para cambiar su la escala (voltear)
-        if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight /*|| theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight*/)
+        if(imAttacking == false)
         {
-            facingRight = !facingRight;
-            Vector3 scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
+            print(imAttacking);
+            if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight /*|| theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight*/)
+            {
+                facingRight = !facingRight;
+                Vector3 scale = transform.localScale;
+                scale.x *= -1;
+                transform.localScale = scale;
 
+            }
         }
+       
 
         float h = _myPlayerStats.m_Speed * Input.GetAxis("Horizontal");
         float v = _myPlayerStats.m_Speed * Input.GetAxis("Vertical");
@@ -194,6 +202,7 @@ public class Player : PunBehaviour
         //Primary Attack
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            imAttacking = true;
             if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
                 meleeAttack.isCrit = true;
 
@@ -624,11 +633,13 @@ public class Player : PunBehaviour
     [PunRPC]
     IEnumerator ToggleHitBox()
     {
+        
         BasicHitBox.GetComponent<Collider>().enabled = true;
         BasicHitBox.GetComponent<MeshRenderer>().enabled = true;
         yield return melee_hitbox_Timer;
         BasicHitBox.GetComponent<Collider>().enabled = false;   //will go back to waiting if another object is hit after detecting one with space. Will need counter for animation
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
+        imAttacking = false;
     }
 
     public void HealPlayer(int amount)
