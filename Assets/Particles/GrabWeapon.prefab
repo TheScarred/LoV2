@@ -9633,6 +9633,7 @@ GameObject:
   - component: {fileID: 2356442969573226344}
   - component: {fileID: 5414932786817975567}
   - component: {fileID: 2758659944352993932}
+  - component: {fileID: 4591887408844563627}
   m_Layer: 0
   m_Name: GrabWeapon
   m_TagString: Untagged
@@ -14435,3 +14436,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4591887408844563627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4293277947379417133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb01e44e39056948a35708a6aca7cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleType: 5

@@ -9575,6 +9575,7 @@ GameObject:
   - component: {fileID: 2200473774408291892}
   - component: {fileID: 770845546484820459}
   - component: {fileID: 7892700476200050743}
+  - component: {fileID: -1593901344102310424}
   m_Layer: 0
   m_Name: GrabFood
   m_TagString: Untagged
@@ -14377,3 +14378,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-1593901344102310424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5093043452900272735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb01e44e39056948a35708a6aca7cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleType: 0
