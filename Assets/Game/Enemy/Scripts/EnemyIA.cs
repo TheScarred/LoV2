@@ -80,7 +80,10 @@ public class EnemyIA : PunBehaviour
     public Image HP_bar;
     public float damage_percentage;
 
-
+    //Particles
+    public ParticleManager particleManager;
+    TypesAvailable.particleType particleDeath;
+    //public TypesAvailable particleType;
 
     void Awake()
     {
@@ -102,6 +105,9 @@ public class EnemyIA : PunBehaviour
         delayToSearchForPlayer = new WaitForSeconds(0.3f);
         StartCoroutine("FindTargets");
         healTimer = 2f;
+
+        //Particles
+        particleDeath = TypesAvailable.particleType.ENEMY_DEATH;
     }
     public void OnEnable()
     {
@@ -472,6 +478,7 @@ public void OnTriggerEnter(Collider other)
             {
                 audio.PlayOneShot(death);
                 RPCForEnemyDeath();
+                particleManager.ActivateParticle(this.transform, particleDeath);
             }
         }
         if (HP <= base_HP / 2)

@@ -317,6 +317,7 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: 14d328dc9d505e44b802146d6c453038, type: 3}
   HP: 50
   Damage: 10
+  ArmourPen: 0
   killed_points: 25
   CoolDownTime: 1.5
   melee: {fileID: 1177971580014219319, guid: 1d0824cacd50e224eb227143677e0a31, type: 3}
@@ -370,6 +371,8 @@ MonoBehaviour:
   script_HP: {fileID: 3674029410777285953}
   HP_bar: {fileID: 8307317334197159499}
   damage_percentage: 0
+  particleManager: {fileID: 7491907682256814569, guid: 45b58e1b3d728044487fed34c0726e11,
+    type: 3}
 --- !u!114 &1974155264427976210
 MonoBehaviour:
   m_ObjectHideFlags: 0

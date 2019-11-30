@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleManager : MonoBehaviour
 {
     public ParticleSystem[] PreFab_Particles;
-    public List<ParticleSystem> particles;
+    List<ParticleSystem> particles;
 
 
     public TypesAvailable typesAvailable;
@@ -19,6 +19,9 @@ public class ParticleManager : MonoBehaviour
     public void ActivateParticle(Transform t, TypesAvailable.particleType type)
     {
         print("EnterActivateParticle");
+        print("Does it exist?");
+        print("List Exists: " + particles.Count);
+       
         if (particles.Count > 0)
         {
             print("particles list is not empty");
@@ -51,13 +54,9 @@ public class ParticleManager : MonoBehaviour
                 particle_created.Play();
             }
         }
-        
     }
-    //find particle in list
-    //if particle not in list, add it
 
-
-
+    //for testing
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.N))
