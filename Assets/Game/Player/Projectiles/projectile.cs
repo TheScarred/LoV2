@@ -27,7 +27,6 @@ public class projectile : PunBehaviour
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
                 GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
                 this.gameObject.SetActive(false);
-
             }
 
         }
@@ -66,7 +65,7 @@ public class projectile : PunBehaviour
             this.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 350f);
         }
 
-
+     
     }
     public void Update()
     {
