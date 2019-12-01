@@ -371,7 +371,7 @@ MonoBehaviour:
   script_HP: {fileID: 3674029410777285953}
   HP_bar: {fileID: 8307317334197159499}
   damage_percentage: 0
-  particleManager: {fileID: 7491907682256814569, guid: 45b58e1b3d728044487fed34c0726e11,
+  particleManager: {fileID: 2554709314926158621, guid: de6de6d22c80d0746980981a69ea9938,
     type: 3}
 --- !u!114 &1974155264427976210
 MonoBehaviour:

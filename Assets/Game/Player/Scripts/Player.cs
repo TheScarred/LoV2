@@ -39,10 +39,17 @@ public class Player : PunBehaviour
     public GameObject BasicHitBox;
     public Attack meleeAttack, rangedAttack;
     Collider pickup = null;
-    float hit_cooldown;
 
     //JOYSTICK
     public Joystick theJoystick;
+
+    //Particles
+    public ParticleManager particleManager;
+    TypesAvailable.particleType particleDeath;
+    public TypesAvailable.particleType particleHit;
+    TypesAvailable.particleType particleHeal;
+    TypesAvailable.particleType particleGrab;
+    TypesAvailable.particleType particleSpawn;
 
 
     void Start()
@@ -83,9 +90,17 @@ public class Player : PunBehaviour
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
         BasicHitBox.GetComponent<Collider>().enabled = false;
         //BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
-        hit_cooldown = 1.5f;
         delayMovement = 0.75f;
         imAttacking = false;
+
+
+        //Particles
+        particleDeath = TypesAvailable.particleType.PLAYER_DEATH;
+        particleHit = TypesAvailable.particleType.HIT;
+        particleHeal = TypesAvailable.particleType.HEAL;
+        particleGrab = TypesAvailable.particleType.GRAB_WEAPON;
+        particleSpawn = TypesAvailable.particleType.PLAYER_SPAWN;
+        particleManager.ActivateParticle(this.transform, particleSpawn);
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -124,11 +139,8 @@ public class Player : PunBehaviour
 
                         range_attack_Objects[i].GetComponent<projectile>().ReactivarFlecha(parameters2);
                         return range_attack_Objects[i];
-
                     }
-
                 }
-
             }
         }
 
@@ -231,9 +243,7 @@ public class Player : PunBehaviour
                             BreakRangedWeapon();
                         }
                     }
-
                     rangedAmmo--;
-
                 }
             }
 
@@ -253,11 +263,6 @@ public class Player : PunBehaviour
         {
             _myPlayerStats.m_ShootingSpeed += Time.deltaTime;
         }
-        if(hit_cooldown >= 0)
-        {
-            hit_cooldown -= Time.deltaTime;
-        }
-
         if(imAttacking)
         {
             delayMovement -= Time.deltaTime;
@@ -275,6 +280,7 @@ public class Player : PunBehaviour
         {
             WeaponPickup weapon = col.GetComponent<WeaponPickup>();
             ChangeWeapon(ref weapon.type, ref weapon.rarity, PhotonConnection.GetInstance().randomSeed, ref weapon.ID, weapon.lastWear);
+            particleManager.ActivateParticle(this.transform, particleGrab);
 
             StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
         }
@@ -285,6 +291,7 @@ public class Player : PunBehaviour
         if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner != photonView.ownerId)))
         {
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
+            
         }
         if (col.CompareTag("Food") && _myPlayerStats.m_HP < _myPlayerStats.base_HP)
         {
@@ -295,16 +302,19 @@ public class Player : PunBehaviour
         {
             ArmourUp((int)col.GetComponent<Armour>().type);
             PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
+            particleManager.ActivateParticle(this.transform, particleGrab);
         }
         if (col.CompareTag("Ammo") && rangedAmmo < 30)
         {
             Resuply((int)col.GetComponent<Ammo>().type);
             PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
+            particleManager.ActivateParticle(this.transform, particleGrab);
         }
         if (col.CompareTag("Melee") || col.CompareTag("Rango"))
         {
             weaponTrigger = true;
             pickup = col;
+            
         }
     }
 
@@ -623,11 +633,19 @@ public class Player : PunBehaviour
                 PickUpWeapon(pickup);
             }
             else if (vivo == true)
+            { 
                 PhotonNetwork.RPC(photonView, "KillPlayer", PhotonTargets.AllBuffered, false);
+                particleManager.ActivateParticle(this.transform, particleDeath);
+            }
 
             else
                 if (Input.GetKey(KeyCode.Space))
-                    PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false);
+            { 
+                PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false);
+                particleManager.ActivateParticle(this.transform, particleSpawn);
+
+            }
+                   
 
         }
             _myPlayerStats.UpdateScoreboard();
@@ -663,6 +681,7 @@ public class Player : PunBehaviour
             _myPlayerStats.m_HP += amount;
 
         health.healthBar.UpdateBar(_myPlayerStats.m_HP, _myPlayerStats.base_HP);
+        particleManager.ActivateParticle(this.transform, particleHeal);
     }
 
     public void ArmourUp(int amount)
@@ -695,6 +714,7 @@ public class Player : PunBehaviour
         int randSpawn = Random.Range(0, terreno.PlayerSpawners.Count);
       
         transform.position = terreno.PlayerSpawners[randSpawn].transform.position;
+        //particleManager.ActivateParticle(this.transform, particleSpawn);
         vivo = true;
     }
 
@@ -702,6 +722,7 @@ public class Player : PunBehaviour
     public void KillPlayer()
     {
         vivo = false;
+        //particleManager.ActivateParticle(this.transform, particleDeath);
         //animator.SetBool("Morir", true);
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         gameObject.GetComponent<BoxCollider>().enabled = false;

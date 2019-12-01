@@ -15,8 +15,6 @@ public class TerrainGenerator : ScriptableObject
     public int numberOfTerrains;
     public int maxNumberX;
 
-
-
     public void SetTerrain(int _numberOfTerrains, Transform _parent)
     {
         EnemySpawners.Clear();

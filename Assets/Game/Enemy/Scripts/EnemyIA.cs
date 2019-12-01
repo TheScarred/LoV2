@@ -83,7 +83,6 @@ public class EnemyIA : PunBehaviour
     //Particles
     public ParticleManager particleManager;
     TypesAvailable.particleType particleDeath;
-    //public TypesAvailable particleType;
 
     void Awake()
     {
@@ -106,8 +105,7 @@ public class EnemyIA : PunBehaviour
         StartCoroutine("FindTargets");
         healTimer = 2f;
 
-        //Particles
-        particleDeath = TypesAvailable.particleType.ENEMY_DEATH;
+        
     }
     public void OnEnable()
     {
@@ -127,6 +125,9 @@ public class EnemyIA : PunBehaviour
         TranslatedRight = true;
         can_attack = true;
         CoolDown = new WaitForSeconds(CoolDownTime);
+
+        //Particles
+        particleDeath = TypesAvailable.particleType.ENEMY_DEATH;
     }
 
     IEnumerator FindTargets()

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2554709314926158618}
   - component: {fileID: 2554709314926158621}
-  - component: {fileID: 5717978994342996590}
+  - component: {fileID: 7235554317547054995}
   m_Layer: 0
   m_Name: ParticleManager
   m_TagString: Untagged
@@ -53,9 +53,11 @@ MonoBehaviour:
   - {fileID: 105993529640574202, guid: 21a0f478091da0d4280e45e37c36d869, type: 3}
   - {fileID: 7141799432834194764, guid: eb9e459594acfa94196d460e6e9918ce, type: 3}
   - {fileID: 4581510330320596777, guid: fa5c7c5561183f04e9235ebebd1967c8, type: 3}
-  particles: []
-  typesAvailable: {fileID: 5717978994342996590}
---- !u!114 &5717978994342996590
+  - {fileID: 770845546484820459, guid: f31f16accde16b34c873ba88031b4473, type: 3}
+  particles:
+  - {fileID: 770845546484820459, guid: f31f16accde16b34c873ba88031b4473, type: 3}
+  typesAvailable: {fileID: 7235554317547054995}
+--- !u!114 &7235554317547054995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
