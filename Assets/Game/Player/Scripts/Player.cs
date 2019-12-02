@@ -92,7 +92,7 @@ public class Player : PunBehaviour
         //BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
         meleeCooldown = melee.stats.rOF;
         rangedCooldown = ranged.stats.rOF;
-        delayMovement = 0.75f;
+
         imAttacking = false;
 
         //Particles
@@ -106,6 +106,7 @@ public class Player : PunBehaviour
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
     {
+        delayMovement = 0.5f;
         for (int i = 0; i < range_attack_Objects.Count; i++)
         {
             if (range_attack_Objects[i].activeSelf == false)
@@ -215,7 +216,7 @@ public class Player : PunBehaviour
         //Primary Attack
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            imAttacking = true;
+         
             if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
                 meleeAttack.isCrit = true;
 
@@ -224,6 +225,7 @@ public class Player : PunBehaviour
 
             if (meleeCooldown <= Time.time)
             {
+                imAttacking = true;
                 PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
                 meleeCooldown = Time.time + melee.stats.rOF;
             }
@@ -235,6 +237,8 @@ public class Player : PunBehaviour
         {
             if (rangedCooldown <= Time.time && rangedAmmo > 0)
             {
+                imAttacking = true;
+
                 SpawnRangeAttackObject(prefab_range_attack, transform.position);
 
                 if (ranged.stats.id >= 0)
@@ -258,6 +262,15 @@ public class Player : PunBehaviour
             meleeCooldown += Time.time;
         if (rangedCooldown < ranged.stats.rOF)
             rangedCooldown += Time.time;
+
+        if(delayMovement > 0)
+        {
+            delayMovement -= Time.deltaTime;
+            if(delayMovement <= 0)
+            {
+                imAttacking = false;
+            }
+        }
     }
 
     void PickUpWeapon(Collider col)
