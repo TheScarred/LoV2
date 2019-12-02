@@ -266,7 +266,6 @@ public class Player : PunBehaviour
         {
             WeaponPickup weapon = col.GetComponent<WeaponPickup>();
             ChangeWeapon(ref weapon.type, ref weapon.rarity, PhotonConnection.GetInstance().randomSeed, ref weapon.ID, weapon.lastWear);
-            particleManager.ActivateParticle(this.transform, particleGrab);
 
             StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
         }
@@ -299,19 +298,26 @@ public class Player : PunBehaviour
         if (col.CompareTag("Food") && _myPlayerStats.m_HP < _myPlayerStats.base_HP)
         {
             HealPlayer((int)col.GetComponent<Food>().type);
-            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
+            object[] ToSend = new object[2];
+            ToSend[0] = col.GetComponent<Consumable>().id;
+            ToSend[1] = ID;
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, ToSend);
         }
         if (col.CompareTag("Armour") && _myPlayerStats.m_Shield < _myPlayerStats.base_Shield)
         {
             ArmourUp((int)col.GetComponent<Armour>().type);
-            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
-            particleManager.ActivateParticle(this.transform, particleGrab);
+            object[] ToSend = new object[2];
+            ToSend[0] = col.GetComponent<Consumable>().id;
+            ToSend[1] = ID;
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, ToSend);
         }
         if (col.CompareTag("Ammo") && rangedAmmo < 30)
         {
             Resuply((int)col.GetComponent<Ammo>().type);
-            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
-            particleManager.ActivateParticle(this.transform, particleGrab);
+            object[] ToSend = new object[2];
+            ToSend[0] = col.GetComponent<Consumable>().id;
+            ToSend[1] = ID;
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, ToSend);
         }
         if (col.CompareTag("Melee") || col.CompareTag("Rango"))
         {
@@ -390,25 +396,32 @@ public class Player : PunBehaviour
     }
 
     [PunRPC]
-    public void DissappearWeapon(int id)
+    public void DissappearWeapon(object[] received)
     {
         for (int i = 0; i < PhotonConnection.GetInstance().weaponList.Count; i++)
         {
-            if (PhotonConnection.GetInstance().weaponList[i].ID == id)
+            if (PhotonConnection.GetInstance().weaponList[i].ID == (int)received[0])
             {
                 PhotonConnection.GetInstance().weaponList[i].gameObject.SetActive(false);
+                particleManager.ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleGrab);
             }
         }
     }
 
     [PunRPC]
-    public void DissappearConsumable(int id)
+    public void DissappearConsumable(object[] received)
     {
         for (int i = 0; i < PhotonConnection.GetInstance().consumables.Count; i++)
         {
-            if (PhotonConnection.GetInstance().consumables[i].id == id)
+            if (PhotonConnection.GetInstance().consumables[i].id == (int)received[0])
             {
                 PhotonConnection.GetInstance().consumables[i].gameObject.SetActive(false);
+
+                if (PhotonConnection.GetInstance().CompareTag("Food"))
+                    particleManager.ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleHeal);
+                else
+                    particleManager.ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleGrab);
+
             }
         }
     }
@@ -444,7 +457,10 @@ public class Player : PunBehaviour
             }
             else
             {
-                PhotonNetwork.RPC(photonView, "DissappearWeapon", PhotonTargets.All, false, objects[4]);
+                object[] ToSend = new object[2];
+                ToSend[0] = objects[4];
+                ToSend[1] = ID;
+                PhotonNetwork.RPC(photonView, "DissappearWeapon", PhotonTargets.All, false, ToSend);
                 PhotonNetwork.RPC(photonView, "GetMeleeWeapon", PhotonTargets.All, false, objects);
             }
 
@@ -468,7 +484,10 @@ public class Player : PunBehaviour
 
         else
         {
-            PhotonNetwork.RPC(photonView, "DissappearWeapon", PhotonTargets.All, false, objects[4]);
+            object[] ToSend = new object[2];
+            ToSend[0] = objects[4];
+            ToSend[1] = ID;
+            PhotonNetwork.RPC(photonView, "DissappearWeapon", PhotonTargets.All, false, ToSend);
             PhotonNetwork.RPC(photonView, "GetRangedWeapon", PhotonTargets.All, false, objects);
         }
     }
@@ -597,7 +616,13 @@ public class Player : PunBehaviour
                 //transform.position = (Vector3)stream.ReceiveNext();
                 _myPlayerStats.m_Speed = (float)stream.ReceiveNext();
                 _myPlayerStats.m_Shield = (float)stream.ReceiveNext();
-                _myPlayerStats.m_HP = (float)stream.ReceiveNext();
+                float received_HP = (float)stream.ReceiveNext();
+                if(received_HP < _myPlayerStats.m_HP)
+                {
+                    particleManager.ActivateParticle(transform, particleHit);
+                }
+                _myPlayerStats.m_HP = received_HP;
+
                 _myPlayerStats.m_DamageRange = (float)stream.ReceiveNext();
                 _myPlayerStats.m_DamageMelee = (float)stream.ReceiveNext();
 
@@ -622,15 +647,13 @@ public class Player : PunBehaviour
             }
             else if (vivo == true)
             {
-                PhotonNetwork.RPC(photonView, "KillPlayer", PhotonTargets.AllBuffered, false);
-                particleManager.ActivateParticle(this.transform, particleDeath);
+                PhotonNetwork.RPC(photonView, "KillPlayer", PhotonTargets.AllBuffered, false, ID);
             }
 
             else
                 if (Input.GetKey(KeyCode.Space))
             {
-                PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false);
-                particleManager.ActivateParticle(this.transform, particleSpawn);
+                PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false, ID);
 
             }
 
@@ -669,7 +692,6 @@ public class Player : PunBehaviour
             _myPlayerStats.m_HP += amount;
 
         health.healthBar.UpdateBar(_myPlayerStats.m_HP, _myPlayerStats.base_HP);
-        particleManager.ActivateParticle(this.transform, particleHeal);
     }
 
     public void ArmourUp(int amount)
@@ -696,7 +718,7 @@ public class Player : PunBehaviour
     }
 
     [PunRPC]
-    public void RevivePlayer()
+    public void RevivePlayer(int id)
     {
         gameObject.GetComponent<BoxCollider>().enabled = true;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -707,15 +729,15 @@ public class Player : PunBehaviour
         int randSpawn = Random.Range(0, terreno.PlayerSpawners.Count);
 
         transform.position = terreno.PlayerSpawners[randSpawn].transform.position;
-        //particleManager.ActivateParticle(this.transform, particleSpawn);
+        particleManager.ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleSpawn);
         vivo = true;
     }
 
     [PunRPC]
-    public void KillPlayer()
+    public void KillPlayer(int id)
     {
         vivo = false;
-        //particleManager.ActivateParticle(this.transform, particleDeath);
+        particleManager.ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleDeath);
         //animator.SetBool("Morir", true);
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         gameObject.GetComponent<BoxCollider>().enabled = false;
