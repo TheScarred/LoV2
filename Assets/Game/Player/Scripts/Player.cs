@@ -5,25 +5,17 @@ using Photon;
 using Items;
 using SimpleHealthBar_SpaceshipExample;
 
-public enum PlayerState
-{
-    NORMAL,
-    BLEEDING,
-    POISONED
-};
 public class Player : PunBehaviour
 {
     public Weapon melee, ranged;
     public Sprite[] meleeSprites;
     public Sprite[] rangedSprites;
-    public PlayerState myState;
+    public State myState;
     public PlayerStats _myPlayerStats;
     List<GameObject> range_attack_Objects = new List<GameObject>();
     public GameObject prefab_range_attack;
     public Rigidbody player_rigidbody;
     public TerrainGenerator terreno;
-    WaitForSeconds proyectile_Timer = new WaitForSeconds(2.0f);
-    WaitForSeconds melee_hitbox_Timer = new WaitForSeconds(0.5f);
     public Vector3 posicionJugador;
     private bool facingRight = true;
     private bool weaponTrigger = false;
@@ -31,6 +23,7 @@ public class Player : PunBehaviour
     public int ID;
     int DamageReceived;
     public uint rangedAmmo;
+    WaitForSeconds frame;
 
     PlayerHealth health;
 
@@ -38,7 +31,8 @@ public class Player : PunBehaviour
     public GameObject BasicHitBox;
     public Attack meleeAttack, rangedAttack;
     Collider pickup = null;
-    float hit_cooldown;
+    float meleeCooldown;
+    float rangedCooldown;
 
     //JOYSTICK
     public Joystick theJoystick;
@@ -46,6 +40,7 @@ public class Player : PunBehaviour
 
     void Start()
     {
+        frame = new WaitForSeconds(0.1f);
         melee = ScriptableObject.CreateInstance<Weapon>();
         ranged = ScriptableObject.CreateInstance<Weapon>();
         rangedAmmo = 10;
@@ -82,7 +77,8 @@ public class Player : PunBehaviour
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
         BasicHitBox.GetComponent<Collider>().enabled = false;
         //BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
-        hit_cooldown = 1.5f;
+        meleeCooldown = melee.stats.rOF;
+        rangedCooldown = ranged.stats.rOF;
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -157,10 +153,12 @@ public class Player : PunBehaviour
         {
             proyectile.GetComponent<Rigidbody>().AddForce(Vector3.left * 350f);
         }
-        yield return proyectile_Timer;
+       
         proyectile.GetComponent<Rigidbody>().velocity = Vector3.zero;
         proyectile.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         proyectile.SetActive(false);
+
+        yield return null;
 
     }
 
@@ -200,54 +198,42 @@ public class Player : PunBehaviour
             else
                 meleeAttack.isCrit = false;
 
-            PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
+            if (meleeCooldown <= Time.time)
+            {
+                PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
+                meleeCooldown = Time.time + melee.stats.rOF;
+            }
+
         }
 
         //Secondary attack
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (_myPlayerStats.m_ShootingSpeed >= ranged.stats.rOF)
+            if (rangedCooldown <= Time.time && rangedAmmo > 0)
             {
-                if (rangedAmmo > 0)
+                SpawnRangeAttackObject(prefab_range_attack, transform.position);
+
+                if (ranged.stats.id >= 0)
                 {
-                    _myPlayerStats.m_ShootingSpeed = 0f;
-                    SpawnRangeAttackObject(prefab_range_attack, transform.position);
-
-                    if (ranged.stats.id >= 0)
+                    ranged.stats.wear--;
+                    if (ranged.stats.wear <= 0)
                     {
-                        ranged.stats.wear--;
-                        if (ranged.stats.wear <= 0)
-                        {
-                            BreakRangedWeapon();
-                        }
+                        BreakRangedWeapon();
                     }
-
-                    rangedAmmo--;
-
                 }
+                rangedCooldown = Time.time + ranged.stats.rOF;
+                rangedAmmo--;
             }
-
         }
     }
 
     void UpdateVariables()
     {
-        //Debug.Log(timeBeforeAnotherShoot);
-        //Todas las variables de las estádisticas se deben actualizar aquí
         posicionJugador = transform.position;
-        //Debug.Log(transform.position);
-
-
-        //Timer para disparar proyectiles
-        if (_myPlayerStats.m_ShootingSpeed <= 1f)
-        {
-            _myPlayerStats.m_ShootingSpeed += Time.deltaTime;
-        }
-        if(hit_cooldown >= 0)
-        {
-            hit_cooldown -= Time.deltaTime;
-        }
-
+        if (meleeCooldown < melee.stats.rOF)
+            meleeCooldown += Time.time;
+        if (rangedCooldown < ranged.stats.rOF)
+            rangedCooldown += Time.time;
     }
 
     void PickUpWeapon(Collider col)
@@ -266,6 +252,16 @@ public class Player : PunBehaviour
         if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
+            if (transform.position.x > col.transform.position.x)
+                if (col.GetComponent<Attack>().effect == Items.Modifier.KNOCKBACK)
+                    KnockBack(Vector3.right, 1f);
+                else
+                    KnockBack(Vector3.right, 0.5f);
+            else
+                if (col.GetComponent<Attack>().effect == Items.Modifier.KNOCKBACK)
+                    KnockBack(Vector3.left, 1f);
+                else
+                    KnockBack(Vector3.left, 0.5f);
         }
         if (col.CompareTag("Food") && _myPlayerStats.m_HP < _myPlayerStats.base_HP)
         {
@@ -560,8 +556,6 @@ public class Player : PunBehaviour
                 SendStream(stream, _myPlayerStats.m_Speed);
                 SendStream(stream, _myPlayerStats.m_Shield);
                 SendStream(stream, _myPlayerStats.m_HP);
-                SendStream(stream, _myPlayerStats.m_ShootingSpeed);
-                SendStream(stream, _myPlayerStats.m_MeeleSpeed);
                 SendStream(stream, _myPlayerStats.m_DamageRange);
                 SendStream(stream, _myPlayerStats.m_DamageMelee);
               
@@ -579,8 +573,6 @@ public class Player : PunBehaviour
                 _myPlayerStats.m_Speed = (float)stream.ReceiveNext();
                 _myPlayerStats.m_Shield = (float)stream.ReceiveNext();
                 _myPlayerStats.m_HP = (float)stream.ReceiveNext();
-                _myPlayerStats.m_ShootingSpeed = (float)stream.ReceiveNext();
-                _myPlayerStats.m_MeeleSpeed = (float)stream.ReceiveNext();
                 _myPlayerStats.m_DamageRange = (float)stream.ReceiveNext();
                 _myPlayerStats.m_DamageMelee = (float)stream.ReceiveNext();
          
@@ -626,7 +618,7 @@ public class Player : PunBehaviour
     {
         BasicHitBox.GetComponent<Collider>().enabled = true;
         BasicHitBox.GetComponent<MeshRenderer>().enabled = true;
-        yield return melee_hitbox_Timer;
+        yield return frame;
         BasicHitBox.GetComponent<Collider>().enabled = false;   //will go back to waiting if another object is hit after detecting one with space. Will need counter for animation
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
     }
@@ -657,6 +649,11 @@ public class Player : PunBehaviour
             rangedAmmo = 30;
         else
             rangedAmmo += (uint)amount;
+    }
+
+    public void KnockBack(Vector3 dir, float power)
+    {
+        transform.Translate(dir * power);
     }
 
     [PunRPC]

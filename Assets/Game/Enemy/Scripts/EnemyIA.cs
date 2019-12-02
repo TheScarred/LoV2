@@ -43,6 +43,7 @@ public class EnemyIA : PunBehaviour
     public Animator animator;
     public Items.ItemType contains;
     public EnemyState status;
+    public Items.State myState;
     public Rigidbody enemy_rigidbody;
     public LayerMask targetMask;
     public LayerMask obstacleMask;
@@ -189,11 +190,9 @@ public class EnemyIA : PunBehaviour
 
         if(visibleTargets.Count == 0)
         {    
-                playertoChase = null;
+            playertoChase = null;
             if(HP >= 50)
-            {
                 status = EnemyState.Patrolling;
-            }
         }
     }
 
@@ -207,22 +206,20 @@ public void OnTriggerEnter(Collider other)
                 Attack attack = other.GetComponent<Attack>();
 
                 if (transform.position.x > other.transform.position.x)
-                    KnockBack(new Vector2(1, /*Random.Range(-1, 1)*/0), 2);
+                    if (attack.effect == Items.Modifier.KNOCKBACK)
+                        KnockBack(Vector3.right, 1f);
+                    else
+                        KnockBack(Vector3.right, 0.5f);
                 else
-                    KnockBack(new Vector2(1, /*Random.Range(-1, 1)*/0), 2);
-
-
+                    if (attack.effect == Items.Modifier.KNOCKBACK)
+                        KnockBack(Vector3.left, 1f);
+                    else
+                        KnockBack(Vector3.left, 0.5f);
 
                 if (attack.isCrit)
-                {
-                    HP -= (attack.damage * 2);
-                    //Debug.Log("CRIT! Damage Done: " + attack.damage*2);
-                }
+                    TakeDamage(attack.damage * 2.5f);
                 else
-                {
-                    HP -= attack.damage;
-                    //Debug.Log("Damage Done: " + attack.damage);
-                }
+                    TakeDamage(attack.damage);
 
                 if (attack.GetComponentInParent<Player>().melee.stats.id >= 0)
                     attack.GetComponentInParent<Player>().melee.stats.wear--;
@@ -273,15 +270,9 @@ public void OnTriggerEnter(Collider other)
             Attack attack = other.GetComponent<Attack>();
 
             if (attack.isCrit)
-            {
-                HP -= (attack.damage * 2);
-                //Debug.Log("CRIT! Damage Done: " + attack.damage * 2);
-            }
+                TakeDamage(attack.damage * 2.5f);
             else
-            {
-                HP -= attack.damage;
-                //Debug.Log("Damage Done: " + attack.damage);
-            }
+                TakeDamage(attack.damage);
 
             script_HP.ModifyHpBar(attack.damage, base_HP);
             audio.PlayOneShot(hit);
@@ -316,6 +307,11 @@ public void OnTriggerEnter(Collider other)
                 waitTime -= Time.deltaTime;
             }
         }
+    }
+
+    void TakeDamage(float amount)
+    {
+        HP -= amount;
     }
 
     void ChasePlayer()
@@ -488,9 +484,9 @@ public void OnTriggerEnter(Collider other)
         }
     }
 
-    public void KnockBack(Vector3 dir, int power)
+    public void KnockBack(Vector3 dir, float power)
     {
-        transform.Translate(new Vector3(transform.position.x + (dir.x * power),0, transform.position.z + (dir.z * power)));
+        transform.Translate(dir * power);
     }
 
     public void RPCForEnemyDeath()

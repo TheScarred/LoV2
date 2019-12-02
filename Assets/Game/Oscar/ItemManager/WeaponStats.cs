@@ -235,26 +235,6 @@ public class WeaponStats
                     SetDurabilityMod(ref stats);
                     break;
                 }
-            case (Modifier.SWIFTNESS):
-                {
-                    SetSwiftnessMod(ref stats);
-                    break;
-                }
-            case (Modifier.BLEEDING):
-                {
-                    SetBleedingMod(ref stats);
-                    break;
-                }
-            case (Modifier.BLOODTHIRST):
-                {
-                    SetBloodThirstMod(ref stats);
-                    break;
-                }
-            case (Modifier.KNOCKBACK):
-                {
-                    SetKnockBackMod(ref stats);
-                    break;
-                }
         }
     }
 
@@ -313,22 +293,6 @@ public class WeaponStats
     public static void SetDurabilityMod(ref Stats stats)
     {
         stats.wear += 20;
-    }
-    public static void SetSwiftnessMod(ref Stats stats)
-    {
-
-    }
-    public static void SetBleedingMod(ref Stats stats)
-    {
-        // player bleeding state
-    }
-    public static void SetBloodThirstMod(ref Stats stats)
-    {
-        // player hp + x when killing
-    }
-    public static void SetKnockBackMod(ref Stats stats)
-    {
-        // hit moves enemy back
     }
     public static void SetLowDragMod(ref Stats stats)
     {
