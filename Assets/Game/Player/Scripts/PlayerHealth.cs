@@ -102,6 +102,7 @@ namespace SimpleHealthBar_SpaceshipExample
 
 		public void Death ()
 		{
+            if(photonView.isMine)
             //AQUI ENSEÑARIA LA ESCENA DE DEATH
             gameObject.transform.DetachChildren();
 			Destroy( gameObject );
