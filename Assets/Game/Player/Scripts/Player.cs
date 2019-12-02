@@ -23,7 +23,8 @@ public class Player : PunBehaviour
     public int ID;
     int DamageReceived;
     public uint rangedAmmo;
-    WaitForSeconds frame;
+    WaitForSeconds attackFrame;
+    WaitForSeconds second;
 
     PlayerHealth health;
 
@@ -33,6 +34,7 @@ public class Player : PunBehaviour
     Collider pickup = null;
     float meleeCooldown;
     float rangedCooldown;
+    int damageCooldown;
 
     //JOYSTICK
     public Joystick theJoystick;
@@ -40,7 +42,9 @@ public class Player : PunBehaviour
 
     void Start()
     {
-        frame = new WaitForSeconds(0.1f);
+        myState = State.NORMAL;
+        attackFrame = new WaitForSeconds(0.1f);
+        second = new WaitForSeconds(1f);
         melee = ScriptableObject.CreateInstance<Weapon>();
         ranged = ScriptableObject.CreateInstance<Weapon>();
         rangedAmmo = 10;
@@ -159,7 +163,6 @@ public class Player : PunBehaviour
         proyectile.SetActive(false);
 
         yield return null;
-
     }
 
     void Movement()
@@ -252,16 +255,24 @@ public class Player : PunBehaviour
         if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
+
             if (transform.position.x > col.transform.position.x)
-                if (col.GetComponent<Attack>().effect == Items.Modifier.KNOCKBACK)
+                if (col.GetComponent<Attack>().effect == Modifier.KNOCKBACK)
                     KnockBack(Vector3.right, 1f);
                 else
                     KnockBack(Vector3.right, 0.5f);
             else
-                if (col.GetComponent<Attack>().effect == Items.Modifier.KNOCKBACK)
+                if (col.GetComponent<Attack>().effect == Modifier.KNOCKBACK)
                     KnockBack(Vector3.left, 1f);
                 else
                     KnockBack(Vector3.left, 0.5f);
+            
+            if (col.GetComponent<Attack>().effect == Modifier.BLEEDING && myState == State.NORMAL)
+            {
+                Debug.Log("Bleeding");
+                myState = State.DAMAGE;
+                StartCoroutine(TakeDamagePSecond(5));
+            }
         }
         if (col.CompareTag("Food") && _myPlayerStats.m_HP < _myPlayerStats.base_HP)
         {
@@ -294,35 +305,18 @@ public class Player : PunBehaviour
         }
     }
 
-    /* void InitRandomWeapons(Weapon melee, Weapon ranged)
-     {
-         melee.rarity = (Items.WeaponRarity)Random.Range(1, 5);
-         melee.sprite = meleeSprites[(int)melee.rarity];
-         melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity);
-
-         ranged.rarity = (Items.WeaponRarity)Random.Range(1, 5);
-         ranged.sprite = rangedSprites[(int)ranged.rarity];
-         ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity);
-
-         if ((int)melee.rarity > 1)
-         {
-             WeaponStats.SetMeleeModifier(ref melee.stats, melee.stats.mod1);
-             if (melee.rarity != Items.WeaponRarity.RARE)
-             {
-                 WeaponStats.SetMeleeModifier(ref melee.stats, melee.stats.mod2);
-             }
-         }
-
-         if ((int)ranged.rarity > 1)
-         {
-             WeaponStats.SetMeleeModifier(ref ranged.stats, ranged.stats.mod1);
-             if (ranged.rarity != Items.WeaponRarity.RARE)
-             {
-                 WeaponStats.SetMeleeModifier(ref ranged.stats, ranged.stats.mod2);
-             }
-         }
-     }*/
-
+    IEnumerator TakeDamagePSecond(int n)
+    {
+        int i = 0;
+        while (i < n)
+        {
+            _myPlayerStats.m_HP -= 1;
+            i++;
+            yield return second;
+        }
+        myState = State.NORMAL;
+    }
+     
     void InitBaseWeapons(Weapon melee, Weapon ranged)
     {
         melee.type = Items.WeaponType.MELEE;
@@ -484,6 +478,12 @@ public class Player : PunBehaviour
             ranged.type = (WeaponType)objects[2];
             ranged.rarity = (WeaponRarity)objects[3];
             ranged.stats = WeaponStats.SetStats(ranged.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4], (int)objects[5]);
+
+            if (ranged.rarity == WeaponRarity.LEGENDARY)
+                rangedAttack.effect = ranged.stats.mod1;
+
+            else
+                rangedAttack.effect = Modifier.NONE;
         }
     }
 
@@ -618,7 +618,7 @@ public class Player : PunBehaviour
     {
         BasicHitBox.GetComponent<Collider>().enabled = true;
         BasicHitBox.GetComponent<MeshRenderer>().enabled = true;
-        yield return frame;
+        yield return attackFrame;
         BasicHitBox.GetComponent<Collider>().enabled = false;   //will go back to waiting if another object is hit after detecting one with space. Will need counter for animation
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
     }

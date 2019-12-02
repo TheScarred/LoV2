@@ -19,8 +19,7 @@
     public enum State
     {
         NORMAL,
-        BLEEDING,
-        POISONED
+        DAMAGE
     };
 
     public enum Modifier

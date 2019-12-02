@@ -64,6 +64,7 @@ public class EnemyIA : PunBehaviour
     float minX, maxX, minY, maxY;
     float healTimer;
     WaitForSeconds delayToSearchForPlayer;
+    WaitForSeconds second;
 
     //HitPlayer
     bool TranslatedRight;
@@ -99,6 +100,7 @@ public class EnemyIA : PunBehaviour
         speed = 1f;
         status = EnemyState.Patrolling;
         delayToSearchForPlayer = new WaitForSeconds(0.3f);
+        second = new WaitForSeconds(1f);
         StartCoroutine("FindTargets");
         healTimer = 2f;
     }
@@ -197,7 +199,7 @@ public class EnemyIA : PunBehaviour
     }
 
 
-public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("HitMelee"))
         {
@@ -215,6 +217,13 @@ public void OnTriggerEnter(Collider other)
                         KnockBack(Vector3.left, 1f);
                     else
                         KnockBack(Vector3.left, 0.5f);
+
+                if ((other.GetComponent<Attack>().effect == Items.Modifier.BLEEDING) && myState == Items.State.NORMAL)
+                {
+                    myState = Items.State.DAMAGE;
+                    StartCoroutine(TakeDamagePSecond(5));
+                }
+
 
                 if (attack.isCrit)
                     TakeDamage(attack.damage * 2.5f);
@@ -262,6 +271,8 @@ public void OnTriggerEnter(Collider other)
                     killer.KilledTarget(killed_points);
                     PhotonNetwork.player.AddScore(killed_points);
 
+                    if (attack.effect == Items.Modifier.BLOODTHIRST)
+                        other.GetComponentInParent<Player>().HealPlayer(5);
                 }
             }
         }
@@ -463,6 +474,11 @@ public void OnTriggerEnter(Collider other)
             {
                 HealSelf();
             }
+
+            if (myState == Items.State.DAMAGE)
+            {
+                
+            }
           
         }
         if (HP <= 0)
@@ -487,6 +503,18 @@ public void OnTriggerEnter(Collider other)
     public void KnockBack(Vector3 dir, float power)
     {
         transform.Translate(dir * power);
+    }
+
+    IEnumerator TakeDamagePSecond(int n)
+    {
+        int i = 0;
+        while (i < n)
+        {
+            HP -= 1;
+            i++;
+            yield return second;
+        }
+        myState = Items.State.NORMAL;
     }
 
     public void RPCForEnemyDeath()
