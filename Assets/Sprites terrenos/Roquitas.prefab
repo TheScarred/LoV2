@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6339919041803486613}
   - component: {fileID: 8537756034937032980}
   - component: {fileID: 3179771912162385817}
+  - component: {fileID: 8321353769654605429}
+  - component: {fileID: 1875089323195652894}
   m_Layer: 0
   m_Name: Roquitas
   m_TagString: Untagged
@@ -92,5 +94,31 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.9784815, y: 1.6400001, z: 0.20000002}
-  m_Center: {x: 0.012975677, y: -4.034814e-11, z: 0}
+  m_Size: {x: 2.783927, y: 0.6330942, z: 0.20000002}
+  m_Center: {x: 0.13754529, y: 0.14778179, z: -0.00000024506798}
+--- !u!65 &8321353769654605429
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7723781876587228268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4100835, y: 0.88488936, z: 0.20000009}
+  m_Center: {x: -0.66730905, y: -0.250564, z: 0.00000014555008}
+--- !u!65 &1875089323195652894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7723781876587228268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0095112, y: 0.35675356, z: 0.20000009}
+  m_Center: {x: -0.9847574, y: 0.5149924, z: -0.0000002189459}
