@@ -77,12 +77,16 @@ MonoBehaviour:
   player_rigidbody: {fileID: 2814614972184391142}
   terreno: {fileID: 11400000, guid: 85c46e013eb9f9246bb60a21dbdccd47, type: 2}
   posicionJugador: {x: 0, y: 0, z: 0}
+  imAttacking: 0
   ID: 0
   rangedAmmo: 0
   BasicHitBox: {fileID: 3045176174394309520}
   meleeAttack: {fileID: 0}
   rangedAttack: {fileID: 0}
   theJoystick: {fileID: 0}
+  particleManager: {fileID: 2554709314926158621, guid: de6de6d22c80d0746980981a69ea9938,
+    type: 3}
+  particleHit: 3
 --- !u!54 &2814614972184391142
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -159,6 +163,7 @@ MonoBehaviour:
   UI_Score: {fileID: 0}
   HP_bar: {fileID: 7992099855816585950}
   Armor_bar: {fileID: 631676390501054677}
+  player: {fileID: 0}
   player_health: {fileID: 1384256105}
 --- !u!114 &1976399032
 MonoBehaviour:

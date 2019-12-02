@@ -82,6 +82,11 @@ public class EnemyIA : PunBehaviour
     public Image HP_bar;
     public float damage_percentage;
 
+    //Particles
+    public ParticleManager particleManager;
+    TypesAvailable.particleType particleDeath;
+    TypesAvailable.particleType particleHit;
+
     void Awake()
     {
         HP_bar.fillAmount = 1;
@@ -103,6 +108,9 @@ public class EnemyIA : PunBehaviour
         second = new WaitForSeconds(1f);
         StartCoroutine("FindTargets");
         healTimer = 2f;
+
+
+
     }
     public void OnEnable()
     {
@@ -122,6 +130,10 @@ public class EnemyIA : PunBehaviour
         TranslatedRight = true;
         can_attack = true;
         CoolDown = new WaitForSeconds(CoolDownTime);
+
+        //Particles
+        particleDeath = TypesAvailable.particleType.ENEMY_DEATH;
+        particleHit = TypesAvailable.particleType.HIT;
     }
 
     IEnumerator FindTargets()
@@ -175,7 +187,7 @@ public class EnemyIA : PunBehaviour
                         playertoChase = target.gameObject;
                         player_stats = playertoChase.GetComponent<PlayerStats>(); // connect to target script
                     }
-                    else 
+                    else
                     {
                         for (int x = 0; x < visibleTargets.Count; x++)
                         {
@@ -191,7 +203,7 @@ public class EnemyIA : PunBehaviour
         }
 
         if(visibleTargets.Count == 0)
-        {    
+        {
             playertoChase = null;
             if(HP >= 50)
                 status = EnemyState.Patrolling;
@@ -206,6 +218,7 @@ public class EnemyIA : PunBehaviour
             if (player_stats != null)
             {
                 Attack attack = other.GetComponent<Attack>();
+                particleManager.ActivateParticle(this.transform, particleHit);
 
                 if (transform.position.x > other.transform.position.x)
                     if (attack.effect == Items.Modifier.KNOCKBACK)
@@ -239,7 +252,7 @@ public class EnemyIA : PunBehaviour
                 script_HP.ModifyHpBar(attack.damage, base_HP);
                 audio.PlayOneShot(hit);
                 animator.SetTrigger("hit");
-                
+
                /*if(HP <= 20)
                 {
                     int type = Random.Range(0, 10);
@@ -342,7 +355,7 @@ public class EnemyIA : PunBehaviour
                     PlayWalking();
                 }
             }
-           
+
             if(status == EnemyState.Rage)
             {
                 transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed* 2f * Time.deltaTime);
@@ -409,7 +422,7 @@ public class EnemyIA : PunBehaviour
                 player_stats.ReceiveDamage(ArmourPen, Damage);
             }
             can_attack = true;
-           
+
         }
     }
 
@@ -463,7 +476,7 @@ public class EnemyIA : PunBehaviour
                     if (status == EnemyState.Rage)
                     {
                         PatrolArea(2);
-                    }  
+                    }
                 }
 
             }else if(status == EnemyState.Patrolling)
@@ -477,9 +490,9 @@ public class EnemyIA : PunBehaviour
 
             if (myState == Items.State.DAMAGE)
             {
-                
+
             }
-          
+
         }
         if (HP <= 0)
         {
@@ -489,6 +502,7 @@ public class EnemyIA : PunBehaviour
             {
                 audio.PlayOneShot(death);
                 RPCForEnemyDeath();
+                particleManager.ActivateParticle(this.transform, particleDeath);
             }
         }
         if (HP <= base_HP / 2)
@@ -519,7 +533,6 @@ public class EnemyIA : PunBehaviour
 
     public void RPCForEnemyDeath()
     {
-        this.gameObject.SetActive(false);
         byte seed = (byte)Random.Range(0, 256);
         PhotonNetwork.RPC(photonView, "RemoveEnemies", PhotonTargets.AllBuffered, false, seed);
     }

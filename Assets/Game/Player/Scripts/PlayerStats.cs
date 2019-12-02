@@ -37,6 +37,9 @@ public class PlayerStats : PunBehaviour
     public Image HP_bar;
     public Image Armor_bar;
 
+    //Particles
+    public Player player;
+
     //Connect to PlayerHealth Script
     public PlayerHealth player_health;
 
@@ -66,10 +69,10 @@ public class PlayerStats : PunBehaviour
 
     public void ReceiveDamage(float armourPen, float damage)
     {
+        player.particleManager.ActivateParticle(this.transform, player.particleHit);
         player_health.TakeDamage(armourPen, damage);
         float fillmount;
         fillmount = HP_bar.fillAmount = (m_HP / base_HP);
-
     }
 
     public void KilledTarget(int points)

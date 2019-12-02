@@ -16,10 +16,12 @@ public class Player : PunBehaviour
     public GameObject prefab_range_attack;
     public Rigidbody player_rigidbody;
     public TerrainGenerator terreno;
+    float delayMovement;
     public Vector3 posicionJugador;
     private bool facingRight = true;
     private bool weaponTrigger = false;
     bool vivo = true;
+    public bool imAttacking;
     public int ID;
     int DamageReceived;
     public uint rangedAmmo;
@@ -37,6 +39,14 @@ public class Player : PunBehaviour
 
     //JOYSTICK
     public Joystick theJoystick;
+
+    //Particles
+    public ParticleManager particleManager;
+    TypesAvailable.particleType particleDeath;
+    public TypesAvailable.particleType particleHit;
+    TypesAvailable.particleType particleHeal;
+    TypesAvailable.particleType particleGrab;
+    TypesAvailable.particleType particleSpawn;
 
 
     void Start()
@@ -60,7 +70,7 @@ public class Player : PunBehaviour
         if (photonView.isMine)
         {
             Camera.main.transform.parent = transform;
-            Camera.main.transform.localPosition = new Vector3(0, 4, -7);
+            Camera.main.transform.localPosition = new Vector3(0, 6, -12);
         }
 
         WeaponPickup[] weps = FindObjectsOfType<WeaponPickup>();
@@ -82,6 +92,16 @@ public class Player : PunBehaviour
         //BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
         meleeCooldown = melee.stats.rOF;
         rangedCooldown = ranged.stats.rOF;
+        delayMovement = 0.75f;
+        imAttacking = false;
+
+        //Particles
+        particleDeath = TypesAvailable.particleType.PLAYER_DEATH;
+        particleHit = TypesAvailable.particleType.HIT;
+        particleHeal = TypesAvailable.particleType.HEAL;
+        particleGrab = TypesAvailable.particleType.GRAB_WEAPON;
+        particleSpawn = TypesAvailable.particleType.PLAYER_SPAWN;
+        particleManager.ActivateParticle(this.transform, particleSpawn);
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -120,11 +140,8 @@ public class Player : PunBehaviour
 
                         range_attack_Objects[i].GetComponent<projectile>().ReactivarFlecha(parameters2);
                         return range_attack_Objects[i];
-
                     }
-
                 }
-
             }
         }
 
@@ -145,7 +162,7 @@ public class Player : PunBehaviour
         //StartCoroutine(MoveProyectile(go));
         return go;
     }
-    public IEnumerator MoveProyectile(GameObject proyectile)
+   /* public IEnumerator MoveProyectile(GameObject proyectile)
     {
         //Mover el disparo y luego desactivarlo para volverse a usar en el futuro
         if (!facingRight)
@@ -156,25 +173,29 @@ public class Player : PunBehaviour
         {
             proyectile.GetComponent<Rigidbody>().AddForce(Vector3.left * 350f);
         }
-       
+
         proyectile.GetComponent<Rigidbody>().velocity = Vector3.zero;
         proyectile.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         proyectile.SetActive(false);
 
         yield return null;
     }
-
+    */
     void Movement()
     {
         //Checar que lado esta mirando para cambiar su la escala (voltear)
-        if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight /*|| theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight*/)
-        {
-            facingRight = !facingRight;
-            Vector3 scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
 
-        }
+
+            if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight /*|| theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight*/)
+            {
+                facingRight = !facingRight;
+                Vector3 scale = transform.localScale;
+                scale.x *= -1;
+                transform.localScale = scale;
+
+            }
+
+
 
         float h = _myPlayerStats.m_Speed * Input.GetAxis("Horizontal");
         float v = _myPlayerStats.m_Speed * Input.GetAxis("Vertical");
@@ -194,6 +215,7 @@ public class Player : PunBehaviour
         //Primary Attack
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            imAttacking = true;
             if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
                 meleeAttack.isCrit = true;
 
@@ -244,6 +266,7 @@ public class Player : PunBehaviour
         {
             WeaponPickup weapon = col.GetComponent<WeaponPickup>();
             ChangeWeapon(ref weapon.type, ref weapon.rarity, PhotonConnection.GetInstance().randomSeed, ref weapon.ID, weapon.lastWear);
+            particleManager.ActivateParticle(this.transform, particleGrab);
 
             StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
         }
@@ -251,7 +274,7 @@ public class Player : PunBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        print("Entro");
+
         if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
@@ -266,10 +289,9 @@ public class Player : PunBehaviour
                     KnockBack(Vector3.left, 1f);
                 else
                     KnockBack(Vector3.left, 0.5f);
-            
+
             if (col.GetComponent<Attack>().effect == Modifier.BLEEDING && myState == State.NORMAL)
             {
-                Debug.Log("Bleeding");
                 myState = State.DAMAGE;
                 StartCoroutine(TakeDamagePSecond(3));
             }
@@ -283,16 +305,19 @@ public class Player : PunBehaviour
         {
             ArmourUp((int)col.GetComponent<Armour>().type);
             PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
+            particleManager.ActivateParticle(this.transform, particleGrab);
         }
         if (col.CompareTag("Ammo") && rangedAmmo < 30)
         {
             Resuply((int)col.GetComponent<Ammo>().type);
             PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
+            particleManager.ActivateParticle(this.transform, particleGrab);
         }
         if (col.CompareTag("Melee") || col.CompareTag("Rango"))
         {
             weaponTrigger = true;
             pickup = col;
+
         }
     }
 
@@ -316,7 +341,7 @@ public class Player : PunBehaviour
         }
         myState = State.NORMAL;
     }
-     
+
     void InitBaseWeapons(Weapon melee, Weapon ranged)
     {
         melee.type = Items.WeaponType.MELEE;
@@ -342,7 +367,7 @@ public class Player : PunBehaviour
         melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity, -1, -1);
         meleeAttack.damage = melee.stats.damage;
         meleeAttack.armourPen = melee.stats.armourPen;
-        
+
     }
 
     [PunRPC]
@@ -558,7 +583,7 @@ public class Player : PunBehaviour
                 SendStream(stream, _myPlayerStats.m_HP);
                 SendStream(stream, _myPlayerStats.m_DamageRange);
                 SendStream(stream, _myPlayerStats.m_DamageMelee);
-              
+
             }
         }
         else
@@ -575,7 +600,7 @@ public class Player : PunBehaviour
                 _myPlayerStats.m_HP = (float)stream.ReceiveNext();
                 _myPlayerStats.m_DamageRange = (float)stream.ReceiveNext();
                 _myPlayerStats.m_DamageMelee = (float)stream.ReceiveNext();
-         
+
             }
         }
     }
@@ -587,23 +612,34 @@ public class Player : PunBehaviour
         {
             if (_myPlayerStats.m_HP > 0)
             {
-                Movement();
+                if (imAttacking == false)
+                {
+                    Movement();
+                }
                 UpdateVariables();
                 AttackInput();
                 PickUpWeapon(pickup);
             }
             else if (vivo == true)
+            {
                 PhotonNetwork.RPC(photonView, "KillPlayer", PhotonTargets.AllBuffered, false);
+                particleManager.ActivateParticle(this.transform, particleDeath);
+            }
 
             else
                 if (Input.GetKey(KeyCode.Space))
-                    PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false);
+            {
+                PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false);
+                particleManager.ActivateParticle(this.transform, particleSpawn);
+
+            }
+
 
         }
             _myPlayerStats.UpdateScoreboard();
-       
+
             // Update scoreboard
-       
+
         if (PhotonNetwork.player.NickName == "")
             PhotonNetwork.player.NickName = "Jugador #" + Random.Range(1.00f, 9.00f);
     }
@@ -616,11 +652,13 @@ public class Player : PunBehaviour
     [PunRPC]
     IEnumerator ToggleHitBox()
     {
+
         BasicHitBox.GetComponent<Collider>().enabled = true;
         BasicHitBox.GetComponent<MeshRenderer>().enabled = true;
         yield return attackFrame;
         BasicHitBox.GetComponent<Collider>().enabled = false;   //will go back to waiting if another object is hit after detecting one with space. Will need counter for animation
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
+        imAttacking = false;
     }
 
     public void HealPlayer(int amount)
@@ -631,6 +669,7 @@ public class Player : PunBehaviour
             _myPlayerStats.m_HP += amount;
 
         health.healthBar.UpdateBar(_myPlayerStats.m_HP, _myPlayerStats.base_HP);
+        particleManager.ActivateParticle(this.transform, particleHeal);
     }
 
     public void ArmourUp(int amount)
@@ -666,8 +705,9 @@ public class Player : PunBehaviour
         _myPlayerStats.ResetStats();
 
         int randSpawn = Random.Range(0, terreno.PlayerSpawners.Count);
-      
+
         transform.position = terreno.PlayerSpawners[randSpawn].transform.position;
+        //particleManager.ActivateParticle(this.transform, particleSpawn);
         vivo = true;
     }
 
@@ -675,10 +715,11 @@ public class Player : PunBehaviour
     public void KillPlayer()
     {
         vivo = false;
+        //particleManager.ActivateParticle(this.transform, particleDeath);
         //animator.SetBool("Morir", true);
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         gameObject.GetComponent<BoxCollider>().enabled = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-       
+
     }
 }

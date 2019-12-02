@@ -118,12 +118,14 @@ public class PhotonConnection : PunBehaviour
 
     void CreateRoom()
     {
-
+        randomSeed = Random.Range(0, 9999999);
         Debug.Log("NO HAY CUARTOS, CREANDO UNO");
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 8;
+        roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable() { { "Dificultad", 0 }, { "SeedMapa", randomSeed } };
         PhotonNetwork.CreateRoom(myServerName, roomOptions, TypedLobby.Default);
-
+         ExitGames.Client.Photon.Hashtable customRoomProperties = new ExitGames.Client.Photon.Hashtable() { { "Dificultad", 0 }, { "SeedMapa", randomSeed } };
+        //CrearMapa(randomSeed);
     }
 
 
@@ -134,17 +136,31 @@ public class PhotonConnection : PunBehaviour
         Debug.Log("Conectado al cuarto:" + PhotonNetwork.room.Name);
         if (PhotonNetwork.isMasterClient)
         {
-            randomSeed = Random.Range(0, 9999999);
+            // randomSeed = Random.Range(0, 9999999);
             //METODO CREAR MAPA
-            ExitGames.Client.Photon.Hashtable customRoomProperties = new ExitGames.Client.Photon.Hashtable() { { "Dificultad", 0 }, { "SeedMapa", randomSeed } };
+              ExitGames.Client.Photon.Hashtable customRoomProperties = new ExitGames.Client.Photon.Hashtable() { { "Dificultad", 0 }, { "SeedMapa", randomSeed } };
+            //  Debug.Log(customRoomProperties["SeedMapa"].ToString());
+            //ExitGames.Client.Photon.Hashtable customRoomProperties = PhotonNetwork.room.CustomProperties;
+            randomSeed = (int)customRoomProperties["SeedMapa"];
+
             Debug.Log(customRoomProperties["SeedMapa"].ToString());
+
+            //CrearMapa((int)customRoomProperties["SeedMapa"]);
         }
         else
         {
+            
             ExitGames.Client.Photon.Hashtable customRoomProperties = PhotonNetwork.room.CustomProperties;
-            // randomSeed = (int)customRoomProperties["SeedMapa"];
+            Debug.Log(customRoomProperties.Count);
+            Debug.Log(customRoomProperties["SeedMapa"].ToString());
 
-            CrearMapa();
+
+
+            randomSeed = (int)customRoomProperties["SeedMapa"];
+
+
+
+            //CrearMapa((int)customRoomProperties["SeedMapa"]);
             //Debug.Log((int)customRoomProperties["Dificultad"]);
 
         }
@@ -245,8 +261,9 @@ public class PhotonConnection : PunBehaviour
         ownPlayer.SetActive(true);
     }
 
-    void CrearMapa()
+    public void CrearMapa()
     {
+        
         Random.InitState(randomSeed);
     }
 
