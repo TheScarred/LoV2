@@ -41,7 +41,6 @@ public class Player : PunBehaviour
     public Joystick theJoystick;
 
     //Particles
-    public ParticleManager particleManager;
     TypesAvailable.particleType particleDeath;
     public TypesAvailable.particleType particleHit;
     TypesAvailable.particleType particleHeal;
@@ -101,7 +100,7 @@ public class Player : PunBehaviour
         particleHeal = TypesAvailable.particleType.HEAL;
         particleGrab = TypesAvailable.particleType.GRAB_WEAPON;
         particleSpawn = TypesAvailable.particleType.PLAYER_SPAWN;
-        particleManager.ActivateParticle(this.transform, particleSpawn);
+        ParticleManager.GetInstance().ActivateParticle(this.transform, particleSpawn);
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -438,7 +437,7 @@ public class Player : PunBehaviour
             if (PhotonConnection.GetInstance().weaponList[i].ID == (int)received[0])
             {
                 PhotonConnection.GetInstance().weaponList[i].gameObject.SetActive(false);
-                particleManager.ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleGrab);
+                ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleGrab);
             }
         }
     }
@@ -453,9 +452,9 @@ public class Player : PunBehaviour
                 PhotonConnection.GetInstance().consumables[i].gameObject.SetActive(false);
 
                 if (PhotonConnection.GetInstance().CompareTag("Food"))
-                    particleManager.ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleHeal);
+                    ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleHeal);
                 else
-                    particleManager.ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleGrab);
+                    ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleGrab);
 
             }
         }
@@ -654,7 +653,7 @@ public class Player : PunBehaviour
                 float received_HP = (float)stream.ReceiveNext();
                 if(received_HP < _myPlayerStats.m_HP)
                 {
-                    particleManager.ActivateParticle(transform, particleHit);
+                    ParticleManager.GetInstance().ActivateParticle(transform, particleHit);
                 }
                 _myPlayerStats.m_HP = received_HP;
 
@@ -764,7 +763,7 @@ public class Player : PunBehaviour
         int randSpawn = Random.Range(0, terreno.PlayerSpawners.Count);
 
         transform.position = terreno.PlayerSpawners[randSpawn].transform.position;
-        particleManager.ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleSpawn);
+        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleSpawn);
         vivo = true;
     }
 
@@ -772,7 +771,7 @@ public class Player : PunBehaviour
     public void KillPlayer(int id)
     {
         vivo = false;
-        particleManager.ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleDeath);
+        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleDeath);
         //animator.SetBool("Morir", true);
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         gameObject.GetComponent<BoxCollider>().enabled = false;

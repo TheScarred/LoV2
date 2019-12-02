@@ -9,7 +9,20 @@ public class ParticleManager : MonoBehaviour
 
     public TypesAvailable typesAvailable;
     ParticleSystem particle_created;
- 
+
+    private static ParticleManager instance;
+    public static ParticleManager GetInstance()
+    {
+        return instance;
+    }
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
 
     public void ActivateParticle(Transform t, TypesAvailable.particleType type)
     {
@@ -26,13 +39,12 @@ public class ParticleManager : MonoBehaviour
                     if (!particles[i].IsAlive())  //if the particle is not currently being used then...
                     {
                         //play particle
-                        particles[i].transform.position = new Vector3(0, 0, 0);
                         particles[i].transform.parent = t;
+                        particles[i].transform.localPosition = new Vector3(0, 0, 0);
                         particles[i].Play();
                         if (particle_created.main.loop == true)
                         {
                             //Start Timer for Particle
-                            
                             particles[i].GetComponent<ParticleType>().StartTimer();
                         }
                         return;
