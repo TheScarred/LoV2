@@ -20,8 +20,6 @@ public class PlayerStats : PunBehaviour
     public float m_Speed;
     public float m_Shield;
     public float m_HP;
-    public float m_ShootingSpeed;
-    public float m_MeeleSpeed;
     public float m_DamageRange;
     public float m_DamageMelee;
     public int m_Ammo;
@@ -66,8 +64,6 @@ public class PlayerStats : PunBehaviour
         m_Shield = 0;
         m_DamageMelee = base_DamageMeele;
         m_DamageRange = base_DamageRange;
-        m_MeeleSpeed = base_MeleeSpeed;
-        m_ShootingSpeed = base_ShootingSpeed;
         m_Ammo = base_AmmoCap / 3;
     }
 

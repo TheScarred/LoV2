@@ -43,6 +43,7 @@ public class EnemyIA : PunBehaviour
     public Animator animator;
     public Items.ItemType contains;
     public EnemyState status;
+    public Items.State myState;
     public Rigidbody enemy_rigidbody;
     public LayerMask targetMask;
     public LayerMask obstacleMask;
@@ -63,6 +64,7 @@ public class EnemyIA : PunBehaviour
     float minX, maxX, minY, maxY;
     float healTimer;
     WaitForSeconds delayToSearchForPlayer;
+    WaitForSeconds second;
 
     //HitPlayer
     bool TranslatedRight;
@@ -103,11 +105,12 @@ public class EnemyIA : PunBehaviour
         speed = 1f;
         status = EnemyState.Patrolling;
         delayToSearchForPlayer = new WaitForSeconds(0.3f);
+        second = new WaitForSeconds(1f);
         StartCoroutine("FindTargets");
         healTimer = 2f;
 
 
-        
+
     }
     public void OnEnable()
     {
@@ -184,7 +187,7 @@ public class EnemyIA : PunBehaviour
                         playertoChase = target.gameObject;
                         player_stats = playertoChase.GetComponent<PlayerStats>(); // connect to target script
                     }
-                    else 
+                    else
                     {
                         for (int x = 0; x < visibleTargets.Count; x++)
                         {
@@ -200,35 +203,45 @@ public class EnemyIA : PunBehaviour
         }
 
         if(visibleTargets.Count == 0)
-        {    
-                playertoChase = null;
+        {
+            playertoChase = null;
             if(HP >= 50)
-            {
                 status = EnemyState.Patrolling;
-            }
         }
     }
 
 
-public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("HitMelee"))
+        if (other.CompareTag("HitMelee"))
         {
             if (player_stats != null)
             {
                 Attack attack = other.GetComponent<Attack>();
                 particleManager.ActivateParticle(this.transform, particleHit);
 
-                if (attack.isCrit)
-                {
-                    HP -= (attack.damage * 2);
-                    //Debug.Log("CRIT! Damage Done: " + attack.damage*2);
-                }
+                if (transform.position.x > other.transform.position.x)
+                    if (attack.effect == Items.Modifier.KNOCKBACK)
+                        KnockBack(Vector3.right, 1f);
+                    else
+                        KnockBack(Vector3.right, 0.5f);
                 else
+                    if (attack.effect == Items.Modifier.KNOCKBACK)
+                        KnockBack(Vector3.left, 1f);
+                    else
+                        KnockBack(Vector3.left, 0.5f);
+
+                if ((other.GetComponent<Attack>().effect == Items.Modifier.BLEEDING) && myState == Items.State.NORMAL)
                 {
-                    HP -= attack.damage;
-                    //Debug.Log("Damage Done: " + attack.damage);
+                    myState = Items.State.DAMAGE;
+                    StartCoroutine(TakeDamagePSecond(5));
                 }
+
+
+                if (attack.isCrit)
+                    TakeDamage(attack.damage * 2.5f);
+                else
+                    TakeDamage(attack.damage);
 
                 if (attack.GetComponentInParent<Player>().melee.stats.id >= 0)
                     attack.GetComponentInParent<Player>().melee.stats.wear--;
@@ -239,7 +252,7 @@ public void OnTriggerEnter(Collider other)
                 script_HP.ModifyHpBar(attack.damage, base_HP);
                 audio.PlayOneShot(hit);
                 animator.SetTrigger("hit");
-                
+
                /*if(HP <= 20)
                 {
                     int type = Random.Range(0, 10);
@@ -271,6 +284,8 @@ public void OnTriggerEnter(Collider other)
                     killer.KilledTarget(killed_points);
                     PhotonNetwork.player.AddScore(killed_points);
 
+                    if (attack.effect == Items.Modifier.BLOODTHIRST)
+                        other.GetComponentInParent<Player>().HealPlayer(5);
                 }
             }
         }
@@ -279,15 +294,9 @@ public void OnTriggerEnter(Collider other)
             Attack attack = other.GetComponent<Attack>();
 
             if (attack.isCrit)
-            {
-                HP -= (attack.damage * 2);
-                //Debug.Log("CRIT! Damage Done: " + attack.damage * 2);
-            }
+                TakeDamage(attack.damage * 2.5f);
             else
-            {
-                HP -= attack.damage;
-                //Debug.Log("Damage Done: " + attack.damage);
-            }
+                TakeDamage(attack.damage);
 
             script_HP.ModifyHpBar(attack.damage, base_HP);
             audio.PlayOneShot(hit);
@@ -324,6 +333,11 @@ public void OnTriggerEnter(Collider other)
         }
     }
 
+    void TakeDamage(float amount)
+    {
+        HP -= amount;
+    }
+
     void ChasePlayer()
     {
         bool didMove = false;
@@ -341,7 +355,7 @@ public void OnTriggerEnter(Collider other)
                     PlayWalking();
                 }
             }
-           
+
             if(status == EnemyState.Rage)
             {
                 transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed* 2f * Time.deltaTime);
@@ -408,7 +422,7 @@ public void OnTriggerEnter(Collider other)
                 player_stats.ReceiveDamage(ArmourPen, Damage);
             }
             can_attack = true;
-           
+
         }
     }
 
@@ -462,7 +476,7 @@ public void OnTriggerEnter(Collider other)
                     if (status == EnemyState.Rage)
                     {
                         PatrolArea(2);
-                    }  
+                    }
                 }
 
             }else if(status == EnemyState.Patrolling)
@@ -473,7 +487,12 @@ public void OnTriggerEnter(Collider other)
             {
                 HealSelf();
             }
-          
+
+            if (myState == Items.State.DAMAGE)
+            {
+
+            }
+
         }
         if (HP <= 0)
         {
@@ -493,8 +512,23 @@ public void OnTriggerEnter(Collider other)
         {
             status = EnemyState.Resting;
         }
+    }
 
+    public void KnockBack(Vector3 dir, float power)
+    {
+        transform.Translate(dir * power);
+    }
 
+    IEnumerator TakeDamagePSecond(int n)
+    {
+        int i = 0;
+        while (i < n)
+        {
+            HP -= 1;
+            i++;
+            yield return second;
+        }
+        myState = Items.State.NORMAL;
     }
 
     public void RPCForEnemyDeath()

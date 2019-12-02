@@ -15,6 +15,13 @@
         LEGENDARY
     };
 
+
+    public enum State
+    {
+        NORMAL,
+        DAMAGE
+    };
+
     public enum Modifier
     {
         NONE,
@@ -57,9 +64,9 @@
 
     public enum ArmourType
     {
-        PLATE = 5,
-        VEST = 15,
-        SUIT = 40
+        PLATE = 10,
+        VEST = 25,
+        SUIT = 60
     }
 
     public enum AmmoType
