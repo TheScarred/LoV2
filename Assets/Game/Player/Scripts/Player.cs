@@ -70,7 +70,7 @@ public class Player : PunBehaviour
         if (photonView.isMine)
         {
             Camera.main.transform.parent = transform;
-            Camera.main.transform.localPosition = new Vector3(0, 4, -7);
+            Camera.main.transform.localPosition = new Vector3(0, 6, -12);
         }
 
         WeaponPickup[] weps = FindObjectsOfType<WeaponPickup>();
