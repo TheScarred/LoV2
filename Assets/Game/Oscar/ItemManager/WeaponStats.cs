@@ -262,11 +262,6 @@ public class WeaponStats
                     SetBulletPoint(ref stats);
                     break;
                 }
-            case (Modifier.EXPLOSIVE):
-                {
-                    SetExplosiveMod(ref stats);
-                    break;
-                }
             case (Modifier.HOMING):
                 {
                     SetHomingMod(ref stats);

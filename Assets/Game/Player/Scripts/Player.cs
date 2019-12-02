@@ -246,7 +246,26 @@ public class Player : PunBehaviour
                     }
                 }
                 rangedCooldown = Time.time + ranged.stats.rOF;
-                rangedAmmo--;
+
+                if (ranged.stats.mod1 == Modifier.BOTTOMLESS || ranged.stats.mod2 == Modifier.BOTTOMLESS)
+                {
+                    if (ranged.stats.mod1 == Modifier.BOTTOMLESS)
+                    {
+                        if (ranged.stats.mod2 == Modifier.BOTTOMLESS)
+                        {
+                            if (Random.Range(0, 5) < 2)
+                                rangedAmmo--;
+                            else
+                                Debug.Log("2 stack: Arrow recovered");
+                        }
+                        else if (Random.Range(0, 5) < 3)
+                            rangedAmmo--;
+                        else
+                            Debug.Log("1 stack: Arrow recovered!");
+                    }
+                }
+                else
+                    rangedAmmo--;
             }
         }
     }
