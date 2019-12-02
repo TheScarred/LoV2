@@ -6426,7 +6426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0142de0bd073f4f90943576f19128e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameVersion: 3.3
+  gameVersion: 10.0
   myServerName: 
   ownPlayer: {fileID: 0}
   playerList: []
@@ -8361,6 +8361,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 5797035302591012350, guid: b3cbb7b03dd7c7b408ae5f28259acee0,
+        type: 3}
+      propertyPath: m_Name
+      value: Arbol 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5797035302591012351, guid: b3cbb7b03dd7c7b408ae5f28259acee0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8415,11 +8420,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5797035302591012350, guid: b3cbb7b03dd7c7b408ae5f28259acee0,
-        type: 3}
-      propertyPath: m_Name
-      value: Arbol 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3cbb7b03dd7c7b408ae5f28259acee0, type: 3}

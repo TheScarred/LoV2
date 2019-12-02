@@ -23,7 +23,7 @@ public class Player : PunBehaviour
     public Rigidbody player_rigidbody;
     public TerrainGenerator terreno;
     float delayMovement;
-    WaitForSeconds melee_hitbox_Timer = new WaitForSeconds(0.5f);
+    WaitForSeconds melee_hitbox_Timer = new WaitForSeconds(0.01f);
     public Vector3 posicionJugador;
     private bool facingRight = true;
     private bool weaponTrigger = false;
