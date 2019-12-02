@@ -83,6 +83,7 @@ public class EnemyIA : PunBehaviour
     //Particles
     public ParticleManager particleManager;
     TypesAvailable.particleType particleDeath;
+    TypesAvailable.particleType particleHit;
 
     void Awake()
     {
@@ -104,6 +105,7 @@ public class EnemyIA : PunBehaviour
         delayToSearchForPlayer = new WaitForSeconds(0.3f);
         StartCoroutine("FindTargets");
         healTimer = 2f;
+
 
         
     }
@@ -128,6 +130,7 @@ public class EnemyIA : PunBehaviour
 
         //Particles
         particleDeath = TypesAvailable.particleType.ENEMY_DEATH;
+        particleHit = TypesAvailable.particleType.HIT;
     }
 
     IEnumerator FindTargets()
@@ -214,6 +217,7 @@ public void OnTriggerEnter(Collider other)
             if (player_stats != null)
             {
                 Attack attack = other.GetComponent<Attack>();
+                particleManager.ActivateParticle(this.transform, particleHit);
 
                 if (attack.isCrit)
                 {

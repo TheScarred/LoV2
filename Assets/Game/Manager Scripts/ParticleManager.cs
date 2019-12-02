@@ -11,20 +11,16 @@ public class ParticleManager : MonoBehaviour
     public TypesAvailable typesAvailable;
     ParticleSystem particle_created;
  
-    void Awake()
-    {
-       
-    }
 
     public void ActivateParticle(Transform t, TypesAvailable.particleType type)
     {
-        print("EnterActivateParticle " + type);
+        //print("EnterActivateParticle " + type);
         //print("ListExists " + ListExists);
 
-        print("List Exists: " + particles.Count);
+        //print("List Exists: " + particles.Count);
         if (!ListExists)
          {
-             print("List is created!");
+             //print("List is created!");
              particles = new List<ParticleSystem>();
              ListExists = true;
          }
@@ -48,7 +44,7 @@ public class ParticleManager : MonoBehaviour
                         particles[i].Play();
                         if (particle_created.main.loop == true)
                         {
-                            print("routine start");
+                            //print("routine start");
                             particles[i].GetComponent<ParticleType>().StartTimer();
                         }
                         return;
@@ -75,7 +71,7 @@ public class ParticleManager : MonoBehaviour
                 //if the animation is in a loop, call function that will calculate when it needs to be stopped
                 if(particle_created.main.loop == true)
                 {
-                    print("Courutine started!");
+                    //print("Courutine started!");
                     particle_created.GetComponent<ParticleType>().StartTimer();
                 }
                 return;
@@ -83,18 +79,23 @@ public class ParticleManager : MonoBehaviour
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        particles.Clear();
+    }
+    
     //for testing
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.N))
         {
-            print("N Pressed");
+            //print("N Pressed");
             TypesAvailable.particleType type = TypesAvailable.particleType.ENEMY_DEATH;
             ActivateParticle(this.transform, type);
         }
         else if (Input.GetKeyUp(KeyCode.M))
         {
-            print("M Pressed");
+            //print("M Pressed");
             TypesAvailable.particleType type = TypesAvailable.particleType.MOD_DEFENSE;
             ActivateParticle(this.transform, type);
         }

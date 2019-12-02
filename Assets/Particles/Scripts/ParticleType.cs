@@ -23,7 +23,7 @@ public class ParticleType : MonoBehaviour
     {
         yield return new WaitForSeconds(countdown);
         particle.Stop();
-        print("Stop!");
+        //print("Stop!");
         countdown = 3;
     }
 }
