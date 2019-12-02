@@ -25,7 +25,6 @@ public class Player : PunBehaviour
     public uint rangedAmmo;
     WaitForSeconds attackFrame;
     WaitForSeconds second;
-
     PlayerHealth health;
 
     // Melee attack hitbox & stat script
@@ -252,6 +251,7 @@ public class Player : PunBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+        print("Entro");
         if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
@@ -271,7 +271,7 @@ public class Player : PunBehaviour
             {
                 Debug.Log("Bleeding");
                 myState = State.DAMAGE;
-                StartCoroutine(TakeDamagePSecond(5));
+                StartCoroutine(TakeDamagePSecond(3));
             }
         }
         if (col.CompareTag("Food") && _myPlayerStats.m_HP < _myPlayerStats.base_HP)
