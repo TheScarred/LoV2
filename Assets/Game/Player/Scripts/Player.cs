@@ -206,7 +206,10 @@ public class Player : PunBehaviour
         //float v = _myPlayerStats.m_Speed * theJoystick.vectical;
 
         Vector3 movement = new Vector3(h, 0.0f, v);
-        player_rigidbody.velocity = movement * _myPlayerStats.m_Speed;
+        if (melee.stats.mod1 == Modifier.SWIFTNESS || melee.stats.mod2 == Modifier.SWIFTNESS)
+            player_rigidbody.velocity = movement * (_myPlayerStats.m_Speed * 1.15f);
+        else
+            player_rigidbody.velocity = movement * _myPlayerStats.m_Speed;
 
 
     }
@@ -322,7 +325,7 @@ public class Player : PunBehaviour
                 else
                     KnockBack(Vector3.left, 0.5f);
 
-            if (col.GetComponent<Attack>().effect == Modifier.BLEEDING && myState == State.NORMAL)
+            if ((col.GetComponent<Attack>().effect == Modifier.BLEEDING || col.GetComponent<Attack>().effect == Modifier.POISON) && myState == State.NORMAL)
             {
                 myState = State.DAMAGE;
                 StartCoroutine(TakeDamagePSecond(3));
