@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3498117161281581906}
   - component: {fileID: 2209820538171303746}
   - component: {fileID: 8614886544045226218}
+  - component: {fileID: -2929531804083930897}
   m_Layer: 9
   m_Name: PlayerNetIvan
   m_TagString: Player
@@ -154,8 +155,6 @@ MonoBehaviour:
   m_Speed: 2
   m_Shield: 0
   m_HP: 0
-  m_ShootingSpeed: 0
-  m_MeeleSpeed: 0
   m_DamageRange: 0
   m_DamageMelee: 0
   m_Ammo: 0
@@ -389,6 +388,21 @@ MonoBehaviour:
   jugador: {fileID: 2814614972184391143}
   animator: {fileID: 8941741865211387443}
   p: {fileID: 1384256105}
+--- !u!114 &-2929531804083930897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814614972184391143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
+  runOnlyOnce: 0
 --- !u!1001 &2684425966632174307
 PrefabInstance:
   m_ObjectHideFlags: 0

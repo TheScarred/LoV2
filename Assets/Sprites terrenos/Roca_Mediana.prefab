@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 222833087699119379}
   - component: {fileID: 4838317633605600825}
+  - component: {fileID: -4829946632291442226}
   - component: {fileID: 825239388968935785}
   m_Layer: 0
   m_Name: Roca_Mediana
@@ -81,6 +82,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4829946632291442226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6131904290664845960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
+  runOnlyOnce: 0
 --- !u!65 &825239388968935785
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -79,6 +79,8 @@ public class TerrainGenerator : ScriptableObject
             {
                 numX = 0;
                 numY++;
+
+
             }
 
             //}
