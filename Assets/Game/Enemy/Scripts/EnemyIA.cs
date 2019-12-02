@@ -259,6 +259,7 @@ public void OnTriggerEnter(Collider other)
                     killer = other.gameObject.transform.parent.gameObject.GetComponent<PlayerStats>();
                     killer.KilledTarget(killed_points);
                     PhotonNetwork.player.AddScore(killed_points);
+                    killer.UpdateScoreboard();
 
                 }
             }

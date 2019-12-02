@@ -127,7 +127,7 @@ public class PlayerStats : PunBehaviour
                 Debug.Log("entrando");
                 MVP.SetActive(true);
             }
-            /*else
+            else
             {
                 MVP.SetActive(false);
             }
