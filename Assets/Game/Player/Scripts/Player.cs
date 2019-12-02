@@ -92,7 +92,7 @@ public class Player : PunBehaviour
         //BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
         meleeCooldown = melee.stats.rOF;
         rangedCooldown = ranged.stats.rOF;
-        delayMovement = 0.75f;
+
         imAttacking = false;
 
         //Particles
@@ -106,6 +106,7 @@ public class Player : PunBehaviour
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
     {
+        delayMovement = 0.5f;
         for (int i = 0; i < range_attack_Objects.Count; i++)
         {
             if (range_attack_Objects[i].activeSelf == false)
@@ -205,7 +206,10 @@ public class Player : PunBehaviour
         //float v = _myPlayerStats.m_Speed * theJoystick.vectical;
 
         Vector3 movement = new Vector3(h, 0.0f, v);
-        player_rigidbody.velocity = movement * _myPlayerStats.m_Speed;
+        if (melee.stats.mod1 == Modifier.SWIFTNESS || melee.stats.mod2 == Modifier.SWIFTNESS)
+            player_rigidbody.velocity = movement * (_myPlayerStats.m_Speed * 1.15f);
+        else
+            player_rigidbody.velocity = movement * _myPlayerStats.m_Speed;
 
 
     }
@@ -215,7 +219,7 @@ public class Player : PunBehaviour
         //Primary Attack
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            imAttacking = true;
+         
             if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
                 meleeAttack.isCrit = true;
 
@@ -224,6 +228,7 @@ public class Player : PunBehaviour
 
             if (meleeCooldown <= Time.time)
             {
+                imAttacking = true;
                 PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
                 meleeCooldown = Time.time + melee.stats.rOF;
             }
@@ -235,6 +240,8 @@ public class Player : PunBehaviour
         {
             if (rangedCooldown <= Time.time && rangedAmmo > 0)
             {
+                imAttacking = true;
+
                 SpawnRangeAttackObject(prefab_range_attack, transform.position);
 
                 if (ranged.stats.id >= 0)
@@ -246,7 +253,26 @@ public class Player : PunBehaviour
                     }
                 }
                 rangedCooldown = Time.time + ranged.stats.rOF;
-                rangedAmmo--;
+
+                if (ranged.stats.mod1 == Modifier.BOTTOMLESS || ranged.stats.mod2 == Modifier.BOTTOMLESS)
+                {
+                    if (ranged.stats.mod1 == Modifier.BOTTOMLESS)
+                    {
+                        if (ranged.stats.mod2 == Modifier.BOTTOMLESS)
+                        {
+                            if (Random.Range(0, 5) < 2)
+                                rangedAmmo--;
+                            else
+                                Debug.Log("2 stack: Arrow recovered");
+                        }
+                        else if (Random.Range(0, 5) < 3)
+                            rangedAmmo--;
+                        else
+                            Debug.Log("1 stack: Arrow recovered!");
+                    }
+                }
+                else
+                    rangedAmmo--;
             }
         }
     }
@@ -258,6 +284,15 @@ public class Player : PunBehaviour
             meleeCooldown += Time.time;
         if (rangedCooldown < ranged.stats.rOF)
             rangedCooldown += Time.time;
+
+        if(delayMovement > 0)
+        {
+            delayMovement -= Time.deltaTime;
+            if(delayMovement <= 0)
+            {
+                imAttacking = false;
+            }
+        }
     }
 
     void PickUpWeapon(Collider col)
@@ -290,7 +325,7 @@ public class Player : PunBehaviour
                 else
                     KnockBack(Vector3.left, 0.5f);
 
-            if (col.GetComponent<Attack>().effect == Modifier.BLEEDING && myState == State.NORMAL)
+            if ((col.GetComponent<Attack>().effect == Modifier.BLEEDING || col.GetComponent<Attack>().effect == Modifier.POISON) && myState == State.NORMAL)
             {
                 myState = State.DAMAGE;
                 StartCoroutine(TakeDamagePSecond(3));

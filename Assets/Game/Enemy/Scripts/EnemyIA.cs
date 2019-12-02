@@ -302,6 +302,13 @@ public class EnemyIA : PunBehaviour
             audio.PlayOneShot(hit);
             animator.SetTrigger("hit");
 
+
+            if ((other.GetComponent<Attack>().effect == Items.Modifier.POISON) && myState == Items.State.NORMAL)
+            {
+                myState = Items.State.DAMAGE;
+                StartCoroutine(TakeDamagePSecond(5));
+            }
+
             if (HP <= 0)
             {
                 int col_id = other.gameObject.GetComponent<projectile>().owner;
@@ -311,6 +318,7 @@ public class EnemyIA : PunBehaviour
                 PhotonNetwork.player.AddScore(killed_points);
             }
             other.gameObject.SetActive(false);
+
         }
     }
     void PatrolArea(int modifier)

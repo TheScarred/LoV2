@@ -43,7 +43,11 @@ public class projectile : PunBehaviour
 
     public void OnEnable()
     {
-        timer = 1.5f;
+        if (PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod1 == Items.Modifier.BULLETPOINT ||
+            PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod2 == Items.Modifier.BULLETPOINT)
+            timer = 2.25f;
+        else
+            timer = 1.5f;
     }
 
     IEnumerator DeathTime()
@@ -53,19 +57,16 @@ public class projectile : PunBehaviour
     }
 
 
-    public void moveProjectile(bool direction)
+    public void moveProjectile(bool direction, float force)
     {
-
         if (!direction)
         {
-            this.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.right * 350f);
+            this.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.right * force);
         }
         else
         {
-            this.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 350f);
+            this.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * force);
         }
-
-     
     }
     public void Update()
     {
@@ -101,7 +102,11 @@ public class projectile : PunBehaviour
         gameObject.transform.eulerAngles = _angular;
         owner = _owner;
         facingright = _facingRight;
-        moveProjectile(_facingRight);
+        if (PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod1 == Items.Modifier.LOWDRAG ||
+            PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod2 == Items.Modifier.LOWDRAG)
+            moveProjectile(_facingRight, 525);
+        else
+            moveProjectile(_facingRight, 350);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -142,7 +147,11 @@ public class projectile : PunBehaviour
         this.gameObject.transform.position = position;
         facingright = _facingRight;
         this.gameObject.SetActive(shouldIActivate);
-        moveProjectile(_facingRight);
+        if (PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod1 == Items.Modifier.LOWDRAG ||
+            PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod2 == Items.Modifier.LOWDRAG)
+            moveProjectile(_facingRight, 525);
+        else
+            moveProjectile(_facingRight, 350);
     }
 
 }

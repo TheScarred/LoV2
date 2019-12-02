@@ -42,10 +42,10 @@
         */
         LOWDRAG,        // projectile spd +
         SPEEDLOAD,      // rate of fire +                           {9-12}
-        POISON,         // x seconds of Poison Dmg
+        BOTTOMLESS,         // chance of not consuming arrow
         BULLETPOINT,     // projectile range +
         // ----------------------------------------- Legendary
-        EXPLOSIVE,
+        POISON,
         HOMING                                                   // {13-14}
     };
 
