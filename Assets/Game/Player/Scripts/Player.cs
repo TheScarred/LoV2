@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon;
 using Items;
 using SimpleHealthBar_SpaceshipExample;
+using Custom.Indicators;
 
 public enum PlayerState
 {
@@ -41,6 +42,7 @@ public class Player : PunBehaviour
     Collider pickup = null;
     float hit_cooldown;
 
+    public OffscreenIndicator indicators;
     //JOYSTICK
     public Joystick theJoystick;
 
@@ -64,6 +66,8 @@ public class Player : PunBehaviour
         {
             Camera.main.transform.parent = transform;
             Camera.main.transform.localPosition = new Vector3(0, 4, -7);
+            indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
+            PhotonNetwork.RPC(photonView, "CrearFlecha", PhotonTargets.AllBuffered, false);
         }
 
         WeaponPickup[] weps = FindObjectsOfType<WeaponPickup>();
@@ -86,6 +90,15 @@ public class Player : PunBehaviour
         hit_cooldown = 1.5f;
         delayMovement = 0.75f;
         imAttacking = false;
+    }
+
+    [PunRPC]
+    public void CrearFlecha()
+    {
+        Debug.Log("Crear flecha", gameObject);
+        if(indicators == null)
+            indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
+        indicators.AddTarget(gameObject);
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -246,7 +259,13 @@ public class Player : PunBehaviour
         //Todas las variables de las estádisticas se deben actualizar aquí
         posicionJugador = transform.position;
         //Debug.Log(transform.position);
+        
+        
 
+            
+
+
+        
 
         //Timer para disparar proyectiles
         if (_myPlayerStats.m_ShootingSpeed <= 1f)
@@ -631,7 +650,7 @@ public class Player : PunBehaviour
 
         }
             _myPlayerStats.UpdateScoreboard();
-       
+        
             // Update scoreboard
        
         if (PhotonNetwork.player.NickName == "")
