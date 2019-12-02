@@ -95,6 +95,7 @@ namespace SimpleHealthBar_SpaceshipExample
             {
                 healthBar.UpdateBar(jugadorsin.m_HP, jugadorsin.base_HP);
                 shieldBar.UpdateBar(jugadorsin.m_Shield, jugadorsin.base_Shield);
+                
             }
 			
 

@@ -53,17 +53,18 @@ public class Player : PunBehaviour
         ranged = ScriptableObject.CreateInstance<Weapon>();
         rangedAmmo = 10;
 
-        if (photonView.isMine)
-            gameObject.AddComponent<AudioListener>();
 
-        meleeAttack = BasicHitBox.GetComponent<Attack>();
-        rangedAttack = prefab_range_attack.GetComponent<Attack>();
-
-        health = GetComponent<PlayerHealth>();
 
         PhotonConnection.GetInstance().playerList.Add(this);
         if (photonView.isMine)
         {
+            gameObject.AddComponent<AudioListener>();
+
+            meleeAttack = BasicHitBox.GetComponent<Attack>();
+            rangedAttack = prefab_range_attack.GetComponent<Attack>();
+
+            health = GetComponent<PlayerHealth>();
+
             Camera.main.transform.parent = transform;
             Camera.main.transform.localPosition = new Vector3(0, 4, -7);
             indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
@@ -90,6 +91,7 @@ public class Player : PunBehaviour
         hit_cooldown = 1.5f;
         delayMovement = 0.75f;
         imAttacking = false;
+        _myPlayerStats.UpdateScoreboard();
     }
 
     [PunRPC]
@@ -97,8 +99,18 @@ public class Player : PunBehaviour
     {
         Debug.Log("Crear flecha", gameObject);
         if(indicators == null)
-            indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
-        indicators.AddTarget(gameObject);
+        {
+          indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
+        }
+
+        
+            if(_myPlayerStats.MVP.activeInHierarchy)
+            {
+            indicators.AddTarget(_myPlayerStats.MVP);
+
+            }
+
+        
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -649,7 +661,7 @@ public class Player : PunBehaviour
                     PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false);
 
         }
-            _myPlayerStats.UpdateScoreboard();
+          
         
             // Update scoreboard
        
@@ -722,6 +734,7 @@ public class Player : PunBehaviour
     {
         vivo = false;
         //animator.SetBool("Morir", true);
+        _myPlayerStats.UpdateScoreboard();
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         gameObject.GetComponent<BoxCollider>().enabled = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
