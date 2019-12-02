@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon;
+using Custom.Indicators;
 
 public class PhotonConnection : PunBehaviour
 {
@@ -25,6 +26,8 @@ public class PhotonConnection : PunBehaviour
     public GameObject ownPlayer;
 
     public List<Player> playerList;
+
+    public OffscreenIndicator indicators;
 
     //WEAPON ID
     private int weaponId;
@@ -51,6 +54,8 @@ public class PhotonConnection : PunBehaviour
     public List<WeaponPickup> weaponList;
     public List<Consumable> consumables;
     public TerrainGenerator terreno;
+    
+
     public string prefabACrear;
     
     ///
@@ -63,6 +68,9 @@ public class PhotonConnection : PunBehaviour
         weaponId = 0;
         playerList = new List<Player>();
         Connect();
+        
+            
+        
     }
 
     public void Connect()
@@ -175,11 +183,30 @@ public class PhotonConnection : PunBehaviour
 
         //ownPlayer = PhotonNetwork.Instantiate("PlayerNet",terreno.PlayerSpawners[randSpawn].transform.position, Quaternion.identity, 0) as GameObject;
 
+        /* int i = 0;
+         foreach (PhotonPlayer p in PhotonNetwork.playerList)
+         {
+
+
+
+             indicators.AddTarget(ownPlayer);
+
+
+         }*/
+
+
         patterPointsList = new List<GameObject>();
         enemiesList = new List<GameObject>();
 
         StartCoroutine(SpawnEnemy());
     }
+
+    /*[PunRPC]
+    public void CrearFlecha()
+    {
+        Debug.Log("Crear flecha", ownPlayer);
+        indicators.AddTarget(ownPlayer);
+    }*/
 
     IEnumerator SpawnEnemy()
     {
@@ -187,12 +214,12 @@ public class PhotonConnection : PunBehaviour
         bool shouldICreateENemy = false;
         shouldICreateENemy = (enemiesList.Count < maxEnemies);
         yield return new WaitForSeconds(3.0f);
-
         if (shouldICreateENemy)
         {
             int randSpawn = Random.Range(0, terreno.EnemySpawners.Count);
             enemiesList.Add(PhotonNetwork.Instantiate("Enemy", terreno.EnemySpawners[randSpawn].transform.position, Quaternion.identity, 0) as GameObject);
             patterPointsList.Add(PhotonNetwork.Instantiate("EnemyPatrollingPoints_1", terreno.EnemySpawners[randSpawn].transform.position, Quaternion.identity, 0) as GameObject);
+     
             for (int i = 0; i < enemiesList.Count; i++)
             {
                 enemiesList[i].GetComponent<EnemyIA>().patternPoint = patterPointsList[i].gameObject.transform;
@@ -287,6 +314,14 @@ public class PhotonConnection : PunBehaviour
     {
         
         Debug.Log("Nuevo Jugador:" + newPlayer.NickName);
+
+        
+
+
+            
+
+
+        
 
     }
 

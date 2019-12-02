@@ -283,6 +283,7 @@ public class EnemyIA : PunBehaviour
                     killer = other.gameObject.transform.parent.gameObject.GetComponent<PlayerStats>();
                     killer.KilledTarget(killed_points);
                     PhotonNetwork.player.AddScore(killed_points);
+                    killer.UpdateScoreboard();
 
                     if (attack.effect == Items.Modifier.BLOODTHIRST)
                         other.GetComponentInParent<Player>().HealPlayer(5);

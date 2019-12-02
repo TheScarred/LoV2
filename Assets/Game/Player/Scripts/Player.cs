@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon;
 using Items;
 using SimpleHealthBar_SpaceshipExample;
+using Custom.Indicators;
 
 public class Player : PunBehaviour
 {
@@ -37,6 +38,7 @@ public class Player : PunBehaviour
     float rangedCooldown;
     int damageCooldown;
 
+    public OffscreenIndicator indicators;
     //JOYSTICK
     public Joystick theJoystick;
 
@@ -58,19 +60,24 @@ public class Player : PunBehaviour
         ranged = ScriptableObject.CreateInstance<Weapon>();
         rangedAmmo = 10;
 
-        if (photonView.isMine)
-            gameObject.AddComponent<AudioListener>();
 
-        meleeAttack = BasicHitBox.GetComponent<Attack>();
-        rangedAttack = prefab_range_attack.GetComponent<Attack>();
-
-        health = GetComponent<PlayerHealth>();
 
         PhotonConnection.GetInstance().playerList.Add(this);
         if (photonView.isMine)
         {
+            gameObject.AddComponent<AudioListener>();
+
+            meleeAttack = BasicHitBox.GetComponent<Attack>();
+            rangedAttack = prefab_range_attack.GetComponent<Attack>();
+
+            health = GetComponent<PlayerHealth>();
+
             Camera.main.transform.parent = transform;
+
             Camera.main.transform.localPosition = new Vector3(0, 6, -12);
+            indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
+            PhotonNetwork.RPC(photonView, "CrearFlecha", PhotonTargets.AllBuffered, false);
+
         }
 
         WeaponPickup[] weps = FindObjectsOfType<WeaponPickup>();
@@ -95,6 +102,7 @@ public class Player : PunBehaviour
 
         imAttacking = false;
 
+
         //Particles
         particleDeath = TypesAvailable.particleType.PLAYER_DEATH;
         particleHit = TypesAvailable.particleType.HIT;
@@ -102,6 +110,26 @@ public class Player : PunBehaviour
         particleGrab = TypesAvailable.particleType.GRAB_WEAPON;
         particleSpawn = TypesAvailable.particleType.PLAYER_SPAWN;
         particleManager.ActivateParticle(this.transform, particleSpawn);
+
+        _myPlayerStats.UpdateScoreboard();
+    }
+
+    [PunRPC]
+    public void CrearFlecha()
+    {
+        Debug.Log("Crear flecha", gameObject);
+        if(indicators == null)
+        {
+          indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
+        }
+
+        
+            if(_myPlayerStats.MVP.activeInHierarchy)
+            {
+            indicators.AddTarget(_myPlayerStats.MVP);
+
+            }
+
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -280,10 +308,21 @@ public class Player : PunBehaviour
     void UpdateVariables()
     {
         posicionJugador = transform.position;
+
         if (meleeCooldown < melee.stats.rOF)
             meleeCooldown += Time.time;
         if (rangedCooldown < ranged.stats.rOF)
             rangedCooldown += Time.time;
+
+        //Debug.Log(transform.position);
+        
+        
+
+            
+
+
+        
+
 
         if(delayMovement > 0)
         {
@@ -671,7 +710,12 @@ public class Player : PunBehaviour
 
 
         }
+
             _myPlayerStats.UpdateScoreboard();
+
+
+          
+        
 
             // Update scoreboard
 
@@ -752,6 +796,7 @@ public class Player : PunBehaviour
         vivo = false;
         //particleManager.ActivateParticle(this.transform, particleDeath);
         //animator.SetBool("Morir", true);
+        _myPlayerStats.UpdateScoreboard();
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         gameObject.GetComponent<BoxCollider>().enabled = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
