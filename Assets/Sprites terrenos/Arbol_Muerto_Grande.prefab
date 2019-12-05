@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 183873011716374457}
   - component: {fileID: 9018203802047326978}
+  - component: {fileID: 7099633424290267929}
   m_Layer: 0
   m_Name: Willow_Trunk_02
   m_TagString: Untagged
@@ -80,6 +81,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7099633424290267929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2696726956589311636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
+  runOnlyOnce: 0
 --- !u!1 &2834614857702609973
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7375643412984656204}
   - component: {fileID: 3568065793447740465}
+  - component: {fileID: 4491847188147736427}
   m_Layer: 0
   m_Name: Willow_Trunk_02 (1)
   m_TagString: Untagged
@@ -160,6 +177,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4491847188147736427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834614857702609973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
+  runOnlyOnce: 0
 --- !u!1 &5145592176741903997
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3360284402470562052}
   - component: {fileID: 6834913588428726005}
+  - component: {fileID: 1659946778234643726}
   m_Layer: 0
   m_Name: Willow_Trunk_01
   m_TagString: Untagged
@@ -240,6 +273,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1659946778234643726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145592176741903997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
+  runOnlyOnce: 0
 --- !u!1 &6287160840695888083
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2108843053602279597}
   - component: {fileID: 5436507008650423848}
+  - component: {fileID: -3945820103013724827}
   - component: {fileID: 1527141515848246446}
   m_Layer: 0
   m_Name: Arbol_Muerto_Grande
@@ -266,8 +315,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6287160840695888083}
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 2.77, y: 0.92, z: 3.3}
-  m_LocalScale: {x: 0.32963, y: 0.32963, z: 0.32963}
+  m_LocalPosition: {x: 3.0531, y: 1.2181, z: 3.3305}
+  m_LocalScale: {x: 0.16084954, y: 0.16084954, z: 0.16084954}
   m_Children:
   - {fileID: 183873011716374457}
   - {fileID: 7375643412984656204}
@@ -324,6 +373,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-3945820103013724827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287160840695888083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 4999
+  offset: 0
+  runOnlyOnce: 0
 --- !u!65 &1527141515848246446
 BoxCollider:
   m_ObjectHideFlags: 0

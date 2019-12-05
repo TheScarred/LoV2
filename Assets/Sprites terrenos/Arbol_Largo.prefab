@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7735933436966187848}
   - component: {fileID: 6355524897024416782}
+  - component: {fileID: 4293682622520521050}
   m_Layer: 0
   m_Name: Willow_Leaves_02
   m_TagString: Untagged
@@ -80,6 +81,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4293682622520521050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891251815732632524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
+  runOnlyOnce: 0
 --- !u!1 &8351449593101505119
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3790451945465241309}
   - component: {fileID: 3235576748766980935}
+  - component: {fileID: -4543493986374461802}
   - component: {fileID: 4052085442080027926}
   m_Layer: 0
   m_Name: Arbol_Largo
@@ -162,6 +179,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4543493986374461802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351449593101505119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 4999
+  offset: 0
+  runOnlyOnce: 0
 --- !u!65 &4052085442080027926
 BoxCollider:
   m_ObjectHideFlags: 0

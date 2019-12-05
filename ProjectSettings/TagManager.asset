@@ -29,8 +29,8 @@ TagManager:
   - PlayersLayer
   - Players
   - Obstacles
-  - 
-  - 
+  - Background
+  - Less Background
   - 
   - 
   - 
@@ -52,4 +52,64 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Lateral Background
+    uniqueID: 3625968439
+    locked: 0
+  - name: Less background
+    uniqueID: 2130897859
+    locked: 0
+  - name: Background
+    uniqueID: 331881183
+    locked: 0
+  - name: Less backspike
+    uniqueID: 512535643
+    locked: 0
+  - name: Back spike
+    uniqueID: 4090966781
+    locked: 0
+  - name: Player
+    uniqueID: 2543523017
+    locked: 0
+  - name: 12
+    uniqueID: 2670873161
+    locked: 0
+  - name: 11
+    uniqueID: 4277022153
+    locked: 0
+  - name: 10
+    uniqueID: 1026888553
+    locked: 0
+  - name: 9
+    uniqueID: 384319287
+    locked: 0
+  - name: 8
+    uniqueID: 3731548883
+    locked: 0
+  - name: 7
+    uniqueID: 1587030553
+    locked: 0
+  - name: 6
+    uniqueID: 453098353
+    locked: 0
+  - name: 5
+    uniqueID: 3957943203
+    locked: 0
+  - name: 4
+    uniqueID: 628254505
+    locked: 0
+  - name: 3
+    uniqueID: 1875078663
+    locked: 0
+  - name: 2
+    uniqueID: 2373998319
+    locked: 0
+  - name: 1
+    uniqueID: 3507374159
+    locked: 0
+  - name: Less botton spike
+    uniqueID: 3115768839
+    locked: 0
+  - name: Bottom spike
+    uniqueID: 2159650865
     locked: 0

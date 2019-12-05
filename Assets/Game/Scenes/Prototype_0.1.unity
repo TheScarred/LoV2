@@ -173,7 +173,6 @@ Transform:
   - {fileID: 792575680}
   - {fileID: 370992840}
   - {fileID: 1290543788}
-  - {fileID: 1627777881}
   m_Father: {fileID: 1491348281}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -184,6 +183,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (24)
@@ -236,6 +240,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &55037098
@@ -245,6 +259,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637061987}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (7)
@@ -291,6 +310,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459393730579944, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -343,8 +372,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -378,6 +407,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8742335}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (2)
@@ -426,6 +460,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!1001 &96380611
@@ -435,6 +479,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637061987}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (6)
@@ -483,6 +532,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!1001 &98082980
@@ -492,6 +551,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (11)
@@ -543,6 +607,16 @@ PrefabInstance:
     - target: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
@@ -608,7 +682,7 @@ PrefabInstance:
     - target: {fileID: 2554709314926158618, guid: de6de6d22c80d0746980981a69ea9938,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2554709314926158618, guid: de6de6d22c80d0746980981a69ea9938,
         type: 3}
@@ -634,6 +708,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (15)
@@ -686,6 +765,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &183655371 stripped
@@ -729,8 +818,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -746,8 +835,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -794,7 +883,7 @@ RectTransform:
   - {fileID: 71957304}
   - {fileID: 1440074130}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -808,6 +897,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 1600850224195014151, guid: 89c1c3c59b1244e47a1db5582892694c,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 4008
+      objectReference: {fileID: 0}
     - target: {fileID: 3778947878020938764, guid: 89c1c3c59b1244e47a1db5582892694c,
         type: 3}
       propertyPath: m_Name
@@ -882,6 +976,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.2623998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778947878020938762, guid: 89c1c3c59b1244e47a1db5582892694c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778947878020938762, guid: 89c1c3c59b1244e47a1db5582892694c,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89c1c3c59b1244e47a1db5582892694c, type: 3}
@@ -962,6 +1066,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88751944cd5e50b4190ca343c3e5965c, type: 3}
 --- !u!1001 &256907669
@@ -971,6 +1085,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (3)
@@ -1023,6 +1142,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &261293342 stripped
@@ -1044,6 +1173,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (46)
@@ -1095,6 +1229,16 @@ PrefabInstance:
     - target: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
@@ -1176,7 +1320,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!1001 &313168283
 PrefabInstance:
@@ -1185,6 +1329,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (33)
@@ -1236,6 +1385,16 @@ PrefabInstance:
     - target: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
@@ -1298,6 +1457,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212929656988043112, guid: 63aa2b97698083f448ec856e552a0652,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212929656988043112, guid: 63aa2b97698083f448ec856e552a0652,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63aa2b97698083f448ec856e552a0652, type: 3}
 --- !u!4 &333911329 stripped
@@ -1313,6 +1482,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8742335}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (3)
@@ -1361,6 +1535,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!1001 &348587514
@@ -1370,6 +1554,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (37)
@@ -1422,6 +1611,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &350922143
@@ -1431,6 +1630,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (31)
@@ -1483,6 +1687,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &354116771
@@ -1492,6 +1706,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (8)
@@ -1544,6 +1763,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &361168209
@@ -1553,6 +1782,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (26)
@@ -1605,6 +1839,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &361747661
@@ -1614,6 +1858,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (2)
@@ -1666,6 +1915,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &370212409
@@ -1675,6 +1934,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637061987}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (8)
@@ -1723,6 +1987,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!4 &370992840 stripped
@@ -1738,6 +2012,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (22)
@@ -1789,6 +2068,16 @@ PrefabInstance:
     - target: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
@@ -1847,6 +2136,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &396545158 stripped
@@ -1886,6 +2185,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (25)
@@ -1938,6 +2242,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &528700766
@@ -1947,6 +2261,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (34)
@@ -1999,6 +2318,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &555811593 stripped
@@ -2035,8 +2364,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -2054,8 +2383,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -2071,7 +2400,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &566172186
 PrefabInstance:
@@ -2080,6 +2409,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8742335}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (7)
@@ -2128,6 +2462,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!4 &598212346 stripped
@@ -2149,6 +2493,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637061987}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (5)
@@ -2197,6 +2546,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!1001 &628700707
@@ -2206,6 +2565,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (35)
@@ -2257,6 +2621,16 @@ PrefabInstance:
     - target: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
@@ -2314,7 +2688,6 @@ Transform:
   - {fileID: 866856905}
   - {fileID: 1544433401}
   - {fileID: 1472412172}
-  - {fileID: 1616795331}
   m_Father: {fileID: 1491348281}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2331,6 +2704,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (18)
@@ -2383,6 +2761,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &656384605
@@ -2392,6 +2780,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (6)
@@ -2444,6 +2837,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1 &679991919
@@ -2495,8 +2898,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1310e65397a274d44a776b51d6937f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   barImage: {fileID: 679991922}
   colorMode: 0
   barColor: {r: 0, g: 1, b: 0.17241383, a: 1}
@@ -2531,7 +2934,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   displayText: 3
   barText: {fileID: 1406690372}
-  additionalText: 
+  additionalText:
 --- !u!114 &679991922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2542,8 +2945,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.17241383, a: 1}
   m_RaycastTarget: 1
@@ -2577,6 +2980,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8742335}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4
@@ -2623,6 +3031,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459393730579944, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2692,6 +3110,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88751944cd5e50b4190ca343c3e5965c, type: 3}
 --- !u!1001 &784862597
@@ -2701,6 +3129,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (38)
@@ -2753,6 +3186,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1 &787389535
@@ -2782,8 +3225,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ee80c903be15a8419c0a6f04e581f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   terrainsToGenerate: {fileID: 11400000, guid: 85c46e013eb9f9246bb60a21dbdccd47, type: 2}
   EnemySpawners: []
   numOfTerrains: 6
@@ -2799,7 +3242,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &790665193
 PrefabInstance:
@@ -2808,6 +3251,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8742335}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (1)
@@ -2856,6 +3304,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!4 &792575680 stripped
@@ -2877,6 +3335,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (29)
@@ -2929,6 +3392,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &822155856 stripped
@@ -2962,6 +3435,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (44)
@@ -3014,6 +3492,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1 &861455200
@@ -3064,8 +3552,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1310e65397a274d44a776b51d6937f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   barImage: {fileID: 861455203}
   colorMode: 0
   barColor: {r: 0, g: 0.91724133, b: 1, a: 1}
@@ -3100,7 +3588,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   displayText: 0
   barText: {fileID: 0}
-  additionalText: 
+  additionalText:
 --- !u!114 &861455203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3111,8 +3599,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.91724133, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -3212,6 +3700,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &914198427 stripped
@@ -3227,6 +3725,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (13)
@@ -3279,6 +3782,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &923886135 stripped
@@ -3294,6 +3807,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8742335}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (5)
@@ -3340,6 +3858,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459393730579944, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3403,6 +3931,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212929656988043112, guid: 63aa2b97698083f448ec856e552a0652,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212929656988043112, guid: 63aa2b97698083f448ec856e552a0652,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63aa2b97698083f448ec856e552a0652, type: 3}
 --- !u!4 &1011504742 stripped
@@ -3418,6 +3956,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (28)
@@ -3470,6 +4013,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &1031981611 stripped
@@ -3485,6 +4038,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (45)
@@ -3537,6 +4095,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &1041331642
@@ -3546,6 +4114,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (40)
@@ -3598,6 +4171,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &1050387558
@@ -3607,6 +4190,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (41)
@@ -3659,6 +4247,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &1059618052 stripped
@@ -3674,6 +4272,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (20)
@@ -3726,6 +4329,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &1066323861 stripped
@@ -3741,6 +4354,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (7)
@@ -3793,6 +4411,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1 &1078136707
@@ -3842,8 +4470,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9386786, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -3865,7 +4493,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text:
 --- !u!222 &1078136710
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3922,8 +4550,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.8235294}
   m_RaycastTarget: 1
@@ -4009,6 +4637,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88751944cd5e50b4190ca343c3e5965c, type: 3}
 --- !u!4 &1105096018 stripped
@@ -4024,6 +4662,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1
@@ -4075,6 +4718,16 @@ PrefabInstance:
     - target: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
@@ -4145,8 +4798,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -4192,6 +4845,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (14)
@@ -4243,6 +4901,16 @@ PrefabInstance:
     - target: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
@@ -4329,7 +4997,6 @@ Transform:
   - {fileID: 183655371}
   - {fileID: 822155856}
   - {fileID: 1804165727}
-  - {fileID: 1604828530}
   m_Father: {fileID: 1491348281}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4346,6 +5013,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (19)
@@ -4398,6 +5070,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &1277260828 stripped
@@ -4413,6 +5095,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8742335}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (6)
@@ -4461,6 +5148,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!4 &1290543788 stripped
@@ -4488,6 +5185,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (42)
@@ -4540,6 +5242,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &1345662193 stripped
@@ -4561,6 +5273,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (4)
@@ -4612,6 +5329,16 @@ PrefabInstance:
     - target: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
@@ -4673,6 +5400,16 @@ PrefabInstance:
     - target: {fileID: 4842409874101304, guid: 63aa2b97698083f448ec856e552a0652, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212929656988043112, guid: 63aa2b97698083f448ec856e552a0652,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212929656988043112, guid: 63aa2b97698083f448ec856e552a0652,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63aa2b97698083f448ec856e552a0652, type: 3}
@@ -4741,6 +5478,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88751944cd5e50b4190ca343c3e5965c, type: 3}
 --- !u!4 &1385161439 stripped
@@ -4796,8 +5543,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -4819,7 +5566,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text:
 --- !u!222 &1406690373
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4835,6 +5582,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (43)
@@ -4886,6 +5638,16 @@ PrefabInstance:
     - target: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
@@ -4960,7 +5722,6 @@ Transform:
   - {fileID: 836314717}
   - {fileID: 1198474064}
   - {fileID: 1447187274}
-  - {fileID: 1613061182}
   m_Father: {fileID: 1491348281}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5017,8 +5778,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -5068,6 +5829,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637061987}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4
@@ -5114,6 +5880,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459393730579944, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5213,6 +5989,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &1503039689 stripped
@@ -5234,6 +6020,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637061987}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (4)
@@ -5282,6 +6073,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!4 &1544642768 stripped
@@ -5297,6 +6098,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637061987}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (1)
@@ -5343,6 +6149,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459393730579944, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5412,6 +6228,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212929656988043112, guid: 63aa2b97698083f448ec856e552a0652,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212929656988043112, guid: 63aa2b97698083f448ec856e552a0652,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63aa2b97698083f448ec856e552a0652, type: 3}
 --- !u!1 &1589910510
@@ -5443,88 +6269,8 @@ Transform:
   m_Children:
   - {fileID: 1491348281}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1604828529
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1604828530}
-  - component: {fileID: 1604828531}
-  m_Layer: 0
-  m_Name: 'pasto orilla '
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1604828530
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1604828529}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.26, y: -0.037, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1186401403}
-  m_RootOrder: 30
-  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
---- !u!212 &1604828531
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1604828529}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: da5ab533791274247b728d90538a12c4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 37.338535, y: 2.99}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1001 &1607157746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5532,6 +6278,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (32)
@@ -5584,174 +6335,24 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
---- !u!1 &1613061181
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1613061182}
-  - component: {fileID: 1613061183}
-  m_Layer: 0
-  m_Name: Arbol 3 (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1613061182
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613061181}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.77999973, y: 0.13, z: 19.38}
-  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.099999994}
-  m_Children: []
-  m_Father: {fileID: 1420011758}
-  m_RootOrder: 30
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1613061183
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613061181}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e63c20c3a65973e4987869829c87ec55, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 14.38, y: 15.9}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!4 &1614616193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e,
     type: 3}
   m_PrefabInstance: {fileID: 1791139165}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1616795329
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1616795331}
-  - component: {fileID: 1616795330}
-  m_Layer: 0
-  m_Name: roca 2 (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &1616795330
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616795329}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6551f3a7ea8e2c341b2f7e6f545e28dd, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.16, y: 0.62}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &1616795331
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616795329}
-  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 5.88, y: 0.324, z: -0.5}
-  m_LocalScale: {x: -1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 637061987}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!4 &1620177191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e,
@@ -5765,6 +6366,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (23)
@@ -5817,168 +6423,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
---- !u!1 &1627777880
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1627777881}
-  - component: {fileID: 1627777882}
-  m_Layer: 0
-  m_Name: roca 1 (8)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1627777881
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627777880}
-  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 21.954, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8742335}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
---- !u!212 &1627777882
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627777880}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 0103b9b34ab04bb4185d74c24de51a8e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.9, y: 1.69}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!1 &1631447593
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1631447595}
-  - component: {fileID: 1631447594}
-  m_Layer: 0
-  m_Name: roca 1 (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &1631447594
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631447593}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 0103b9b34ab04bb4185d74c24de51a8e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.9, y: 1.69}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &1631447595
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631447593}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1634535119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5986,6 +6442,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (10)
@@ -6038,6 +6499,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &1642856656
@@ -6047,6 +6518,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (9)
@@ -6098,6 +6574,16 @@ PrefabInstance:
     - target: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
@@ -6160,6 +6646,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88751944cd5e50b4190ca343c3e5965c, type: 3}
 --- !u!1001 &1658081872
@@ -6169,6 +6665,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (12)
@@ -6220,6 +6721,16 @@ PrefabInstance:
     - target: {fileID: 4955028418014766, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
@@ -6312,7 +6823,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &1676220878 stripped
 Transform:
@@ -6327,6 +6838,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637061987}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (2)
@@ -6375,6 +6891,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!4 &1684302106 stripped
@@ -6396,6 +6922,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (21)
@@ -6448,6 +6979,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &1719100773 stripped
@@ -6463,6 +7004,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8742335}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (4)
@@ -6511,6 +7057,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!4 &1743640490 stripped
@@ -6526,6 +7082,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (16)
@@ -6578,6 +7139,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &1776353106
@@ -6587,6 +7158,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (36)
@@ -6639,6 +7215,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &1779885749 stripped
@@ -6654,6 +7240,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (39)
@@ -6706,6 +7297,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &1804165727 stripped
@@ -6721,6 +7322,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (17)
@@ -6773,6 +7379,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &1807625472
@@ -6782,6 +7398,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637061987}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (3)
@@ -6828,6 +7449,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459393730579944, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6902,6 +7533,16 @@ PrefabInstance:
     - target: {fileID: 4474124937272384, guid: 88751944cd5e50b4190ca343c3e5965c, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212409121142878844, guid: 88751944cd5e50b4190ca343c3e5965c,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88751944cd5e50b4190ca343c3e5965c, type: 3}
@@ -7068,6 +7709,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &1940822512 stripped
@@ -7083,6 +7734,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (30)
@@ -7135,6 +7791,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &2018123638
@@ -7144,6 +7810,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8742335}
     m_Modifications:
+    - target: {fileID: 7164793654815088177, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1930339093730192, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_4 (8)
@@ -7192,6 +7863,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212822948636146072, guid: 428580d12ebbf124e865f92d614d8939,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428580d12ebbf124e865f92d614d8939, type: 3}
 --- !u!1001 &2018920221
@@ -7201,6 +7882,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (1)
@@ -7253,6 +7939,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &2037226441 stripped
@@ -7268,6 +7964,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (47)
@@ -7320,6 +8021,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &2051289967 stripped
@@ -7347,6 +8058,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (27)
@@ -7399,6 +8115,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!1001 &2109917344
@@ -7408,6 +8134,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1186401403}
     m_Modifications:
+    - target: {fileID: 6566923286742980391, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5001
+      objectReference: {fileID: 0}
     - target: {fileID: 1245596965020522, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
       propertyPath: m_Name
       value: WoodenSpikes_1 (5)
@@ -7460,6 +8191,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212655213219597746, guid: afa7d113a54c10c44a0bb4f530e8db6e,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7d113a54c10c44a0bb4f530e8db6e, type: 3}
 --- !u!4 &2116533247 stripped
@@ -7496,8 +8237,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   ownerId: 0
   group: 0
   OwnerShipWasTransfered: 0
@@ -7524,10 +8265,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f0142de0bd073f4f90943576f19128e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   gameVersion: .25
-  myServerName: 
+  myServerName:
   ownPlayer: {fileID: 0}
   playerList: []
   enemiesList: []
@@ -7535,7 +8276,7 @@ MonoBehaviour:
   weaponList: []
   consumables: []
   terreno: {fileID: 11400000, guid: 85c46e013eb9f9246bb60a21dbdccd47, type: 2}
-  prefabACrear: 
+  prefabACrear:
   randomSeed: 0
 --- !u!4 &2121906777
 Transform:
@@ -7549,7 +8290,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2122129248 stripped
 Transform:
@@ -7570,6 +8311,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1420011758}
     m_Modifications:
+    - target: {fileID: 1600850224195014151, guid: 89c1c3c59b1244e47a1db5582892694c,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 4008
+      objectReference: {fileID: 0}
     - target: {fileID: 3778947878020938764, guid: 89c1c3c59b1244e47a1db5582892694c,
         type: 3}
       propertyPath: m_Name
@@ -7645,6 +8391,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.2624003
       objectReference: {fileID: 0}
+    - target: {fileID: 3778947878020938762, guid: 89c1c3c59b1244e47a1db5582892694c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778947878020938762, guid: 89c1c3c59b1244e47a1db5582892694c,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89c1c3c59b1244e47a1db5582892694c, type: 3}
 --- !u!1001 &3778947877144118791
@@ -7654,10 +8410,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637061987}
     m_Modifications:
+    - target: {fileID: 1600850224195014151, guid: 89c1c3c59b1244e47a1db5582892694c,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5005
+      objectReference: {fileID: 0}
     - target: {fileID: 3778947878020938764, guid: 89c1c3c59b1244e47a1db5582892694c,
         type: 3}
       propertyPath: m_Name
       value: Tierra
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778947878020938764, guid: 89c1c3c59b1244e47a1db5582892694c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3778947878020938763, guid: 89c1c3c59b1244e47a1db5582892694c,
         type: 3}
@@ -7667,12 +8433,12 @@ PrefabInstance:
     - target: {fileID: 3778947878020938763, guid: 89c1c3c59b1244e47a1db5582892694c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6634817
+      value: 0.2634821
       objectReference: {fileID: 0}
     - target: {fileID: 3778947878020938763, guid: 89c1c3c59b1244e47a1db5582892694c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8905907
+      value: 6.7905903
       objectReference: {fileID: 0}
     - target: {fileID: 3778947878020938763, guid: 89c1c3c59b1244e47a1db5582892694c,
         type: 3}
@@ -7682,12 +8448,12 @@ PrefabInstance:
     - target: {fileID: 3778947878020938763, guid: 89c1c3c59b1244e47a1db5582892694c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3778947878020938763, guid: 89c1c3c59b1244e47a1db5582892694c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3778947878020938763, guid: 89c1c3c59b1244e47a1db5582892694c,
         type: 3}
@@ -7712,6 +8478,16 @@ PrefabInstance:
     - target: {fileID: 3778947878020938763, guid: 89c1c3c59b1244e47a1db5582892694c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778947878020938762, guid: 89c1c3c59b1244e47a1db5582892694c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778947878020938762, guid: 89c1c3c59b1244e47a1db5582892694c,
+        type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7783,6 +8559,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6607111139534036294, guid: c897e2224d66ff94a9e6b03eb91887c1,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607111139534036294, guid: c897e2224d66ff94a9e6b03eb91887c1,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c897e2224d66ff94a9e6b03eb91887c1, type: 3}
 --- !u!1001 &6625994138388308787
@@ -7792,10 +8578,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637061987}
     m_Modifications:
+    - target: {fileID: 367537348925624744, guid: 86c8975f6d7289747997922d0a6b8137,
+        type: 3}
+      propertyPath: sortingOrderBase
+      value: 5005
+      objectReference: {fileID: 0}
     - target: {fileID: 6625994139261111748, guid: 86c8975f6d7289747997922d0a6b8137,
         type: 3}
       propertyPath: m_Name
       value: Cielo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6625994139261111748, guid: 86c8975f6d7289747997922d0a6b8137,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6625994139261111754, guid: 86c8975f6d7289747997922d0a6b8137,
         type: 3}
@@ -7805,12 +8601,12 @@ PrefabInstance:
     - target: {fileID: 6625994139261111754, guid: 86c8975f6d7289747997922d0a6b8137,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6625994139261111754, guid: 86c8975f6d7289747997922d0a6b8137,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.7
+      value: 11.6
       objectReference: {fileID: 0}
     - target: {fileID: 6625994139261111754, guid: 86c8975f6d7289747997922d0a6b8137,
         type: 3}
@@ -7820,12 +8616,12 @@ PrefabInstance:
     - target: {fileID: 6625994139261111754, guid: 86c8975f6d7289747997922d0a6b8137,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6625994139261111754, guid: 86c8975f6d7289747997922d0a6b8137,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6625994139261111754, guid: 86c8975f6d7289747997922d0a6b8137,
         type: 3}
@@ -7850,6 +8646,16 @@ PrefabInstance:
     - target: {fileID: 6625994139261111754, guid: 86c8975f6d7289747997922d0a6b8137,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6625994139261111755, guid: 86c8975f6d7289747997922d0a6b8137,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6625994139261111755, guid: 86c8975f6d7289747997922d0a6b8137,
+        type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

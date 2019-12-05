@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1805918051753206664}
   - component: {fileID: 6662168888859902696}
+  - component: {fileID: 2133103908563232149}
   - component: {fileID: 3176848291433520127}
   m_Layer: 0
   m_Name: Arbol_Muerto_Chico
@@ -81,6 +82,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2133103908563232149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6052251684219319652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
+  runOnlyOnce: 0
 --- !u!65 &3176848291433520127
 BoxCollider:
   m_ObjectHideFlags: 0
