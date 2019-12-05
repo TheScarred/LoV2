@@ -32,7 +32,6 @@ namespace SimpleHealthBar_SpaceshipExample
 
 		void Start ()
 		{
-
             if(photonView.isMine)
             {
                 player = this.gameObject.GetComponent<Player>();
@@ -109,7 +108,5 @@ namespace SimpleHealthBar_SpaceshipExample
 			Destroy( gameObject );
             SceneManager.LoadScene("Game Over");
         }
-
-		
 	}
 }
