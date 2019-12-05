@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Photon;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,7 @@ namespace SimpleHealthBar_SpaceshipExample
 {
 	public class PlayerHealth : PunBehaviour
 	{
-		static PlayerHealth instance;
+        static PlayerHealth instance;
 		public static PlayerHealth Instance { get { return instance; } }
         
         //VIDA VARIABLES
