@@ -14333,3 +14333,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleType: 9
+  base_countdown: 3
+  particle: {fileID: 4581510330320596777}

@@ -30,37 +30,28 @@ MonoBehaviour:
   RpcList:
   - ArrowStart
   - Chat
-  - ColorRpc
   - DestroyRpc
+  - DissappearConsumable
   - DissappearWeapon
-  - DoJump
-  - Flash
   - GetMeleeWeapon
   - GetRangedWeapon
   - InstantiateRpc
   - KillPlayer
-  - Marco
   - PickupItemInit
-  - Polo
   - PunPickup
   - PunPickupSimple
   - PunRespawn
   - ReActivarFlecha
-  - RemoveEnemy
-  - RequestForPickupItems
-  - ReviveEnemy
-  - SwapMeleeWeapon
-  - SwapRangedWeapon
-  - TaggedPlayer
-  - UpdatePickupWeapon
-  - SpawnItem
   - RemoveEnemies
-  - RevivePlayer
-  - ToggleHitBox
+  - RequestForPickupItems
   - RequestForPickupTimes
   - ResetMeleeWeapon
   - ResetRangedWeapon
-  - HealPlayer
-  - DissappearConsumable
+  - ReviveEnemy
+  - RevivePlayer
+  - SwapMeleeWeapon
+  - SwapRangedWeapon
+  - ToggleHitBox
+  - UpdatePickupWeapon
   - CrearFlecha
   DisableAutoOpenWizard: 1

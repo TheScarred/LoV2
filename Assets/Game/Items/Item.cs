@@ -15,6 +15,13 @@
         LEGENDARY
     };
 
+
+    public enum State
+    {
+        NORMAL,
+        DAMAGE
+    };
+
     public enum Modifier
     {
         NONE,
@@ -35,10 +42,10 @@
         */
         LOWDRAG,        // projectile spd +
         SPEEDLOAD,      // rate of fire +                           {9-12}
-        POISON,         // x seconds of Poison Dmg
+        BOTTOMLESS,         // chance of not consuming arrow
         BULLETPOINT,     // projectile range +
         // ----------------------------------------- Legendary
-        EXPLOSIVE,
+        POISON,
         HOMING                                                   // {13-14}
     };
 
@@ -57,9 +64,9 @@
 
     public enum ArmourType
     {
-        PLATE = 5,
-        VEST = 15,
-        SUIT = 40
+        PLATE = 10,
+        VEST = 25,
+        SUIT = 60
     }
 
     public enum AmmoType

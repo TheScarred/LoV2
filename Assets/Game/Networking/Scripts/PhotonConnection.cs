@@ -115,7 +115,6 @@ public class PhotonConnection : PunBehaviour
 
     public IEnumerator WaitFrame()
     {
-        
         yield return waitForFrame;
     }
 

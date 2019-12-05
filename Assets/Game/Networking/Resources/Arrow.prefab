@@ -168,4 +168,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effect: 0
   damage: 0
+  armourPen: 0.05
   isCrit: 0

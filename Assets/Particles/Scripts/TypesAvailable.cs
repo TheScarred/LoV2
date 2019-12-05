@@ -18,4 +18,6 @@ public class TypesAvailable : MonoBehaviour
         MOD_SPEED,
         MOD_BLEED,
     }
+
+    public bool timer;  //timer to deactivation
 }
