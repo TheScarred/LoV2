@@ -34,8 +34,8 @@ namespace SimpleHealthBar_SpaceshipExample
 
             if(photonView.isMine)
             {
-                player = this.gameObject.GetComponent<Player>();
-                jugadorsin = this.gameObject.GetComponent<PlayerStats>();
+                player = gameObject.GetComponent<Player>();
+                jugadorsin = gameObject.GetComponent<PlayerStats>();
                 healthBar = GameObject.Find("Health").GetComponent<SimpleHealthBar>();
 
                 shieldBar = GameObject.Find("Shield").GetComponent<SimpleHealthBar>();

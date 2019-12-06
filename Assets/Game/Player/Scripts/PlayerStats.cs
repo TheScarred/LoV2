@@ -62,6 +62,7 @@ public class PlayerStats : PunBehaviour
 
     public void ResetStats()
     {
+        scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
         mvp = "";
         m_Speed = base_speed;
         m_HP = base_HP;
@@ -111,6 +112,8 @@ public class PlayerStats : PunBehaviour
         // obtener nombres de los jugadores
         var playerList = new StringBuilder();
         //mostrando la lista con sus respectivos scores
+
+        int IDMVP = -1;
         
         foreach (PhotonPlayer p in PhotonNetwork.playerList)
         {
@@ -121,24 +124,45 @@ public class PlayerStats : PunBehaviour
             playerList.Append("Nick Jugador: " + p.NickName + " Score: " + p.GetScore() + "\n");
 
 
+
             if (mvp == p.NickName)
             {
-                Debug.Log("entrando");
-                MVP.SetActive(true);
-            }
-            else
-            {
-                MVP.SetActive(false);
+                IDMVP = p.ID;
             }
             /*else if (mvp != p.NickName)//&& photonView.isMine )
                 Debug.Log(this.photonView.name);
                 this.MVP.SetActive(false);*/
         }
+
+        if(IDMVP != -1) //si encontramos un MVP
+        {
+            IDMVP = 1000 * IDMVP + 1;
+
+            Player[] jugadores = GameObject.FindObjectsOfType<Player>();
+            GameObject jugadorMVPGo = null;
+            for (int i = 0; i < jugadores.Length; i++)
+            {
+                if(jugadores[i].ID == IDMVP) //Este jugador tiene el ID del MVP
+                {
+                    
+                    jugadores[i].GetComponent<PlayerStats>().MVP.SetActive(true);
+                    jugadorMVPGo = jugadores[i].gameObject;
+                }
+                else
+                {
+                    jugadores[i].GetComponent<PlayerStats>().MVP.SetActive(false);
+                }
+                Debug.Log(jugadores[i].ID + " - " + IDMVP);
+            }
+            
+        }
+        
+
         
         string output = "Numero de jugadores: " + playerCount.ToString() + "\n" + playerList.ToString();
         if (photonView.isMine)
+                scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
             
-        scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
 
     }
 

@@ -27,7 +27,7 @@ public class PhotonConnection : PunBehaviour
 
     public List<Player> playerList;
 
-    public OffscreenIndicator indicators;
+    //public OffscreenIndicator indicators;
 
     //WEAPON ID
     private int weaponId;

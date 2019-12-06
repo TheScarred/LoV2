@@ -73,9 +73,17 @@ namespace Custom.Indicators
         }
         private void UpdatePosition(Indicator targetIndicator)
         {
+            GameObject MVP = GameObject.FindGameObjectWithTag("MVP"); 
+            
+            if(MVP==null)
+            {
+                return;
+            }
+
+
             var rect = targetIndicator.rectTransform.rect;
 
-            var indicatorPosition = activeCamera.WorldToScreenPoint(targetIndicator.target.position);
+            var indicatorPosition = activeCamera.WorldToScreenPoint(MVP.transform.position);
 
             if(indicatorPosition.z < 0)
             {

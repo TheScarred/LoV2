@@ -69,7 +69,7 @@ public class Player : PunBehaviour
 
             meleeAttack = BasicHitBox.GetComponent<Attack>();
             rangedAttack = prefab_range_attack.GetComponent<Attack>();
-
+            _myPlayerStats = GetComponent<PlayerStats>();
             health = GetComponent<PlayerHealth>();
 
             Camera.main.transform.parent = transform;
@@ -77,8 +77,11 @@ public class Player : PunBehaviour
             Camera.main.transform.localPosition = new Vector3(0, 6, -12);
             indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
             PhotonNetwork.RPC(photonView, "CrearFlecha", PhotonTargets.AllBuffered, false);
+            
+            indicators.AddTarget(gameObject);
 
         }
+        
 
         WeaponPickup[] weps = FindObjectsOfType<WeaponPickup>();
         for (int i = 0; i < weps.Length; i++)
@@ -86,12 +89,12 @@ public class Player : PunBehaviour
             PhotonConnection.GetInstance().weaponList.Add(weps[i]);
         }
 
-        InitBaseWeapons(melee, ranged); // common
+        
         //InitRandomWeapons(melee, ranged); // random
 
         facingRight = false;
         player_rigidbody = GetComponent<Rigidbody>();
-        _myPlayerStats = GetComponent<PlayerStats>();
+       
         ID = this.gameObject.GetComponent<PhotonView>().viewID;
         //hit box is deactivated unless the player hits
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
@@ -111,106 +114,109 @@ public class Player : PunBehaviour
         particleSpawn = TypesAvailable.particleType.PLAYER_SPAWN;
         particleManager.ActivateParticle(this.transform, particleSpawn);
 
-        _myPlayerStats.UpdateScoreboard();
+        //_myPlayerStats.UpdateScoreboard();
+
+        InitBaseWeapons(melee, ranged); // common
+
+        
     }
 
     [PunRPC]
     public void CrearFlecha()
     {
         Debug.Log("Crear flecha", gameObject);
-        if(indicators == null)
+        if (indicators == null)
         {
-          indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
+            indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
         }
+        /*indicators.AddTarget(_myPlayerStats.MVP);/*
+        /*if(_myPlayerStats.MVP.activeInHierarchy)
+        {
+        indicators.AddTarget(_myPlayerStats.MVP);
 
+        }*/
         
-            if(_myPlayerStats.MVP.activeInHierarchy)
-            {
-            indicators.AddTarget(_myPlayerStats.MVP);
-
-            }
-
     }
 
-    GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
+GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
+{
+    delayMovement = 0.5f;
+    for (int i = 0; i < range_attack_Objects.Count; i++)
     {
-        delayMovement = 0.5f;
-        for (int i = 0; i < range_attack_Objects.Count; i++)
+        if (range_attack_Objects[i].activeSelf == false)
         {
-            if (range_attack_Objects[i].activeSelf == false)
+            //Si vamos a meter diferente tipos de proyectiles (hachas, flechas, etc), aquí hay que colocar el nombre de los prefabas
+            //Hay que copiar todo dentro del IF de "prefab.name == **** " y solo cambiarle el nombre
+            if (desired_prefab.name == "Arrow")
             {
-                //Si vamos a meter diferente tipos de proyectiles (hachas, flechas, etc), aquí hay que colocar el nombre de los prefabas
-                //Hay que copiar todo dentro del IF de "prefab.name == **** " y solo cambiarle el nombre
-                if (desired_prefab.name == "Arrow")
+                if (range_attack_Objects[i].gameObject.name == "Arrow(Clone)")
                 {
-                    if (range_attack_Objects[i].gameObject.name == "Arrow(Clone)")
-                    {
-                        object[] parameters2 = new object[3];
+                    object[] parameters2 = new object[3];
 
-                        parameters2[2] = position;
-                        parameters2[1] = true;
-                        parameters2[0] = facingRight;
-                        // range_attack_Objects[i].GetComponent<Transform>().position = position;
-                        //range_attack_Objects[i].SetActive(true);
-                        // range_attack_Objects[i].GetComponent<projectile>().moveProjectile(facingRight);
+                    parameters2[2] = position;
+                    parameters2[1] = true;
+                    parameters2[0] = facingRight;
+                    // range_attack_Objects[i].GetComponent<Transform>().position = position;
+                    //range_attack_Objects[i].SetActive(true);
+                    // range_attack_Objects[i].GetComponent<projectile>().moveProjectile(facingRight);
 
-                        range_attack_Objects[i].GetComponent<Attack>().damage = ranged.stats.damage;
-                        range_attack_Objects[i].GetComponent<Attack>().armourPen = ranged.stats.armourPen;
+                    range_attack_Objects[i].GetComponent<Attack>().damage = ranged.stats.damage;
+                    range_attack_Objects[i].GetComponent<Attack>().armourPen = ranged.stats.armourPen;
 
-                        if (ranged.rarity == WeaponRarity.LEGENDARY)
-                            range_attack_Objects[i].GetComponent<Attack>().effect = ranged.stats.mod1;
-                        else
-                            range_attack_Objects[i].GetComponent<Attack>().effect = Modifier.NONE;
+                    if (ranged.rarity == WeaponRarity.LEGENDARY)
+                        range_attack_Objects[i].GetComponent<Attack>().effect = ranged.stats.mod1;
+                    else
+                        range_attack_Objects[i].GetComponent<Attack>().effect = Modifier.NONE;
 
-                        if (Random.Range(1, 101) >= (100 - (100 * ranged.stats.critChance)))
-                            range_attack_Objects[i].GetComponent<Attack>().isCrit = true;
-                        else
-                            range_attack_Objects[i].GetComponent<Attack>().isCrit = false;
+                    if (Random.Range(1, 101) >= (100 - (100 * ranged.stats.critChance)))
+                        range_attack_Objects[i].GetComponent<Attack>().isCrit = true;
+                    else
+                        range_attack_Objects[i].GetComponent<Attack>().isCrit = false;
 
-                        range_attack_Objects[i].GetComponent<projectile>().ReactivarFlecha(parameters2);
-                        return range_attack_Objects[i];
-                    }
+                    range_attack_Objects[i].GetComponent<projectile>().ReactivarFlecha(parameters2);
+                    return range_attack_Objects[i];
                 }
             }
         }
-
-        GameObject go = PhotonNetwork.Instantiate(prefab_range_attack.name.ToString(), position, Quaternion.identity, 0);
-        go.GetComponent<projectile>().owner = photonView.viewID;
-
-        //ESPERAR UN MOMENTO PARA PODER HACER ESTO O HACER UN BULLET MANAGER APARTE QUE SE ENCARGUÉ ESPECIFICAMENTE DE ESTO
-        object[] parameters = new object[3];
-        parameters[2] = ID;
-        parameters[1] = facingRight;
-        parameters[0] = new Vector3(-90, 90, 0);
-        //PhotonNetwork.RPC(go.GetComponent<PhotonView>(), "ArrowStart", PhotonTargets.AllBuffered, false, parameters);
-        go.GetComponent<projectile>().PrepareRPC(parameters);
-        // go.transform.eulerAngles = new Vector3(-90, 90, 0);
-        // go.GetComponent<projectile>().owner = ID;
-        // go.GetComponent<projectile>().moveProjectile(facingRight);
-        range_attack_Objects.Add(go);
-        //StartCoroutine(MoveProyectile(go));
-        return go;
     }
-   /* public IEnumerator MoveProyectile(GameObject proyectile)
+
+    GameObject go = PhotonNetwork.Instantiate(prefab_range_attack.name.ToString(), position, Quaternion.identity, 0);
+    go.GetComponent<projectile>().owner = photonView.viewID;
+
+    //ESPERAR UN MOMENTO PARA PODER HACER ESTO O HACER UN BULLET MANAGER APARTE QUE SE ENCARGUÉ ESPECIFICAMENTE DE ESTO
+    object[] parameters = new object[3];
+    parameters[2] = ID;
+    parameters[1] = facingRight;
+    parameters[0] = new Vector3(-90, 90, 0);
+    //PhotonNetwork.RPC(go.GetComponent<PhotonView>(), "ArrowStart", PhotonTargets.AllBuffered, false, parameters);
+    go.GetComponent<projectile>().PrepareRPC(parameters);
+    // go.transform.eulerAngles = new Vector3(-90, 90, 0);
+    // go.GetComponent<projectile>().owner = ID;
+    // go.GetComponent<projectile>().moveProjectile(facingRight);
+    range_attack_Objects.Add(go);
+    //StartCoroutine(MoveProyectile(go));
+    return go;
+}
+/* public IEnumerator MoveProyectile(GameObject proyectile)
+{
+    //Mover el disparo y luego desactivarlo para volverse a usar en el futuro
+    if (!facingRight)
     {
-        //Mover el disparo y luego desactivarlo para volverse a usar en el futuro
-        if (!facingRight)
-        {
-            proyectile.GetComponent<Rigidbody>().AddForce(Vector3.right * 350f);
-        }
-        else
-        {
-            proyectile.GetComponent<Rigidbody>().AddForce(Vector3.left * 350f);
-        }
-
-        proyectile.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        proyectile.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        proyectile.SetActive(false);
-
-        yield return null;
+        proyectile.GetComponent<Rigidbody>().AddForce(Vector3.right * 350f);
     }
-    */
-    void Movement()
+    else
+    {
+        proyectile.GetComponent<Rigidbody>().AddForce(Vector3.left * 350f);
+    }
+
+    proyectile.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    proyectile.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    proyectile.SetActive(false);
+
+    yield return null;
+}
+*/
+        void Movement()
     {
         //Checar que lado esta mirando para cambiar su la escala (voltear)
 
@@ -710,13 +716,8 @@ public class Player : PunBehaviour
 
 
         }
-
-            _myPlayerStats.UpdateScoreboard();
-
-
-          
         
-
+        _myPlayerStats.UpdateScoreboard();
             // Update scoreboard
 
         if (PhotonNetwork.player.NickName == "")
