@@ -5,17 +5,9 @@ using Photon;
 public class projectile : PunBehaviour
 {
     public int owner;
-    PlayerStats creator;  //who created the projectile
     Vector3 angle;
     bool facingright;
     float timer;
-    int damage;
-
-    private void Start()
-    {
-        creator = PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<PlayerStats>();
-        damage = (int)(creator.m_DamageRange);
-    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -43,9 +35,9 @@ public class projectile : PunBehaviour
 
     public void OnEnable()
     {
-        if (PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod1 == Items.Modifier.BULLETPOINT ||
-            PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod2 == Items.Modifier.BULLETPOINT)
-            timer = 2.25f;
+        if (GetComponent<Attack>())
+            if (GetComponent<Attack>().effect1 == Items.Modifier.BULLETPOINT || GetComponent<Attack>().effect2 == Items.Modifier.BULLETPOINT)
+                timer = 2.25f;
         else
             timer = 1.5f;
     }
@@ -102,9 +94,9 @@ public class projectile : PunBehaviour
         gameObject.transform.eulerAngles = _angular;
         owner = _owner;
         facingright = _facingRight;
-        if (PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod1 == Items.Modifier.LOWDRAG ||
-            PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod2 == Items.Modifier.LOWDRAG)
-            moveProjectile(_facingRight, 525);
+        if (GetComponent<Attack>())
+                if (GetComponent<Attack>().effect1 == Items.Modifier.LOWDRAG || GetComponent<Attack>().effect2 == Items.Modifier.LOWDRAG)
+                    moveProjectile(_facingRight, 525);
         else
             moveProjectile(_facingRight, 350);
     }
@@ -147,11 +139,11 @@ public class projectile : PunBehaviour
         this.gameObject.transform.position = position;
         facingright = _facingRight;
         this.gameObject.SetActive(shouldIActivate);
-        if (PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod1 == Items.Modifier.LOWDRAG ||
-            PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod2 == Items.Modifier.LOWDRAG)
-            moveProjectile(_facingRight, 525);
-        else
-            moveProjectile(_facingRight, 350);
+        if (GetComponent<Attack>())
+            if (GetComponent<Attack>().effect1 == Items.Modifier.LOWDRAG || GetComponent<Attack>().effect2 == Items.Modifier.LOWDRAG)
+                moveProjectile(_facingRight, 525);
+            else
+                moveProjectile(_facingRight, 350);
     }
 
 }

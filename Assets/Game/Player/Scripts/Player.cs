@@ -126,13 +126,21 @@ public class Player : PunBehaviour
                         //range_attack_Objects[i].SetActive(true);
                         // range_attack_Objects[i].GetComponent<projectile>().moveProjectile(facingRight);
 
-                        range_attack_Objects[i].GetComponent<Attack>().damage = ranged.stats.damage;
-                        range_attack_Objects[i].GetComponent<Attack>().armourPen = ranged.stats.armourPen;
+                        Attack arrowAttack = range_attack_Objects[i].GetComponent<Attack>();
 
-                        if (ranged.rarity == WeaponRarity.LEGENDARY)
-                            range_attack_Objects[i].GetComponent<Attack>().effect = ranged.stats.mod1;
+                        arrowAttack.damage = ranged.stats.damage;
+                        arrowAttack.armourPen = ranged.stats.armourPen;
+
+                        if (ranged.stats.mod1 != Modifier.SPEEDLOAD && ranged.stats.mod1 != Modifier.BOTTOMLESS)
+                            arrowAttack.effect1 = ranged.stats.mod1;
                         else
-                            range_attack_Objects[i].GetComponent<Attack>().effect = Modifier.NONE;
+                            arrowAttack.effect1 = Modifier.NONE;
+
+                        if (ranged.stats.mod2 != Modifier.SPEEDLOAD && ranged.stats.mod2 != Modifier.BOTTOMLESS)
+                            arrowAttack.effect2 = ranged.stats.mod2;
+                        else
+                            arrowAttack.effect2 = Modifier.NONE;
+
 
                         if (Random.Range(1, 101) >= (100 - (100 * ranged.stats.critChance)))
                             range_attack_Objects[i].GetComponent<Attack>().isCrit = true;
@@ -312,20 +320,21 @@ public class Player : PunBehaviour
 
         if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
+            Attack attack = col.GetComponent<Attack>();
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
 
             if (transform.position.x > col.transform.position.x)
-                if (col.GetComponent<Attack>().effect == Modifier.KNOCKBACK)
+                if (attack.effect1 == Modifier.KNOCKBACK || attack.effect2 == Modifier.KNOCKBACK)
                     KnockBack(Vector3.right, 1f);
                 else
                     KnockBack(Vector3.right, 0.5f);
             else
-                if (col.GetComponent<Attack>().effect == Modifier.KNOCKBACK)
+                if (attack.effect1 == Modifier.KNOCKBACK || attack.effect2 == Modifier.KNOCKBACK)
                     KnockBack(Vector3.left, 1f);
                 else
                     KnockBack(Vector3.left, 0.5f);
 
-            if ((col.GetComponent<Attack>().effect == Modifier.BLEEDING || col.GetComponent<Attack>().effect == Modifier.POISON) && myState == State.NORMAL)
+            if ((attack.effect1 == Modifier.BLEEDING || attack.effect1 == Modifier.POISON) && myState == State.NORMAL)
             {
                 myState = State.DAMAGE;
                 StartCoroutine(TakeDamagePSecond(3));
@@ -521,10 +530,10 @@ public class Player : PunBehaviour
             meleeAttack.damage = melee.stats.damage;
 
             if (melee.rarity == WeaponRarity.LEGENDARY)
-                meleeAttack.effect = melee.stats.mod1;
+                meleeAttack.effect1 = melee.stats.mod1;
 
             else
-                meleeAttack.effect = Modifier.NONE;
+                meleeAttack.effect1 = Modifier.NONE;
         }
     }
 
@@ -539,11 +548,15 @@ public class Player : PunBehaviour
             ranged.rarity = (WeaponRarity)objects[3];
             ranged.stats = WeaponStats.SetStats(ranged.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4], (int)objects[5]);
 
-            if (ranged.rarity == WeaponRarity.LEGENDARY)
-                rangedAttack.effect = ranged.stats.mod1;
-
+            if (ranged.stats.mod1 != Modifier.SPEEDLOAD && ranged.stats.mod1 != Modifier.BOTTOMLESS)
+                rangedAttack.effect1 = ranged.stats.mod1;
             else
-                rangedAttack.effect = Modifier.NONE;
+                rangedAttack.effect1 = Modifier.NONE;
+
+            if (ranged.stats.mod2 != Modifier.SPEEDLOAD && ranged.stats.mod2 != Modifier.BOTTOMLESS)
+                rangedAttack.effect2 = ranged.stats.mod1;
+            else
+                rangedAttack.effect2 = Modifier.NONE;
         }
     }
 
@@ -560,10 +573,10 @@ public class Player : PunBehaviour
             meleeAttack.damage = melee.stats.damage;
 
             if (melee.rarity == WeaponRarity.LEGENDARY)
-                meleeAttack.effect = melee.stats.mod1;
+                meleeAttack.effect1 = melee.stats.mod1;
 
             else
-                meleeAttack.effect = Modifier.NONE;
+                meleeAttack.effect1 = Modifier.NONE;
         }
     }
 
@@ -579,6 +592,15 @@ public class Player : PunBehaviour
             ranged.stats = WeaponStats.SetStats(ranged.stats, (int)objects[1], (WeaponType)objects[2], (WeaponRarity)objects[3], (int)objects[4], (int)objects[5]);
         }
 
+        if (ranged.stats.mod1 != Modifier.SPEEDLOAD && ranged.stats.mod1 != Modifier.BOTTOMLESS)
+            rangedAttack.effect1 = ranged.stats.mod1;
+        else
+            rangedAttack.effect1 = Modifier.NONE;
+
+        if (ranged.stats.mod2 != Modifier.SPEEDLOAD && ranged.stats.mod2 != Modifier.BOTTOMLESS)
+            rangedAttack.effect2 = ranged.stats.mod1;
+        else
+            rangedAttack.effect2 = Modifier.NONE;
     }
 
     [PunRPC]

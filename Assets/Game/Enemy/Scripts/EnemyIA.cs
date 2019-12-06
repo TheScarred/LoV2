@@ -221,17 +221,17 @@ public class EnemyIA : PunBehaviour
                 particleManager.ActivateParticle(this.transform, particleHit);
 
                 if (transform.position.x > other.transform.position.x)
-                    if (attack.effect == Items.Modifier.KNOCKBACK)
+                    if (attack.effect1 == Items.Modifier.KNOCKBACK || attack.effect2 == Items.Modifier.KNOCKBACK)
                         KnockBack(Vector3.right, 1f);
                     else
                         KnockBack(Vector3.right, 0.5f);
                 else
-                    if (attack.effect == Items.Modifier.KNOCKBACK)
+                    if (attack.effect1 == Items.Modifier.KNOCKBACK || attack.effect2 == Items.Modifier.KNOCKBACK)
                         KnockBack(Vector3.left, 1f);
                     else
                         KnockBack(Vector3.left, 0.5f);
 
-                if ((other.GetComponent<Attack>().effect == Items.Modifier.BLEEDING) && myState == Items.State.NORMAL)
+                if ((attack.effect1 == Items.Modifier.BLEEDING) && myState == Items.State.NORMAL)
                 {
                     myState = Items.State.DAMAGE;
                     StartCoroutine(TakeDamagePSecond(5));
@@ -284,7 +284,7 @@ public class EnemyIA : PunBehaviour
                     killer.KilledTarget(killed_points);
                     PhotonNetwork.player.AddScore(killed_points);
 
-                    if (attack.effect == Items.Modifier.BLOODTHIRST)
+                    if (attack.effect1 == Items.Modifier.BLOODTHIRST)
                         other.GetComponentInParent<Player>().HealPlayer(5);
                 }
             }
@@ -303,7 +303,7 @@ public class EnemyIA : PunBehaviour
             animator.SetTrigger("hit");
 
 
-            if ((other.GetComponent<Attack>().effect == Items.Modifier.POISON) && myState == Items.State.NORMAL)
+            if ((attack.effect1 == Items.Modifier.POISON) && myState == Items.State.NORMAL)
             {
                 myState = Items.State.DAMAGE;
                 StartCoroutine(TakeDamagePSecond(5));
