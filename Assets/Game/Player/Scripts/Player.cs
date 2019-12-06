@@ -8,6 +8,7 @@ using Custom.Indicators;
 
 public class Player : PunBehaviour
 {
+    public CharacterController player_controller;
     public Weapon melee, ranged;
     public Sprite[] meleeSprites;
     public Sprite[] rangedSprites;
@@ -15,7 +16,6 @@ public class Player : PunBehaviour
     public PlayerStats _myPlayerStats;
     List<GameObject> range_attack_Objects = new List<GameObject>();
     public GameObject prefab_range_attack;
-    public Rigidbody player_rigidbody;
     public TerrainGenerator terreno;
     float delayMovement;
     public Vector3 posicionJugador;
@@ -90,7 +90,7 @@ public class Player : PunBehaviour
         //InitRandomWeapons(melee, ranged); // random
 
         facingRight = false;
-        player_rigidbody = GetComponent<Rigidbody>();
+        
         _myPlayerStats = GetComponent<PlayerStats>();
         ID = this.gameObject.GetComponent<PhotonView>().viewID;
         //hit box is deactivated unless the player hits
@@ -124,12 +124,12 @@ public class Player : PunBehaviour
         }
 
         
-            if(_myPlayerStats.MVP.activeInHierarchy)
+           /* if(_myPlayerStats.MVP.activeInHierarchy)
             {
-            indicators.AddTarget(_myPlayerStats.MVP);
+              indicators.AddTarget(_myPlayerStats.MVP);
 
             }
-
+            */
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -233,11 +233,14 @@ public class Player : PunBehaviour
         //float h = _myPlayerStats.m_Speed * theJoystick.horizontal;
         //float v = _myPlayerStats.m_Speed * theJoystick.vectical;
 
+
         Vector3 movement = new Vector3(h, 0.0f, v);
         if (melee.stats.mod1 == Modifier.SWIFTNESS || melee.stats.mod2 == Modifier.SWIFTNESS)
-            player_rigidbody.velocity = movement * (_myPlayerStats.m_Speed * 1.15f);
+            player_controller.Move(new Vector3(h, 0, v) * 1.15f * Time.deltaTime);
+        //player_rigidbody.velocity = movement * (_myPlayerStats.m_Speed * 1.15f);
         else
-            player_rigidbody.velocity = movement * _myPlayerStats.m_Speed;
+            player_controller.Move(new Vector3(h, 0, v) * Time.deltaTime);
+        //player_rigidbody.velocity = movement * _myPlayerStats.m_Speed;
 
 
     }

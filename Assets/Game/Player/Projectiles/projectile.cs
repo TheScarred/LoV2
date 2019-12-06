@@ -13,8 +13,8 @@ public class projectile : PunBehaviour
 
     private void Start()
     {
-        creator = PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<PlayerStats>();
-        damage = (int)(creator.m_DamageRange);
+       // creator = PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<PlayerStats>();
+        //damage = (int)(creator.m_DamageRange);
     }
 
     void OnTriggerEnter(Collider other)
@@ -43,11 +43,12 @@ public class projectile : PunBehaviour
 
     public void OnEnable()
     {
-        if (PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod1 == Items.Modifier.BULLETPOINT ||
+       /* if (PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod1 == Items.Modifier.BULLETPOINT ||
             PhotonConnection.GetInstance().GetPlayerById(owner).GetComponent<Player>().ranged.stats.mod2 == Items.Modifier.BULLETPOINT)
             timer = 2.25f;
         else
             timer = 1.5f;
+            */
     }
 
     IEnumerator DeathTime()

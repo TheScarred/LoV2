@@ -73,7 +73,7 @@ public class PlayerStats : PunBehaviour
 
     public void ReceiveDamage(float armourPen, float damage)
     {
-        player.particleManager.ActivateParticle(this.transform, player.particleHit);
+   //     player.particleManager.ActivateParticle(this.transform, player.particleHit);
         player_health.TakeDamage(armourPen, damage);
         float fillmount;
         fillmount = HP_bar.fillAmount = (m_HP / base_HP);
@@ -124,11 +124,11 @@ public class PlayerStats : PunBehaviour
             if (mvp == p.NickName)
             {
                 Debug.Log("entrando");
-                MVP.SetActive(true);
+              //  MVP.SetActive(true);
             }
             else
             {
-                MVP.SetActive(false);
+              //  MVP.SetActive(false);
             }
             /*else if (mvp != p.NickName)//&& photonView.isMine )
                 Debug.Log(this.photonView.name);
@@ -136,9 +136,9 @@ public class PlayerStats : PunBehaviour
         }
         
         string output = "Numero de jugadores: " + playerCount.ToString() + "\n" + playerList.ToString();
-        if (photonView.isMine)
+       // if (photonView.isMine)
             
-        scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
+        //scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
 
     }
 
