@@ -9,6 +9,7 @@ public class projectile : PunBehaviour
     bool facingright;
     float timer;
 
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

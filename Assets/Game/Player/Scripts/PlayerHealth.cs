@@ -95,6 +95,7 @@ namespace SimpleHealthBar_SpaceshipExample
             {
                 healthBar.UpdateBar(jugadorsin.m_HP, jugadorsin.base_HP);
                 shieldBar.UpdateBar(jugadorsin.m_Shield, jugadorsin.base_Shield);
+                
             }
 			
 
@@ -104,6 +105,7 @@ namespace SimpleHealthBar_SpaceshipExample
 		{
             if(photonView.isMine)
             //AQUI ENSEÑARIA LA ESCENA DE DEATH
+            
             gameObject.transform.DetachChildren();
 			Destroy( gameObject );
             SceneManager.LoadScene("Game Over");
