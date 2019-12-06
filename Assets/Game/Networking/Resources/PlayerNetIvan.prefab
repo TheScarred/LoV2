@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2814614972184391137}
-  - component: {fileID: 2814614972184391142}
+  - component: {fileID: 2814614972184391141}
   - component: {fileID: 2814614972184391140}
   - component: {fileID: 2814614972184391141}
   - component: {fileID: 1384256105}
@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 3498117161281581906}
   - component: {fileID: 2209820538171303746}
   - component: {fileID: 8614886544045226218}
+  - component: {fileID: -2929531804083930897}
+  - component: {fileID: 7519799874250962704}
   m_Layer: 9
   m_Name: PlayerNetIvan
   m_TagString: Player
@@ -83,8 +85,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a08367f5a16c7f458c4819e054bcefd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
+  player_controller: {fileID: 7519799874250962704}
   melee: {fileID: 0}
   ranged: {fileID: 0}
   meleeSprites:
@@ -103,7 +106,6 @@ MonoBehaviour:
   _myPlayerStats: {fileID: 0}
   prefab_range_attack: {fileID: 8701324102084865613, guid: 78a366842ebc8804683c4478b815439b,
     type: 3}
-  player_rigidbody: {fileID: 2814614972184391142}
   terreno: {fileID: 11400000, guid: 85c46e013eb9f9246bb60a21dbdccd47, type: 2}
   posicionJugador: {x: 0, y: 0, z: 0}
   imAttacking: 0
@@ -112,10 +114,24 @@ MonoBehaviour:
   BasicHitBox: {fileID: 3045176174394309520}
   meleeAttack: {fileID: 0}
   rangedAttack: {fileID: 0}
+  indicators: {fileID: 0}
   theJoystick: {fileID: 0}
   particleManager: {fileID: 2554709314926158621, guid: de6de6d22c80d0746980981a69ea9938,
     type: 3}
   particleHit: 3
+--- !u!65 &2814614972184391140
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814614972184391143}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: -0.19, z: -0.00000008940697}
 --- !u!114 &1384256105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,8 +142,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d3aca7aa4d8bea4097ae727154893ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   jugadorsin: {fileID: 1976399023}
   healthBar: {fileID: 0}
   shieldBar: {fileID: 0}
@@ -141,8 +157,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfc350195dcd60c4582e1e02183c0819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   base_HP: 50
   base_Shield: 100
   base_DamageMeele: 50
@@ -157,6 +173,7 @@ MonoBehaviour:
   m_DamageRange: 0
   m_DamageMelee: 0
   m_Ammo: 0
+  MVP: {fileID: 0}
   scoreboard: {fileID: 0}
   UI_Score: {fileID: 0}
   HP_bar: {fileID: 7992099855816585950}
@@ -173,8 +190,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
@@ -251,8 +268,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   ownerId: 0
   group: 0
   OwnerShipWasTransfered: 0
@@ -285,7 +302,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -299,8 +316,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
   m_SynchronizeParameters:
@@ -381,12 +398,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69e6550233ee16b458d7b956deca0726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   velocidad: 0
   jugador: {fileID: 2814614972184391143}
   animator: {fileID: 8941741865211387443}
   p: {fileID: 1384256105}
+--- !u!114 &-2929531804083930897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814614972184391143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  sortingOrderBase: 5000
+  offset: 0
+  runOnlyOnce: 0
+--- !u!143 &7519799874250962704
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814614972184391143}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!1001 &2684425966632174307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -508,7 +558,7 @@ PrefabInstance:
     - target: {fileID: 5181803502354884221, guid: 97a29a3a83f9c384a804ee586ca9d18b,
         type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300002, guid: 2673cf64155f08c4e847edde1c08f8c1,
         type: 3}
     - target: {fileID: 5181803502354884221, guid: 97a29a3a83f9c384a804ee586ca9d18b,
@@ -679,8 +729,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &5705318008468807336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -706,7 +756,7 @@ PrefabInstance:
     - target: {fileID: 5181803502354884221, guid: 97a29a3a83f9c384a804ee586ca9d18b,
         type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300002, guid: e817c27f69a8f3d4092f9e84d8a39732,
         type: 3}
     - target: {fileID: 5181803502354884221, guid: 97a29a3a83f9c384a804ee586ca9d18b,
@@ -872,5 +922,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:

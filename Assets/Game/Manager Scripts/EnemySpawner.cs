@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
     public int enemiesSpawned;
     public int maxEnemies;
 
+    
     int randEnemy;
     // Start is called before the first frame update
     void Start()

@@ -24,7 +24,7 @@ public class EnemyIA : PunBehaviour
     public AudioClip[] audioList;
     [SerializeField]
     AudioClip sword,death,hit;
-
+    public CharacterController enemy_controller;
     public float HP = 50;
     public float Damage = 10f;
     public float ArmourPen = 0;
@@ -44,7 +44,7 @@ public class EnemyIA : PunBehaviour
     public Items.ItemType contains;
     public EnemyState status;
     public Items.State myState;
-    public Rigidbody enemy_rigidbody;
+   // public Rigidbody enemy_rigidbody;
     public LayerMask targetMask;
     public LayerMask obstacleMask;
     public GameObject playertoChase;
@@ -102,7 +102,7 @@ public class EnemyIA : PunBehaviour
         maxY = 14.75f;
         //patternPoint.gameObject.GetComponent<PatternPoint>().GenerateNewPosition(minX, maxX, minY, maxY);
         waitTime = startWaitTime;
-        speed = 1f;
+        speed = 0.2f;
         status = EnemyState.Patrolling;
         delayToSearchForPlayer = new WaitForSeconds(0.3f);
         second = new WaitForSeconds(1f);
@@ -283,6 +283,7 @@ public class EnemyIA : PunBehaviour
                     killer = other.gameObject.transform.parent.gameObject.GetComponent<PlayerStats>();
                     killer.KilledTarget(killed_points);
                     PhotonNetwork.player.AddScore(killed_points);
+                    killer.UpdateScoreboard();
 
                     if (attack.effect == Items.Modifier.BLOODTHIRST)
                         other.GetComponentInParent<Player>().HealPlayer(5);
@@ -323,6 +324,12 @@ public class EnemyIA : PunBehaviour
     }
     void PatrolArea(int modifier)
     {
+
+        //Me muevo al patrollingPoint
+        Vector3 dir = patternPoint.position - transform.position;
+
+        enemy_controller.Move(dir.normalized * (speed + modifier) * Time.deltaTime);
+
         //Me muevo al patrollingPoint
         transform.position = Vector3.MoveTowards(transform.position, patternPoint.position, speed * modifier * Time.deltaTime);
         if (Vector3.Distance(transform.position, patternPoint.position) < WalkDistance)
@@ -364,13 +371,18 @@ public class EnemyIA : PunBehaviour
                 }
             }
 
-            if(status == EnemyState.Rage)
+            Vector3 dir = playertoChase.transform.position - transform.position;
+
+         
+            if (status == EnemyState.Rage)
             {
-                transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed* 2f * Time.deltaTime);
+                enemy_controller.Move(dir.normalized * ((1) * 2) * Time.deltaTime);
+                //transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed* 2f * Time.deltaTime);
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed * Time.deltaTime);
+                enemy_controller.Move(dir.normalized * (1) * Time.deltaTime);
+                //transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed * Time.deltaTime);
             }
            if (this.transform.position.x < playertoChase.transform.position.x && facingRight)   //player is on the left
             {
@@ -407,8 +419,8 @@ public class EnemyIA : PunBehaviour
         {
             playertoChase = null;
             status = EnemyState.Patrolling;
-            enemy_rigidbody.velocity = Vector3.zero;
-            enemy_rigidbody.angularVelocity = Vector3.zero;
+           // enemy_rigidbody.velocity = Vector3.zero;
+           // enemy_rigidbody.angularVelocity = Vector3.zero;
         }
     }
 

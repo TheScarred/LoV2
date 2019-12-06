@@ -9,10 +9,10 @@ public class PlayerStats : PunBehaviour
 {
     public float base_HP = 50;
     public float base_Shield = 100;
-    public float base_DamageMeele = 20;   
+    public float base_DamageMeele = 20;
     public float base_DamageRange = 20;
     public float base_MeleeSpeed = 2f;
-    public float base_speed = 2f;    
+    public float base_speed = 2f;
     public float base_ShootingSpeed = 2f;
     public int base_AmmoCap = 30;
 
@@ -24,6 +24,9 @@ public class PlayerStats : PunBehaviour
     public float m_DamageMelee;
     public int m_Ammo;
 
+    //MVP
+    public GameObject MVP;
+    string mvp;
 
     //SCOREBOARD
     public GameObject scoreboard;
@@ -49,6 +52,7 @@ public class PlayerStats : PunBehaviour
 
         if (photonView.isMine)
         {
+
             HP_bar.gameObject.SetActive(false);
             Armor_bar.gameObject.SetActive(false);
             scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
@@ -58,7 +62,7 @@ public class PlayerStats : PunBehaviour
 
     public void ResetStats()
     {
-       
+        mvp = "";
         m_Speed = base_speed;
         m_HP = base_HP;
         m_Shield = 0;
@@ -100,22 +104,34 @@ public class PlayerStats : PunBehaviour
         }
     }
     public void UpdateScoreboard() // ESTA FUNCION SE LLAMA EN EL PLAYER.CS en el update cuando se activa el scoreboard
-
-    {
+    {/*
         // checar el contador de jugadores que hay
         playerCount = PhotonNetwork.playerList.Length;
         // obtener nombres de los jugadores
         var playerList = new StringBuilder();
         //mostrando la lista con sus respectivos scores
+
         foreach (PhotonPlayer p in PhotonNetwork.playerList)
         {
+
+            p.OrdenarScore(PhotonNetwork.playerList, ref mvp);
+
             playerList.Append("Nick Jugador: " + p.NickName + " Score: " + p.GetScore() + "\n");
-
-        }
-        string output = "Numero de jugadores: " + playerCount.ToString() + "\n" + playerList.ToString();
-        if(photonView.isMine)
-        scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
-
+            if (mvp == p.NickName)
+            {
+              //  MVP.SetActive(true);
+            }
+            else
+            {
+              //  MVP.SetActive(false);
+            }
+            /*else if (mvp != p.NickName)//&& photonView.isMine )
+                Debug.Log(this.photonView.name);
+                this.MVP.SetActive(false);*/
     }
 
+        //string output = "Numero de jugadores: " + playerCount.ToString() + "\n" + playerList.ToString();
+       // if (photonView.isMine)
+
+        //scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
 }
