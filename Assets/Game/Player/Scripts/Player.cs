@@ -117,13 +117,10 @@ public class Player : PunBehaviour
     [PunRPC]
     public void CrearFlecha()
     {
-        Debug.Log("Crear flecha", gameObject);
         if(indicators == null)
         {
-          indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
+            indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
         }
-
-        
            /* if(_myPlayerStats.MVP.activeInHierarchy)
             {
               indicators.AddTarget(_myPlayerStats.MVP);

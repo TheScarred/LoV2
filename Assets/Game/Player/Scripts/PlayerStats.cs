@@ -104,8 +104,7 @@ public class PlayerStats : PunBehaviour
         }
     }
     public void UpdateScoreboard() // ESTA FUNCION SE LLAMA EN EL PLAYER.CS en el update cuando se activa el scoreboard
-
-    {
+    {/*
         // checar el contador de jugadores que hay
         playerCount = PhotonNetwork.playerList.Length;
         // obtener nombres de los jugadores
@@ -116,14 +115,10 @@ public class PlayerStats : PunBehaviour
         {
             
             p.OrdenarScore(PhotonNetwork.playerList, ref mvp);
-            Debug.Log(mvp);
            
             playerList.Append("Nick Jugador: " + p.NickName + " Score: " + p.GetScore() + "\n");
-
-
             if (mvp == p.NickName)
             {
-                Debug.Log("entrando");
               //  MVP.SetActive(true);
             }
             else
@@ -133,13 +128,10 @@ public class PlayerStats : PunBehaviour
             /*else if (mvp != p.NickName)//&& photonView.isMine )
                 Debug.Log(this.photonView.name);
                 this.MVP.SetActive(false);*/
-        }
+    }
         
-        string output = "Numero de jugadores: " + playerCount.ToString() + "\n" + playerList.ToString();
+        //string output = "Numero de jugadores: " + playerCount.ToString() + "\n" + playerList.ToString();
        // if (photonView.isMine)
             
         //scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
-
-    }
-
 }
