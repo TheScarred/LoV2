@@ -16,6 +16,7 @@ TagManager:
   - Food
   - Ammo
   - Armour
+  - MVP
   layers:
   - Default
   - TransparentFX
