@@ -95,7 +95,7 @@ public class Player : PunBehaviour
 
         facingRight = false;
         
-        //_myPlayerStats = GetComponent<PlayerStats>();
+        _myPlayerStats = GetComponent<PlayerStats>();
         ID = this.gameObject.GetComponent<PhotonView>().viewID;
         //hit box is deactivated unless the player hits
         BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
@@ -426,14 +426,14 @@ public class Player : PunBehaviour
         melee.rarity = Items.WeaponRarity.COMMON;
         melee.sprite = meleeSprites[(int)melee.rarity];
         melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity, -1, -1);
-        //meleeAttack.damage = melee.stats.damage;
-        //meleeAttack.armourPen = melee.stats.armourPen;
+        meleeAttack.damage = melee.stats.damage;
+        meleeAttack.armourPen = melee.stats.armourPen;
 
         ranged.type = Items.WeaponType.RANGED;
         ranged.rarity = Items.WeaponRarity.COMMON;
         ranged.sprite = meleeSprites[(int)ranged.rarity];
         ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity, -2, -1);
-        //rangedAttack.armourPen = ranged.stats.armourPen;
+        rangedAttack.armourPen = ranged.stats.armourPen;
     }
 
     [PunRPC]
