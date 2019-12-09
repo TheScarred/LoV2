@@ -154,9 +154,6 @@ public class Player : PunBehaviour
                         parameters2[2] = position;
                         parameters2[1] = true;
                         parameters2[0] = facingRight;
-                        // range_attack_Objects[i].GetComponent<Transform>().position = position;
-                        //range_attack_Objects[i].SetActive(true);
-                        // range_attack_Objects[i].GetComponent<projectile>().moveProjectile(facingRight);
 
                         range_attack_Objects[i].GetComponent<Attack>().damage = ranged.stats.damage;
                         range_attack_Objects[i].GetComponent<Attack>().armourPen = ranged.stats.armourPen;
@@ -186,34 +183,10 @@ public class Player : PunBehaviour
         parameters[2] = ID;
         parameters[1] = facingRight;
         parameters[0] = new Vector3(-90, 90, 0);
-        //PhotonNetwork.RPC(go.GetComponent<PhotonView>(), "ArrowStart", PhotonTargets.AllBuffered, false, parameters);
         go.GetComponent<projectile>().PrepareRPC(parameters);
-        // go.transform.eulerAngles = new Vector3(-90, 90, 0);
-        // go.GetComponent<projectile>().owner = ID;
-        // go.GetComponent<projectile>().moveProjectile(facingRight);
         range_attack_Objects.Add(go);
-        //StartCoroutine(MoveProyectile(go));
         return go;
     }
-   /* public IEnumerator MoveProyectile(GameObject proyectile)
-    {
-        //Mover el disparo y luego desactivarlo para volverse a usar en el futuro
-        if (!facingRight)
-        {
-            proyectile.GetComponent<Rigidbody>().AddForce(Vector3.right * 350f);
-        }
-        else
-        {
-            proyectile.GetComponent<Rigidbody>().AddForce(Vector3.left * 350f);
-        }
-
-        proyectile.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        proyectile.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        proyectile.SetActive(false);
-
-        yield return null;
-    }
-    */
     void Movement()
     {
         //Checar que lado esta mirando para cambiar su la escala (voltear)
@@ -346,15 +319,6 @@ public class Player : PunBehaviour
         if (rangedCooldown < ranged.stats.rOF)
             rangedCooldown += Time.time;
 
-        //Debug.Log(transform.position);
-
-
-
-
-
-
-
-
         if(delayMovement > 0)
         {
             delayMovement -= Time.deltaTime;
@@ -378,7 +342,6 @@ public class Player : PunBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-
         if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
@@ -428,7 +391,6 @@ public class Player : PunBehaviour
         {
             weaponTrigger = true;
             pickup = col;
-
         }
     }
 
@@ -466,7 +428,6 @@ public class Player : PunBehaviour
         ranged.rarity = Items.WeaponRarity.COMMON;
         ranged.sprite = meleeSprites[(int)ranged.rarity];
         ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity, -2, -1);
-        rangedAttack.armourPen = ranged.stats.armourPen;
     }
 
     [PunRPC]
@@ -765,14 +726,7 @@ public class Player : PunBehaviour
 
 
         }
-
             _myPlayerStats.UpdateScoreboard();
-
-
-
-
-
-            // Update scoreboard
 
         if (PhotonNetwork.player.NickName == "")
             PhotonNetwork.player.NickName = "Jugador #" + Random.Range(1.00f, 9.00f);
