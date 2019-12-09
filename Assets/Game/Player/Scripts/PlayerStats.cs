@@ -120,21 +120,22 @@ public class PlayerStats : PunBehaviour
         //mostrando la lista con sus respectivos scores
 
         int IDMVP = -1;
-
+        PhotonPlayer scoreMVP;
         foreach (PhotonPlayer p in PhotonNetwork.playerList)
         {
 
             p.OrdenarScore(PhotonNetwork.playerList, ref mvp);
 
 
-            playerList.Append("Nick Jugador: " + p.NickName + " Score: " + p.GetScore() + "\n");
+            
 
 
 
             if (mvp == p.NickName)
             {
                 IDMVP = p.ID;
-
+                scoreMVP = p;
+                playerList.Append(mvp + "\n" + " Score: " + scoreMVP.GetScore() + "\n");
             }
             else if (mvp != p.NickName)//&& photonView.isMine )
 
@@ -169,7 +170,7 @@ public class PlayerStats : PunBehaviour
 
 
 
-        string output = "Numero de jugadores: " + playerCount.ToString() + "\n" + playerList.ToString();
+        string output = "\n" + playerList.ToString();
         if (photonView.isMine)
             scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
 
