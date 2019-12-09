@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4337340910481760}
   - component: {fileID: 198395617941539808}
   - component: {fileID: 199416180101253956}
+  - component: {fileID: -8896508577667026077}
   m_Layer: 0
   m_Name: ModifierBloodthirst
   m_TagString: Untagged
@@ -4744,3 +4745,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-8896508577667026077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586190335294376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb01e44e39056948a35708a6aca7cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleType: 0
+  base_countdown: 0
+  particle: {fileID: 0}

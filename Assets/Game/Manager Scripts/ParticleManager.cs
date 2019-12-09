@@ -18,7 +18,7 @@ public class ParticleManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -28,12 +28,14 @@ public class ParticleManager : MonoBehaviour
     {
         if (particles.Count > 0)
         {
-            if (particles[0] == null)
-            {
-                particles.Clear();
-            }
+           
             for (int i = 0; i < particles.Count; i++)  //search the particle list
             {
+                if (particles[i] == null)  //if there is an error in the list where a reference is not found or something is missing
+                {
+                    particles.Clear();  //will delete the contents of the list
+                    return;  //particle will not show but will work next time
+                }
                 if (particles[i].GetComponent<ParticleType>().particleType == type)
                 {
                     if (!particles[i].IsAlive())  //if the particle is not currently being used then...
