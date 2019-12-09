@@ -46,7 +46,7 @@ public class Player : PunBehaviour
 
     //BUTTONS
     enum Botones { RANGED, MELEE };
-   public Button[] theButtons;
+    public Button[] theButtons;
 
     //Particles
     TypesAvailable.particleType particleDeath;
@@ -100,8 +100,6 @@ public class Player : PunBehaviour
         InitBaseWeapons(melee, ranged); // common
         //InitRandomWeapons(melee, ranged); // random
 
-        facingRight = false;
-
         _myPlayerStats = GetComponent<PlayerStats>();
         ID = this.gameObject.GetComponent<PhotonView>().viewID;
         //hit box is deactivated unless the player hits
@@ -112,7 +110,6 @@ public class Player : PunBehaviour
         rangedCooldown = ranged.stats.rOF;
 
         imAttacking = false;
-
 
         //Particles
         particleDeath = TypesAvailable.particleType.PLAYER_DEATH;
@@ -189,6 +186,10 @@ public class Player : PunBehaviour
         object[] parameters = new object[3];
         parameters[2] = ID;
         parameters[1] = facingRight;
+        if (facingRight)
+            Debug.Log("Player is facing right");
+        else
+            Debug.Log("Player is facing left");
         parameters[0] = new Vector3(-90, 90, 0);
         go.GetComponent<projectile>().PrepareRPC(parameters);
         range_attack_Objects.Add(go);
@@ -197,13 +198,13 @@ public class Player : PunBehaviour
     void Movement()
     {
         //Checar que lado esta mirando para cambiar su la escala (voltear)
-        if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight || theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight)
+        if (Input.GetAxis("Horizontal") > 0 && !facingRight || Input.GetAxis("Horizontal") < 0 && facingRight || theJoystick.horizontal > 0 && !facingRight || theJoystick.horizontal < 0 && facingRight)
         {
             facingRight = !facingRight;
             Vector3 scale  = BasicHitBox.transform.localPosition;
             scale.x *= -1;
             BasicHitBox.transform.localPosition = scale;
-            mySprite.flipX = facingRight;
+            mySprite.flipX = !facingRight;
         }
 
         float h = 0;

@@ -21,6 +21,7 @@ public class projectile : PunBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        
         if (other.gameObject.CompareTag("Player"))
         {
             if (other.GetComponent<Player>().ID != owner)
@@ -28,6 +29,7 @@ public class projectile : PunBehaviour
                 StartCoroutine(DeathTime());
                 rigi.velocity = Vector3.zero;
                 rigi.angularVelocity = Vector3.zero;
+                target = null;
                 this.gameObject.SetActive(false);
             }
 
@@ -38,6 +40,7 @@ public class projectile : PunBehaviour
             StartCoroutine(DeathTime());
             rigi.velocity = Vector3.zero;
             rigi.angularVelocity = Vector3.zero;
+            target = null;
             this.gameObject.SetActive(false);
         }
     }
@@ -53,9 +56,8 @@ public class projectile : PunBehaviour
                 timer = 1.5f;
 
             if (attack.effect1 == Items.Modifier.HOMING)
-                target = GetHomingTarget(transform.position, facingright);
+                target = GetHomingTarget(transform.position, !facingright);
         }
-
     }
 
     IEnumerator DeathTime()
@@ -67,22 +69,28 @@ public class projectile : PunBehaviour
 
     public void moveProjectile(bool direction, float force)
     {
-        if (!direction)
+        if (direction)
             rigi.AddForce(Vector3.right * force);
         else
             rigi.AddForce(Vector3.left * force);
+
     }
     public void Update()
     {
         if (target != null)
         {
-            rigi.velocity = new Vector3(0, 0, rigi.velocity.z);
-
             float step = torque * Time.deltaTime;
             Vector3 relativePos = target.position - transform.position;
+            relativePos.Normalize();
             var targetRotation = Quaternion.LookRotation(relativePos);
+            targetRotation = Quaternion.Euler(targetRotation.eulerAngles.x, targetRotation.eulerAngles.y - 90f, targetRotation.eulerAngles.z);
             var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, step);
-            rigi.MoveRotation(rigi.rotation * rotation);
+            rigi.MoveRotation(rotation);
+
+            if (facingright)
+                rigi.velocity = transform.forward * -7;
+            else
+                rigi.velocity = transform.forward * 7;
         }
 
         timer -= Time.deltaTime;
@@ -90,9 +98,9 @@ public class projectile : PunBehaviour
         {
             rigi.velocity = Vector3.zero;
             rigi.angularVelocity = Vector3.zero;
+            target = null;
             gameObject.SetActive(false);
         }
-
     }
 
     public void PrepareRPC(object[] parameter)
@@ -142,32 +150,40 @@ public class projectile : PunBehaviour
 
     public Transform GetHomingTarget(Vector3 position, bool facingRight)
     {
+        Debug.Log("Getting Target");
         int m = PhotonConnection.GetInstance().playerList.Count;
-        int n = PhotonConnection.GetInstance().playerList.Count + PhotonConnection.GetInstance().enemiesList.Count;
+        int n = m + PhotonConnection.GetInstance().enemiesList.Count;
         float d = Mathf.Infinity;
         Transform temp = null;
+        Player currentP;
+        GameObject currentE;
 
         if (facingRight)
         {
-            for (int i = 0; i < n - 1; i++)
+            Debug.Log("derecha");
+            for (int i = 0; i < n ; i++)
             {
                 if (i < m)
                 {
-                    if (transform.position.x < PhotonConnection.GetInstance().playerList[i].transform.position.x &&
-                    Vector3.Distance(transform.position, PhotonConnection.GetInstance().playerList[i].transform.position) < d &&
-                    PhotonConnection.GetInstance().playerList[i].photonView.viewID != owner)
+                    Debug.Log("Checando Jugador " + i);
+                    currentP = PhotonConnection.GetInstance().playerList[i];
+                    if (transform.position.x < currentP.transform.position.x && Vector3.Distance(transform.position, currentP.transform.position) < d &&
+                        currentP.photonView.viewID != owner)
                     {
-                        temp = PhotonConnection.GetInstance().playerList[i].transform;
-                        d = Vector3.Distance(transform.position, PhotonConnection.GetInstance().playerList[i].transform.position);
+                        temp = currentP.transform;
+                        d = Vector3.Distance(transform.position, currentP.transform.position);
                     }
                 }
                 else
                 {
-                    if (transform.position.x < PhotonConnection.GetInstance().enemiesList[i].transform.position.x &&
-                    Vector3.Distance(transform.position, PhotonConnection.GetInstance().enemiesList[i].transform.position) < d)
+                    int ii = i - m;
+                    Debug.Log("Checando Enemigo " + ii);
+                    currentE = PhotonConnection.GetInstance().enemiesList[ii];
+                    if (transform.position.x < currentE.transform.position.x && Vector3.Distance(transform.position, currentE.transform.position) < d)
                     {
-                        temp = PhotonConnection.GetInstance().enemiesList[i].transform;
-                        Vector3.Distance(transform.position, PhotonConnection.GetInstance().enemiesList[i].transform.position);
+                        temp = currentE.transform;
+                        d = Vector3.Distance(transform.position, currentE.transform.position);
+                        Debug.Log(ii + " " + temp.position, temp.gameObject);
                     }
                 }
             }
@@ -175,23 +191,32 @@ public class projectile : PunBehaviour
         }
         else
         {
-            for (int i = 0; i < n - 1; i++)
+            for (int i = 0; i < n ; i++)
             {
+                Debug.Log("izquierda");
                 if (i < m)
-                    if (transform.position.x > PhotonConnection.GetInstance().playerList[i].transform.position.x &&
-                    Vector3.Distance(transform.position, PhotonConnection.GetInstance().playerList[i].transform.position) < d &&
-                    PhotonConnection.GetInstance().playerList[i].photonView.viewID != owner)
+                {
+                    Debug.Log("Checando Jugador " + i);
+                    currentP = PhotonConnection.GetInstance().playerList[i];
+                    if (transform.position.x > currentP.transform.position.x && Vector3.Distance(transform.position, currentP.transform.position) < d &&
+                    currentP.photonView.viewID != owner)
                     {
-                        temp = PhotonConnection.GetInstance().playerList[i].transform;
-                        d = Vector3.Distance(transform.position, PhotonConnection.GetInstance().playerList[i].transform.position);
+                        temp = currentP.transform;
+                        d = Vector3.Distance(transform.position, currentP.transform.position);
                     }
+                }
                 else
-                    if (transform.position.x > PhotonConnection.GetInstance().enemiesList[i].transform.position.x &&
-                    Vector3.Distance(transform.position, PhotonConnection.GetInstance().enemiesList[i].transform.position) < d)
+                {
+                    int ii = i - m;
+                    Debug.Log("Checando Enemigo " + ii);
+                    currentE = PhotonConnection.GetInstance().enemiesList[ii];
+                    if (transform.position.x > currentE.transform.position.x && Vector3.Distance(transform.position, currentE.transform.position) < d)
                     {
-                        temp = PhotonConnection.GetInstance().enemiesList[i].transform;
-                        Vector3.Distance(transform.position, PhotonConnection.GetInstance().enemiesList[i].transform.position);
+                        temp = currentE.transform;
+                        d = Vector3.Distance(transform.position, currentE.transform.position);
+                        Debug.Log(ii + " " + temp.position, temp.gameObject);
                     }
+                }
             }
             return temp;
         }
@@ -213,7 +238,6 @@ public class projectile : PunBehaviour
     [PunRPC]
     public void ReActivarFlecha(object[] _parameters)
     {
-
         bool _facingRight = (bool)_parameters[0];
         bool shouldIActivate = (bool)_parameters[1];
         Vector3 position = (Vector3)_parameters[2];
