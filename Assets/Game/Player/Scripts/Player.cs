@@ -721,12 +721,9 @@ public class Player : PunBehaviour
                 if (Input.GetKey(KeyCode.Space))
             {
                 PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false, ID);
-
             }
-
-
         }
-            _myPlayerStats.UpdateScoreboard();
+            _myPlayerStats.UpdateScoreboard();   //no se puede quedar aqui!!!
 
         if (PhotonNetwork.player.NickName == "")
             PhotonNetwork.player.NickName = "Jugador #" + Random.Range(1.00f, 9.00f);
