@@ -21,15 +21,17 @@ public static class ScoreExtensions
     public static void OrdenarScore(this PhotonPlayer player, PhotonPlayer[] p, ref string mvp)
     {
         int current = player.GetScore();
-        int i, mejorPuntaje = 0, mejorPuntajeIndex = 0;
+        
+        int i, mejorPuntaje = 0, mejorPuntajeIndex = 0,currentindex = 0; ;
         for (i = 0; i < p.Length; i++)
         {
             if (mejorPuntaje < p[i].GetScore())
             {
                 mejorPuntaje = p[i].GetScore();
                 mejorPuntajeIndex = i;
+                
             }
-
+            
         }
 
         mvp = p[mejorPuntajeIndex].NickName;
