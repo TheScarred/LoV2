@@ -225,19 +225,18 @@ public class EnemyIA : PunBehaviour
                     if (attack.effect1 == Items.Modifier.KNOCKBACK || attack.effect2 == Items.Modifier.KNOCKBACK)
                         KnockBack(Vector3.right, 1f);
                     else
-                        KnockBack(Vector3.right, 0.5f);
+                        KnockBack(Vector3.right, 300f);
                 else
                     if (attack.effect1 == Items.Modifier.KNOCKBACK || attack.effect2 == Items.Modifier.KNOCKBACK)
                         KnockBack(Vector3.left, 1f);
                     else
-                        KnockBack(Vector3.left, 0.5f);
+                        KnockBack(Vector3.left, 300f);
 
                 if ((attack.effect1 == Items.Modifier.BLEEDING) && myState == Items.State.NORMAL)
                 {
                     myState = Items.State.DAMAGE;
                     StartCoroutine(TakeDamagePSecond(5));
                 }
-
 
                 if (attack.isCrit)
                     TakeDamage(attack.damage * 2.5f);

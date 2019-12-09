@@ -79,7 +79,6 @@ public class Player : PunBehaviour
 
             meleeAttack = BasicHitBox.GetComponent<Attack>();
             rangedAttack = prefab_range_attack.GetComponent<Attack>();
-
             health = GetComponent<PlayerHealth>();
 
             Camera.main.transform.parent = transform;
@@ -198,22 +197,14 @@ public class Player : PunBehaviour
     void Movement()
     {
         //Checar que lado esta mirando para cambiar su la escala (voltear)
-
-
-            if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight || theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight)
-            {
-                facingRight = !facingRight;
-             Vector3 scale  = BasicHitBox.transform.localPosition;
-             scale.x *= -1;
-             BasicHitBox.transform.localPosition = scale;
-
-
-
-
+        if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight || theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight)
+        {
+            facingRight = !facingRight;
+            Vector3 scale  = BasicHitBox.transform.localPosition;
+            scale.x *= -1;
+            BasicHitBox.transform.localPosition = scale;
             mySprite.flipX = facingRight;
-
-
-            }
+        }
 
         float h = 0;
         float v = 0;
@@ -426,24 +417,27 @@ public class Player : PunBehaviour
 
     void InitBaseWeapons(Weapon melee, Weapon ranged)
     {
-        melee.type = Items.WeaponType.MELEE;
-        melee.rarity = Items.WeaponRarity.COMMON;
+        melee.type = WeaponType.MELEE;
+        melee.rarity = WeaponRarity.COMMON;
         melee.sprite = meleeSprites[(int)melee.rarity];
         melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity, -1, -1);
         meleeAttack.damage = melee.stats.damage;
         meleeAttack.armourPen = melee.stats.armourPen;
 
-        ranged.type = Items.WeaponType.RANGED;
-        ranged.rarity = Items.WeaponRarity.COMMON;
+        ranged.type = WeaponType.RANGED;
+        ranged.rarity = WeaponRarity.COMMON;
         ranged.sprite = meleeSprites[(int)ranged.rarity];
         ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity, -2, -1);
+        rangedAttack.damage = ranged.stats.damage;
+        rangedAttack.armourPen = ranged.stats.armourPen;
+
     }
 
     [PunRPC]
     void ResetMeleeWeapon()
     {
-        melee.type = Items.WeaponType.MELEE;
-        melee.rarity = Items.WeaponRarity.COMMON;
+        melee.type = WeaponType.MELEE;
+        melee.rarity = WeaponRarity.COMMON;
         melee.sprite = meleeSprites[(int)melee.rarity];
         melee.stats = WeaponStats.SetStats(melee.stats, PhotonConnection.GetInstance().randomSeed, melee.type, melee.rarity, -1, -1);
         meleeAttack.damage = melee.stats.damage;

@@ -242,29 +242,9 @@ public class WeaponStats
     {
         switch (mod)
         {
-            case (Modifier.LOWDRAG):
-                {
-                    SetLowDragMod(ref stats);
-                    break;
-                }
             case (Modifier.SPEEDLOAD):
                 {
                     SetSpeedLoadMod(ref stats);
-                    break;
-                }
-            case (Modifier.POISON):
-                {
-                    SetPoisonMod(ref stats);
-                    break;
-                }
-            case (Modifier.BULLETPOINT):
-                {
-                    SetBulletPoint(ref stats);
-                    break;
-                }
-            case (Modifier.HOMING):
-                {
-                    SetHomingMod(ref stats);
                     break;
                 }
         }
@@ -289,29 +269,9 @@ public class WeaponStats
     {
         stats.wear += 20;
     }
-    public static void SetLowDragMod(ref Stats stats)
-    {
-
-    }
     public static void SetSpeedLoadMod(ref Stats stats)
     {
         stats.rOF -= 0.15f;
-    }
-    public static void SetPoisonMod(ref Stats stats)
-    {
-        //player poison state 5 sec
-    }
-    public static void SetBulletPoint(ref Stats stats)
-    {
-        //projectile range ++
-    }
-    public static void SetExplosiveMod(ref Stats stats)
-    {
-        //arrow explodes
-    }
-    public static void SetHomingMod(ref Stats stats)
-    {
-        //arrow follows nearest player (range)
     }
     #endregion
 }
