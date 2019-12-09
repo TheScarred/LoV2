@@ -54,6 +54,11 @@ public class Player : PunBehaviour
     TypesAvailable.particleType particleHeal;
     TypesAvailable.particleType particleGrab;
     TypesAvailable.particleType particleSpawn;
+    TypesAvailable.particleType particleKnockBack;
+    TypesAvailable.particleType particleDefense;
+    TypesAvailable.particleType particleAttack;
+    TypesAvailable.particleType particleSpeed;
+    TypesAvailable.particleType particleBleed;
 
 
     void Start()
@@ -114,14 +119,21 @@ public class Player : PunBehaviour
 
         imAttacking = false;
 
-
         //Particles
         particleDeath = TypesAvailable.particleType.PLAYER_DEATH;
         particleHit = TypesAvailable.particleType.HIT;
         particleHeal = TypesAvailable.particleType.HEAL;
         particleGrab = TypesAvailable.particleType.GRAB_WEAPON;
         particleSpawn = TypesAvailable.particleType.PLAYER_SPAWN;
+        particleKnockBack = TypesAvailable.particleType.MOD_KNOCKBACK;
+        //particleDefense = TypesAvailable.particleType.MOD_DEFENSE;
+        particleSpeed = TypesAvailable.particleType.MOD_SPEED;
+        particleAttack = TypesAvailable.particleType.MOD_BLOODTHIRST;
+        particleBleed = TypesAvailable.particleType.MOD_BLEED;
+
         ParticleManager.GetInstance().ActivateParticle(this.transform, particleSpawn);
+
+
         mySprite = this.gameObject.GetComponent<SpriteRenderer>();
 
     }
@@ -483,7 +495,7 @@ public class Player : PunBehaviour
             {
                 PhotonConnection.GetInstance().consumables[i].gameObject.SetActive(false);
 
-                if (PhotonConnection.GetInstance().CompareTag("Food"))
+                if (PhotonConnection.GetInstance().consumables[i].CompareTag("Food"))
                     ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleHeal);
                 else
                     ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleGrab);

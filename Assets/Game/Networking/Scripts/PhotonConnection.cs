@@ -239,11 +239,12 @@ public class PhotonConnection : PunBehaviour
 
                     int randSpawn = Random.Range(0, terreno.EnemySpawners.Count);
 
-                    object[] parameters2 = new object[3];
+                    object[] parameters2 = new object[4];
 
                     parameters2[0] = i;
                     parameters2[1] = randSpawn;
                     parameters2[2] = terreno.EnemySpawners[randSpawn].transform.position;
+                    parameters2[3] = enemiesList[i].gameObject.GetComponent<PhotonView>().viewID;
                     randSpawn = Random.Range(0, terreno.EnemySpawners.Count);
                     patterPointsList[i].transform.position = terreno.EnemySpawners[randSpawn].transform.position;
                     PrepareRPCForDRevive(parameters2);
@@ -296,33 +297,30 @@ public class PhotonConnection : PunBehaviour
 
     public Player GetPlayerById(int id)
     {
-       
         for (int i = 0; i < playerList.Count; i++)
         {
-            Debug.Log("Id In List: " + playerList[i].photonView.viewID);
-
             if (id == playerList[i].photonView.viewID)
             {
-                Debug.Log("Found culprit!");
                 return playerList[i];
             }
         }
-        Debug.Log("Found Nothing!");
+        return null;
+    }
+
+    public GameObject GetEnemyById(int id)
+    {
+        for (int i = 0; i < enemiesList.Count; i++)
+        {
+            if (id == enemiesList[i].gameObject.GetComponent<PhotonView>().viewID)
+            {
+                return enemiesList[i];
+            }
+        }
         return null;
     }
     public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
-    {
-        
+    {  
         Debug.Log("Nuevo Jugador:" + newPlayer.NickName);
-
-        
-
-
-            
-
-
-        
-
     }
 
     public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)

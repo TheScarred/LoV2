@@ -84,7 +84,6 @@ public class EnemyIA : PunBehaviour
     public float damage_percentage;
 
     //Particles
-    public ParticleManager particleManager;
     TypesAvailable.particleType particleDeath;
     TypesAvailable.particleType particleHit;
 
@@ -219,7 +218,6 @@ public class EnemyIA : PunBehaviour
             if (player_stats != null)
             {
                 Attack attack = other.GetComponent<Attack>();
-                particleManager.ActivateParticle(this.transform, particleHit);
 
                 if (transform.position.x > other.transform.position.x)
                     if (attack.effect == Items.Modifier.KNOCKBACK)
@@ -352,7 +350,10 @@ public class EnemyIA : PunBehaviour
     void TakeDamage(float amount)
     {
         HP -= amount;
+        PhotonNetwork.RPC(photonView, "TakeDamage", PhotonTargets.All, false, this.photonView.viewID);
+        
     }
+
 
     void ChasePlayer()
     {
@@ -523,7 +524,6 @@ public class EnemyIA : PunBehaviour
             {
                 audio.PlayOneShot(death);
                 RPCForEnemyDeath();
-                particleManager.ActivateParticle(this.transform, particleDeath);
             }
         }
         if (HP <= base_HP / 2)
@@ -554,14 +554,23 @@ public class EnemyIA : PunBehaviour
 
     public void RPCForEnemyDeath()
     {
-        byte seed = (byte)Random.Range(0, 256);
-        PhotonNetwork.RPC(photonView, "RemoveEnemies", PhotonTargets.AllBuffered, false, seed);
+        object[] send = new object[2];
+        send[0] = (byte)Random.Range(0, 256);
+        send[1] = this.photonView.viewID;
+        PhotonNetwork.RPC(photonView, "RemoveEnemies", PhotonTargets.AllBuffered, false, send);
     }
 
     [PunRPC]
-    public void RemoveEnemies(byte seed)
+    public void TakeDamage(int ID)
     {
-        SpawnItem(seed);
+        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetEnemyById(ID).transform, particleHit);
+    }
+
+    [PunRPC]
+    public void RemoveEnemies(object[] received)
+    {
+        SpawnItem((byte)received[0]);
+        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetEnemyById((int)received[1]).transform, particleDeath);
         this.gameObject.SetActive(false);
     }
 
@@ -573,6 +582,8 @@ public class EnemyIA : PunBehaviour
 
         gameObject.SetActive(true);
         gameObject.transform.position = pos_terrain;
+
+        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetEnemyById((int)parameters[3]).transform, particleDeath);
     }
 
     void SpawnItem(byte seed)
