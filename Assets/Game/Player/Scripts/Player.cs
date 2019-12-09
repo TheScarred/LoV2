@@ -84,7 +84,7 @@ public class Player : PunBehaviour
 
             Camera.main.transform.parent = transform;
 
-            Camera.main.transform.localPosition = new Vector3(0, 6, -12);
+            Camera.main.transform.localPosition = new Vector3(0, 8, -16);
             indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
             PhotonNetwork.RPC(photonView, "CrearFlecha", PhotonTargets.AllBuffered, false);
 

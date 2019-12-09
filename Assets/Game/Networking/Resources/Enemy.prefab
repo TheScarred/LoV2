@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7802295132767321151}
   - component: {fileID: 5569227959351960623}
   - component: {fileID: 1974155264427976210}
+  - component: {fileID: 7620849667762177777}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: ENEMIES
@@ -454,6 +455,21 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &7620849667762177777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832233238492437757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
+  runOnlyOnce: 0
 --- !u!114 &3674029410777285953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +490,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1832233238492437703}
     m_Modifications:
+    - target: {fileID: 4249170665657334300, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas_enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 68925779592913769, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -588,11 +609,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.0022787987
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249170665657334300, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas_enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}
