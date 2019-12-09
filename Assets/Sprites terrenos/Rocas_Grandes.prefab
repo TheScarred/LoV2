@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   sortingOrderBase: 4999
   offset: 0
   runOnlyOnce: 0
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 8768178599260881530}
   - component: {fileID: 5440838324102743462}
   - component: {fileID: 2301886996389627080}
-  - component: {fileID: 1816330320633425433}
+  - component: {fileID: 4897281915364451127}
   m_Layer: 0
   m_Name: Boulder_01
   m_TagString: Untagged
@@ -220,7 +220,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.76, y: 4.36, z: 0.2}
   m_Center: {x: -0.0000009536743, y: 0, z: 0}
---- !u!114 &1816330320633425433
+--- !u!114 &4897281915364451127
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -230,8 +230,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   sortingOrderBase: 5000
   offset: 0
   runOnlyOnce: 0

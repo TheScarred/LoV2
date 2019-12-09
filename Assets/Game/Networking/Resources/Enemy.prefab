@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7802295132767321151}
   - component: {fileID: 5569227959351960623}
   - component: {fileID: 1974155264427976210}
-  - component: {fileID: 7620849667762177777}
+  - component: {fileID: 616150282937760840}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: ENEMIES
@@ -64,8 +64,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   ownerId: 0
   group: 0
   OwnerShipWasTransfered: 0
@@ -148,7 +148,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
   m_SynchronizeParameters:
@@ -288,8 +288,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2da134e833a8fb141a6ac670a2d00606, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   timeToSound: 0.5
   audioList:
   - {fileID: 8300000, guid: 61d0396cefd181c4eb1aa0a62d32eaf5, type: 3}
@@ -387,8 +387,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
@@ -455,7 +455,7 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &7620849667762177777
+--- !u!114 &616150282937760840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,8 +465,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   sortingOrderBase: 5000
   offset: 0
   runOnlyOnce: 0
@@ -480,8 +480,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7d4b139ac18382478123cd83e3e6780, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   bar_HP: {fileID: 8307317334197159499}
 --- !u!1001 &3792298949264056374
 PrefabInstance:
@@ -613,7 +613,7 @@ PrefabInstance:
     - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300002, guid: 2673cf64155f08c4e847edde1c08f8c1,
         type: 3}
     - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
@@ -680,5 +680,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
