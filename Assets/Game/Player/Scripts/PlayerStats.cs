@@ -9,10 +9,10 @@ public class PlayerStats : PunBehaviour
 {
     public float base_HP = 50;
     public float base_Shield = 100;
-    public float base_DamageMeele = 20;   
+    public float base_DamageMeele = 20;
     public float base_DamageRange = 20;
     public float base_MeleeSpeed = 2f;
-    public float base_speed = 2f;    
+    public float base_speed = 2f;
     public float base_ShootingSpeed = 2f;
     public int base_AmmoCap = 30;
 
@@ -52,16 +52,19 @@ public class PlayerStats : PunBehaviour
 
         if (photonView.isMine)
         {
-            
+
             HP_bar.gameObject.SetActive(false);
             Armor_bar.gameObject.SetActive(false);
             scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
             UI_Score = GameObject.Find("Canvas").transform.Find("Score").GetComponent<Text>();
         }
+
     }
 
     public void ResetStats()
     {
+
+        scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
         mvp = "";
         m_Speed = base_speed;
         m_HP = base_HP;
@@ -73,7 +76,7 @@ public class PlayerStats : PunBehaviour
 
     public void ReceiveDamage(float armourPen, float damage)
     {
-   //     player.particleManager.ActivateParticle(this.transform, player.particleHit);
+        ParticleManager.GetInstance().ActivateParticle(this.transform, player.particleHit);
         player_health.TakeDamage(armourPen, damage);
         float fillmount;
         fillmount = HP_bar.fillAmount = (m_HP / base_HP);
@@ -81,8 +84,12 @@ public class PlayerStats : PunBehaviour
 
     public void KilledTarget(int points)
     {
-        Score += points;
-        UI_Score.text = "Score: " + Score;
+        if (photonView.isMine)
+        { 
+            Score += points;
+            UI_Score.text = "Score: " + Score;
+        }
+       
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -111,35 +118,61 @@ public class PlayerStats : PunBehaviour
         // obtener nombres de los jugadores
         var playerList = new StringBuilder();
         //mostrando la lista con sus respectivos scores
-        
+
+        int IDMVP = -1;
+
         foreach (PhotonPlayer p in PhotonNetwork.playerList)
         {
-            
+
             p.OrdenarScore(PhotonNetwork.playerList, ref mvp);
-            Debug.Log(mvp);
-           
+
+
             playerList.Append("Nick Jugador: " + p.NickName + " Score: " + p.GetScore() + "\n");
+
 
 
             if (mvp == p.NickName)
             {
-                Debug.Log("entrando");
-              //  MVP.SetActive(true);
+                IDMVP = p.ID;
+
             }
-            else
-            {
-              //  MVP.SetActive(false);
-            }
-            /*else if (mvp != p.NickName)//&& photonView.isMine )
-                Debug.Log(this.photonView.name);
-                this.MVP.SetActive(false);*/
+            else if (mvp != p.NickName)//&& photonView.isMine )
+
+            this.MVP.SetActive(false);
         }
-        
+
+        if (IDMVP != -1) //si encontramos un MVP
+        {
+            IDMVP = 1000 * IDMVP + 1;
+
+
+            Player[] jugadores = GameObject.FindObjectsOfType<Player>();
+
+            GameObject jugadorMVPGo = null;
+            for (int i = 0; i < jugadores.Length; i++)
+            {
+
+                if (jugadores[i].ID == IDMVP) //Este jugador tiene el ID del MVP
+                {
+
+                    jugadores[i].GetComponent<PlayerStats>().MVP.SetActive(true);
+                    jugadorMVPGo = jugadores[i].gameObject;
+                }
+                else
+                {
+                    jugadores[i].GetComponent<PlayerStats>().MVP.SetActive(false);
+                }
+
+            }
+
+        }
+
+
+
         string output = "Numero de jugadores: " + playerCount.ToString() + "\n" + playerList.ToString();
-       // if (photonView.isMine)
-            
-        //scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
+        if (photonView.isMine)
+            scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
+
 
     }
-
 }

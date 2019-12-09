@@ -17,7 +17,7 @@ public class ParticleType : MonoBehaviour
     }
     public void StartTimer()
     {
-        StartCoroutine(timer());
+       //StartCoroutine(timer());
     }
     IEnumerator timer()
     {

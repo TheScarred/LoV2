@@ -176,9 +176,9 @@ public class PhotonConnection : PunBehaviour
         //int randSpawn = Random.Range(0, terreno.PlayerSpawners.Count);
 
         if (prefabACrear != null)
-            ownPlayer = PhotonNetwork.Instantiate(prefabACrear, new Vector3 (5,0.3f,5), Quaternion.identity, 0) as GameObject;
+            ownPlayer = PhotonNetwork.Instantiate(prefabACrear, new Vector3 (5,0.8f,5), Quaternion.identity, 0) as GameObject;
         else
-            ownPlayer = PhotonNetwork.Instantiate("PlayerNetIvan", new Vector3(5, 0.3f, 5), Quaternion.identity, 0) as GameObject;
+            ownPlayer = PhotonNetwork.Instantiate("PlayerNetIvan", new Vector3(5, 0.8f, 5), Quaternion.identity, 0) as GameObject;
 
         //ownPlayer = PhotonNetwork.Instantiate("PlayerNet",terreno.PlayerSpawners[randSpawn].transform.position, Quaternion.identity, 0) as GameObject;
 

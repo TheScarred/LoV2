@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon;
 using Items;
 using SimpleHealthBar_SpaceshipExample;
@@ -18,6 +19,7 @@ public class Player : PunBehaviour
     public GameObject prefab_range_attack;
     public TerrainGenerator terreno;
     float delayMovement;
+    float gravity;
     public Vector3 posicionJugador;
     private bool facingRight = true;
     private bool weaponTrigger = false;
@@ -29,7 +31,7 @@ public class Player : PunBehaviour
     WaitForSeconds attackFrame;
     WaitForSeconds second;
     PlayerHealth health;
-
+    public SpriteRenderer mySprite;
     // Melee attack hitbox & stat script
     public GameObject BasicHitBox;
     public Attack meleeAttack, rangedAttack;
@@ -40,10 +42,13 @@ public class Player : PunBehaviour
 
     public OffscreenIndicator indicators;
     //JOYSTICK
-    public Joystick theJoystick;
+     Joystick theJoystick;
+
+    //BUTTONS
+    enum Botones { RANGED, MELEE };
+   public Button[] theButtons;
 
     //Particles
-    public ParticleManager particleManager;
     TypesAvailable.particleType particleDeath;
     public TypesAvailable.particleType particleHit;
     TypesAvailable.particleType particleHeal;
@@ -53,13 +58,18 @@ public class Player : PunBehaviour
 
     void Start()
     {
+        mySprite = GetComponent<SpriteRenderer>();
         myState = State.NORMAL;
         attackFrame = new WaitForSeconds(0.1f);
         second = new WaitForSeconds(1f);
         melee = ScriptableObject.CreateInstance<Weapon>();
         ranged = ScriptableObject.CreateInstance<Weapon>();
         rangedAmmo = 10;
+        gravity = 15f;
 
+        //SE ASIGNAN EL JOYSTICK Y LOS BOTONES
+        theJoystick = FindObjectOfType<Joystick>();
+        theButtons = FindObjectsOfType<Button>();
 
 
         PhotonConnection.GetInstance().playerList.Add(this);
@@ -78,6 +88,8 @@ public class Player : PunBehaviour
             indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
             PhotonNetwork.RPC(photonView, "CrearFlecha", PhotonTargets.AllBuffered, false);
 
+            indicators.AddTarget(gameObject);
+
         }
 
         WeaponPickup[] weps = FindObjectsOfType<WeaponPickup>();
@@ -90,7 +102,7 @@ public class Player : PunBehaviour
         //InitRandomWeapons(melee, ranged); // random
 
         facingRight = false;
-        
+
         _myPlayerStats = GetComponent<PlayerStats>();
         ID = this.gameObject.GetComponent<PhotonView>().viewID;
         //hit box is deactivated unless the player hits
@@ -109,27 +121,19 @@ public class Player : PunBehaviour
         particleHeal = TypesAvailable.particleType.HEAL;
         particleGrab = TypesAvailable.particleType.GRAB_WEAPON;
         particleSpawn = TypesAvailable.particleType.PLAYER_SPAWN;
-        particleManager.ActivateParticle(this.transform, particleSpawn);
+        ParticleManager.GetInstance().ActivateParticle(this.transform, particleSpawn);
+        mySprite = this.gameObject.GetComponent<SpriteRenderer>();
 
-        _myPlayerStats.UpdateScoreboard();
     }
 
     [PunRPC]
     public void CrearFlecha()
     {
-        Debug.Log("Crear flecha", gameObject);
         if(indicators == null)
         {
-          indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
+            indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
         }
 
-        
-           /* if(_myPlayerStats.MVP.activeInHierarchy)
-            {
-              indicators.AddTarget(_myPlayerStats.MVP);
-
-            }
-            */
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -150,9 +154,6 @@ public class Player : PunBehaviour
                         parameters2[2] = position;
                         parameters2[1] = true;
                         parameters2[0] = facingRight;
-                        // range_attack_Objects[i].GetComponent<Transform>().position = position;
-                        //range_attack_Objects[i].SetActive(true);
-                        // range_attack_Objects[i].GetComponent<projectile>().moveProjectile(facingRight);
 
                         Attack arrowAttack = range_attack_Objects[i].GetComponent<Attack>();
 
@@ -190,67 +191,113 @@ public class Player : PunBehaviour
         parameters[2] = ID;
         parameters[1] = facingRight;
         parameters[0] = new Vector3(-90, 90, 0);
-        //PhotonNetwork.RPC(go.GetComponent<PhotonView>(), "ArrowStart", PhotonTargets.AllBuffered, false, parameters);
         go.GetComponent<projectile>().PrepareRPC(parameters);
-        // go.transform.eulerAngles = new Vector3(-90, 90, 0);
-        // go.GetComponent<projectile>().owner = ID;
-        // go.GetComponent<projectile>().moveProjectile(facingRight);
         range_attack_Objects.Add(go);
-        //StartCoroutine(MoveProyectile(go));
         return go;
     }
-   /* public IEnumerator MoveProyectile(GameObject proyectile)
-    {
-        //Mover el disparo y luego desactivarlo para volverse a usar en el futuro
-        if (!facingRight)
-        {
-            proyectile.GetComponent<Rigidbody>().AddForce(Vector3.right * 350f);
-        }
-        else
-        {
-            proyectile.GetComponent<Rigidbody>().AddForce(Vector3.left * 350f);
-        }
-
-        proyectile.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        proyectile.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        proyectile.SetActive(false);
-
-        yield return null;
-    }
-    */
     void Movement()
     {
         //Checar que lado esta mirando para cambiar su la escala (voltear)
 
 
-            if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight /*|| theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight*/)
+            if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight || theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight)
             {
                 facingRight = !facingRight;
-                Vector3 scale = transform.localScale;
-                scale.x *= -1;
-                transform.localScale = scale;
+             Vector3 scale  = BasicHitBox.transform.localPosition;
+             scale.x *= -1;
+             BasicHitBox.transform.localPosition = scale;
+
+
+
+
+            mySprite.flipX = facingRight;
+
 
             }
 
+        float h = 0;
+        float v = 0;
 
-
-        float h = _myPlayerStats.m_Speed * Input.GetAxis("Horizontal");
-        float v = _myPlayerStats.m_Speed * Input.GetAxis("Vertical");
-
-        //MOVIMIENTO DE JOYSTICK
-        //float h = _myPlayerStats.m_Speed * theJoystick.horizontal;
-        //float v = _myPlayerStats.m_Speed * theJoystick.vectical;
+        //CHECA SI HAY MOVIMIENTO EN EL JOYSTICK PARA VER SI UTILIZA ESTE MISMO O LAS TECLAS
+        if (theJoystick.horizontal == 0 && theJoystick.vectical == 0)
+        {
+            h = _myPlayerStats.m_Speed * Input.GetAxis("Horizontal");
+            v = _myPlayerStats.m_Speed * Input.GetAxis("Vertical");
+        }
+        else
+        {
+            //MOVIMIENTO DE JOYSTICK
+            h = _myPlayerStats.m_Speed * theJoystick.horizontal;
+            v = _myPlayerStats.m_Speed * theJoystick.vectical;
+        }
 
 
         Vector3 movement = new Vector3(h, 0.0f, v);
+        movement.y = -gravity * Time.deltaTime;
         if (melee.stats.mod1 == Modifier.SWIFTNESS || melee.stats.mod2 == Modifier.SWIFTNESS)
-            player_controller.Move(new Vector3(h, 0, v) * 1.15f * Time.deltaTime);
+            player_controller.Move(movement * 1.15f * Time.deltaTime);
         //player_rigidbody.velocity = movement * (_myPlayerStats.m_Speed * 1.15f);
         else
-            player_controller.Move(new Vector3(h, 0, v) * Time.deltaTime);
+            player_controller.Move(movement * Time.deltaTime);
         //player_rigidbody.velocity = movement * _myPlayerStats.m_Speed;
 
 
+    }
+
+    public void MeleeAttack()
+    {
+        if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
+            meleeAttack.isCrit = true;
+
+        else
+            meleeAttack.isCrit = false;
+
+        if (meleeCooldown <= Time.time)
+        {
+            imAttacking = true;
+            PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
+            meleeCooldown = Time.time + melee.stats.rOF;
+        }
+    }
+
+    public void RangedAttack()
+    {
+        if (rangedCooldown <= Time.time && rangedAmmo > 0)
+        {
+            imAttacking = true;
+
+            SpawnRangeAttackObject(prefab_range_attack, transform.position);
+
+            if (ranged.stats.id >= 0)
+            {
+                ranged.stats.wear--;
+                if (ranged.stats.wear <= 0)
+                {
+                    BreakRangedWeapon();
+                }
+            }
+            rangedCooldown = Time.time + ranged.stats.rOF;
+
+            if (ranged.stats.mod1 == Modifier.BOTTOMLESS || ranged.stats.mod2 == Modifier.BOTTOMLESS)
+            {
+                if (ranged.stats.mod1 == Modifier.BOTTOMLESS)
+                {
+                    if (ranged.stats.mod2 == Modifier.BOTTOMLESS)
+                    {
+                        if (Random.Range(0, 5) < 2)
+                            rangedAmmo--;
+                        else
+                            Debug.Log("2 stack: Arrow recovered");
+                    }
+                    else if (Random.Range(0, 5) < 3)
+                        rangedAmmo--;
+                    else
+                        Debug.Log("1 stack: Arrow recovered!");
+                }
+            }
+            else
+                rangedAmmo--;
+        }
     }
 
     void AttackInput()
@@ -258,62 +305,17 @@ public class Player : PunBehaviour
         //Primary Attack
         if (Input.GetKeyDown(KeyCode.Space))
         {
-         
-            if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
-                meleeAttack.isCrit = true;
-
-            else
-                meleeAttack.isCrit = false;
-
-            if (meleeCooldown <= Time.time)
-            {
-                imAttacking = true;
-                PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
-                meleeCooldown = Time.time + melee.stats.rOF;
-            }
-
+            MeleeAttack();
         }
 
         //Secondary attack
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (rangedCooldown <= Time.time && rangedAmmo > 0)
-            {
-                imAttacking = true;
-
-                SpawnRangeAttackObject(prefab_range_attack, transform.position);
-
-                if (ranged.stats.id >= 0)
-                {
-                    ranged.stats.wear--;
-                    if (ranged.stats.wear <= 0)
-                    {
-                        BreakRangedWeapon();
-                    }
-                }
-                rangedCooldown = Time.time + ranged.stats.rOF;
-
-                if (ranged.stats.mod1 == Modifier.BOTTOMLESS || ranged.stats.mod2 == Modifier.BOTTOMLESS)
-                {
-                    if (ranged.stats.mod1 == Modifier.BOTTOMLESS)
-                    {
-                        if (ranged.stats.mod2 == Modifier.BOTTOMLESS)
-                        {
-                            if (Random.Range(0, 5) < 2)
-                                rangedAmmo--;
-                            else
-                                Debug.Log("2 stack: Arrow recovered");
-                        }
-                        else if (Random.Range(0, 5) < 3)
-                            rangedAmmo--;
-                        else
-                            Debug.Log("1 stack: Arrow recovered!");
-                    }
-                }
-                else
-                    rangedAmmo--;
-            }
+            RangedAttack();
         }
+
+        theButtons[(int)Botones.MELEE].onClick.AddListener(MeleeAttack);
+        theButtons[(int)Botones.RANGED].onClick.AddListener(RangedAttack);
     }
 
     void UpdateVariables()
@@ -324,16 +326,6 @@ public class Player : PunBehaviour
             meleeCooldown += Time.time;
         if (rangedCooldown < ranged.stats.rOF)
             rangedCooldown += Time.time;
-
-        //Debug.Log(transform.position);
-        
-        
-
-            
-
-
-        
-
 
         if(delayMovement > 0)
         {
@@ -351,7 +343,6 @@ public class Player : PunBehaviour
         {
             WeaponPickup weapon = col.GetComponent<WeaponPickup>();
             ChangeWeapon(ref weapon.type, ref weapon.rarity, PhotonConnection.GetInstance().randomSeed, ref weapon.ID, weapon.lastWear);
-            particleManager.ActivateParticle(this.transform, particleGrab);
 
             StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
         }
@@ -359,7 +350,6 @@ public class Player : PunBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-
         if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
             Attack attack = col.GetComponent<Attack>();
@@ -385,25 +375,31 @@ public class Player : PunBehaviour
         if (col.CompareTag("Food") && _myPlayerStats.m_HP < _myPlayerStats.base_HP)
         {
             HealPlayer((int)col.GetComponent<Food>().type);
-            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
+            object[] ToSend = new object[2];
+            ToSend[0] = col.GetComponent<Consumable>().id;
+            ToSend[1] = ID;
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, ToSend);
         }
         if (col.CompareTag("Armour") && _myPlayerStats.m_Shield < _myPlayerStats.base_Shield)
         {
             ArmourUp((int)col.GetComponent<Armour>().type);
-            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
-            particleManager.ActivateParticle(this.transform, particleGrab);
+            object[] ToSend = new object[2];
+            ToSend[0] = col.GetComponent<Consumable>().id;
+            ToSend[1] = ID;
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, ToSend);
         }
         if (col.CompareTag("Ammo") && rangedAmmo < 30)
         {
             Resuply((int)col.GetComponent<Ammo>().type);
-            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, col.GetComponent<Consumable>().id);
-            particleManager.ActivateParticle(this.transform, particleGrab);
+            object[] ToSend = new object[2];
+            ToSend[0] = col.GetComponent<Consumable>().id;
+            ToSend[1] = ID;
+            PhotonNetwork.RPC(photonView, "DissappearConsumable", PhotonTargets.All, false, ToSend);
         }
         if (col.CompareTag("Melee") || col.CompareTag("Rango"))
         {
             weaponTrigger = true;
             pickup = col;
-
         }
     }
 
@@ -441,7 +437,6 @@ public class Player : PunBehaviour
         ranged.rarity = Items.WeaponRarity.COMMON;
         ranged.sprite = meleeSprites[(int)ranged.rarity];
         ranged.stats = WeaponStats.SetStats(ranged.stats, PhotonConnection.GetInstance().randomSeed, ranged.type, ranged.rarity, -2, -1);
-        rangedAttack.armourPen = ranged.stats.armourPen;
     }
 
     [PunRPC]
@@ -476,25 +471,32 @@ public class Player : PunBehaviour
     }
 
     [PunRPC]
-    public void DissappearWeapon(int id)
+    public void DissappearWeapon(object[] received)
     {
         for (int i = 0; i < PhotonConnection.GetInstance().weaponList.Count; i++)
         {
-            if (PhotonConnection.GetInstance().weaponList[i].ID == id)
+            if (PhotonConnection.GetInstance().weaponList[i].ID == (int)received[0])
             {
                 PhotonConnection.GetInstance().weaponList[i].gameObject.SetActive(false);
+                ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleGrab);
             }
         }
     }
 
     [PunRPC]
-    public void DissappearConsumable(int id)
+    public void DissappearConsumable(object[] received)
     {
         for (int i = 0; i < PhotonConnection.GetInstance().consumables.Count; i++)
         {
-            if (PhotonConnection.GetInstance().consumables[i].id == id)
+            if (PhotonConnection.GetInstance().consumables[i].id == (int)received[0])
             {
                 PhotonConnection.GetInstance().consumables[i].gameObject.SetActive(false);
+
+                if (PhotonConnection.GetInstance().CompareTag("Food"))
+                    ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleHeal);
+                else
+                    ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleGrab);
+
             }
         }
     }
@@ -530,7 +532,10 @@ public class Player : PunBehaviour
             }
             else
             {
-                PhotonNetwork.RPC(photonView, "DissappearWeapon", PhotonTargets.All, false, objects[4]);
+                object[] ToSend = new object[2];
+                ToSend[0] = objects[4];
+                ToSend[1] = ID;
+                PhotonNetwork.RPC(photonView, "DissappearWeapon", PhotonTargets.All, false, ToSend);
                 PhotonNetwork.RPC(photonView, "GetMeleeWeapon", PhotonTargets.All, false, objects);
             }
 
@@ -554,7 +559,10 @@ public class Player : PunBehaviour
 
         else
         {
-            PhotonNetwork.RPC(photonView, "DissappearWeapon", PhotonTargets.All, false, objects[4]);
+            object[] ToSend = new object[2];
+            ToSend[0] = objects[4];
+            ToSend[1] = ID;
+            PhotonNetwork.RPC(photonView, "DissappearWeapon", PhotonTargets.All, false, ToSend);
             PhotonNetwork.RPC(photonView, "GetRangedWeapon", PhotonTargets.All, false, objects);
         }
     }
@@ -682,6 +690,7 @@ public class Player : PunBehaviour
                 SendStream(stream, _myPlayerStats.m_HP);
                 SendStream(stream, _myPlayerStats.m_DamageRange);
                 SendStream(stream, _myPlayerStats.m_DamageMelee);
+                SendStream(stream, mySprite.flipX);
 
             }
         }
@@ -696,10 +705,16 @@ public class Player : PunBehaviour
                 //transform.position = (Vector3)stream.ReceiveNext();
                 _myPlayerStats.m_Speed = (float)stream.ReceiveNext();
                 _myPlayerStats.m_Shield = (float)stream.ReceiveNext();
-                _myPlayerStats.m_HP = (float)stream.ReceiveNext();
+                float received_HP = (float)stream.ReceiveNext();
+                if(received_HP < _myPlayerStats.m_HP)
+                {
+                    ParticleManager.GetInstance().ActivateParticle(transform, particleHit);
+                }
+                _myPlayerStats.m_HP = received_HP;
+
                 _myPlayerStats.m_DamageRange = (float)stream.ReceiveNext();
                 _myPlayerStats.m_DamageMelee = (float)stream.ReceiveNext();
-
+                mySprite.flipX = (bool)stream.ReceiveNext();
             }
         }
     }
@@ -721,34 +736,22 @@ public class Player : PunBehaviour
             }
             else if (vivo == true)
             {
-                PhotonNetwork.RPC(photonView, "KillPlayer", PhotonTargets.AllBuffered, false);
-                particleManager.ActivateParticle(this.transform, particleDeath);
+                PhotonNetwork.RPC(photonView, "KillPlayer", PhotonTargets.AllBuffered, false, ID);
             }
 
             else
                 if (Input.GetKey(KeyCode.Space))
             {
-                PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false);
-                particleManager.ActivateParticle(this.transform, particleSpawn);
-
+                PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false, ID);
             }
-
-
         }
-
-            _myPlayerStats.UpdateScoreboard();
-
-
-          
-        
-
-            // Update scoreboard
+            _myPlayerStats.UpdateScoreboard();   //no se puede quedar aqui!!!
 
         if (PhotonNetwork.player.NickName == "")
             PhotonNetwork.player.NickName = "Jugador #" + Random.Range(1.00f, 9.00f);
     }
 
-    public void SendStream(PhotonStream stream, float value)
+    public void SendStream(PhotonStream stream, object value)
     {
         stream.SendNext(value);
     }
@@ -773,7 +776,6 @@ public class Player : PunBehaviour
             _myPlayerStats.m_HP += amount;
 
         health.healthBar.UpdateBar(_myPlayerStats.m_HP, _myPlayerStats.base_HP);
-        particleManager.ActivateParticle(this.transform, particleHeal);
     }
 
     public void ArmourUp(int amount)
@@ -800,7 +802,7 @@ public class Player : PunBehaviour
     }
 
     [PunRPC]
-    public void RevivePlayer()
+    public void RevivePlayer(int id)
     {
         gameObject.GetComponent<BoxCollider>().enabled = true;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -811,15 +813,15 @@ public class Player : PunBehaviour
         int randSpawn = Random.Range(0, terreno.PlayerSpawners.Count);
 
         transform.position = terreno.PlayerSpawners[randSpawn].transform.position;
-        //particleManager.ActivateParticle(this.transform, particleSpawn);
+        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleSpawn);
         vivo = true;
     }
 
     [PunRPC]
-    public void KillPlayer()
+    public void KillPlayer(int id)
     {
         vivo = false;
-        //particleManager.ActivateParticle(this.transform, particleDeath);
+        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleDeath);
         //animator.SetBool("Morir", true);
         _myPlayerStats.UpdateScoreboard();
         gameObject.GetComponent<Rigidbody>().useGravity = false;

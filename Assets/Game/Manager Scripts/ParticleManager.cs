@@ -6,33 +6,32 @@ public class ParticleManager : MonoBehaviour
 {
     public ParticleSystem[] PreFab_Particles;
     public List<ParticleSystem> particles;
-    bool ListExists = true;
 
     public TypesAvailable typesAvailable;
     ParticleSystem particle_created;
- 
+
+    private static ParticleManager instance;
+    public static ParticleManager GetInstance()
+    {
+        return instance;
+    }
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
 
     public void ActivateParticle(Transform t, TypesAvailable.particleType type)
     {
-        //print("EnterActivateParticle " + type);
-        //print("ListExists " + ListExists);
-
-        //print("List Exists: " + particles.Count);
-        if (!ListExists)
-         {
-             //print("List is created!");
-             particles = new List<ParticleSystem>();
-             ListExists = true;
-         }
-        
-
         if (particles.Count > 0)
         {
             if (particles[0] == null)
             {
                 particles.Clear();
             }
-            //print("particles list is not empty");
             for (int i = 0; i < particles.Count; i++)  //search the particle list
             {
                 if (particles[i].GetComponent<ParticleType>().particleType == type)
@@ -40,11 +39,12 @@ public class ParticleManager : MonoBehaviour
                     if (!particles[i].IsAlive())  //if the particle is not currently being used then...
                     {
                         //play particle
-                        //Debug.Log("particle found! Playing it!");
+                        particles[i].transform.parent = t;
+                        particles[i].transform.localPosition = new Vector3(0, 0, 0);
                         particles[i].Play();
                         if (particle_created.main.loop == true)
                         {
-                            //print("routine start");
+                            //Start Timer for Particle
                             particles[i].GetComponent<ParticleType>().StartTimer();
                         }
                         return;
@@ -52,26 +52,22 @@ public class ParticleManager : MonoBehaviour
                 }
             }
         }
-        //Debug.Log("Not found!");
 
         //if it is not in the list, create a particle from the prefab array
         for (int i = 0; i < PreFab_Particles.Length; i++)  //search the prefab array
         {
             if (PreFab_Particles[i].GetComponent<ParticleType>().particleType == type)  //if we find the type we need in the array
             {
-                //print("Found particle prefab");
                 //create new instance of the particle + add it to the list
                 particle_created = Instantiate(PreFab_Particles[i], t);
                 //print("Particle created: " + particle_created.GetType()); 
                 
                 particles.Add(particle_created);
-                //print("heey");
                 particle_created.Play();
 
                 //if the animation is in a loop, call function that will calculate when it needs to be stopped
                 if(particle_created.main.loop == true)
                 {
-                    //print("Courutine started!");
                     particle_created.GetComponent<ParticleType>().StartTimer();
                 }
                 return;

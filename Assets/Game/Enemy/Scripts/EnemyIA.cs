@@ -58,6 +58,7 @@ public class EnemyIA : PunBehaviour
     public float speed;
     public float WalkDistance;
     public float startWaitTime;
+    float gravity;
     private float waitTime;
     private bool facingRight = false;
 
@@ -376,12 +377,12 @@ public class EnemyIA : PunBehaviour
          
             if (status == EnemyState.Rage)
             {
-                enemy_controller.Move(dir.normalized * ((1) * 2) * Time.deltaTime);
+                enemy_controller.Move(dir.normalized * ((speed +1) * 2) * Time.deltaTime);
                 //transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed* 2f * Time.deltaTime);
             }
             else
             {
-                enemy_controller.Move(dir.normalized * (1) * Time.deltaTime);
+                enemy_controller.Move(dir.normalized * (speed + 1) * Time.deltaTime);
                 //transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed * Time.deltaTime);
             }
            if (this.transform.position.x < playertoChase.transform.position.x && facingRight)   //player is on the left
