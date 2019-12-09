@@ -14,11 +14,17 @@ public class animacionmonito : MonoBehaviour
     public Animator animator;
     int Ataque=0;
     bool vivo = false;
+    public Joystick theJoystick;
 
     bool opcion = false;
 
     [SerializeField]
     PlayerHealth p;
+
+    private void Start()
+    {
+        theJoystick = FindObjectOfType<Joystick>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -93,7 +99,11 @@ public class animacionmonito : MonoBehaviour
         #region Move
         bool isMoving = false;
 
-        if (Input.GetKey(KeyCode.S))
+        if (theJoystick.horizontal != 0 || theJoystick.vectical != 0)
+        {
+            isMoving = true;
+        }
+        else if (Input.GetKey(KeyCode.S))
         {
             transform.Translate(Vector3.back * velocidad * Time.deltaTime);
             isMoving = true;
