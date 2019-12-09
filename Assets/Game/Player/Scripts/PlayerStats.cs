@@ -84,8 +84,12 @@ public class PlayerStats : PunBehaviour
 
     public void KilledTarget(int points)
     {
-        Score += points;
-        UI_Score.text = "Score: " + Score;
+        if (photonView.isMine)
+        { 
+            Score += points;
+            UI_Score.text = "Score: " + Score;
+        }
+       
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
