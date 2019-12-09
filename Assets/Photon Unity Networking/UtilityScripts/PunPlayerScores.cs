@@ -15,33 +15,24 @@ public static class ScoreExtensions
         Hashtable score = new Hashtable();  // using PUN's implementation of Hashtable
         score[PunPlayerScores.PlayerScoreProp] = newScore;
 
-        player.SetCustomProperties(score);  // this locally sets the score and will sync it in-game asap.
+        player.SetCustomProperties(score); // this locally sets the score and will sync it in-game asap.
     }
 
-    public static void OrdenarScore(this PhotonPlayer player,PhotonPlayer[] p, ref string mvp)
+    public static void OrdenarScore(this PhotonPlayer player, PhotonPlayer[] p, ref string mvp)
     {
         int current = player.GetScore();
-        int i, j;
-        if(mvp=="")
-        {
-            mvp = player.NickName;
-        }
+        int i, mejorPuntaje = 0, mejorPuntajeIndex = 0;
         for (i = 0; i < p.Length; i++)
         {
-            for (j = i + 1; j < p.Length; j++)
+            if (mejorPuntaje < p[i].GetScore())
             {
-                if (p[j].GetScore() > p[i].GetScore())
-                {
-                    mvp = p[j].NickName;
-                    var aux = p[i];
-                    p[i] = p[j];
-                    p[j] = aux;
-                    
-                }
+                mejorPuntaje = p[i].GetScore();
+                mejorPuntajeIndex = i;
             }
-            
+
         }
-        
+
+        mvp = p[mejorPuntajeIndex].NickName;
     }
 
     public static void AddScore(this PhotonPlayer player, int scoreToAddToCurrent)

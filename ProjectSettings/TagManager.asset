@@ -16,6 +16,9 @@ TagManager:
   - Food
   - Ammo
   - Armour
+  - MVP
+  - MeleeButton
+  - RangedButton
   layers:
   - Default
   - TransparentFX

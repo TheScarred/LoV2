@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon;
 using Items;
 using SimpleHealthBar_SpaceshipExample;
@@ -18,6 +19,7 @@ public class Player : PunBehaviour
     public GameObject prefab_range_attack;
     public TerrainGenerator terreno;
     float delayMovement;
+    float gravity;
     public Vector3 posicionJugador;
     private bool facingRight = true;
     private bool weaponTrigger = false;
@@ -29,7 +31,7 @@ public class Player : PunBehaviour
     WaitForSeconds attackFrame;
     WaitForSeconds second;
     PlayerHealth health;
-
+    public SpriteRenderer mySprite;
     // Melee attack hitbox & stat script
     public GameObject BasicHitBox;
     public Attack meleeAttack, rangedAttack;
@@ -40,7 +42,11 @@ public class Player : PunBehaviour
 
     public OffscreenIndicator indicators;
     //JOYSTICK
-    public Joystick theJoystick;
+     Joystick theJoystick;
+
+    //BUTTONS
+    enum Botones { RANGED, MELEE };
+   public Button[] theButtons;
 
     //Particles
     TypesAvailable.particleType particleDeath;
@@ -52,13 +58,18 @@ public class Player : PunBehaviour
 
     void Start()
     {
+        mySprite = GetComponent<SpriteRenderer>();
         myState = State.NORMAL;
         attackFrame = new WaitForSeconds(0.1f);
         second = new WaitForSeconds(1f);
         melee = ScriptableObject.CreateInstance<Weapon>();
         ranged = ScriptableObject.CreateInstance<Weapon>();
         rangedAmmo = 10;
+        gravity = 15f;
 
+        //SE ASIGNAN EL JOYSTICK Y LOS BOTONES
+        theJoystick = FindObjectOfType<Joystick>();
+        theButtons = FindObjectsOfType<Button>();
 
 
         PhotonConnection.GetInstance().playerList.Add(this);
@@ -76,6 +87,8 @@ public class Player : PunBehaviour
             Camera.main.transform.localPosition = new Vector3(0, 6, -12);
             indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
             PhotonNetwork.RPC(photonView, "CrearFlecha", PhotonTargets.AllBuffered, false);
+
+            indicators.AddTarget(gameObject);
 
         }
 
@@ -108,9 +121,9 @@ public class Player : PunBehaviour
         particleHeal = TypesAvailable.particleType.HEAL;
         particleGrab = TypesAvailable.particleType.GRAB_WEAPON;
         particleSpawn = TypesAvailable.particleType.PLAYER_SPAWN;
-
         ParticleManager.GetInstance().ActivateParticle(this.transform, particleSpawn);
-        _myPlayerStats.UpdateScoreboard();
+        mySprite = this.gameObject.GetComponent<SpriteRenderer>();
+
     }
 
     [PunRPC]
@@ -120,12 +133,7 @@ public class Player : PunBehaviour
         {
             indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
         }
-           /* if(_myPlayerStats.MVP.activeInHierarchy)
-            {
-              indicators.AddTarget(_myPlayerStats.MVP);
 
-            }
-            */
     }
 
     GameObject SpawnRangeAttackObject(GameObject desired_prefab, Vector3 position)
@@ -211,34 +219,104 @@ public class Player : PunBehaviour
         //Checar que lado esta mirando para cambiar su la escala (voltear)
 
 
-            if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight /*|| theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight*/)
+            if (Input.GetAxis("Horizontal") > 0 && facingRight || Input.GetAxis("Horizontal") < 0 && !facingRight || theJoystick.horizontal > 0 && facingRight || theJoystick.horizontal < 0 && !facingRight)
             {
                 facingRight = !facingRight;
-                Vector3 scale = transform.localScale;
-                scale.x *= -1;
-                transform.localScale = scale;
+             Vector3 scale  = BasicHitBox.transform.localPosition;
+             scale.x *= -1;
+             BasicHitBox.transform.localPosition = scale;
+
+
+
+
+            mySprite.flipX = facingRight;
+
 
             }
 
+        float h = 0;
+        float v = 0;
 
-
-        float h = _myPlayerStats.m_Speed * Input.GetAxis("Horizontal");
-        float v = _myPlayerStats.m_Speed * Input.GetAxis("Vertical");
-
-        //MOVIMIENTO DE JOYSTICK
-        //float h = _myPlayerStats.m_Speed * theJoystick.horizontal;
-        //float v = _myPlayerStats.m_Speed * theJoystick.vectical;
+        //CHECA SI HAY MOVIMIENTO EN EL JOYSTICK PARA VER SI UTILIZA ESTE MISMO O LAS TECLAS
+        if (theJoystick.horizontal == 0 && theJoystick.vectical == 0)
+        {
+            h = _myPlayerStats.m_Speed * Input.GetAxis("Horizontal");
+            v = _myPlayerStats.m_Speed * Input.GetAxis("Vertical");
+        }
+        else
+        {
+            //MOVIMIENTO DE JOYSTICK
+            h = _myPlayerStats.m_Speed * theJoystick.horizontal;
+            v = _myPlayerStats.m_Speed * theJoystick.vectical;
+        }
 
 
         Vector3 movement = new Vector3(h, 0.0f, v);
+        movement.y = -gravity * Time.deltaTime;
         if (melee.stats.mod1 == Modifier.SWIFTNESS || melee.stats.mod2 == Modifier.SWIFTNESS)
-            player_controller.Move(new Vector3(h, 0, v) * 1.15f * Time.deltaTime);
+            player_controller.Move(movement * 1.15f * Time.deltaTime);
         //player_rigidbody.velocity = movement * (_myPlayerStats.m_Speed * 1.15f);
         else
-            player_controller.Move(new Vector3(h, 0, v) * Time.deltaTime);
+            player_controller.Move(movement * Time.deltaTime);
         //player_rigidbody.velocity = movement * _myPlayerStats.m_Speed;
 
 
+    }
+
+    public void MeleeAttack()
+    {
+        if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
+            meleeAttack.isCrit = true;
+
+        else
+            meleeAttack.isCrit = false;
+
+        if (meleeCooldown <= Time.time)
+        {
+            imAttacking = true;
+            PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
+            meleeCooldown = Time.time + melee.stats.rOF;
+        }
+    }
+
+    public void RangedAttack()
+    {
+        if (rangedCooldown <= Time.time && rangedAmmo > 0)
+        {
+            imAttacking = true;
+
+            SpawnRangeAttackObject(prefab_range_attack, transform.position);
+
+            if (ranged.stats.id >= 0)
+            {
+                ranged.stats.wear--;
+                if (ranged.stats.wear <= 0)
+                {
+                    BreakRangedWeapon();
+                }
+            }
+            rangedCooldown = Time.time + ranged.stats.rOF;
+
+            if (ranged.stats.mod1 == Modifier.BOTTOMLESS || ranged.stats.mod2 == Modifier.BOTTOMLESS)
+            {
+                if (ranged.stats.mod1 == Modifier.BOTTOMLESS)
+                {
+                    if (ranged.stats.mod2 == Modifier.BOTTOMLESS)
+                    {
+                        if (Random.Range(0, 5) < 2)
+                            rangedAmmo--;
+                        else
+                            Debug.Log("2 stack: Arrow recovered");
+                    }
+                    else if (Random.Range(0, 5) < 3)
+                        rangedAmmo--;
+                    else
+                        Debug.Log("1 stack: Arrow recovered!");
+                }
+            }
+            else
+                rangedAmmo--;
+        }
     }
 
     void AttackInput()
@@ -246,62 +324,17 @@ public class Player : PunBehaviour
         //Primary Attack
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
-            if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
-                meleeAttack.isCrit = true;
-
-            else
-                meleeAttack.isCrit = false;
-
-            if (meleeCooldown <= Time.time)
-            {
-                imAttacking = true;
-                PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
-                meleeCooldown = Time.time + melee.stats.rOF;
-            }
-
+            MeleeAttack();
         }
 
         //Secondary attack
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (rangedCooldown <= Time.time && rangedAmmo > 0)
-            {
-                imAttacking = true;
-
-                SpawnRangeAttackObject(prefab_range_attack, transform.position);
-
-                if (ranged.stats.id >= 0)
-                {
-                    ranged.stats.wear--;
-                    if (ranged.stats.wear <= 0)
-                    {
-                        BreakRangedWeapon();
-                    }
-                }
-                rangedCooldown = Time.time + ranged.stats.rOF;
-
-                if (ranged.stats.mod1 == Modifier.BOTTOMLESS || ranged.stats.mod2 == Modifier.BOTTOMLESS)
-                {
-                    if (ranged.stats.mod1 == Modifier.BOTTOMLESS)
-                    {
-                        if (ranged.stats.mod2 == Modifier.BOTTOMLESS)
-                        {
-                            if (Random.Range(0, 5) < 2)
-                                rangedAmmo--;
-                            else
-                                Debug.Log("2 stack: Arrow recovered");
-                        }
-                        else if (Random.Range(0, 5) < 3)
-                            rangedAmmo--;
-                        else
-                            Debug.Log("1 stack: Arrow recovered!");
-                    }
-                }
-                else
-                    rangedAmmo--;
-            }
+            RangedAttack();
         }
+
+        theButtons[(int)Botones.MELEE].onClick.AddListener(MeleeAttack);
+        theButtons[(int)Botones.RANGED].onClick.AddListener(RangedAttack);
     }
 
     void UpdateVariables()
@@ -314,7 +347,6 @@ public class Player : PunBehaviour
             rangedCooldown += Time.time;
 
         //Debug.Log(transform.position);
-
 
 
 
@@ -675,6 +707,7 @@ public class Player : PunBehaviour
                 SendStream(stream, _myPlayerStats.m_HP);
                 SendStream(stream, _myPlayerStats.m_DamageRange);
                 SendStream(stream, _myPlayerStats.m_DamageMelee);
+                SendStream(stream, mySprite.flipX);
 
             }
         }
@@ -698,7 +731,7 @@ public class Player : PunBehaviour
 
                 _myPlayerStats.m_DamageRange = (float)stream.ReceiveNext();
                 _myPlayerStats.m_DamageMelee = (float)stream.ReceiveNext();
-
+                mySprite.flipX = (bool)stream.ReceiveNext();
             }
         }
     }
@@ -745,7 +778,7 @@ public class Player : PunBehaviour
             PhotonNetwork.player.NickName = "Jugador #" + Random.Range(1.00f, 9.00f);
     }
 
-    public void SendStream(PhotonStream stream, float value)
+    public void SendStream(PhotonStream stream, object value)
     {
         stream.SendNext(value);
     }

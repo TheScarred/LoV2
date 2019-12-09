@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 namespace Custom.Indicators
 {
-
     public class OffscreenIndicator : MonoBehaviour
     {
         public Camera activeCamera;
@@ -50,34 +49,41 @@ namespace Custom.Indicators
             InstantiateIndicators();
 
         }
-
         private void InstantiateIndicators()
         {
             foreach (var targetIndicator in targetIndicators)
             {
-                if(targetIndicator.indicatorUI == null)
+                if (targetIndicator.indicatorUI == null)
                 {
                     targetIndicator.indicatorUI = Instantiate(indicatorPrefab).transform;
                     targetIndicator.indicatorUI.SetParent(_transform);
                 }
 
                 var rectTransform = targetIndicator.indicatorUI.GetComponent<RectTransform>();
-                if(rectTransform == null)
+                if (rectTransform == null)
                 {
                     rectTransform = targetIndicator.indicatorUI.gameObject.AddComponent<RectTransform>();
                 }
                 targetIndicator.rectTransform = rectTransform;
             }
 
-            
+
         }
         private void UpdatePosition(Indicator targetIndicator)
         {
+            GameObject MVP = GameObject.FindGameObjectWithTag("MVP");
+
+            if (MVP == null)
+            {
+                return;
+            }
+
+
             var rect = targetIndicator.rectTransform.rect;
 
-            var indicatorPosition = activeCamera.WorldToScreenPoint(targetIndicator.target.position);
+            var indicatorPosition = activeCamera.WorldToScreenPoint(MVP.transform.position);
 
-            if(indicatorPosition.z < 0)
+            if (indicatorPosition.z < 0)
             {
                 indicatorPosition.y = -indicatorPosition.y;
                 indicatorPosition.x = -indicatorPosition.x;
@@ -85,9 +91,8 @@ namespace Custom.Indicators
             var newPosition = new Vector3(indicatorPosition.x, indicatorPosition.y, indicatorPosition.z);
             // asignar coordenadas para mostrar los objetos dentro de la pantalla
             indicatorPosition.x = Mathf.Clamp(indicatorPosition.x, rect.width / 2, Screen.width - rect.width) + offset.x;
-            indicatorPosition.y = Mathf.Clamp(indicatorPosition.y, rect.height / 2, Screen.height - rect.height)+offset.y;
+            indicatorPosition.y = Mathf.Clamp(indicatorPosition.y, rect.height / 2, Screen.height - rect.height) + offset.y;
             indicatorPosition.z = 0;
-
             //update la posicion y rotacion
             targetIndicator.indicatorUI.up = (newPosition - indicatorPosition).normalized;
             targetIndicator.indicatorUI.position = indicatorPosition;
@@ -97,7 +102,7 @@ namespace Custom.Indicators
         {
             while (true)
             {
-                foreach(var targetIndicator in targetIndicators)
+                foreach (var targetIndicator in targetIndicators)
                 {
                     UpdatePosition(targetIndicator);
                 }
@@ -106,7 +111,7 @@ namespace Custom.Indicators
             }
         }
         // Update is called once per frame
-       
+
     }
     [System.Serializable]
     public class Indicator
