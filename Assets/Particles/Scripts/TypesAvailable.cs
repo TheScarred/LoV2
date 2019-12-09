@@ -17,7 +17,8 @@ public class TypesAvailable : MonoBehaviour
         MOD_ATTACK,
         MOD_SPEED,
         MOD_BLEED,
-        MOD_BLOODTHIRST
+        MOD_BLOODTHIRST,
+        NONE
     }
 
     public bool timer;  //timer to deactivation

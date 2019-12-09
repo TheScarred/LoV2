@@ -54,12 +54,10 @@ public class Player : PunBehaviour
     TypesAvailable.particleType particleHeal;
     TypesAvailable.particleType particleGrab;
     TypesAvailable.particleType particleSpawn;
-    TypesAvailable.particleType particleKnockBack;
-    TypesAvailable.particleType particleDefense;
-    TypesAvailable.particleType particleAttack;
-    TypesAvailable.particleType particleSpeed;
-    TypesAvailable.particleType particleBleed;
 
+
+
+    
 
     void Start()
     {
@@ -125,11 +123,7 @@ public class Player : PunBehaviour
         particleHeal = TypesAvailable.particleType.HEAL;
         particleGrab = TypesAvailable.particleType.GRAB_WEAPON;
         particleSpawn = TypesAvailable.particleType.PLAYER_SPAWN;
-        particleKnockBack = TypesAvailable.particleType.MOD_KNOCKBACK;
-        //particleDefense = TypesAvailable.particleType.MOD_DEFENSE;
-        particleSpeed = TypesAvailable.particleType.MOD_SPEED;
-        particleAttack = TypesAvailable.particleType.MOD_BLOODTHIRST;
-        particleBleed = TypesAvailable.particleType.MOD_BLEED;
+
 
         ParticleManager.GetInstance().ActivateParticle(this.transform, particleSpawn);
 
@@ -357,6 +351,7 @@ public class Player : PunBehaviour
         if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
+            PhotonNetwork.RPC(photonView, "TakeDamage", PhotonTargets.All, false, ID);
 
             if (transform.position.x > col.transform.position.x)
                 if (col.GetComponent<Attack>().effect == Modifier.KNOCKBACK)
@@ -587,6 +582,8 @@ public class Player : PunBehaviour
 
             else
                 meleeAttack.effect = Modifier.NONE;
+
+            ShowParticle(meleeAttack.effect);
         }
     }
 
@@ -606,6 +603,8 @@ public class Player : PunBehaviour
 
             else
                 rangedAttack.effect = Modifier.NONE;
+
+            ShowParticle(rangedAttack.effect);
         }
     }
 
@@ -626,6 +625,8 @@ public class Player : PunBehaviour
 
             else
                 meleeAttack.effect = Modifier.NONE;
+
+            ShowParticle(meleeAttack.effect);
         }
     }
 
@@ -660,6 +661,40 @@ public class Player : PunBehaviour
                     PhotonConnection.GetInstance().weaponList[i].GetComponent<SpriteRenderer>().sprite = rangedSprites[(int)objects[1]];
             }
         }
+    }
+
+    void ShowParticle(Modifier mod)
+    {
+        TypesAvailable.particleType particle;
+        particle = TypesAvailable.particleType.NONE;
+        switch (mod)
+        {
+            case Modifier.FRENZY:
+                particle = TypesAvailable.particleType.MOD_ATTACK;
+                break;
+            case Modifier.ARMOURSLAYER:
+                particle = TypesAvailable.particleType.MOD_BLOODTHIRST;
+                break;
+            case Modifier.FOCUS:
+                particle = TypesAvailable.particleType.MOD_BLOODTHIRST;
+                break;
+            case Modifier.SWIFTNESS:
+                particle = TypesAvailable.particleType.MOD_SPEED;
+                break;
+            case Modifier.BLEEDING:
+                particle = TypesAvailable.particleType.MOD_BLEED;
+                break;
+            case Modifier.BLOODTHIRST:
+                particle = TypesAvailable.particleType.MOD_BLOODTHIRST;
+                break;
+            case Modifier.KNOCKBACK:
+                particle = TypesAvailable.particleType.MOD_KNOCKBACK;
+                break;
+            case Modifier.POISON:
+                particle = TypesAvailable.particleType.MOD_BLEED;
+                break;    
+        }
+        ParticleManager.GetInstance().ActivateParticle(transform, particle);
     }
 
     #region IPunObservable
@@ -792,6 +827,12 @@ public class Player : PunBehaviour
     }
 
     [PunRPC]
+    public void TakeDamage(int id)
+    {
+        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleHit);
+    }
+
+    [PunRPC]
     public void RevivePlayer(int id)
     {
         gameObject.GetComponent<BoxCollider>().enabled = true;
@@ -812,7 +853,6 @@ public class Player : PunBehaviour
     {
         vivo = false;
         ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleDeath);
-        //animator.SetBool("Morir", true);
         _myPlayerStats.UpdateScoreboard();
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         gameObject.GetComponent<BoxCollider>().enabled = false;
