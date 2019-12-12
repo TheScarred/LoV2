@@ -13,7 +13,7 @@ namespace SimpleHealthBar_SpaceshipExample
         //VIDA VARIABLES
         public PlayerStats jugadorsin;
 
-        Player player;
+        public Player player;
 
         public SimpleHealthBar healthBar;
         public SimpleHealthBar shieldBar;
@@ -103,12 +103,16 @@ namespace SimpleHealthBar_SpaceshipExample
 
 		public void Death ()
 		{
-            if(photonView.isMine)
+            if (photonView.isMine)
+            {
+                gameObject.transform.DetachChildren();
+                player.gameObject.SetActive(false);
+                PhotonNetwork.Disconnect();
+                SceneManager.LoadScene("Game Over");
+            }
             //AQUI ENSEÑARIA LA ESCENA DE DEATH
             
-            gameObject.transform.DetachChildren();
-			Destroy( gameObject );
-            SceneManager.LoadScene("Game Over");
+           
         }
 
 		

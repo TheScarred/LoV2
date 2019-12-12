@@ -3080,11 +3080,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 214285312}
     m_Modifications:
-    - target: {fileID: 2060153595871286814, guid: 1b67cd163a60cd14f97533e877370ddb,
-        type: 3}
-      propertyPath: m_Name
-      value: Base
-      objectReference: {fileID: 0}
     - target: {fileID: 2060153595871285729, guid: 1b67cd163a60cd14f97533e877370ddb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3189,6 +3184,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060153595871286814, guid: 1b67cd163a60cd14f97533e877370ddb,
+        type: 3}
+      propertyPath: m_Name
+      value: Base
       objectReference: {fileID: 0}
     - target: {fileID: 2060153595752616949, guid: 1b67cd163a60cd14f97533e877370ddb,
         type: 3}
@@ -8579,7 +8579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0142de0bd073f4f90943576f19128e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameVersion: 0.234134
+  gameVersion: 2
   myServerName: 
   ownPlayer: {fileID: 0}
   playerList: []

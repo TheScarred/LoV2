@@ -126,7 +126,7 @@ public class EnemyIA : PunBehaviour
         status = EnemyState.Patrolling;
         StartCoroutine("FindTargets", .2f);
         HP = base_HP;
-
+        enemy_controller.enabled = true;
         //HitPlayer
         TranslatedRight = true;
         can_attack = true;
@@ -483,49 +483,55 @@ public class EnemyIA : PunBehaviour
 
     void Update()
     {
-        if (photonView.isMine)
-        {
-            if (status == EnemyState.Chase || status == EnemyState.Rage)
-            {
-
-                if (playertoChase != null)
-                {
-                    ChasePlayer();
-                }
-                else
-                {
-                    if (status == EnemyState.Rage)
-                    {
-                        PatrolArea(2);
-                    }
-                }
-
-            }else if(status == EnemyState.Patrolling)
-            {
-                PatrolArea(1);
-            }
-            else if (status == EnemyState.Resting)
-            {
-                HealSelf();
-            }
-
-            if (myState == Items.State.DAMAGE)
-            {
-
-            }
-
-        }
         if (HP <= 0)
         {
+            enemy_controller.enabled = false;
             animator.SetBool("death", true);
-
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Death") && photonView.isMine)
             {
                 audio.PlayOneShot(death);
-                RPCForEnemyDeath();
                 particleManager.ActivateParticle(this.transform, particleDeath);
+                RPCForEnemyDeath();
+
+            }
+        }else
+        {
+            if (photonView.isMine)
+            {
+                if (status == EnemyState.Chase || status == EnemyState.Rage)
+                {
+
+                    if (playertoChase != null)
+                    {
+                        ChasePlayer();
+                    }
+                    else
+                    {
+                        if (status == EnemyState.Rage)
+                        {
+                            PatrolArea(2);
+                        }
+                    }
+
+                }
+                else if (status == EnemyState.Patrolling)
+                {
+                    PatrolArea(1);
+                }
+                else if (status == EnemyState.Resting)
+                {
+                    HealSelf();
+                }
+
+                if (myState == Items.State.DAMAGE)
+                {
+
+                }
+
             }
         }
+        
+        
         if (HP <= base_HP / 2)
         {
             status = EnemyState.Rage;

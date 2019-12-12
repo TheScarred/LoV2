@@ -715,13 +715,12 @@ public class Player : PunBehaviour
             else if (vivo == true)
             {
                 PhotonNetwork.RPC(photonView, "KillPlayer", PhotonTargets.AllBuffered, false, ID);
-            }
-
-            else
-                if (Input.GetKey(KeyCode.Space))
+            } 
+            else if (Input.GetKey(KeyCode.Space))
             {
                 PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false, ID);
             }
+            
         }
             _myPlayerStats.UpdateScoreboard();   //no se puede quedar aqui!!!
 
@@ -799,12 +798,13 @@ public class Player : PunBehaviour
     public void KillPlayer(int id)
     {
         vivo = false;
+        
         ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleDeath);
-        //animator.SetBool("Morir", true);
-        _myPlayerStats.UpdateScoreboard();
-        gameObject.GetComponent<Rigidbody>().useGravity = false;
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+       
+        if(photonView.isMine)
+        {
+            PhotonNetwork.Disconnect();
+        }
 
     }
 }

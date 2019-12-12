@@ -76,7 +76,7 @@ public class PlayerStats : PunBehaviour
 
     public void ReceiveDamage(float armourPen, float damage)
     {
-        ParticleManager.GetInstance().ActivateParticle(this.transform, player.particleHit);
+        //ParticleManager.GetInstance().ActivateParticle(this.transform, player.particleHit);
         player_health.TakeDamage(armourPen, damage);
         float fillmount;
         fillmount = HP_bar.fillAmount = (m_HP / base_HP);

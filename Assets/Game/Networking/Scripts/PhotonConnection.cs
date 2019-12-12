@@ -312,22 +312,11 @@ public class PhotonConnection : PunBehaviour
     }
     public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
     {
-        
         Debug.Log("Nuevo Jugador:" + newPlayer.NickName);
-
-        
-
-
-            
-
-
-        
-
     }
 
     public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
     {
-        
         Debug.Log("Jugador se desconectó:" + otherPlayer.NickName);
     }
 
