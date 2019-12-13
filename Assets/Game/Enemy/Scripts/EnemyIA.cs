@@ -616,7 +616,7 @@ public class EnemyIA : PunBehaviour
                     int type2 = Random.Range(0, 2);
                     if (type2 == 0)
                     {
-                        GameObject go = Instantiate(melee, transform.position, transform.rotation);
+                        GameObject go = Instantiate(melee, new Vector3(transform.position.x, 0.33f, transform.position.z), transform.rotation);
                         WeaponPickup weapon = go.GetComponent<WeaponPickup>();
                         weapon.type = Items.WeaponType.MELEE;
                         weapon.ID = PhotonConnection.GetInstance().WeaponID;
@@ -645,7 +645,7 @@ public class EnemyIA : PunBehaviour
                     }
                     else
                     {
-                        GameObject go = Instantiate(ranged, transform.position, transform.rotation);
+                        GameObject go = Instantiate(ranged, new Vector3(transform.position.x, 0.33f, transform.position.z), transform.rotation);
                         WeaponPickup weapon = go.GetComponent<WeaponPickup>();
                         weapon.type = Items.WeaponType.RANGED;
                         weapon.ID = PhotonConnection.GetInstance().WeaponID;
@@ -668,7 +668,7 @@ public class EnemyIA : PunBehaviour
                 }
             case Items.ItemType.CONSUMABLE:
                 {
-                    GameObject go = Instantiate(consumable, transform.position, transform.rotation);
+                    GameObject go = Instantiate(consumable, new Vector3(transform.position.x, 0.33f, transform.position.z), transform.rotation);
                     int type2 = Random.Range(0, 3);
                     if (type2 == 0)
                     {

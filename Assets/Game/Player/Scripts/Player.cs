@@ -16,6 +16,7 @@ public class Player : PunBehaviour
 
     public CharacterController player_controller;
     public Weapon melee, ranged;
+    public Sprite[] attackOrGet;
     public Sprite[] meleeSprites;
     public Sprite[] rangedSprites;
     public State myState;
@@ -131,7 +132,6 @@ public class Player : PunBehaviour
 
 
         ParticleManager.GetInstance().ActivateParticle(this.transform, particleSpawn);
-
 
         mySprite = this.gameObject.GetComponent<SpriteRenderer>();
 
@@ -326,7 +326,11 @@ public class Player : PunBehaviour
             RangedAttack();
         }
 
-        theButtons[(int)Botones.MELEE].onClick.AddListener(MeleeAttack);
+        if (weaponTrigger && pickup != null)
+            PickUpWeapon(pickup);
+        else
+            theButtons[(int)Botones.MELEE].onClick.AddListener(MeleeAttack);
+
         theButtons[(int)Botones.RANGED].onClick.AddListener(RangedAttack);
     }
 
@@ -351,13 +355,10 @@ public class Player : PunBehaviour
 
     void PickUpWeapon(Collider col)
     {
-        if (Input.GetKeyDown(KeyCode.E) && weaponTrigger && (pickup != null))
-        {
-            WeaponPickup weapon = col.GetComponent<WeaponPickup>();
-            ChangeWeapon(ref weapon.type, ref weapon.rarity, PhotonConnection.GetInstance().randomSeed, ref weapon.ID, weapon.lastWear);
+        WeaponPickup weapon = col.GetComponent<WeaponPickup>();
+        ChangeWeapon(ref weapon.type, ref weapon.rarity, PhotonConnection.GetInstance().randomSeed, ref weapon.ID, weapon.lastWear);
 
-            StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
-        }
+        StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
     }
 
     void OnTriggerEnter(Collider col)
@@ -412,6 +413,7 @@ public class Player : PunBehaviour
         if (col.CompareTag("Melee") || col.CompareTag("Rango"))
         {
             weaponTrigger = true;
+            theButtons[1].transform.GetChild(0).GetComponent<Image>().sprite = attackOrGet[1];
             pickup = col;
         }
     }
@@ -421,6 +423,7 @@ public class Player : PunBehaviour
         if (col.CompareTag("Melee") || col.CompareTag("Rango"))
         {
             weaponTrigger = false;
+            theButtons[1].transform.GetChild(0).GetComponent<Image>().sprite = attackOrGet[0];
             pickup = null;
         }
     }

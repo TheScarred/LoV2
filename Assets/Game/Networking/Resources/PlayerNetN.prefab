@@ -80,6 +80,9 @@ MonoBehaviour:
   player_controller: {fileID: 6612205638453905703}
   melee: {fileID: 0}
   ranged: {fileID: 0}
+  attackOrGet:
+  - {fileID: 21300000, guid: 9add74137a34ff448b2cd4c4197cb00a, type: 3}
+  - {fileID: 21300000, guid: ac5e35950c337f549916775a534c2c1d, type: 3}
   meleeSprites:
   - {fileID: 21300000, guid: 1771ec722ea9b344f8e731f66033408d, type: 3}
   - {fileID: 21300000, guid: 9add74137a34ff448b2cd4c4197cb00a, type: 3}
