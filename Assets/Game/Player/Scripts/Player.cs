@@ -16,6 +16,7 @@ public class Player : PunBehaviour
 
     public CharacterController player_controller;
     public Weapon melee, ranged;
+    public Sprite[] getOrAttack;
     public Sprite[] meleeSprites;
     public Sprite[] rangedSprites;
     public State myState;
@@ -326,7 +327,12 @@ public class Player : PunBehaviour
             RangedAttack();
         }
 
-        theButtons[(int)Botones.MELEE].onClick.AddListener(MeleeAttack);
+        if (weaponTrigger && pickup != null)
+            PickUpWeapon(pickup);
+
+        else
+            theButtons[(int)Botones.MELEE].onClick.AddListener(MeleeAttack);
+
         theButtons[(int)Botones.RANGED].onClick.AddListener(RangedAttack);
     }
 
@@ -412,6 +418,7 @@ public class Player : PunBehaviour
         if (col.CompareTag("Melee") || col.CompareTag("Rango"))
         {
             weaponTrigger = true;
+            theButtons[1].GetComponentInChildren<Image>().sprite = getOrAttack[1];
             pickup = col;
         }
     }
@@ -421,6 +428,7 @@ public class Player : PunBehaviour
         if (col.CompareTag("Melee") || col.CompareTag("Rango"))
         {
             weaponTrigger = false;
+            theButtons[1].GetComponentInChildren<Image>().sprite = getOrAttack[0];
             pickup = null;
         }
     }
