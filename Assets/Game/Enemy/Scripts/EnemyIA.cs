@@ -24,6 +24,8 @@ public class EnemyIA : PunBehaviour
     public AudioClip[] audioList;
     [SerializeField]
     AudioClip sword,death,hit;
+    [SerializeField]
+    AudioClip ahit;
     public CharacterController enemy_controller;
     public float HP = 50;
     public float Damage = 10f;
@@ -218,6 +220,7 @@ public class EnemyIA : PunBehaviour
         {
             if (player_stats != null)
             {
+
                 Attack attack = other.GetComponent<Attack>();
                 particleManager.ActivateParticle(this.transform, particleHit);
 
@@ -239,11 +242,14 @@ public class EnemyIA : PunBehaviour
                 }
 
 
-                if (attack.isCrit)
+                if (attack.isCrit) { 
+                    audio.PlayOneShot(ahit);
                     TakeDamage(attack.damage * 2.5f);
-                else
+                }
+                else { 
+                    audio.PlayOneShot(hit);
                     TakeDamage(attack.damage);
-
+                }
                 if (attack.GetComponentInParent<Player>().melee.stats.id >= 0)
                     attack.GetComponentInParent<Player>().melee.stats.wear--;
 
@@ -251,7 +257,8 @@ public class EnemyIA : PunBehaviour
                     attack.GetComponentInParent<Player>().BreakMeleeWeapon();
 
                 script_HP.ModifyHpBar(attack.damage, base_HP);
-                audio.PlayOneShot(hit);
+
+
                 animator.SetTrigger("hit");
 
                /*if(HP <= 20)

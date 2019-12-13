@@ -9,6 +9,11 @@ using Custom.Indicators;
 
 public class Player : PunBehaviour
 {
+    //Audio
+    AudioSource audio;
+    [SerializeField]
+    AudioClip fightingmelee, fightingranged, fightingmeleecrit;
+
     public CharacterController player_controller;
     public Weapon melee, ranged;
     public Sprite[] meleeSprites;
@@ -55,6 +60,10 @@ public class Player : PunBehaviour
     TypesAvailable.particleType particleGrab;
     TypesAvailable.particleType particleSpawn;
 
+    void Awake()
+    {
+        audio = gameObject.GetComponent<AudioSource>();
+    }
 
     void Start()
     {
@@ -76,7 +85,6 @@ public class Player : PunBehaviour
         if (photonView.isMine)
         {
             gameObject.AddComponent<AudioListener>();
-
             meleeAttack = BasicHitBox.GetComponent<Attack>();
             rangedAttack = prefab_range_attack.GetComponent<Attack>();
 
@@ -238,15 +246,19 @@ public class Player : PunBehaviour
 
     public void MeleeAttack()
     {
-        if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
+        if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance))) 
+        { 
             meleeAttack.isCrit = true;
-
-        else
+            audio.PlayOneShot(fightingmeleecrit);
+        }
+        else 
+        { 
             meleeAttack.isCrit = false;
-
+        }
         if (meleeCooldown <= Time.time)
-        {
+        {  
             imAttacking = true;
+            audio.PlayOneShot(fightingmelee);
             PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
             meleeCooldown = Time.time + melee.stats.rOF;
         }
@@ -258,6 +270,7 @@ public class Player : PunBehaviour
         {
             imAttacking = true;
 
+            audio.PlayOneShot(fightingranged);
             SpawnRangeAttackObject(prefab_range_attack, transform.position);
 
             if (ranged.stats.id >= 0)
