@@ -692,9 +692,14 @@ public class Player : PunBehaviour
                 break;
             case Modifier.POISON:
                 particle = TypesAvailable.particleType.MOD_BLEED;
-                break;    
+                break;
+            case Modifier.NONE:
+                ParticleManager.GetInstance().StopParticle(this.transform);
+                break;
+
         }
-        ParticleManager.GetInstance().ActivateParticle(transform, particle);
+        if(particle != TypesAvailable.particleType.NONE)
+            ParticleManager.GetInstance().ActivateParticle(transform, particle);
     }
 
     #region IPunObservable
