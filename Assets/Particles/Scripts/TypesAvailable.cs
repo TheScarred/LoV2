@@ -17,6 +17,7 @@ public class TypesAvailable : MonoBehaviour
         MOD_ATTACK,
         MOD_SPEED,
         MOD_BLEED,
+        CONSUMABLE
         MOD_BLOODTHIRST,
         NONE
     }

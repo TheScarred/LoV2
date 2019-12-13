@@ -223,25 +223,24 @@ public class EnemyIA : PunBehaviour
                 Attack attack = other.GetComponent<Attack>();
 
                 if (transform.position.x > other.transform.position.x)
-                    if (attack.effect == Items.Modifier.KNOCKBACK)
+                    if (attack.effect1 == Items.Modifier.KNOCKBACK || attack.effect2 == Items.Modifier.KNOCKBACK)
                         KnockBack(Vector3.right, 1f);
                     else
-                        KnockBack(Vector3.right, 0.5f);
+                        KnockBack(Vector3.right, 300f);
                 else
-                    if (attack.effect == Items.Modifier.KNOCKBACK)
+                    if (attack.effect1 == Items.Modifier.KNOCKBACK || attack.effect2 == Items.Modifier.KNOCKBACK)
                         KnockBack(Vector3.left, 1f);
                     else
-                        KnockBack(Vector3.left, 0.5f);
+                        KnockBack(Vector3.left, 300f);
 
-                if ((other.GetComponent<Attack>().effect == Items.Modifier.BLEEDING) && myState == Items.State.NORMAL)
+                if ((attack.effect1 == Items.Modifier.BLEEDING) && myState == Items.State.NORMAL)
                 {
                     myState = Items.State.DAMAGE;
                     StartCoroutine(TakeDamagePSecond(5));
                 }
 
-
-                if (attack.isCrit) {
-                    audio.PlayOneShot(ahit);
+                if (attack.isCrit){
+                    audio.PlayOneShot(hit);
                     TakeDamage(attack.damage * 2.5f);
                 }
                 else {
@@ -291,7 +290,7 @@ public class EnemyIA : PunBehaviour
                     PhotonNetwork.player.AddScore(killed_points);
                     killer.UpdateScoreboard();
 
-                    if (attack.effect == Items.Modifier.BLOODTHIRST)
+                    if (attack.effect1 == Items.Modifier.BLOODTHIRST)
                         other.GetComponentInParent<Player>().HealPlayer(5);
                 }
             }
@@ -310,7 +309,7 @@ public class EnemyIA : PunBehaviour
             animator.SetTrigger("hit");
 
 
-            if ((other.GetComponent<Attack>().effect == Items.Modifier.POISON) && myState == Items.State.NORMAL)
+            if ((attack.effect1 == Items.Modifier.POISON) && myState == Items.State.NORMAL)
             {
                 myState = Items.State.DAMAGE;
                 StartCoroutine(TakeDamagePSecond(5));
