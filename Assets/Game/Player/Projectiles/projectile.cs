@@ -8,7 +8,7 @@ public class projectile : PunBehaviour
     Vector3 angle;
     bool facingright;
     float timer;
-    public float torque = 10f;
+    public float torque = 20f;
     Rigidbody rigi;
 
     [SerializeField]
@@ -83,14 +83,14 @@ public class projectile : PunBehaviour
             Vector3 relativePos = target.position - transform.position;
             relativePos.Normalize();
             var targetRotation = Quaternion.LookRotation(relativePos);
-            targetRotation = Quaternion.Euler(targetRotation.eulerAngles.x, targetRotation.eulerAngles.y - 90f, targetRotation.eulerAngles.z);
+            targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, targetRotation.eulerAngles.z - 90f);
             var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, step);
             rigi.MoveRotation(rotation);
 
             if (facingright)
-                rigi.velocity = transform.forward * -7;
+                rigi.velocity = transform.up * -7;
             else
-                rigi.velocity = transform.forward * 7;
+                rigi.velocity = transform.up * 7;
         }
 
         timer -= Time.deltaTime;
@@ -154,6 +154,7 @@ public class projectile : PunBehaviour
         int m = PhotonConnection.GetInstance().playerList.Count;
         int n = m + PhotonConnection.GetInstance().enemiesList.Count;
         float d = Mathf.Infinity;
+        Transform player = PhotonConnection.GetInstance().GetPlayerById(owner).transform;
         Transform temp = null;
         Player currentP;
         GameObject currentE;
@@ -167,11 +168,11 @@ public class projectile : PunBehaviour
                 {
                     Debug.Log("Checando Jugador " + i);
                     currentP = PhotonConnection.GetInstance().playerList[i];
-                    if (transform.position.x < currentP.transform.position.x && Vector3.Distance(transform.position, currentP.transform.position) < d &&
+                    if (player.position.x < currentP.transform.position.x && Vector3.Distance(player.position, currentP.transform.position) < d &&
                         currentP.photonView.viewID != owner)
                     {
                         temp = currentP.transform;
-                        d = Vector3.Distance(transform.position, currentP.transform.position);
+                        d = Vector3.Distance(player.position, currentP.transform.position);
                     }
                 }
                 else
@@ -179,10 +180,10 @@ public class projectile : PunBehaviour
                     int ii = i - m;
                     Debug.Log("Checando Enemigo " + ii);
                     currentE = PhotonConnection.GetInstance().enemiesList[ii];
-                    if (transform.position.x < currentE.transform.position.x && Vector3.Distance(transform.position, currentE.transform.position) < d)
+                    if (player.position.x < currentE.transform.position.x && Vector3.Distance(player.position, currentE.transform.position) < d)
                     {
                         temp = currentE.transform;
-                        d = Vector3.Distance(transform.position, currentE.transform.position);
+                        d = Vector3.Distance(player.position, currentE.transform.position);
                         Debug.Log(ii + " " + temp.position, temp.gameObject);
                     }
                 }
@@ -198,11 +199,11 @@ public class projectile : PunBehaviour
                 {
                     Debug.Log("Checando Jugador " + i);
                     currentP = PhotonConnection.GetInstance().playerList[i];
-                    if (transform.position.x > currentP.transform.position.x && Vector3.Distance(transform.position, currentP.transform.position) < d &&
+                    if (player.position.x > currentP.transform.position.x && Vector3.Distance(player.position, currentP.transform.position) < d &&
                     currentP.photonView.viewID != owner)
                     {
                         temp = currentP.transform;
-                        d = Vector3.Distance(transform.position, currentP.transform.position);
+                        d = Vector3.Distance(player.position, currentP.transform.position);
                     }
                 }
                 else
@@ -210,10 +211,10 @@ public class projectile : PunBehaviour
                     int ii = i - m;
                     Debug.Log("Checando Enemigo " + ii);
                     currentE = PhotonConnection.GetInstance().enemiesList[ii];
-                    if (transform.position.x > currentE.transform.position.x && Vector3.Distance(transform.position, currentE.transform.position) < d)
+                    if (player.position.x > currentE.transform.position.x && Vector3.Distance(player.position, currentE.transform.position) < d)
                     {
                         temp = currentE.transform;
-                        d = Vector3.Distance(transform.position, currentE.transform.position);
+                        d = Vector3.Distance(player.position, currentE.transform.position);
                         Debug.Log(ii + " " + temp.position, temp.gameObject);
                     }
                 }
