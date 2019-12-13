@@ -8686,7 +8686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0142de0bd073f4f90943576f19128e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameVersion: 2
+  gameVersion: 2.888
   myServerName: 
   ownPlayer: {fileID: 0}
   playerList: []

@@ -498,7 +498,6 @@ public class EnemyIA : PunBehaviour
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Death") && photonView.isMine)
             {
                 audio.PlayOneShot(death);
-                particleManager.ActivateParticle(this.transform, particleDeath);
                 RPCForEnemyDeath();
 
             }

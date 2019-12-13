@@ -869,13 +869,16 @@ public class Player : PunBehaviour
     public void KillPlayer(int id)
     {
         vivo = false;
-
-        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleDeath);
-
         if(photonView.isMine)
         {
             PhotonNetwork.Disconnect();
         }
 
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("Call particle Player Death");
+        ParticleManager.GetInstance().ActivateParticle(transform, particleDeath, false);
     }
 }
