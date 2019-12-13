@@ -224,14 +224,14 @@ public class EnemyIA : PunBehaviour
 
                 if (transform.position.x > other.transform.position.x)
                     if (attack.effect1 == Items.Modifier.KNOCKBACK || attack.effect2 == Items.Modifier.KNOCKBACK)
-                        KnockBack(Vector3.right, 1f);
+                        KnockBack(Vector3.right, 2f);
                     else
-                        KnockBack(Vector3.right, 300f);
+                        KnockBack(Vector3.right, 1f);
                 else
                     if (attack.effect1 == Items.Modifier.KNOCKBACK || attack.effect2 == Items.Modifier.KNOCKBACK)
-                        KnockBack(Vector3.left, 1f);
+                        KnockBack(Vector3.left, 2f);
                     else
-                        KnockBack(Vector3.left, 300f);
+                        KnockBack(Vector3.left, 1f);
 
                 if ((attack.effect1 == Items.Modifier.BLEEDING) && myState == Items.State.NORMAL)
                 {
@@ -549,7 +549,7 @@ public class EnemyIA : PunBehaviour
 
     public void KnockBack(Vector3 dir, float power)
     {
-        transform.Translate(dir * power);
+        enemy_controller.Move(dir * power);
     }
 
     IEnumerator TakeDamagePSecond(int n)
