@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using SimpleHealthBar_SpaceshipExample;
 
 public class animacionmonito : MonoBehaviour
@@ -14,15 +15,26 @@ public class animacionmonito : MonoBehaviour
     public Animator animator;
     int Ataque=0;
     bool vivo = false;
+    public Joystick theJoystick;
+    //BUTTONS
+    enum Botones { RANGED, MELEE };
+    public Button[] theButtons;
 
     bool opcion = false;
 
     [SerializeField]
     PlayerHealth p;
 
+    private void Start()
+    {
+        theJoystick = FindObjectOfType<Joystick>();
+        theButtons = FindObjectsOfType<Button>();
+    }
+
     // Update is called once per frame
     void Update()
     {
+        
         #region GetHit
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt"))
         {
@@ -45,11 +57,7 @@ public class animacionmonito : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Ataque++;
-                if (Ataque == 1)
-                {
-                    animator.SetInteger("Ataque", Ataque);
-                }
+                AttackMelee();
 
             }
             else
@@ -66,14 +74,8 @@ public class animacionmonito : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                Ataque= 2;
-                
-                if(Ataque == 2)
-                {
-                    animator.SetInteger("Ataque", Ataque);
-                    animator.SetBool("Arma", opcion);
-                }
-                   
+
+                AttackRanged();
 
             }
             else
@@ -83,6 +85,11 @@ public class animacionmonito : MonoBehaviour
                 animator.SetBool("Arma", opcion);
             }
         }
+
+        theButtons[(int)Botones.MELEE].onClick.AddListener(Melee);
+        theButtons[(int)Botones.RANGED].onClick.AddListener(Ranged);
+
+        
         
         
         
@@ -93,7 +100,11 @@ public class animacionmonito : MonoBehaviour
         #region Move
         bool isMoving = false;
 
-        if (Input.GetKey(KeyCode.S))
+        if (theJoystick.horizontal != 0 || theJoystick.vectical != 0)
+        {
+            isMoving = true;
+        }
+        else if (Input.GetKey(KeyCode.S))
         {
             transform.Translate(Vector3.back * velocidad * Time.deltaTime);
             isMoving = true;
@@ -128,5 +139,35 @@ public class animacionmonito : MonoBehaviour
 
         animator.SetBool("run", isMoving);
         #endregion
+    }
+
+    void Melee()
+    {
+        animator.SetInteger("Ataque", 1);
+    }
+
+    void Ranged()
+    {
+        animator.SetInteger("Ataque", 2);
+    }
+
+    void AttackMelee()
+    {
+        Ataque++;
+        if (Ataque == 1)
+        {
+            animator.SetInteger("Ataque", Ataque);
+        }
+    }
+
+    void AttackRanged()
+    {
+        Ataque = 2;
+
+        if (Ataque == 2)
+        {
+            animator.SetInteger("Ataque", Ataque);
+            animator.SetBool("Arma", opcion);
+        }
     }
 }

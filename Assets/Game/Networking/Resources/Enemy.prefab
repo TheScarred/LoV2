@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7802295132767321151}
   - component: {fileID: 5569227959351960623}
   - component: {fileID: 1974155264427976210}
+  - component: {fileID: 616150282937760840}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: ENEMIES
@@ -199,7 +200,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 156
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -237,7 +238,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -296,9 +297,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 23fc6810edd8bed42b750baa5c3dde9b, type: 3}
   - {fileID: 8300000, guid: df0cac0b1fa74174e98f55be8c46b4a3, type: 3}
   - {fileID: 8300000, guid: 23fc6810edd8bed42b750baa5c3dde9b, type: 3}
-  sword: {fileID: 8300000, guid: 2ac6ae5f2114ec84cb4d112ffda20d7f, type: 3}
-  death: {fileID: 8300000, guid: adfa7b344ad420f4cbd1f4b68644098b, type: 3}
-  hit: {fileID: 8300000, guid: 14d328dc9d505e44b802146d6c453038, type: 3}
+  sword: {fileID: 8300000, guid: 159a58e1a7a1e3d4b980fb3e853fd001, type: 3}
+  death: {fileID: 8300000, guid: 73b6b03cc7cb7b74f82cc698bd411774, type: 3}
+  hit: {fileID: 8300000, guid: ee8c53418fafa5c40b536860de34c149, type: 3}
+  ahit: {fileID: 8300000, guid: 07538ea18eaf06e4c88c9f91d14f17c8, type: 3}
   enemy_controller: {fileID: 5569227959351960623}
   HP: 50
   Damage: 10
@@ -454,6 +456,21 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &616150282937760840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832233238492437757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
+  runOnlyOnce: 0
 --- !u!114 &3674029410777285953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +491,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1832233238492437703}
     m_Modifications:
+    - target: {fileID: 4249170665657334300, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas_enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 68925779592913769, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -588,11 +610,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.0022787987
-      objectReference: {fileID: 0}
-    - target: {fileID: 4249170665657334300, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas_enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}

@@ -9,6 +9,11 @@ using Custom.Indicators;
 
 public class Player : PunBehaviour
 {
+    //Audio
+    AudioSource audio;
+    [SerializeField]
+    AudioClip fightingmelee, fightingranged, fightingmeleecrit;
+
     public CharacterController player_controller;
     public Weapon melee, ranged;
     public Sprite[] meleeSprites;
@@ -55,6 +60,13 @@ public class Player : PunBehaviour
     TypesAvailable.particleType particleGrab;
     TypesAvailable.particleType particleSpawn;
 
+    void Awake()
+    {
+        audio = gameObject.GetComponent<AudioSource>();
+    }
+
+
+
 
     void Start()
     {
@@ -76,14 +88,13 @@ public class Player : PunBehaviour
         if (photonView.isMine)
         {
             gameObject.AddComponent<AudioListener>();
-
             meleeAttack = BasicHitBox.GetComponent<Attack>();
             rangedAttack = prefab_range_attack.GetComponent<Attack>();
             health = GetComponent<PlayerHealth>();
 
             Camera.main.transform.parent = transform;
 
-            Camera.main.transform.localPosition = new Vector3(0, 6, -12);
+            Camera.main.transform.localPosition = new Vector3(0, 8, -16);
             indicators = GameObject.Find("Canvas").GetComponent<OffscreenIndicator>();
             PhotonNetwork.RPC(photonView, "CrearFlecha", PhotonTargets.AllBuffered, false);
 
@@ -117,7 +128,11 @@ public class Player : PunBehaviour
         particleHeal = TypesAvailable.particleType.HEAL;
         particleGrab = TypesAvailable.particleType.GRAB_WEAPON;
         particleSpawn = TypesAvailable.particleType.PLAYER_SPAWN;
+
+
         ParticleManager.GetInstance().ActivateParticle(this.transform, particleSpawn);
+
+
         mySprite = this.gameObject.GetComponent<SpriteRenderer>();
 
     }
@@ -239,14 +254,18 @@ public class Player : PunBehaviour
     public void MeleeAttack()
     {
         if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
+        {
             meleeAttack.isCrit = true;
-
+            audio.PlayOneShot(fightingmeleecrit);
+        }
         else
+        {
             meleeAttack.isCrit = false;
-
+        }
         if (meleeCooldown <= Time.time)
         {
             imAttacking = true;
+            audio.PlayOneShot(fightingmelee);
             PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
             meleeCooldown = Time.time + melee.stats.rOF;
         }
@@ -258,6 +277,7 @@ public class Player : PunBehaviour
         {
             imAttacking = true;
 
+            audio.PlayOneShot(fightingranged);
             SpawnRangeAttackObject(prefab_range_attack, transform.position);
 
             if (ranged.stats.id >= 0)
@@ -346,6 +366,7 @@ public class Player : PunBehaviour
         {
             Attack attack = col.GetComponent<Attack>();
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
+            PhotonNetwork.RPC(photonView, "TakeDamage", PhotonTargets.All, false, ID);
 
             if (transform.position.x > col.transform.position.x)
                 if (attack.effect1 == Modifier.KNOCKBACK || attack.effect2 == Modifier.KNOCKBACK)
@@ -487,7 +508,7 @@ public class Player : PunBehaviour
             {
                 PhotonConnection.GetInstance().consumables[i].gameObject.SetActive(false);
 
-                if (PhotonConnection.GetInstance().CompareTag("Food"))
+                if (PhotonConnection.GetInstance().consumables[i].CompareTag("Food"))
                     ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleHeal);
                 else
                     ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById((int)received[1]).transform, particleGrab);
@@ -578,7 +599,9 @@ public class Player : PunBehaviour
                 meleeAttack.effect1 = melee.stats.mod1;
 
             else
-                meleeAttack.effect1 = Modifier.NONE;
+                meleeAttack.effect = Modifier.NONE;
+
+            ShowParticle(meleeAttack.effect);
         }
     }
 
@@ -601,7 +624,9 @@ public class Player : PunBehaviour
             if (ranged.stats.mod2 != Modifier.SPEEDLOAD && ranged.stats.mod2 != Modifier.BOTTOMLESS)
                 rangedAttack.effect2 = ranged.stats.mod1;
             else
-                rangedAttack.effect2 = Modifier.NONE;
+                rangedAttack.effect = Modifier.NONE;
+
+            ShowParticle(rangedAttack.effect);
         }
     }
 
@@ -621,7 +646,9 @@ public class Player : PunBehaviour
                 meleeAttack.effect1 = melee.stats.mod1;
 
             else
-                meleeAttack.effect1 = Modifier.NONE;
+                meleeAttack.effect = Modifier.NONE;
+
+            ShowParticle(meleeAttack.effect);
         }
     }
 
@@ -665,6 +692,45 @@ public class Player : PunBehaviour
                     PhotonConnection.GetInstance().weaponList[i].GetComponent<SpriteRenderer>().sprite = rangedSprites[(int)objects[1]];
             }
         }
+    }
+
+    void ShowParticle(Modifier mod)
+    {
+        TypesAvailable.particleType particle;
+        particle = TypesAvailable.particleType.NONE;
+        switch (mod)
+        {
+            case Modifier.FRENZY:
+                particle = TypesAvailable.particleType.MOD_ATTACK;
+                break;
+            case Modifier.ARMOURSLAYER:
+                particle = TypesAvailable.particleType.MOD_BLOODTHIRST;
+                break;
+            case Modifier.FOCUS:
+                particle = TypesAvailable.particleType.MOD_BLOODTHIRST;
+                break;
+            case Modifier.SWIFTNESS:
+                particle = TypesAvailable.particleType.MOD_SPEED;
+                break;
+            case Modifier.BLEEDING:
+                particle = TypesAvailable.particleType.MOD_BLEED;
+                break;
+            case Modifier.BLOODTHIRST:
+                particle = TypesAvailable.particleType.MOD_BLOODTHIRST;
+                break;
+            case Modifier.KNOCKBACK:
+                particle = TypesAvailable.particleType.MOD_KNOCKBACK;
+                break;
+            case Modifier.POISON:
+                particle = TypesAvailable.particleType.MOD_BLEED;
+                break;
+            case Modifier.NONE:
+                ParticleManager.GetInstance().StopParticle(this.transform);
+                break;
+
+        }
+        if(particle != TypesAvailable.particleType.NONE)
+            ParticleManager.GetInstance().ActivateParticle(transform, particle);
     }
 
     #region IPunObservable
@@ -733,12 +799,11 @@ public class Player : PunBehaviour
             {
                 PhotonNetwork.RPC(photonView, "KillPlayer", PhotonTargets.AllBuffered, false, ID);
             }
-
-            else
-                if (Input.GetKey(KeyCode.Space))
+            else if (Input.GetKey(KeyCode.Space))
             {
                 PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false, ID);
             }
+
         }
             _myPlayerStats.UpdateScoreboard();   //no se puede quedar aqui!!!
 
@@ -797,6 +862,12 @@ public class Player : PunBehaviour
     }
 
     [PunRPC]
+    public void TakeDamage(int id)
+    {
+        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleHit);
+    }
+
+    [PunRPC]
     public void RevivePlayer(int id)
     {
         gameObject.GetComponent<BoxCollider>().enabled = true;
@@ -816,12 +887,13 @@ public class Player : PunBehaviour
     public void KillPlayer(int id)
     {
         vivo = false;
+
         ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleDeath);
-        //animator.SetBool("Morir", true);
-        _myPlayerStats.UpdateScoreboard();
-        gameObject.GetComponent<Rigidbody>().useGravity = false;
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        if(photonView.isMine)
+        {
+            PhotonNetwork.Disconnect();
+        }
 
     }
 }

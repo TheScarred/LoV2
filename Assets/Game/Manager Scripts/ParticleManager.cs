@@ -18,7 +18,7 @@ public class ParticleManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -28,12 +28,14 @@ public class ParticleManager : MonoBehaviour
     {
         if (particles.Count > 0)
         {
-            if (particles[0] == null)
-            {
-                particles.Clear();
-            }
+           
             for (int i = 0; i < particles.Count; i++)  //search the particle list
             {
+                if (particles[i] == null)  //if there is an error in the list where a reference is not found or something is missing
+                {
+                    particles.Clear();  //will delete the contents of the list
+                    return;  //particle will not show but will work next time
+                }
                 if (particles[i].GetComponent<ParticleType>().particleType == type)
                 {
                     if (!particles[i].IsAlive())  //if the particle is not currently being used then...
@@ -56,8 +58,10 @@ public class ParticleManager : MonoBehaviour
         //if it is not in the list, create a particle from the prefab array
         for (int i = 0; i < PreFab_Particles.Length; i++)  //search the prefab array
         {
+            print("For" + i);
             if (PreFab_Particles[i].GetComponent<ParticleType>().particleType == type)  //if we find the type we need in the array
             {
+                print("type: " + type);
                 //create new instance of the particle + add it to the list
                 particle_created = Instantiate(PreFab_Particles[i], t);
                 //print("Particle created: " + particle_created.GetType()); 
@@ -71,6 +75,23 @@ public class ParticleManager : MonoBehaviour
                     particle_created.GetComponent<ParticleType>().StartTimer();
                 }
                 return;
+            }
+        }
+    }
+
+    public void StopParticle(Transform t)
+    {
+        for (int i = 0; i < particles.Count; i++)
+        {
+            if (particles[i] == null)  //if there is an error in the list where a reference is not found or something is missing
+            {
+                particles.Clear();  //will delete the contents of the list
+                return;  //particle will not show but will work next time
+            }
+            if (particles[i].transform.parent == t.gameObject)
+            {
+                particles[i].transform.parent = null;
+                particles[i].Stop();
             }
         }
     }
