@@ -223,25 +223,24 @@ public class EnemyIA : PunBehaviour
                 Attack attack = other.GetComponent<Attack>();
 
                 if (transform.position.x > other.transform.position.x)
-                    if (attack.effect == Items.Modifier.KNOCKBACK)
+                    if (attack.effect1 == Items.Modifier.KNOCKBACK || attack.effect2 == Items.Modifier.KNOCKBACK)
+                        KnockBack(Vector3.right, 2f);
+                    else
                         KnockBack(Vector3.right, 1f);
-                    else
-                        KnockBack(Vector3.right, 0.5f);
                 else
-                    if (attack.effect == Items.Modifier.KNOCKBACK)
-                        KnockBack(Vector3.left, 1f);
+                    if (attack.effect1 == Items.Modifier.KNOCKBACK || attack.effect2 == Items.Modifier.KNOCKBACK)
+                        KnockBack(Vector3.left, 2f);
                     else
-                        KnockBack(Vector3.left, 0.5f);
+                        KnockBack(Vector3.left, 1f);
 
-                if ((other.GetComponent<Attack>().effect == Items.Modifier.BLEEDING) && myState == Items.State.NORMAL)
+                if ((attack.effect1 == Items.Modifier.BLEEDING) && myState == Items.State.NORMAL)
                 {
                     myState = Items.State.DAMAGE;
                     StartCoroutine(TakeDamagePSecond(5));
                 }
 
-
-                if (attack.isCrit) {
-                    audio.PlayOneShot(ahit);
+                if (attack.isCrit){
+                    audio.PlayOneShot(hit);
                     TakeDamage(attack.damage * 2.5f);
                 }
                 else {
@@ -291,7 +290,7 @@ public class EnemyIA : PunBehaviour
                     PhotonNetwork.player.AddScore(killed_points);
                     killer.UpdateScoreboard();
 
-                    if (attack.effect == Items.Modifier.BLOODTHIRST)
+                    if (attack.effect1 == Items.Modifier.BLOODTHIRST)
                         other.GetComponentInParent<Player>().HealPlayer(5);
                 }
             }
@@ -310,7 +309,7 @@ public class EnemyIA : PunBehaviour
             animator.SetTrigger("hit");
 
 
-            if ((other.GetComponent<Attack>().effect == Items.Modifier.POISON) && myState == Items.State.NORMAL)
+            if ((attack.effect1 == Items.Modifier.POISON) && myState == Items.State.NORMAL)
             {
                 myState = Items.State.DAMAGE;
                 StartCoroutine(TakeDamagePSecond(5));
@@ -550,7 +549,7 @@ public class EnemyIA : PunBehaviour
 
     public void KnockBack(Vector3 dir, float power)
     {
-        transform.Translate(dir * power);
+        enemy_controller.Move(dir * power);
     }
 
     IEnumerator TakeDamagePSecond(int n)
@@ -617,7 +616,7 @@ public class EnemyIA : PunBehaviour
                     int type2 = Random.Range(0, 2);
                     if (type2 == 0)
                     {
-                        GameObject go = Instantiate(melee, transform.position, transform.rotation);
+                        GameObject go = Instantiate(melee, new Vector3(transform.position.x, 0.33f, transform.position.z), transform.rotation);
                         WeaponPickup weapon = go.GetComponent<WeaponPickup>();
                         weapon.type = Items.WeaponType.MELEE;
                         weapon.ID = PhotonConnection.GetInstance().WeaponID;
@@ -646,7 +645,7 @@ public class EnemyIA : PunBehaviour
                     }
                     else
                     {
-                        GameObject go = Instantiate(ranged, transform.position, transform.rotation);
+                        GameObject go = Instantiate(ranged, new Vector3(transform.position.x, 0.33f, transform.position.z), transform.rotation);
                         WeaponPickup weapon = go.GetComponent<WeaponPickup>();
                         weapon.type = Items.WeaponType.RANGED;
                         weapon.ID = PhotonConnection.GetInstance().WeaponID;
@@ -669,7 +668,7 @@ public class EnemyIA : PunBehaviour
                 }
             case Items.ItemType.CONSUMABLE:
                 {
-                    GameObject go = Instantiate(consumable, transform.position, transform.rotation);
+                    GameObject go = Instantiate(consumable, new Vector3(transform.position.x, 0.33f, transform.position.z), transform.rotation);
                     int type2 = Random.Range(0, 3);
                     if (type2 == 0)
                     {

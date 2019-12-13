@@ -64,7 +64,6 @@ public class PhotonConnection : PunBehaviour
     void Start()
     {
         prefabACrear = Savenick.nombrePJ;
-        Debug.Log(prefabACrear);
         weaponId = 0;
         playerList = new List<Player>();
         Connect();

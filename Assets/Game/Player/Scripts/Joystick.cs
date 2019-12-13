@@ -48,12 +48,6 @@ public class Joystick : MonoBehaviour
         initialPos = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Drag()
     {
         RectTransformUtility.ScreenPointToLocalPointInRectangle(father.transform as RectTransform, Input.mousePosition, father.worldCamera, out pos);
