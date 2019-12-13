@@ -599,9 +599,9 @@ public class Player : PunBehaviour
                 meleeAttack.effect1 = melee.stats.mod1;
 
             else
-                meleeAttack.effect = Modifier.NONE;
+                meleeAttack.effect1 = Modifier.NONE;
 
-            ShowParticle(meleeAttack.effect);
+            ShowParticle(meleeAttack.effect1);
         }
     }
 
@@ -624,9 +624,9 @@ public class Player : PunBehaviour
             if (ranged.stats.mod2 != Modifier.SPEEDLOAD && ranged.stats.mod2 != Modifier.BOTTOMLESS)
                 rangedAttack.effect2 = ranged.stats.mod1;
             else
-                rangedAttack.effect = Modifier.NONE;
+                rangedAttack.effect1 = Modifier.NONE;
 
-            ShowParticle(rangedAttack.effect);
+            ShowParticle(rangedAttack.effect1);
         }
     }
 
@@ -646,9 +646,9 @@ public class Player : PunBehaviour
                 meleeAttack.effect1 = melee.stats.mod1;
 
             else
-                meleeAttack.effect = Modifier.NONE;
+                meleeAttack.effect1 = Modifier.NONE;
 
-            ShowParticle(meleeAttack.effect);
+            ShowParticle(meleeAttack.effect1);
         }
     }
 
