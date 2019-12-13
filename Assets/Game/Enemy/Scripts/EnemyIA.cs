@@ -24,6 +24,8 @@ public class EnemyIA : PunBehaviour
     public AudioClip[] audioList;
     [SerializeField]
     AudioClip sword,death,hit;
+    [SerializeField]
+    AudioClip ahit;
     public CharacterController enemy_controller;
     public float HP = 50;
     public float Damage = 10f;
@@ -125,7 +127,7 @@ public class EnemyIA : PunBehaviour
         status = EnemyState.Patrolling;
         StartCoroutine("FindTargets", .2f);
         HP = base_HP;
-
+        enemy_controller.enabled = true;
         //HitPlayer
         TranslatedRight = true;
         can_attack = true;
@@ -217,6 +219,7 @@ public class EnemyIA : PunBehaviour
         {
             if (player_stats != null)
             {
+
                 Attack attack = other.GetComponent<Attack>();
 
                 if (transform.position.x > other.transform.position.x)
@@ -237,11 +240,14 @@ public class EnemyIA : PunBehaviour
                 }
 
 
-                if (attack.isCrit)
+                if (attack.isCrit) {
+                    audio.PlayOneShot(ahit);
                     TakeDamage(attack.damage * 2.5f);
-                else
+                }
+                else {
+                    audio.PlayOneShot(hit);
                     TakeDamage(attack.damage);
-
+                }
                 if (attack.GetComponentInParent<Player>().melee.stats.id >= 0)
                     attack.GetComponentInParent<Player>().melee.stats.wear--;
 
@@ -249,7 +255,8 @@ public class EnemyIA : PunBehaviour
                     attack.GetComponentInParent<Player>().BreakMeleeWeapon();
 
                 script_HP.ModifyHpBar(attack.damage, base_HP);
-                audio.PlayOneShot(hit);
+
+
                 animator.SetTrigger("hit");
 
                /*if(HP <= 20)
@@ -351,7 +358,7 @@ public class EnemyIA : PunBehaviour
     {
         HP -= amount;
         PhotonNetwork.RPC(photonView, "TakeDamage", PhotonTargets.All, false, this.photonView.viewID);
-        
+
     }
 
 
@@ -375,7 +382,7 @@ public class EnemyIA : PunBehaviour
 
             Vector3 dir = playertoChase.transform.position - transform.position;
 
-         
+
             if (status == EnemyState.Rage)
             {
                 enemy_controller.Move(dir.normalized * ((speed +1) * 2) * Time.deltaTime);
@@ -484,48 +491,55 @@ public class EnemyIA : PunBehaviour
 
     void Update()
     {
-        if (photonView.isMine)
-        {
-            if (status == EnemyState.Chase || status == EnemyState.Rage)
-            {
-
-                if (playertoChase != null)
-                {
-                    ChasePlayer();
-                }
-                else
-                {
-                    if (status == EnemyState.Rage)
-                    {
-                        PatrolArea(2);
-                    }
-                }
-
-            }else if(status == EnemyState.Patrolling)
-            {
-                PatrolArea(1);
-            }
-            else if (status == EnemyState.Resting)
-            {
-                HealSelf();
-            }
-
-            if (myState == Items.State.DAMAGE)
-            {
-
-            }
-
-        }
         if (HP <= 0)
         {
+            enemy_controller.enabled = false;
             animator.SetBool("death", true);
-
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Zero_Death") && photonView.isMine)
             {
                 audio.PlayOneShot(death);
+                particleManager.ActivateParticle(this.transform, particleDeath);
                 RPCForEnemyDeath();
+
+            }
+        }else
+        {
+            if (photonView.isMine)
+            {
+                if (status == EnemyState.Chase || status == EnemyState.Rage)
+                {
+
+                    if (playertoChase != null)
+                    {
+                        ChasePlayer();
+                    }
+                    else
+                    {
+                        if (status == EnemyState.Rage)
+                        {
+                            PatrolArea(2);
+                        }
+                    }
+
+                }
+                else if (status == EnemyState.Patrolling)
+                {
+                    PatrolArea(1);
+                }
+                else if (status == EnemyState.Resting)
+                {
+                    HealSelf();
+                }
+
+                if (myState == Items.State.DAMAGE)
+                {
+
+                }
+
             }
         }
+
+
         if (HP <= base_HP / 2)
         {
             status = EnemyState.Rage;

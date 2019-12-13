@@ -9,6 +9,11 @@ using Custom.Indicators;
 
 public class Player : PunBehaviour
 {
+    //Audio
+    AudioSource audio;
+    [SerializeField]
+    AudioClip fightingmelee, fightingranged, fightingmeleecrit;
+
     public CharacterController player_controller;
     public Weapon melee, ranged;
     public Sprite[] meleeSprites;
@@ -55,9 +60,13 @@ public class Player : PunBehaviour
     TypesAvailable.particleType particleGrab;
     TypesAvailable.particleType particleSpawn;
 
+    void Awake()
+    {
+        audio = gameObject.GetComponent<AudioSource>();
+    }
 
 
-    
+
 
     void Start()
     {
@@ -79,7 +88,6 @@ public class Player : PunBehaviour
         if (photonView.isMine)
         {
             gameObject.AddComponent<AudioListener>();
-
             meleeAttack = BasicHitBox.GetComponent<Attack>();
             rangedAttack = prefab_range_attack.GetComponent<Attack>();
 
@@ -245,14 +253,18 @@ public class Player : PunBehaviour
     public void MeleeAttack()
     {
         if (Random.Range(1, 101) >= (100 - (100 * melee.stats.critChance)))
+        {
             meleeAttack.isCrit = true;
-
+            audio.PlayOneShot(fightingmeleecrit);
+        }
         else
+        {
             meleeAttack.isCrit = false;
-
+        }
         if (meleeCooldown <= Time.time)
         {
             imAttacking = true;
+            audio.PlayOneShot(fightingmelee);
             PhotonNetwork.RPC(photonView, "ToggleHitBox", PhotonTargets.AllBuffered, false);
             meleeCooldown = Time.time + melee.stats.rOF;
         }
@@ -264,6 +276,7 @@ public class Player : PunBehaviour
         {
             imAttacking = true;
 
+            audio.PlayOneShot(fightingranged);
             SpawnRangeAttackObject(prefab_range_attack, transform.position);
 
             if (ranged.stats.id >= 0)
@@ -768,12 +781,11 @@ public class Player : PunBehaviour
             {
                 PhotonNetwork.RPC(photonView, "KillPlayer", PhotonTargets.AllBuffered, false, ID);
             }
-
-            else
-                if (Input.GetKey(KeyCode.Space))
+            else if (Input.GetKey(KeyCode.Space))
             {
                 PhotonNetwork.RPC(photonView, "RevivePlayer", PhotonTargets.AllBuffered, false, ID);
             }
+
         }
             _myPlayerStats.UpdateScoreboard();   //no se puede quedar aqui!!!
 
@@ -857,11 +869,13 @@ public class Player : PunBehaviour
     public void KillPlayer(int id)
     {
         vivo = false;
+
         ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetPlayerById(id).transform, particleDeath);
-        _myPlayerStats.UpdateScoreboard();
-        gameObject.GetComponent<Rigidbody>().useGravity = false;
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        if(photonView.isMine)
+        {
+            PhotonNetwork.Disconnect();
+        }
 
     }
 }

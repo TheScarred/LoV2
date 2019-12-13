@@ -64,8 +64,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   ownerId: 0
   group: 0
   OwnerShipWasTransfered: 0
@@ -148,7 +148,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
   m_SynchronizeParameters:
@@ -200,7 +200,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 156
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -238,7 +238,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -288,8 +288,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2da134e833a8fb141a6ac670a2d00606, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   timeToSound: 0.5
   audioList:
   - {fileID: 8300000, guid: 61d0396cefd181c4eb1aa0a62d32eaf5, type: 3}
@@ -297,9 +297,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 23fc6810edd8bed42b750baa5c3dde9b, type: 3}
   - {fileID: 8300000, guid: df0cac0b1fa74174e98f55be8c46b4a3, type: 3}
   - {fileID: 8300000, guid: 23fc6810edd8bed42b750baa5c3dde9b, type: 3}
-  sword: {fileID: 8300000, guid: 2ac6ae5f2114ec84cb4d112ffda20d7f, type: 3}
-  death: {fileID: 8300000, guid: adfa7b344ad420f4cbd1f4b68644098b, type: 3}
-  hit: {fileID: 8300000, guid: 14d328dc9d505e44b802146d6c453038, type: 3}
+  sword: {fileID: 8300000, guid: 159a58e1a7a1e3d4b980fb3e853fd001, type: 3}
+  death: {fileID: 8300000, guid: 73b6b03cc7cb7b74f82cc698bd411774, type: 3}
+  hit: {fileID: 8300000, guid: ee8c53418fafa5c40b536860de34c149, type: 3}
+  ahit: {fileID: 8300000, guid: 07538ea18eaf06e4c88c9f91d14f17c8, type: 3}
   enemy_controller: {fileID: 5569227959351960623}
   HP: 50
   Damage: 10
@@ -387,8 +388,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
@@ -465,8 +466,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38cf181a790b6f040afd83ed852797f2, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   sortingOrderBase: 5000
   offset: 0
   runOnlyOnce: 0
@@ -480,8 +481,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7d4b139ac18382478123cd83e3e6780, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   bar_HP: {fileID: 8307317334197159499}
 --- !u!1001 &3792298949264056374
 PrefabInstance:
@@ -613,7 +614,7 @@ PrefabInstance:
     - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
         type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 21300002, guid: 2673cf64155f08c4e847edde1c08f8c1,
         type: 3}
     - target: {fileID: 5181803502354884221, guid: ce3f39e8cf7db9146952cd8db2d45f4b,
@@ -680,5 +681,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 

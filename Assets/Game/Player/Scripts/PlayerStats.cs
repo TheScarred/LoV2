@@ -84,11 +84,11 @@ public class PlayerStats : PunBehaviour
     public void KilledTarget(int points)
     {
         if (photonView.isMine)
-        { 
+        {
             Score += points;
             UI_Score.text = "Score: " + Score;
         }
-       
+
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -126,7 +126,7 @@ public class PlayerStats : PunBehaviour
             p.OrdenarScore(PhotonNetwork.playerList, ref mvp);
 
 
-            
+
 
 
 

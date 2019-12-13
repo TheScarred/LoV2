@@ -15,7 +15,7 @@ public class PhotonConnection : PunBehaviour
 
     private void Awake()
     {
-        
+
         _instance = this;
     }
     #endregion
@@ -54,10 +54,10 @@ public class PhotonConnection : PunBehaviour
     public List<WeaponPickup> weaponList;
     public List<Consumable> consumables;
     public TerrainGenerator terreno;
-    
+
 
     public string prefabACrear;
-    
+
     ///
     public int randomSeed;
     int playerWithLessEnemies = 0;
@@ -68,9 +68,9 @@ public class PhotonConnection : PunBehaviour
         weaponId = 0;
         playerList = new List<Player>();
         Connect();
-        
-            
-        
+
+
+
     }
 
     public void Connect()
@@ -120,7 +120,7 @@ public class PhotonConnection : PunBehaviour
 
     public override void OnPhotonJoinRoomFailed(object[] codeAndMsg)
     {
-       
+
         CreateRoom();
     }
 
@@ -140,7 +140,7 @@ public class PhotonConnection : PunBehaviour
     public override void OnJoinedRoom()
     {
 
-        
+
         Debug.Log("Conectado al cuarto:" + PhotonNetwork.room.Name);
         if (PhotonNetwork.isMasterClient)
         {
@@ -157,7 +157,7 @@ public class PhotonConnection : PunBehaviour
         }
         else
         {
-            
+
             ExitGames.Client.Photon.Hashtable customRoomProperties = PhotonNetwork.room.CustomProperties;
             Debug.Log(customRoomProperties.Count);
             Debug.Log(customRoomProperties["SeedMapa"].ToString());
@@ -210,7 +210,7 @@ public class PhotonConnection : PunBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        
+
         bool shouldICreateENemy = false;
         shouldICreateENemy = (enemiesList.Count < maxEnemies);
         yield return new WaitForSeconds(3.0f);
@@ -219,7 +219,7 @@ public class PhotonConnection : PunBehaviour
             int randSpawn = Random.Range(0, terreno.EnemySpawners.Count);
             enemiesList.Add(PhotonNetwork.Instantiate("Enemy", terreno.EnemySpawners[randSpawn].transform.position, Quaternion.identity, 0) as GameObject);
             patterPointsList.Add(PhotonNetwork.Instantiate("EnemyPatrollingPoints_1", terreno.EnemySpawners[randSpawn].transform.position, Quaternion.identity, 0) as GameObject);
-     
+
             for (int i = 0; i < enemiesList.Count; i++)
             {
                 enemiesList[i].GetComponent<EnemyIA>().patternPoint = patterPointsList[i].gameObject.transform;
@@ -260,18 +260,18 @@ public class PhotonConnection : PunBehaviour
 
     public void PrepareRPCForDRevive(object[] parameters)
     {
-  
+
         StartCoroutine(RPCForEnemyRevive(parameters));
     }
 
     public IEnumerator RPCForEnemyRevive(object[] parameters)
     {
-     
+
         yield return new WaitForEndOfFrame();
         PhotonNetwork.RPC(enemiesList[(int)parameters[0]].GetComponent<PhotonView>(), "ReviveEnemy", PhotonTargets.AllBuffered, false, parameters);
         //COLOCAR EL RPC EN ENEMY IA, ENTONCTRAR LA MANERA DE PASAR LOS PARAMETROS DE ENEMILIST Y DEMÁS AL SCRIPOT DE ENEMYAI
     }
-    
+
     /* [PunRPC]
      public void ReviveEnemy(object[] parameters)
      {
@@ -291,7 +291,7 @@ public class PhotonConnection : PunBehaviour
 
     public void CrearMapa()
     {
-        
+
         Random.InitState(randomSeed);
     }
 
@@ -319,13 +319,12 @@ public class PhotonConnection : PunBehaviour
         return null;
     }
     public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
-    {  
+    {
         Debug.Log("Nuevo Jugador:" + newPlayer.NickName);
     }
 
     public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
     {
-        
         Debug.Log("Jugador se desconectó:" + otherPlayer.NickName);
     }
 
@@ -333,7 +332,7 @@ public class PhotonConnection : PunBehaviour
 
     public override void OnLeftRoom()
     {
-        
+
         enemiesList.Clear();
         patterPointsList.Clear();
         terreno.EnemySpawners.Clear();
@@ -344,7 +343,7 @@ public class PhotonConnection : PunBehaviour
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-       
+
         if (stream.isWriting)
         {
             stream.SendNext(transform.position);
