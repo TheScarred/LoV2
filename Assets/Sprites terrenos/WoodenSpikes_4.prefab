@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4459393730579944}
   - component: {fileID: 212822948636146072}
   - component: {fileID: 7164793654815088177}
-  - component: {fileID: 60851836923910400}
   m_Layer: 0
   m_Name: WoodenSpikes_4
   m_TagString: Untagged
@@ -97,53 +96,3 @@ MonoBehaviour:
   sortingOrderBase: 5000
   offset: 0
   runOnlyOnce: 0
---- !u!60 &60851836923910400
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930339093730192}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.68, y: 2.6}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.9152298, y: 0.5969353}
-      - {x: -0.780426, y: 1.0300751}
-      - {x: -0.5079651, y: 0.22180176}
-      - {x: 0.035341263, y: 0.97349167}
-      - {x: 0.28938293, y: -0.037086487}
-      - {x: 0.67715454, y: 1.2014084}
-      - {x: 0.79649353, y: 0.69911194}
-      - {x: 0.9960327, y: 1.0099945}
-      - {x: 1.1752625, y: 0.44667435}
-      - {x: 1.4701481, y: 0.98695374}
-      - {x: 1.6412964, y: 0.21723557}
-      - {x: 1.9252052, y: 0.65859604}
-      - {x: 1.9766788, y: -0.107543945}
-      - {x: 2.3082352, y: 0.31487274}
-      - {x: 2.1596203, y: -1.1664009}
-      - {x: 0.50878716, y: -1.1593018}
-      - {x: -2.2223701, y: -1.1447678}
-      - {x: -2.2505798, y: -0.6340866}
-      - {x: -2.2890282, y: 0.072257996}
-      - {x: -2.153595, y: 0.49386978}
-      - {x: -1.7817802, y: 0.00038146973}
-      - {x: -1.8296623, y: 0.91290665}
-      - {x: -1.4527245, y: 0.23764038}
-      - {x: -1.2047653, y: 0.366539}
-      - {x: -1.0924263, y: 0.20299149}
