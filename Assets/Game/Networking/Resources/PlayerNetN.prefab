@@ -74,9 +74,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a08367f5a16c7f458c4819e054bcefd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fightingmelee: {fileID: 8300000, guid: 42e72f4427b35fd4ba1e3e03edef38d0, type: 3}
+  fightingmelee: {fileID: 8300000, guid: 0f65b390fe64b0e4d842de3f13078b45, type: 3}
   fightingranged: {fileID: 8300000, guid: a3b7162c506d321459e42b5bd8fa6149, type: 3}
-  fightingmeleecrit: {fileID: 8300000, guid: 3bb3dc63d15055f4c8ffc59f3995982a, type: 3}
+  fightingmeleecrit: {fileID: 8300000, guid: 25aec1fa94876aa429e03941c3a30ddb, type: 3}
   player_controller: {fileID: 6612205638453905703}
   melee: {fileID: 0}
   ranged: {fileID: 0}
