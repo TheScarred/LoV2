@@ -64,9 +64,9 @@ MonoBehaviour:
   player_controller: {fileID: 7519799874250962704}
   melee: {fileID: 11400000, guid: ae61f5f77a54fef4fa24a81d0d8d54d3, type: 2}
   ranged: {fileID: 11400000, guid: faa7451ad57b6844e9ac818b57401d89, type: 2}
-  attackOrGet:
-  - {fileID: 21300000, guid: 9add74137a34ff448b2cd4c4197cb00a, type: 3}
-  - {fileID: 21300000, guid: ac5e35950c337f549916775a534c2c1d, type: 3}
+  meleeButton: {fileID: 0}
+  rangedButton: {fileID: 0}
+  attackOrGet: {fileID: 21300000, guid: ac5e35950c337f549916775a534c2c1d, type: 3}
   meleeSprites:
   - {fileID: 21300000, guid: 1771ec722ea9b344f8e731f66033408d, type: 3}
   - {fileID: 21300000, guid: 9add74137a34ff448b2cd4c4197cb00a, type: 3}
@@ -262,7 +262,7 @@ Animator:
   m_GameObject: {fileID: 2814614972184391143}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 260bc1a12e239834f9127b435e6e71ec, type: 2}
+  m_Controller: {fileID: 9100000, guid: 79b56dd2e0b62954b9cc4a4e4c9b067a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -292,9 +292,6 @@ MonoBehaviour:
   - Type: 3
     SynchronizeType: 2
     Name: Ataque
-  - Type: 4
-    SynchronizeType: 2
-    Name: Arma
   - Type: 4
     SynchronizeType: 1
     Name: Morir
@@ -849,16 +846,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MVP_Particle
       objectReference: {fileID: 0}
-    - target: {fileID: 105993529640574202, guid: 21a0f478091da0d4280e45e37c36d869,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 105993529640574202, guid: 21a0f478091da0d4280e45e37c36d869,
-        type: 3}
-      propertyPath: moveWithTransform
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 105993529640574205, guid: 21a0f478091da0d4280e45e37c36d869,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -914,7 +901,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 105993529640574202, guid: 21a0f478091da0d4280e45e37c36d869,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 105993529640574202, guid: 21a0f478091da0d4280e45e37c36d869,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 105993529640574203, guid: 21a0f478091da0d4280e45e37c36d869,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 105993529016609126, guid: 21a0f478091da0d4280e45e37c36d869,
         type: 3}
       propertyPath: m_RenderMode
       value: 2
@@ -978,11 +980,6 @@ PrefabInstance:
         type: 3}
       propertyPath: moveWithTransform
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 105993529016609126, guid: 21a0f478091da0d4280e45e37c36d869,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21a0f478091da0d4280e45e37c36d869, type: 3}

@@ -16,7 +16,8 @@ public class Player : PunBehaviour
 
     public CharacterController player_controller;
     public Weapon melee, ranged;
-    public Sprite[] attackOrGet;
+    public Image meleeButton, rangedButton;
+    public Sprite attackOrGet;
     public Sprite[] meleeSprites;
     public Sprite[] rangedSprites;
     public State myState;
@@ -133,8 +134,9 @@ public class Player : PunBehaviour
 
         ParticleManager.GetInstance().ActivateParticle(this.transform, particleSpawn);
 
-        mySprite = this.gameObject.GetComponent<SpriteRenderer>();
-
+        mySprite = gameObject.GetComponent<SpriteRenderer>();
+        meleeButton = theButtons[1].transform.GetChild(0).GetComponent<Image>();
+        rangedButton = theButtons[0].transform.GetChild(0).GetComponent<Image>();
     }
 
     [PunRPC]
@@ -327,11 +329,18 @@ public class Player : PunBehaviour
         }
 
         if (weaponTrigger && pickup != null)
-            PickUpWeapon(pickup);
+        {
+            if (meleeButton.sprite == attackOrGet)
+                theButtons[(int)Botones.MELEE].onClick.AddListener(PickUpWeapon);
+                
+            else if (rangedButton.sprite == attackOrGet)
+                theButtons[(int)Botones.RANGED].onClick.AddListener(PickUpWeapon);
+        }
         else
+        {
             theButtons[(int)Botones.MELEE].onClick.AddListener(MeleeAttack);
-
-        theButtons[(int)Botones.RANGED].onClick.AddListener(RangedAttack);
+            theButtons[(int)Botones.RANGED].onClick.AddListener(RangedAttack);
+        }
     }
 
     void UpdateVariables()
@@ -353,10 +362,14 @@ public class Player : PunBehaviour
         }
     }
 
-    void PickUpWeapon(Collider col)
+    void PickUpWeapon()
     {
-        WeaponPickup weapon = col.GetComponent<WeaponPickup>();
+        WeaponPickup weapon = pickup.GetComponent<WeaponPickup>();
         ChangeWeapon(ref weapon.type, ref weapon.rarity, PhotonConnection.GetInstance().randomSeed, ref weapon.ID, weapon.lastWear);
+        if (weapon.type == WeaponType.MELEE)
+            meleeButton.sprite = meleeSprites[(int)melee.rarity];
+        else
+            rangedButton.sprite = rangedSprites[(int)ranged.rarity];
 
         StartCoroutine(PhotonConnection.GetInstance().WaitFrame());
     }
@@ -412,8 +425,12 @@ public class Player : PunBehaviour
         }
         if (col.CompareTag("Melee") || col.CompareTag("Rango"))
         {
+            if (col.CompareTag("Melee"))
+                meleeButton.sprite = attackOrGet;
+            else
+                rangedButton.sprite = attackOrGet;
+
             weaponTrigger = true;
-            theButtons[1].transform.GetChild(0).GetComponent<Image>().sprite = attackOrGet[1];
             pickup = col;
         }
     }
@@ -422,8 +439,12 @@ public class Player : PunBehaviour
     {
         if (col.CompareTag("Melee") || col.CompareTag("Rango"))
         {
+            if (col.CompareTag("Melee"))
+                meleeButton.sprite = meleeSprites[(int)melee.rarity];
+            else
+                rangedButton.sprite = rangedSprites[(int)ranged.rarity];
+
             weaponTrigger = false;
-            theButtons[1].transform.GetChild(0).GetComponent<Image>().sprite = attackOrGet[0];
             pickup = null;
         }
     }
@@ -482,11 +503,13 @@ public class Player : PunBehaviour
     public void BreakMeleeWeapon()
     {
         PhotonNetwork.RPC(photonView, "ResetMeleeWeapon", PhotonTargets.All, false);
+        meleeButton.sprite = meleeSprites[0];
     }
 
     public void BreakRangedWeapon()
     {
         PhotonNetwork.RPC(photonView, "ResetRangedWeapon", PhotonTargets.All, false);
+        rangedButton.sprite = rangedSprites[0];
     }
 
     [PunRPC]
@@ -796,7 +819,6 @@ public class Player : PunBehaviour
                 }
                 UpdateVariables();
                 AttackInput();
-                PickUpWeapon(pickup);
             }
             else if (vivo == true)
             {

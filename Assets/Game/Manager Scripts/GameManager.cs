@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PhotonConnection.GetInstance().randomSeed = Random.Range(0, 9999999);
         PhotonConnection.GetInstance().CrearMapa();
+        print(PhotonConnection.GetInstance().randomSeed);
         terrainsToGenerate.SetTerrain(numOfTerrains, this.transform);
     }
 

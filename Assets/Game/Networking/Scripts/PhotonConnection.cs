@@ -125,14 +125,15 @@ public class PhotonConnection : PunBehaviour
 
     void CreateRoom()
     {
-        randomSeed = Random.Range(0, 9999999);
+        //randomSeed = Random.Range(0, 999999);
+        //CrearMapa();
         Debug.Log("NO HAY CUARTOS, CREANDO UNO");
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 8;
         roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable() { { "Dificultad", 0 }, { "SeedMapa", randomSeed } };
         PhotonNetwork.CreateRoom(myServerName, roomOptions, TypedLobby.Default);
          ExitGames.Client.Photon.Hashtable customRoomProperties = new ExitGames.Client.Photon.Hashtable() { { "Dificultad", 0 }, { "SeedMapa", randomSeed } };
-        //CrearMapa(randomSeed);
+        
     }
 
 
@@ -149,9 +150,7 @@ public class PhotonConnection : PunBehaviour
             //  Debug.Log(customRoomProperties["SeedMapa"].ToString());
             //ExitGames.Client.Photon.Hashtable customRoomProperties = PhotonNetwork.room.CustomProperties;
             randomSeed = (int)customRoomProperties["SeedMapa"];
-
             Debug.Log(customRoomProperties["SeedMapa"].ToString());
-
             //CrearMapa((int)customRoomProperties["SeedMapa"]);
         }
         else
@@ -160,25 +159,20 @@ public class PhotonConnection : PunBehaviour
             ExitGames.Client.Photon.Hashtable customRoomProperties = PhotonNetwork.room.CustomProperties;
             Debug.Log(customRoomProperties.Count);
             Debug.Log(customRoomProperties["SeedMapa"].ToString());
-
-
-
             randomSeed = (int)customRoomProperties["SeedMapa"];
-
-
-
             //CrearMapa((int)customRoomProperties["SeedMapa"]);
             //Debug.Log((int)customRoomProperties["Dificultad"]);
 
         }
 
         //Debug.Log(terreno.PlayerSpawners.Count);
-        //int randSpawn = Random.Range(0, terreno.PlayerSpawners.Count);
-
+        int randSpawn = Random.Range(0, terreno.PlayerSpawners.Count);
+        Vector3 positionToSpawn = new Vector3(terreno.PlayerSpawners[randSpawn].GetComponent<Transform>().transform.position.x, 0.8f, terreno.PlayerSpawners[randSpawn].GetComponent<Transform>().transform.position.z);
+        print(randSpawn);
         if (prefabACrear != null)
-            ownPlayer = PhotonNetwork.Instantiate(prefabACrear, new Vector3 (5,0.8f,5), Quaternion.identity, 0) as GameObject;
+            ownPlayer = PhotonNetwork.Instantiate(prefabACrear, positionToSpawn, Quaternion.identity, 0) as GameObject;
         else
-            ownPlayer = PhotonNetwork.Instantiate("PlayerNetIvan", new Vector3(5, 0.8f, 5), Quaternion.identity, 0) as GameObject;
+            ownPlayer = PhotonNetwork.Instantiate("PlayerNetIvan", positionToSpawn, Quaternion.identity, 0) as GameObject;
 
         //ownPlayer = PhotonNetwork.Instantiate("PlayerNet",terreno.PlayerSpawners[randSpawn].transform.position, Quaternion.identity, 0) as GameObject;
 
@@ -290,7 +284,6 @@ public class PhotonConnection : PunBehaviour
 
     public void CrearMapa()
     {
-
         Random.InitState(randomSeed);
     }
 
