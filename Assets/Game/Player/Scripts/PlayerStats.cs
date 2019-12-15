@@ -27,6 +27,8 @@ public class PlayerStats : PunBehaviour
     //MVP
     public GameObject MVP;
     string mvp;
+    int yo;
+    string yop;
 
     //SCOREBOARD
     public GameObject scoreboard;
@@ -35,10 +37,15 @@ public class PlayerStats : PunBehaviour
 
     //Show Score in UI
     public Text UI_Score;
+    public PositionNumer position;
 
     //Show Health Bar to Other Players
     public Image HP_bar;
     public Image Armor_bar;
+
+    //Lista Jugadores en el Room
+    
+    
 
     //Particles
     public Player player;
@@ -57,13 +64,14 @@ public class PlayerStats : PunBehaviour
             Armor_bar.gameObject.SetActive(false);
             scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
             UI_Score = GameObject.Find("Canvas").transform.Find("Score").GetComponent<Text>();
+            
         }
 
     }
 
     public void ResetStats()
     {
-
+        position = GameObject.Find("CambiarPosition").GetComponent<PositionNumer>();
         scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
         mvp = "";
         m_Speed = base_speed;
@@ -76,6 +84,7 @@ public class PlayerStats : PunBehaviour
 
     public void ReceiveDamage(float armourPen, float damage)
     {
+        //ParticleManager.GetInstance().ActivateParticle(this.transform, player.particleHit);
         player_health.TakeDamage(armourPen, damage);
         float fillmount;
         fillmount = HP_bar.fillAmount = (m_HP / base_HP);
@@ -83,12 +92,15 @@ public class PlayerStats : PunBehaviour
 
     public void KilledTarget(int points)
     {
+        
         if (photonView.isMine)
         {
+            
             Score += points;
-            UI_Score.text = "Score: " + Score;
+            UI_Score.text = "Score: " + Score ;
+            PhotonNetwork.player.SetScore(Score);
         }
-
+       
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -109,6 +121,10 @@ public class PlayerStats : PunBehaviour
 
         }
     }
+    void ChecarLugares(int score)
+    {
+
+    }
     public void UpdateScoreboard() // ESTA FUNCION SE LLAMA EN EL PLAYER.CS en el update cuando se activa el scoreboard
 
     {
@@ -119,21 +135,22 @@ public class PlayerStats : PunBehaviour
         //mostrando la lista con sus respectivos scores
 
         int IDMVP = -1;
+       
         PhotonPlayer scoreMVP;
         foreach (PhotonPlayer p in PhotonNetwork.playerList)
         {
-
-            p.OrdenarScore(PhotonNetwork.playerList, ref mvp);
-
-
-
-
-
-
+           
+            p.OrdenarScore(PhotonNetwork.playerList, ref mvp, ref yo);
+            
+            /*if(yop == p.NickName)
+            {
+                MyID = p.ID;
+            }*/
             if (mvp == p.NickName)
             {
                 IDMVP = p.ID;
                 scoreMVP = p;
+               
                 playerList.Append(mvp + "\n" + " Score: " + scoreMVP.GetScore() + "\n");
             }
             else if (mvp != p.NickName)//&& photonView.isMine )
@@ -143,21 +160,24 @@ public class PlayerStats : PunBehaviour
 
         if (IDMVP != -1) //si encontramos un MVP
         {
+           
             IDMVP = 1000 * IDMVP + 1;
-
-
+          
             Player[] jugadores = GameObject.FindObjectsOfType<Player>();
 
             GameObject jugadorMVPGo = null;
             for (int i = 0; i < jugadores.Length; i++)
             {
 
+                
                 if (jugadores[i].ID == IDMVP) //Este jugador tiene el ID del MVP
                 {
 
                     jugadores[i].GetComponent<PlayerStats>().MVP.SetActive(true);
                     jugadorMVPGo = jugadores[i].gameObject;
+                    
                 }
+               
                 else
                 {
                     jugadores[i].GetComponent<PlayerStats>().MVP.SetActive(false);
@@ -165,7 +185,26 @@ public class PlayerStats : PunBehaviour
 
             }
 
+            if (yo == 2)
+            {
+
+                position.SegundoLugar();
+            }
+            if (yo == 1)
+            {
+
+                position.PrimerLugar();
+            }
+            if(yo==3)
+            {
+                position.TercerLugar();
+            }
+            if(yo==4)
+            {
+                position.CuartoLugar();
+            }
         }
+
 
 
 
@@ -175,4 +214,6 @@ public class PlayerStats : PunBehaviour
 
 
     }
+
+
 }

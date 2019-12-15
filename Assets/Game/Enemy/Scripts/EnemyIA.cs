@@ -287,7 +287,6 @@ public class EnemyIA : PunBehaviour
                 {
                     killer = other.gameObject.transform.parent.gameObject.GetComponent<PlayerStats>();
                     killer.KilledTarget(killed_points);
-                    PhotonNetwork.player.AddScore(killed_points);
                     killer.UpdateScoreboard();
 
                     if (attack.effect1 == Items.Modifier.BLOODTHIRST)
@@ -321,7 +320,7 @@ public class EnemyIA : PunBehaviour
 
                 killer = PhotonConnection.GetInstance().GetPlayerById(col_id).GetComponent<PlayerStats>();
                 killer.KilledTarget(killed_points);
-                PhotonNetwork.player.AddScore(killed_points);
+                
             }
             other.gameObject.SetActive(false);
 

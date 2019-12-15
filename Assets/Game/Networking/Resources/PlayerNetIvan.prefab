@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2814614972184391137}
   - component: {fileID: 2814614972184391141}
   - component: {fileID: 1384256105}
-  - component: {fileID: 1976399023}
   - component: {fileID: 1976399032}
   - component: {fileID: 1976399033}
   - component: {fileID: 8941741865211387443}
@@ -21,6 +20,7 @@ GameObject:
   - component: {fileID: -2929531804083930897}
   - component: {fileID: 7519799874250962704}
   - component: {fileID: 6734107649710104834}
+  - component: {fileID: 832201557875830621}
   m_Layer: 9
   m_Name: PlayerNetIvan
   m_TagString: Player
@@ -80,7 +80,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 83c13461f5ceda543b5c6ad994b2e12f, type: 3}
   - {fileID: 21300000, guid: 656e30ac198541240808e6de76b4af08, type: 3}
   myState: 0
-  _myPlayerStats: {fileID: 1976399023}
+  _myPlayerStats: {fileID: 832201557875830621}
   prefab_range_attack: {fileID: 8701324102084865613, guid: 78a366842ebc8804683c4478b815439b,
     type: 3}
   terreno: {fileID: 11400000, guid: 85c46e013eb9f9246bb60a21dbdccd47, type: 2}
@@ -91,7 +91,8 @@ MonoBehaviour:
   mySprite: {fileID: 2209820538171303746}
   BasicHitBox: {fileID: 3045176174394309520}
   meleeAttack: {fileID: 1723244155704362915}
-  rangedAttack: {fileID: 0}
+  rangedAttack: {fileID: 1900685212297345742, guid: 78a366842ebc8804683c4478b815439b,
+    type: 3}
   indicators: {fileID: 0}
   theButtons: []
   particleHit: 3
@@ -107,43 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3aca7aa4d8bea4097ae727154893ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jugadorsin: {fileID: 1976399023}
-  player: {fileID: 0}
+  jugadorsin: {fileID: 832201557875830621}
+  player: {fileID: 2814614972184391141}
   healthBar: {fileID: 0}
   shieldBar: {fileID: 0}
---- !u!114 &1976399023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2814614972184391143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfc350195dcd60c4582e1e02183c0819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  base_HP: 50
-  base_Shield: 100
-  base_DamageMeele: 50
-  base_DamageRange: 0
-  base_MeleeSpeed: 2
-  base_speed: 2
-  base_ShootingSpeed: 0
-  base_AmmoCap: 30
-  m_Speed: 2
-  m_Shield: 0
-  m_HP: 0
-  m_DamageRange: 0
-  m_DamageMelee: 0
-  m_Ammo: 0
-  MVP: {fileID: 5823951301731490934}
-  scoreboard: {fileID: 0}
-  UI_Score: {fileID: 0}
-  HP_bar: {fileID: 7992099855816585950}
-  Armor_bar: {fileID: 631676390501054677}
-  player: {fileID: 2814614972184391141}
-  player_health: {fileID: 1384256105}
 --- !u!114 &1976399032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +465,40 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &832201557875830621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814614972184391143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ffb3fe80d59f544b1b7f523892a217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  base_HP: 50
+  base_Shield: 100
+  base_DamageMeele: 20
+  base_DamageRange: 20
+  base_MeleeSpeed: 2
+  base_speed: 2
+  base_ShootingSpeed: 2
+  base_AmmoCap: 30
+  m_Speed: 0
+  m_Shield: 0
+  m_HP: 0
+  m_DamageRange: 0
+  m_DamageMelee: 0
+  m_Ammo: 0
+  MVP: {fileID: 5823951301731490934}
+  scoreboard: {fileID: 0}
+  UI_Score: {fileID: 0}
+  position: {fileID: 0}
+  HP_bar: {fileID: 7992099855816585950}
+  Armor_bar: {fileID: 631676390501054677}
+  player: {fileID: 2814614972184391141}
+  player_health: {fileID: 1384256105}
 --- !u!1 &5823951301731490934
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2870108848576436209
 Transform:
   m_ObjectHideFlags: 0
