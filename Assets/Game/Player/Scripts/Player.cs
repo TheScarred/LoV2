@@ -843,7 +843,6 @@ public class Player : PunBehaviour
     [PunRPC]
     IEnumerator ToggleHitBox()
     {
-
         BasicHitBox.GetComponent<Collider>().enabled = true;
         yield return attackFrame;
         BasicHitBox.GetComponent<Collider>().enabled = false;   //will go back to waiting if another object is hit after detecting one with space. Will need counter for animation
