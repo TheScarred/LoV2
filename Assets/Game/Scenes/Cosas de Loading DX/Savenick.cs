@@ -28,7 +28,7 @@ public class Savenick : PunBehaviour
     public void GuardarPJ()
     {
         
-        UIImagen = GameObject.Find("ImageCambiante").GetComponent<Image>().sprite.name;
+        //UIImagen = GameObject.Find("ImageCambiante").GetComponent<Image>().sprite.name;
        
     }
     public void AsignarPJ()
