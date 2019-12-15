@@ -95,7 +95,7 @@ public class Player : PunBehaviour
         PhotonConnection.GetInstance().playerList.Add(this);
         if (photonView.isMine)
         {
-            gameObject.AddComponent<AudioListener>();
+            //gameObject.AddComponent<AudioListener>();
             meleeAttack = BasicHitBox.GetComponent<Attack>();
             rangedAttack = prefab_range_attack.GetComponent<Attack>();
             health = GetComponent<PlayerHealth>();
@@ -142,6 +142,12 @@ public class Player : PunBehaviour
         mySprite = gameObject.GetComponent<SpriteRenderer>();
         meleeButton = theButtons[1].transform.GetChild(0).GetComponent<Image>();
         rangedButton = theButtons[0].transform.GetChild(0).GetComponent<Image>();
+
+        if(health==null)
+        {
+            health = GetComponent<PlayerHealth>();
+        }
+        health.ActivarAudioListener();
     }
 
     [PunRPC]
@@ -212,6 +218,7 @@ public class Player : PunBehaviour
         go.GetComponent<projectile>().PrepareRPC(parameters);
         range_attack_Objects.Add(go);
         return go;
+        
     }
     void Movement()
     {
@@ -388,6 +395,7 @@ public class Player : PunBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+        
         if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
             Attack attack = col.GetComponent<Attack>();
@@ -471,6 +479,7 @@ public class Player : PunBehaviour
             yield return second;
         }
         myState = State.NORMAL;
+        
     }
 
     void InitBaseWeapons(Weapon melee, Weapon ranged)
@@ -842,8 +851,12 @@ public class Player : PunBehaviour
             }
 
         }
+            
             _myPlayerStats.UpdateScoreboard();   //no se puede quedar aqui!!!
-
+        if (PhotonNetwork.connected)
+        {
+            health.ActivarAudioListener();
+        }
         if (PhotonNetwork.player.NickName == "")
             PhotonNetwork.player.NickName = "Jugador #" + Random.Range(1.00f, 9.00f);
     }
@@ -860,6 +873,7 @@ public class Player : PunBehaviour
         yield return attackFrame;
         BasicHitBox.GetComponent<Collider>().enabled = false;   //will go back to waiting if another object is hit after detecting one with space. Will need counter for animation
         imAttacking = false;
+       
     }
 
     public void HealPlayer(int amount)

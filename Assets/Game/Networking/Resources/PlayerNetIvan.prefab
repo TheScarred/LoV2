@@ -1,5 +1,44 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1072703831803359063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8483207258557483364}
+  - component: {fileID: 101846965336288882}
+  m_Layer: 9
+  m_Name: AudioListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8483207258557483364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072703831803359063}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2814614972184391137}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &101846965336288882
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072703831803359063}
+  m_Enabled: 1
 --- !u!1 &2814614972184391143
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,6 +82,7 @@ Transform:
   - {fileID: 419469608501452402}
   - {fileID: 3023055597451458506}
   - {fileID: 5753774179013672385}
+  - {fileID: 8483207258557483364}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -95,6 +135,8 @@ MonoBehaviour:
     type: 3}
   indicators: {fileID: 0}
   theButtons: []
+  theImages: []
+  hasAmmo: {fileID: 0}
   particleHit: 3
 --- !u!114 &1384256105
 MonoBehaviour:
@@ -110,8 +152,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jugadorsin: {fileID: 832201557875830621}
   player: {fileID: 2814614972184391141}
+  nickname: {fileID: 0}
   healthBar: {fileID: 0}
   shieldBar: {fileID: 0}
+  AudioListenerObject: {fileID: 1072703831803359063}
 --- !u!114 &1976399032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,26 +581,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2814614972184391137}
     m_Modifications:
-    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
-        type: 3}
-      propertyPath: m_Name
-      value: SimpleHitBoX
-      objectReference: {fileID: 0}
-    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
-        type: 3}
-      propertyPath: m_TagString
-      value: HitMelee
-      objectReference: {fileID: 0}
-    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2347147620951989393, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -627,6 +651,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.1213832
       objectReference: {fileID: 0}
+    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
+        type: 3}
+      propertyPath: m_Name
+      value: SimpleHitBoX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
+        type: 3}
+      propertyPath: m_TagString
+      value: HitMelee
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8857501381546306251, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
         type: 3}
       propertyPath: m_Enabled
@@ -665,11 +709,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2814614972184391137}
     m_Modifications:
-    - target: {fileID: 4249170665657334300, guid: 97a29a3a83f9c384a804ee586ca9d18b,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas_HP
-      objectReference: {fileID: 0}
     - target: {fileID: 5181803502354884221, guid: 97a29a3a83f9c384a804ee586ca9d18b,
         type: 3}
       propertyPath: m_Sprite
@@ -685,6 +724,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FillMethod
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4249170665657334300, guid: 97a29a3a83f9c384a804ee586ca9d18b,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas_HP
       objectReference: {fileID: 0}
     - target: {fileID: 68925779592913769, guid: 97a29a3a83f9c384a804ee586ca9d18b,
         type: 3}
@@ -1003,11 +1047,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2814614972184391137}
     m_Modifications:
-    - target: {fileID: 4249170665657334300, guid: 97a29a3a83f9c384a804ee586ca9d18b,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas_armor
-      objectReference: {fileID: 0}
     - target: {fileID: 5181803502354884221, guid: 97a29a3a83f9c384a804ee586ca9d18b,
         type: 3}
       propertyPath: m_Color.r
@@ -1038,6 +1077,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FillMethod
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4249170665657334300, guid: 97a29a3a83f9c384a804ee586ca9d18b,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas_armor
       objectReference: {fileID: 0}
     - target: {fileID: 68925779592913769, guid: 97a29a3a83f9c384a804ee586ca9d18b,
         type: 3}

@@ -8,7 +8,7 @@ public class Savenick : PunBehaviour
 {
     public static string nombrePJ;
     string UIImagen;
-
+    public string NickName;
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -20,7 +20,13 @@ public class Savenick : PunBehaviour
     }
     public void SaveNickName()
     {
-        string NickName = GameObject.Find("NickName").GetComponent<Text>().text.ToString();
+        NickName = GameObject.Find("NickName").GetComponent<Text>().text.ToString();
+
+        if(NickName ==null)
+        {
+
+        }
+
         PhotonNetwork.player.NickName = NickName;
 
     }
@@ -28,17 +34,16 @@ public class Savenick : PunBehaviour
     public void GuardarPJ()
     {
         
-        //UIImagen = GameObject.Find("ImageCambiante").GetComponent<Image>().sprite.name;
+        UIImagen = GameObject.Find("ImageCambiante").GetComponent<Image>().sprite.name;
        
     }
     public void AsignarPJ()
     {
-        if (UIImagen == "zeropj")
-        {
-            
+        if (UIImagen == "Viking2P")
+        {            
             nombrePJ = "PlayerNetN";
         }
-        if (UIImagen == "Knight_idle_01")
+        if (UIImagen == "Viking1P")
         {
             
             nombrePJ = "PlayerNetIvan";

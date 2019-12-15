@@ -15,10 +15,18 @@ namespace SimpleHealthBar_SpaceshipExample
 
         public Player player;
 
+        public Savenick nickname;
+
         public SimpleHealthBar healthBar;
         public SimpleHealthBar shieldBar;
 
-            
+        PhotonPlayer holisoyo;
+
+    
+        [SerializeField]
+        GameObject AudioListenerObject;
+
+
         void Awake ()
 		{
             // If the instance variable is already assigned, then there are multiple player health scripts in the scene. Inform the user.
@@ -34,6 +42,7 @@ namespace SimpleHealthBar_SpaceshipExample
 
             if(photonView.isMine)
             {
+                nickname = GameObject.Find("JEJE").GetComponent<Savenick>();
                 player = this.gameObject.GetComponent<Player>();
                 jugadorsin = this.gameObject.GetComponent<PlayerStats>();
                 healthBar = GameObject.Find("Health").GetComponent<SimpleHealthBar>();
@@ -46,7 +55,10 @@ namespace SimpleHealthBar_SpaceshipExample
 
                 healthBar.UpdateBar(jugadorsin.m_HP, jugadorsin.base_HP);
                 shieldBar.UpdateBar(0, jugadorsin.base_Shield);
+                
+
             }
+            
         }
 
         //FUNCION PARA HACER DAÑO 
@@ -115,6 +127,61 @@ namespace SimpleHealthBar_SpaceshipExample
            
         }
 
-		
-	}
+        public void ActivarAudioListener()
+        {
+            //Photon Para encontrarme 
+            
+            int MyID = -1;
+            foreach (PhotonPlayer p in PhotonNetwork.playerList)
+            {
+                
+                if (nickname== null)
+                {
+
+                   
+                }
+                else if (nickname.NickName == p.NickName&&photonView.isMine)
+                {
+                    MyID = p.ID;
+                }
+                
+                else if (nickname.NickName != p.NickName) 
+                AudioListenerObject.SetActive(false);
+
+                
+            }
+            if (MyID != -1)//Se encontro mi ID
+            {
+                MyID = 1000 * MyID + 1;
+
+                Player[] jugadores = GameObject.FindObjectsOfType<Player>();
+
+                GameObject AudioListener1 = null;
+                for (int i = 0; i < jugadores.Length; i++)
+                {
+
+
+                    if (jugadores[i].ID == MyID) //Este jugador tiene el ID del MVP
+                    {
+
+                        jugadores[i].GetComponent<PlayerHealth>().AudioListenerObject.SetActive(true);
+                        AudioListener1 = jugadores[i].gameObject;
+
+                    }
+
+                    else
+                    {
+                        jugadores[i].GetComponent<PlayerHealth>().AudioListenerObject.SetActive(false);
+                    }
+
+                }
+            }
+
+
+
+
+        }
+
+
+    }
 }
