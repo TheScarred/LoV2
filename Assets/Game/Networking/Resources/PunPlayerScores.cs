@@ -21,9 +21,9 @@ public static class ScoreExtensions
     public static void OrdenarScore(this PhotonPlayer player, PhotonPlayer[] p, ref string mvp, ref int yo)
     {
         int current = player.GetScore();
-      
+
         int i, mejorPuntaje = 0, mejorPuntajeIndex = 0, currentindex = 1;
-        
+
         PhotonPlayer aux;
         for (i = 0; i < p.Length; i++)
         {
@@ -35,12 +35,12 @@ public static class ScoreExtensions
             }
             if (current < p[i].GetScore())
             {
-                
+
                 currentindex += 1;
             }
 
         }
-        
+
 
         /*for (int k = 0; k< p.Length; k++)
         {
@@ -64,7 +64,7 @@ public static class ScoreExtensions
         //yop = p[yo].NickName;
         mvp = p[mejorPuntajeIndex].NickName;
     }
-   
+
 
     public static void AddScore(this PhotonPlayer player, int scoreToAddToCurrent)
     {
