@@ -155,6 +155,7 @@ MonoBehaviour:
   nickname: {fileID: 0}
   healthBar: {fileID: 0}
   shieldBar: {fileID: 0}
+  animator: {fileID: 8941741865211387443}
   AudioListenerObject: {fileID: 1072703831803359063}
 --- !u!114 &1976399032
 MonoBehaviour:

@@ -115,8 +115,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jugadorsin: {fileID: 832201557875830621}
   player: {fileID: 2814614972184391141}
+  nickname: {fileID: 0}
   healthBar: {fileID: 0}
   shieldBar: {fileID: 0}
+  animator: {fileID: 8941741865211387443}
+  AudioListenerObject: {fileID: 4231532488527187647}
 --- !u!114 &1976399032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,12 +518,12 @@ GameObject:
   - component: {fileID: 4214291092822926426}
   - component: {fileID: 3901973434897757429}
   m_Layer: 9
-  m_Name: GameObject
+  m_Name: AudioListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4214291092822926426
 Transform:
   m_ObjectHideFlags: 0

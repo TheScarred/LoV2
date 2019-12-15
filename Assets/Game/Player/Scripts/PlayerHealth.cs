@@ -22,7 +22,7 @@ namespace SimpleHealthBar_SpaceshipExample
 
         PhotonPlayer holisoyo;
 
-    
+        public Animator animator;
         [SerializeField]
         GameObject AudioListenerObject;
 
@@ -66,19 +66,19 @@ namespace SimpleHealthBar_SpaceshipExample
 		{
             float hpDamage = damage * armourPen;
             float armourDamage = damage - hpDamage;
-
-			// SI EL ESCUDO ES MAYOR A 0 
-			if( jugadorsin.m_Shield > 0 )
+            animator.SetTrigger("hit");
+            // SI EL ESCUDO ES MAYOR A 0 
+            if ( jugadorsin.m_Shield > 0 )
 			{
-
-				// REDUCE EL ESCUDO DEL DAÑO HECHO
-				jugadorsin.m_Shield -= armourDamage;
+                
+                // REDUCE EL ESCUDO DEL DAÑO HECHO
+                jugadorsin.m_Shield -= armourDamage;
 
 		
                 //SI EL ESCUDO ES MENOR A 0 
 				if( jugadorsin.m_Shield < 0 )
 				{
-					
+                    
                     //REDUCE LA VIDA POR CUANTO DAÑO HAYA PASADO DEL ESCUDO 
 					jugadorsin.m_HP -= jugadorsin.m_Shield * -1;
 

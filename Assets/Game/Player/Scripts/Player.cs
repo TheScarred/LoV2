@@ -14,6 +14,7 @@ public class Player : PunBehaviour
     [SerializeField]
     AudioClip fightingmelee, fightingranged, fightingmeleecrit;
 
+ 
     public CharacterController player_controller;
     public Weapon melee, ranged;
     public Image meleeButton, rangedButton;
@@ -935,9 +936,11 @@ public class Player : PunBehaviour
     [PunRPC]
     public void KillPlayer(int id)
     {
+        
         vivo = false;
         if(photonView.isMine)
         {
+            
             PhotonNetwork.Disconnect();
         }
 
