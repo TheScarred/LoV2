@@ -7,4 +7,9 @@ public class WeaponPickup : MonoBehaviour
     public WeaponRarity rarity;
     public int ID;
     public int lastWear;
+
+    void Start()
+    {
+        ParticleManager.GetInstance().ActivateParticle(transform, TypesAvailable.particleType.CONSUMABLE);
+    }
 }

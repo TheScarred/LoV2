@@ -221,8 +221,9 @@ public class EnemyIA : PunBehaviour
             {
 
                 Attack attack = other.GetComponent<Attack>();
+                Player attacker = attack.GetComponentInParent<Player>();
 
-                if (transform.position.x > other.transform.position.x)
+                if (transform.position.x > attacker.transform.position.x)
                     if (attack.effect1 == Items.Modifier.KNOCKBACK || attack.effect2 == Items.Modifier.KNOCKBACK)
                         KnockBack(Vector3.right, 2f);
                     else
@@ -247,11 +248,12 @@ public class EnemyIA : PunBehaviour
                     audio.PlayOneShot(hit);
                     TakeDamage(attack.damage);
                 }
-                if (attack.GetComponentInParent<Player>().melee.stats.id >= 0)
-                    attack.GetComponentInParent<Player>().melee.stats.wear--;
 
-                if (attack.GetComponentInParent<Player>().melee.stats.wear <= 0 && attack.GetComponentInParent<Player>().melee.stats.id >= 0)
-                    attack.GetComponentInParent<Player>().BreakMeleeWeapon();
+                if (attacker.melee.stats.id >= 0)
+                    attacker.melee.stats.wear--;
+
+                if (attacker.melee.stats.wear <= 0 && attacker.melee.stats.id >= 0)
+                    attacker.BreakMeleeWeapon();
 
                 script_HP.ModifyHpBar(attack.damage, base_HP);
 

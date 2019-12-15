@@ -4,30 +4,37 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SeleccionPJ : MonoBehaviour
 {
-    public Image UIImagen;
+    public Image Viking1;
+    public Image Viking2;
 
     public void Start()
     {
-        UIImagen = GameObject.Find("ImageCambiante").GetComponent<Image>();
+        Viking2.enabled = false;
     }
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            UIImagen.sprite = Resources.Load<Sprite>("Sprites/zeropj");
+            //UIImagen.sprite = Resources.Load<Sprite>("Sprites/zeropj");
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            UIImagen.sprite = Resources.Load<Sprite>("Sprites/Knight_idle_01");
+           //UIImagen.sprite = Resources.Load<Sprite>("Sprites/Knight_idle_01");
         }
     }
 
-    public void FlechitaIzquierda()
+    public void Arrow()
     {
-        UIImagen.sprite = Resources.Load<Sprite>("Sprites/Knight_idle_01");
-    }
-    public void FlechitaDerecha()
-    {
-        UIImagen.sprite = Resources.Load<Sprite>("Sprites/zeropj");
+        print("Call");
+        if (Viking1.enabled)
+        {
+            Viking1.enabled = false;
+            Viking2.enabled = true;
+        }
+        else if (Viking2.enabled)
+        {
+            Viking2.enabled = false;
+            Viking1.enabled = true;
+        }
     }
 }

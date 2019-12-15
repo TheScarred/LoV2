@@ -116,7 +116,6 @@ public class Player : PunBehaviour
         _myPlayerStats = GetComponent<PlayerStats>();
         ID = this.gameObject.GetComponent<PhotonView>().viewID;
         //hit box is deactivated unless the player hits
-        BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
         BasicHitBox.GetComponent<Collider>().enabled = false;
         //BasicHitBox.GetComponent<HitBoxPlayer>().player = this;
         meleeCooldown = melee.stats.rOF;
@@ -844,12 +843,9 @@ public class Player : PunBehaviour
     [PunRPC]
     IEnumerator ToggleHitBox()
     {
-
         BasicHitBox.GetComponent<Collider>().enabled = true;
-        BasicHitBox.GetComponent<MeshRenderer>().enabled = true;
         yield return attackFrame;
         BasicHitBox.GetComponent<Collider>().enabled = false;   //will go back to waiting if another object is hit after detecting one with space. Will need counter for animation
-        BasicHitBox.GetComponent<MeshRenderer>().enabled = false;
         imAttacking = false;
     }
 
