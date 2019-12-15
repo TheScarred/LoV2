@@ -89,7 +89,7 @@ public class Player : PunBehaviour
         theButtons = FindObjectsOfType<Button>();
         ammoLeft = FindObjectOfType<Text>();
         theImages = FindObjectsOfType<Image>();
-        hasAmmo = theImages[2];
+        hasAmmo = theImages[13];
         hasAmmo.enabled = false;
 
         PhotonConnection.GetInstance().playerList.Add(this);
