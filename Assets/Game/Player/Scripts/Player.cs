@@ -54,6 +54,9 @@ public class Player : PunBehaviour
     //BUTTONS
     enum Botones { RANGED, MELEE };
     public Button[] theButtons;
+    Text ammoLeft;
+    public Image[] theImages;
+    public Image hasAmmo;
 
     //Particles
     TypesAvailable.particleType particleDeath;
@@ -84,7 +87,10 @@ public class Player : PunBehaviour
         //SE ASIGNAN EL JOYSTICK Y LOS BOTONES
         theJoystick = FindObjectOfType<Joystick>();
         theButtons = FindObjectsOfType<Button>();
-
+        ammoLeft = FindObjectOfType<Text>();
+        theImages = FindObjectsOfType<Image>();
+        hasAmmo = theImages[2];
+        hasAmmo.enabled = false;
 
         PhotonConnection.GetInstance().playerList.Add(this);
         if (photonView.isMine)
@@ -311,6 +317,7 @@ public class Player : PunBehaviour
             else
                 rangedAmmo--;
         }
+        
     }
 
     void AttackInput()
@@ -358,6 +365,16 @@ public class Player : PunBehaviour
             {
                 imAttacking = false;
             }
+        }
+
+        ammoLeft.text = rangedAmmo.ToString();
+        if (rangedAmmo < 1 && hasAmmo.enabled == false)
+        {
+            hasAmmo.enabled = true;
+        }
+        else if (rangedAmmo >= 1 && hasAmmo.enabled == true)
+        {
+            hasAmmo.enabled = false;
         }
     }
 
@@ -873,6 +890,7 @@ public class Player : PunBehaviour
     {
         if (rangedAmmo + amount > 30)
             rangedAmmo = 30;
+        
         else
             rangedAmmo += (uint)amount;
     }
