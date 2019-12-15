@@ -208,10 +208,6 @@ public class Player : PunBehaviour
         object[] parameters = new object[3];
         parameters[2] = ID;
         parameters[1] = facingRight;
-        if (facingRight)
-            Debug.Log("Player is facing right");
-        else
-            Debug.Log("Player is facing left");
         parameters[0] = new Vector3(-90, 90, 0);
         go.GetComponent<projectile>().PrepareRPC(parameters);
         range_attack_Objects.Add(go);

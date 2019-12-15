@@ -21,7 +21,6 @@ public static class ScoreExtensions
     public static void OrdenarScore(this PhotonPlayer player, PhotonPlayer[] p, ref string mvp, ref int yo)
     {
         int current = player.GetScore();
-        Debug.Log(current);
         int i, mejorPuntaje = 0, mejorPuntajeIndex = 0, currentindex = 1;
         
         PhotonPlayer aux;
