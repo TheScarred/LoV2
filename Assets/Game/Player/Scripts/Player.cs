@@ -56,8 +56,6 @@ public class Player : PunBehaviour
     enum Botones { RANGED, MELEE };
     public Button[] theButtons;
     Text ammoLeft;
-    public Image[] theImages;
-    public Image hasAmmo;
 
     //Particles
     TypesAvailable.particleType particleDeath;
@@ -89,9 +87,7 @@ public class Player : PunBehaviour
         theJoystick = FindObjectOfType<Joystick>();
         theButtons = FindObjectsOfType<Button>();
         ammoLeft = FindObjectOfType<Text>();
-        theImages = FindObjectsOfType<Image>();
-        hasAmmo = theImages[13];
-        hasAmmo.enabled = false;
+
 
         PhotonConnection.GetInstance().playerList.Add(this);
         if (photonView.isMine)
@@ -372,14 +368,6 @@ public class Player : PunBehaviour
         }
 
         ammoLeft.text = rangedAmmo.ToString();
-        if (rangedAmmo < 1 && hasAmmo.enabled == false)
-        {
-            hasAmmo.enabled = true;
-        }
-        else if (rangedAmmo >= 1 && hasAmmo.enabled == true)
-        {
-            hasAmmo.enabled = false;
-        }
     }
 
     void PickUpWeapon()
