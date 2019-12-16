@@ -140,12 +140,12 @@ namespace SimpleHealthBar_SpaceshipExample
 
                    
                 }
-                else if (nickname.NickName == p.NickName&&photonView.isMine)
+                else if (nickname.NickName.text== p.NickName&&photonView.isMine)
                 {
                     MyID = p.ID;
                 }
                 
-                else if (nickname.NickName != p.NickName) 
+                else if (nickname.NickName.text != p.NickName) 
                 AudioListenerObject.SetActive(false);
 
                 
