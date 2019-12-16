@@ -289,7 +289,7 @@ public class EnemyIA : PunBehaviour
                 {
                     killer = other.gameObject.transform.parent.gameObject.GetComponent<PlayerStats>();
                     killer.KilledTarget(killed_points);
-                    killer.UpdateScoreboard();
+                    player_stats.UpdateScoreboard();
 
                     if (attack.effect1 == Items.Modifier.BLOODTHIRST)
                         other.GetComponentInParent<Player>().HealPlayer(5);

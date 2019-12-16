@@ -50,7 +50,7 @@ public class Player : PunBehaviour
 
     public OffscreenIndicator indicators;
     //JOYSTICK
-     Joystick theJoystick;
+     FloatingJoystick theJoystick;
 
     //BUTTONS
     enum Botones { RANGED, MELEE };
@@ -84,7 +84,7 @@ public class Player : PunBehaviour
         gravity = 15f;
 
         //SE ASIGNAN EL JOYSTICK Y LOS BOTONES
-        theJoystick = FindObjectOfType<Joystick>();
+        theJoystick = FindObjectOfType<FloatingJoystick>();
         theButtons = FindObjectsOfType<Button>();
         ammoLeft = FindObjectOfType<Text>();
 
@@ -144,6 +144,7 @@ public class Player : PunBehaviour
         {
             health = GetComponent<PlayerHealth>();
         }
+        _myPlayerStats.UpdateScoreboard();
         health.ActivarAudioListener();
     }
 
@@ -220,7 +221,7 @@ public class Player : PunBehaviour
     void Movement()
     {
         //Checar que lado esta mirando para cambiar su la escala (voltear)
-        if (Input.GetAxis("Horizontal") > 0 && !facingRight || Input.GetAxis("Horizontal") < 0 && facingRight || theJoystick.horizontal > 0 && !facingRight || theJoystick.horizontal < 0 && facingRight)
+        if (Input.GetAxis("Horizontal") > 0 && !facingRight || Input.GetAxis("Horizontal") < 0 && facingRight || theJoystick.Horizontal > 0 && !facingRight || theJoystick.Horizontal < 0 && facingRight)
         {
             facingRight = !facingRight;
             Vector3 scale  = BasicHitBox.transform.localPosition;
@@ -233,7 +234,7 @@ public class Player : PunBehaviour
         float v = 0;
 
         //CHECA SI HAY MOVIMIENTO EN EL JOYSTICK PARA VER SI UTILIZA ESTE MISMO O LAS TECLAS
-        if (theJoystick.horizontal == 0 && theJoystick.vectical == 0)
+        if (theJoystick.Horizontal == 0 && theJoystick.Vertical == 0)
         {
             h = _myPlayerStats.m_Speed * Input.GetAxis("Horizontal");
             v = _myPlayerStats.m_Speed * Input.GetAxis("Vertical");
@@ -241,8 +242,8 @@ public class Player : PunBehaviour
         else
         {
             //MOVIMIENTO DE JOYSTICK
-            h = _myPlayerStats.m_Speed * theJoystick.horizontal;
-            v = _myPlayerStats.m_Speed * theJoystick.vectical;
+            h = _myPlayerStats.m_Speed * theJoystick.Horizontal;
+            v = _myPlayerStats.m_Speed * theJoystick.Vertical;
         }
 
 
@@ -843,9 +844,10 @@ public class Player : PunBehaviour
 
         }
             
-            _myPlayerStats.UpdateScoreboard();   //no se puede quedar aqui!!!
+             
         if (PhotonNetwork.connected)
         {
+            _myPlayerStats.UpdateScoreboard();
             health.ActivarAudioListener();
         }
         if (PhotonNetwork.player.NickName == "")

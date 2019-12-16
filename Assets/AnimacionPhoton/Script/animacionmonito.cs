@@ -15,7 +15,7 @@ public class animacionmonito : PunBehaviour
     public Animator animator;
     int Ataque=0;
     bool vivo = false;
-    public Joystick theJoystick;
+    public FloatingJoystick theJoystick;
     //BUTTONS
     enum Botones { RANGED, MELEE };
     public Button[] theButtons;
@@ -27,7 +27,7 @@ public class animacionmonito : PunBehaviour
 
     private void Start()
     {
-        theJoystick = FindObjectOfType<Joystick>();
+        theJoystick = FindObjectOfType<FloatingJoystick>();
         theButtons = FindObjectsOfType<Button>();
     }
 
@@ -106,7 +106,7 @@ public class animacionmonito : PunBehaviour
             #region Move
             bool isMoving = false;
 
-            if (theJoystick.horizontal != 0 || theJoystick.vectical != 0)
+            if (theJoystick.Horizontal != 0 || theJoystick.Vertical != 0)
             {
                 isMoving = true;
             }
@@ -147,35 +147,36 @@ public class animacionmonito : PunBehaviour
             #endregion
         }
 
-        void Melee()
-        {
-            animator.SetInteger("Ataque", 1);
-        }
+        
+    }
+    void Melee()
+    {
+        animator.SetInteger("Ataque", 1);
+    }
 
-        void Ranged()
-        {
-            animator.SetInteger("Ataque", 2);
-        }
+    void Ranged()
+    {
+        animator.SetInteger("Ataque", 2);
+    }
 
-        void AttackMelee()
+    void AttackMelee()
+    {
+        Ataque++;
+        if (Ataque == 1)
         {
-            Ataque++;
-            if (Ataque == 1)
-            {
-                animator.SetInteger("Ataque", Ataque);
-            }
-        }
-
-        void AttackRanged()
-        {
-            Ataque = 2;
-
-            if (Ataque == 2)
-            {
-                animator.SetInteger("Ataque", Ataque);
-                animator.SetBool("Arma", opcion);
-            }
+            animator.SetInteger("Ataque", Ataque);
         }
     }
-      
+
+    void AttackRanged()
+    {
+        Ataque = 2;
+
+        if (Ataque == 2)
+        {
+            animator.SetInteger("Ataque", Ataque);
+            animator.SetBool("Arma", opcion);
+        }
+    }
+
 }

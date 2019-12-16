@@ -187,21 +187,39 @@ public class PlayerStats : PunBehaviour
 
             if (yo == 2)
             {
+                if (position == null)
+                {
 
-                position.SegundoLugar();
+                }
+                else
+                    position.SegundoLugar();
             }
             if (yo == 1)
             {
+                if(position ==null)
+                {
 
+                }
+                else
                 position.PrimerLugar();
             }
             if(yo==3)
             {
-                position.TercerLugar();
+                if (position == null)
+                {
+
+                }
+                else
+                    position.TercerLugar();
             }
             if(yo==4)
             {
-                position.CuartoLugar();
+                if (position == null)
+                {
+
+                }
+                else
+                    position.CuartoLugar();
             }
         }
 
@@ -210,8 +228,19 @@ public class PlayerStats : PunBehaviour
 
         string output = "\n" + playerList.ToString();
         if (photonView.isMine)
-            scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
+        {
+            if(scoreboard == null)
+            {
 
+            }
+            else
+            {
+
+             scoreboard.transform.Find("Text").GetComponent<Text>().text = output;
+            }
+
+
+        }
 
     }
 
