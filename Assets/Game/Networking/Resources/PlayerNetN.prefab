@@ -90,8 +90,7 @@ MonoBehaviour:
   ID: 0
   rangedAmmo: 0
   mySprite: {fileID: 2209820538171303746}
-  BasicHitBox: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
-    type: 3}
+  BasicHitBox: {fileID: 3045176174394309520}
   meleeAttack: {fileID: -5572414692959926976, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
     type: 3}
   rangedAttack: {fileID: 1900685212297345742, guid: 78a366842ebc8804683c4478b815439b,
@@ -669,6 +668,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.1213832
       objectReference: {fileID: 0}
+    - target: {fileID: 3465422119876353520, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8857501381546306251, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
         type: 3}
       propertyPath: m_Enabled
@@ -676,6 +680,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0102e05d3f1c2c143892ca4d07a7ff55, type: 3}
+--- !u!1 &3045176174394309520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1081528741973424499, guid: 0102e05d3f1c2c143892ca4d07a7ff55,
+    type: 3}
+  m_PrefabInstance: {fileID: 2684425966632174307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &419469608501452402 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2347147620951989393, guid: 0102e05d3f1c2c143892ca4d07a7ff55,

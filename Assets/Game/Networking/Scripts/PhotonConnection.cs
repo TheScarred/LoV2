@@ -210,8 +210,8 @@ public class PhotonConnection : PunBehaviour
         if (shouldICreateENemy)
         {
             int randSpawn = Random.Range(0, terreno.EnemySpawners.Count);
-            enemiesList.Add(PhotonNetwork.Instantiate("Enemy", terreno.EnemySpawners[randSpawn].transform.position, Quaternion.identity, 0) as GameObject);
-            patterPointsList.Add(PhotonNetwork.Instantiate("EnemyPatrollingPoints_1", terreno.EnemySpawners[randSpawn].transform.position, Quaternion.identity, 0) as GameObject);
+            enemiesList.Add(PhotonNetwork.Instantiate("Enemy", new Vector3(terreno.EnemySpawners[randSpawn].transform.position.x, 0.7f, terreno.EnemySpawners[randSpawn].transform.position.z), Quaternion.identity, 0) as GameObject);
+            patterPointsList.Add(PhotonNetwork.Instantiate("EnemyPatrollingPoints_1", new Vector3(terreno.EnemySpawners[randSpawn].transform.position.x, 0.7f, terreno.EnemySpawners[randSpawn].transform.position.z), Quaternion.identity, 0) as GameObject);
 
             for (int i = 0; i < enemiesList.Count; i++)
             {

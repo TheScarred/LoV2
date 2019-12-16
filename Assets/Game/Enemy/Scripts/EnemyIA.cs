@@ -123,7 +123,7 @@ public class EnemyIA : PunBehaviour
         maxY = 14.75f;
         //patternPoint.gameObject.GetComponent<PatternPoint>().GenerateNewPosition(minX, maxX, minY, maxY);
         waitTime = startWaitTime;
-        speed = 1f;
+        speed = 0.2f;
         status = EnemyState.Patrolling;
         StartCoroutine("FindTargets", .2f);
         HP = base_HP;
