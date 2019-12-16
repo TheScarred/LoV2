@@ -537,8 +537,6 @@ public class EnemyIA : PunBehaviour
 
             }
         }
-
-
         if (HP <= base_HP / 2)
         {
             status = EnemyState.Rage;
@@ -622,7 +620,7 @@ public class EnemyIA : PunBehaviour
                         weapon.type = Items.WeaponType.MELEE;
                         weapon.ID = PhotonConnection.GetInstance().WeaponID;
                         weapon.lastWear = 30;
-                        PhotonConnection.GetInstance().weaponList.Add(go.GetComponent<WeaponPickup>());
+                        PhotonConnection.GetInstance().weaponList.Add(weapon);
                         PhotonConnection.GetInstance().WeaponID++;
 
                         if (roll <= 40)
@@ -651,7 +649,7 @@ public class EnemyIA : PunBehaviour
                         weapon.type = Items.WeaponType.RANGED;
                         weapon.ID = PhotonConnection.GetInstance().WeaponID;
                         weapon.lastWear = 30;
-                        PhotonConnection.GetInstance().weaponList.Add(go.GetComponent<WeaponPickup>());
+                        PhotonConnection.GetInstance().weaponList.Add(weapon);
                         PhotonConnection.GetInstance().WeaponID++;
 
                         if (roll <= 40)
@@ -670,59 +668,60 @@ public class EnemyIA : PunBehaviour
             case Items.ItemType.CONSUMABLE:
                 {
                     GameObject go = Instantiate(consumable, new Vector3(transform.position.x, 0.33f, transform.position.z), transform.rotation);
+                    Consumable current = go.GetComponent<Consumable>();
                     int type2 = Random.Range(0, 3);
                     if (type2 == 0)
                     {
-                        go.AddComponent<Food>();
+                        Food food = go.AddComponent<Food>();
                         go.tag = "Food";
                         if (roll >= 80)
-                            go.GetComponent<Food>().type = Items.FoodType.MEAL;
+                            food.type = Items.FoodType.MEAL;
                         else
-                            go.GetComponent<Food>().type = Items.FoodType.SNACK;
+                            food.type = Items.FoodType.SNACK;
 
-                        if (go.GetComponent<Food>().type == Items.FoodType.SNACK)
+                        if (food.type == Items.FoodType.SNACK)
                             go.GetComponent<SpriteRenderer>().sprite = foodSprites[0];
                         else
                             go.GetComponent<SpriteRenderer>().sprite = foodSprites[1];
                     }
                     else if (type2 == 1)
                     {
-                        go.AddComponent<Armour>();
+                        Armour armour = go.AddComponent<Armour>();
                         go.tag = "Armour";
                         if (roll <= 50)
-                            go.GetComponent<Armour>().type = Items.ArmourType.PLATE;
+                            armour.type = Items.ArmourType.PLATE;
                         else if (roll <= 85)
-                            go.GetComponent<Armour>().type = Items.ArmourType.VEST;
+                            armour.type = Items.ArmourType.VEST;
                         else
-                            go.GetComponent<Armour>().type = Items.ArmourType.SUIT;
+                            armour.type = Items.ArmourType.SUIT;
 
-                        if (go.GetComponent<Armour>().type == Items.ArmourType.PLATE)
+                        if (armour.type == Items.ArmourType.PLATE)
                             go.GetComponent<SpriteRenderer>().sprite = armourSprites[0];
-                        else if (go.GetComponent<Armour>().type == Items.ArmourType.VEST)
+                        else if (armour.type == Items.ArmourType.VEST)
                             go.GetComponent<SpriteRenderer>().sprite = armourSprites[1];
                         else
                             go.GetComponent<SpriteRenderer>().sprite = armourSprites[2];
                     }
                     else
                     {
-                        go.AddComponent<Ammo>();
+                        Ammo ammo = go.AddComponent<Ammo>();
                         go.tag = "Ammo";
                         if (roll <= 40)
-                            go.GetComponent<Ammo>().type = Items.AmmoType.SINGLE;
+                            ammo.type = Items.AmmoType.SINGLE;
                         else if (roll <= 85)
-                            go.GetComponent<Ammo>().type = Items.AmmoType.BUNDLE;
+                            ammo.type = Items.AmmoType.BUNDLE;
                         else
-                            go.GetComponent<Ammo>().type = Items.AmmoType.QUIVER;
+                            ammo.type = Items.AmmoType.QUIVER;
 
-                        if (go.GetComponent<Ammo>().type == Items.AmmoType.SINGLE)
+                        if (ammo.type == Items.AmmoType.SINGLE)
                             go.GetComponent<SpriteRenderer>().sprite = ammoSprites[0];
-                        else if (go.GetComponent<Ammo>().type == Items.AmmoType.BUNDLE)
+                        else if (ammo.type == Items.AmmoType.BUNDLE)
                             go.GetComponent<SpriteRenderer>().sprite = ammoSprites[1];
                         else
                             go.GetComponent<SpriteRenderer>().sprite = ammoSprites[2];
                     }
-                    go.GetComponent<Consumable>().id = PhotonConnection.GetInstance().ConsumableID;
-                    PhotonConnection.GetInstance().consumables.Add(go.GetComponent<Consumable>());
+                    current.id = PhotonConnection.GetInstance().ConsumableID;
+                    PhotonConnection.GetInstance().consumables.Add(current);
                     PhotonConnection.GetInstance().ConsumableID++;
                     break;
                 }

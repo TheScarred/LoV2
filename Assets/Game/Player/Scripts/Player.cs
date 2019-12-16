@@ -197,9 +197,9 @@ public class Player : PunBehaviour
 
 
                         if (Random.Range(1, 101) >= (100 - (100 * ranged.stats.critChance)))
-                            range_attack_Objects[i].GetComponent<Attack>().isCrit = true;
+                            arrowAttack.isCrit = true;
                         else
-                            range_attack_Objects[i].GetComponent<Attack>().isCrit = false;
+                            arrowAttack.isCrit = false;
 
                         range_attack_Objects[i].GetComponent<projectile>().ReactivarFlecha(parameters2);
                         return range_attack_Objects[i];
@@ -726,18 +726,20 @@ public class Player : PunBehaviour
     [PunRPC]
     public void UpdatePickupWeapon(object[] objects)
     {
+        WeaponPickup current;
         for (int i = 0; i < PhotonConnection.GetInstance().weaponList.Count; i++)
         {
-            if (PhotonConnection.GetInstance().weaponList[i].ID == (int)objects[2])
+            current = PhotonConnection.GetInstance().weaponList[i];
+            if (current.ID == (int)objects[2])
             {
-                PhotonConnection.GetInstance().weaponList[i].ID = (int)objects[0];
-                PhotonConnection.GetInstance().weaponList[i].rarity = (WeaponRarity)objects[1];
-                PhotonConnection.GetInstance().weaponList[i].lastWear = (int)objects[4];
+                current.ID = (int)objects[0];
+                current.rarity = (WeaponRarity)objects[1];
+                current.lastWear = (int)objects[4];
 
                 if ((WeaponType)objects[3] == WeaponType.MELEE)
-                    PhotonConnection.GetInstance().weaponList[i].GetComponent<SpriteRenderer>().sprite = meleeSprites[(int)objects[1]];
+                    current.GetComponent<SpriteRenderer>().sprite = meleeSprites[(int)objects[1]];
                 else
-                    PhotonConnection.GetInstance().weaponList[i].GetComponent<SpriteRenderer>().sprite = rangedSprites[(int)objects[1]];
+                    current.GetComponent<SpriteRenderer>().sprite = rangedSprites[(int)objects[1]];
             }
         }
     }
