@@ -11,16 +11,22 @@ public class Savenick : PunBehaviour
     public static string nombrePJ;
     string Name;
     string UIImagen;
+
+    public GameObject buttonstart;
+    
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        buttonstart.SetActive(true);
     }
 
     public void SaveNickName()
-    {
+    { 
         Name = NickName.text;
+
+
         PhotonNetwork.player.NickName = Name;
-       
+    
     }
 
     public void GuardarPJ()

@@ -16,16 +16,20 @@ public class Loading : MonoBehaviour
     private Image progressImage;
 
     public Image imgTittle, leftArrow, RightArrow, charSprite;
-    public GameObject input;
-    
+    public Text NickName;
     // Start is called before the first frame update
     void Start()
     {
         imgTittle.enabled = false;
         leftArrow.enabled = false;
         RightArrow.enabled = false;
-     
+    
         StartCoroutine(LoadScene());
+        if (NickName.text == null || NickName.text == "")
+        {
+            PhotonNetwork.player.NickName = "JugadorRandom" + Random.Range(0, 99999);
+        }
+
     }
 
     //Corrutina
