@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1832233238492437703}
-  - component: {fileID: 1832233238492437752}
   - component: {fileID: 3533915530892166093}
   - component: {fileID: 3522215982268514107}
   - component: {fileID: 5557243330666865544}
@@ -41,19 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1832233238492437752
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832233238492437757}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.29, y: 0.46, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3533915530892166093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,8 +354,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.44999996
-  m_Radius: 0.19499998
+  m_Height: 0.3
+  m_Radius: 0.05
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
