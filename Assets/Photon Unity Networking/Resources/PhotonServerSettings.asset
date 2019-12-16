@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
-  AppID: 22c38c29-eb91-49b2-b058-5a294251f574
+  AppID: 
   VoiceAppID: 
   ChatAppID: 
-  HostType: 1
+  HostType: 0
   PreferredRegion: 0
   EnabledRegions: -1
   Protocol: 0
@@ -30,6 +30,7 @@ MonoBehaviour:
   RpcList:
   - ArrowStart
   - Chat
+  - CrearFlecha
   - DestroyRpc
   - DissappearConsumable
   - DissappearWeapon
@@ -51,8 +52,7 @@ MonoBehaviour:
   - RevivePlayer
   - SwapMeleeWeapon
   - SwapRangedWeapon
+  - TakeDamage
   - ToggleHitBox
   - UpdatePickupWeapon
-  - CrearFlecha
-  - TakeDamage
   DisableAutoOpenWizard: 1
