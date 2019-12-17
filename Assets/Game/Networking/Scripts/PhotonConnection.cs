@@ -50,6 +50,7 @@ public class PhotonConnection : PunBehaviour
     WaitForSeconds timeBeforeSpawing = new WaitForSeconds(3.0f);
     WaitForEndOfFrame waitForFrame = new WaitForEndOfFrame();
     public List<GameObject> patterPointsList;
+
     //SPAWNERS
     public List<WeaponPickup> weaponList;
     public List<Consumable> consumables;
@@ -61,11 +62,15 @@ public class PhotonConnection : PunBehaviour
     ///
     public int randomSeed;
     int playerWithLessEnemies = 0;
+
+    //LoadingCanvas
+    public LoadingScreen loadingScreen;
     void Start()
     {
         prefabACrear = Savenick.nombrePJ;
         weaponId = 0;
         playerList = new List<Player>();
+        loadingScreen.StartLoadingScreen();
         Connect();
 
     }
@@ -123,8 +128,6 @@ public class PhotonConnection : PunBehaviour
 
     void CreateRoom()
     {
-        //randomSeed = Random.Range(0, 999999);
-        //CrearMapa();
         Debug.Log("NO HAY CUARTOS, CREANDO UNO");
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 8;
@@ -138,6 +141,7 @@ public class PhotonConnection : PunBehaviour
     public override void OnJoinedRoom()
     {
         Debug.Log("Conectado al cuarto:" + PhotonNetwork.room.Name);
+        loadingScreen.ExitLoadingScreen();
         if (PhotonNetwork.isMasterClient)
         {
             // randomSeed = Random.Range(0, 9999999);
@@ -164,7 +168,6 @@ public class PhotonConnection : PunBehaviour
         //Debug.Log(terreno.PlayerSpawners.Count);
         int randSpawn = Random.Range(0, terreno.PlayerSpawners.Count);
         Vector3 positionToSpawn = new Vector3(terreno.PlayerSpawners[randSpawn].GetComponent<Transform>().transform.position.x, 0.8f, terreno.PlayerSpawners[randSpawn].GetComponent<Transform>().transform.position.z);
-        print(randSpawn);
         if (prefabACrear != null)
             ownPlayer = PhotonNetwork.Instantiate(prefabACrear, positionToSpawn, Quaternion.identity, 0) as GameObject;
         else
@@ -182,6 +185,8 @@ public class PhotonConnection : PunBehaviour
 
 
          }*/
+
+
 
 
         patterPointsList = new List<GameObject>();

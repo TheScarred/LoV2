@@ -69,9 +69,6 @@ public class Player : PunBehaviour
         audio = gameObject.GetComponent<AudioSource>();
     }
 
-
-
-
     void Start()
     {
         mySprite = GetComponent<SpriteRenderer>();
@@ -146,6 +143,7 @@ public class Player : PunBehaviour
         }
         _myPlayerStats.UpdateScoreboard();
         health.ActivarAudioListener();
+
     }
 
     [PunRPC]

@@ -11,11 +11,11 @@ public class ParticleManager : MonoBehaviour
     ParticleSystem particle_created;
 
     private static ParticleManager instance;
+
     public static ParticleManager GetInstance()
     {
         return instance;
     }
-
     private void Awake()
     {
         if (instance == null)
@@ -100,27 +100,8 @@ public class ParticleManager : MonoBehaviour
         }
     }
 
-
-
     private void OnApplicationQuit()
     {
         particles.Clear();
-    }
-    
-    //for testing
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.N))
-        {
-            //print("N Pressed");
-            TypesAvailable.particleType type = TypesAvailable.particleType.ENEMY_DEATH;
-            ActivateParticle(this.transform, type);
-        }
-        else if (Input.GetKeyUp(KeyCode.M))
-        {
-            //print("M Pressed");
-            TypesAvailable.particleType type = TypesAvailable.particleType.MOD_DEFENSE;
-            ActivateParticle(this.transform, type);
-        }
     }
 }
