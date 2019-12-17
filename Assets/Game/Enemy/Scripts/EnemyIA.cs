@@ -46,6 +46,7 @@ public class EnemyIA : PunBehaviour
     public Items.ItemType contains;
     public EnemyState status;
     public Items.State myState;
+
    // public Rigidbody enemy_rigidbody;
     public LayerMask targetMask;
     public LayerMask obstacleMask;
@@ -102,7 +103,6 @@ public class EnemyIA : PunBehaviour
         maxX = 24.75f;
         minY = 4.75f;
         maxY = 14.75f;
-        //patternPoint.gameObject.GetComponent<PatternPoint>().GenerateNewPosition(minX, maxX, minY, maxY);
         waitTime = startWaitTime;
         speed = 0.2f;
         status = EnemyState.Patrolling;
@@ -118,7 +118,6 @@ public class EnemyIA : PunBehaviour
         maxX = 24.75f;
         minY = 4.75f;
         maxY = 14.75f;
-        //patternPoint.gameObject.GetComponent<PatternPoint>().GenerateNewPosition(minX, maxX, minY, maxY);
         waitTime = startWaitTime;
         speed = 0.2f;
         status = EnemyState.Patrolling;
@@ -330,9 +329,7 @@ public class EnemyIA : PunBehaviour
     {
         HP -= amount;
         PhotonNetwork.RPC(photonView, "TakeDamage", PhotonTargets.All, false, this.photonView.viewID);
-
     }
-
 
     void ChasePlayer()
     {
@@ -354,16 +351,13 @@ public class EnemyIA : PunBehaviour
 
             Vector3 dir = playertoChase.transform.position - transform.position;
 
-
             if (status == EnemyState.Rage)
             {
                 enemy_controller.Move(dir.normalized * ((speed +1) * 2) * Time.deltaTime);
-                //transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed* 2f * Time.deltaTime);
             }
             else
             {
                 enemy_controller.Move(dir.normalized * (speed + 1) * Time.deltaTime);
-                //transform.position = Vector3.MoveTowards(transform.position, playertoChase.transform.position, speed * Time.deltaTime);
             }
            if (this.transform.position.x < playertoChase.transform.position.x && facingRight)   //player is on the left
             {
@@ -400,8 +394,6 @@ public class EnemyIA : PunBehaviour
         {
             playertoChase = null;
             status = EnemyState.Patrolling;
-           // enemy_rigidbody.velocity = Vector3.zero;
-           // enemy_rigidbody.angularVelocity = Vector3.zero;
         }
     }
 
@@ -425,22 +417,6 @@ public class EnemyIA : PunBehaviour
             can_attack = true;
 
         }
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        /*if (stream.isWriting)
-        {
-            // stream.SendNext(transform.position);
-            //stream.SendNext(transform.rotation);
-            //stream.SendNext(HP_bar);
-
-        }
-        else
-        {
-
-            //HP_bar = (float)stream.ReceiveNext();
-        }*/
     }
 
     void HealSelf()
@@ -547,16 +523,14 @@ public class EnemyIA : PunBehaviour
     public void TakeDamage(int ID)
     {
         Debug.Log("Enter TakeDamage! Id: " + ID);
-        Transform t = PhotonConnection.GetInstance().GetEnemyById(ID).transform;
-        Debug.Log("This is the transform: " + t.position.x);
-        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetEnemyById(ID).transform, particleHit);
+        ParticleManager.GetInstance().ActivateParticle(this.transform, particleHit);
     }
 
     [PunRPC]
     public void RemoveEnemies(object[] received)
     {
         SpawnItem((byte)received[0]);
-        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetEnemyById((int)received[1]).transform, particleDeath);
+        ParticleManager.GetInstance().ActivateParticle(this.transform, particleDeath);
         this.gameObject.SetActive(false);
     }
 
@@ -569,7 +543,7 @@ public class EnemyIA : PunBehaviour
         gameObject.SetActive(true);
         gameObject.transform.position = pos_terrain;
 
-        ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetEnemyById((int)parameters[3]).transform, particleDeath);
+        ParticleManager.GetInstance().ActivateParticle(this.transform, particleDeath);
     }
 
     void SpawnItem(byte seed)

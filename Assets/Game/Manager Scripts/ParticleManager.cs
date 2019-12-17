@@ -64,23 +64,20 @@ public class ParticleManager : MonoBehaviour
             if (PreFab_Particles[i].GetComponent<ParticleType>().particleType == type)  //if we find the type we need in the array
             {
                 //create new instance of the particle + add it to the list
-                particle_created = Instantiate(PreFab_Particles[i], t);
+                particle_created = Instantiate(PreFab_Particles[i], t.position, PreFab_Particles[i].transform.rotation);
                 particle_created.transform.localPosition = Vector3.zero;
 
                 //check if particle needs a parent
-                if (!NeedParent && particle_created.transform.parent != null)  //if there's no need for a parent, set parent6 to false
+                if (NeedParent)  //if parent is needed add parent
                 {
-                    particle_created.transform.parent = null;
+                    particle_created.transform.parent = t;
+                    particle_created.transform.localPosition = Vector3.zero;
                 }
+
                 
                 particles.Add(particle_created);
                 particle_created.Play();
 
-                //if the animation is in a loop, call function that will calculate when it needs to be stopped
-                if(particle_created.main.loop == true)
-                {
-                    particle_created.GetComponent<ParticleType>().StartTimer();
-                }
                 return;
             }
         }
@@ -102,6 +99,7 @@ public class ParticleManager : MonoBehaviour
             }
         }
     }
+
 
 
     private void OnApplicationQuit()

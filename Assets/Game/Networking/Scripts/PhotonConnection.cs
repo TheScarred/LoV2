@@ -299,11 +299,12 @@ public class PhotonConnection : PunBehaviour
     {
         for (int i = 0; i < enemiesList.Count; i++)
         {
-            Debug.Log("Enemy" + i + ": " + enemiesList[i].gameObject.GetComponent<PhotonView>().viewID);
-            if (id == enemiesList[i].gameObject.GetComponent<PhotonView>().viewID)
+            Debug.Log("Enemy" + i + ": " + enemiesList[i].gameObject.GetComponent<PhotonView>().viewID + " is " + id + "?");
+            /*if (id == enemiesList[i].gameObject.GetComponent<PhotonView>().viewID)
             {
+                Debug.Log("Found matching id!");
                 return enemiesList[i];
-            }
+            }*/
         }
         return null;
     }
