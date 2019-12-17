@@ -110,9 +110,6 @@ public class EnemyIA : PunBehaviour
         second = new WaitForSeconds(1f);
         StartCoroutine("FindTargets");
         healTimer = 2f;
-
-
-
     }
     public void OnEnable()
     {
@@ -259,31 +256,6 @@ public class EnemyIA : PunBehaviour
 
 
                 animator.SetTrigger("hit");
-
-               /*if(HP <= 20)
-                {
-                    int type = Random.Range(0, 10);
-                    if(type >= 8)
-                    {
-                        float damage = (player_stats.m_DamageMelee);
-                        HP -= (int)damage;
-                        script_HP.ModifyHpBar(damage, base_HP);
-                        audio.PlayOneShot(hit);
-                        animator.SetTrigger("hit");
-                    }
-                    else
-                    {
-                        //COLOCAR ANIMACIÓN O MENSAJE DE ESQUIVE AQUÍ
-                    }
-                }
-                else
-                {
-                    float damage = (player_stats.m_DamageMelee);
-                    HP -= (int)damage;
-                    script_HP.ModifyHpBar(damage, base_HP);
-                    audio.PlayOneShot(hit);
-                    animator.SetTrigger("hit");
-                }*/
 
                 if (HP <= 0)
                 {
@@ -574,6 +546,9 @@ public class EnemyIA : PunBehaviour
     [PunRPC]
     public void TakeDamage(int ID)
     {
+        Debug.Log("Enter TakeDamage! Id: " + ID);
+        Transform t = PhotonConnection.GetInstance().GetEnemyById(ID).transform;
+        Debug.Log("This is the transform: " + t.position.x);
         ParticleManager.GetInstance().ActivateParticle(PhotonConnection.GetInstance().GetEnemyById(ID).transform, particleHit);
     }
 

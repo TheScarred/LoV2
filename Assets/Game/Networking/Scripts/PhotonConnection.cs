@@ -68,8 +68,6 @@ public class PhotonConnection : PunBehaviour
         playerList = new List<Player>();
         Connect();
 
-
-
     }
 
     public void Connect()
@@ -139,8 +137,6 @@ public class PhotonConnection : PunBehaviour
 
     public override void OnJoinedRoom()
     {
-
-
         Debug.Log("Conectado al cuarto:" + PhotonNetwork.room.Name);
         if (PhotonNetwork.isMasterClient)
         {
@@ -303,6 +299,7 @@ public class PhotonConnection : PunBehaviour
     {
         for (int i = 0; i < enemiesList.Count; i++)
         {
+            Debug.Log("Enemy" + i + ": " + enemiesList[i].gameObject.GetComponent<PhotonView>().viewID);
             if (id == enemiesList[i].gameObject.GetComponent<PhotonView>().viewID)
             {
                 return enemiesList[i];
