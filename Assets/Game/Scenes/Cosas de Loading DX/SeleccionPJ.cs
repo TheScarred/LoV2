@@ -6,6 +6,7 @@ public class SeleccionPJ : MonoBehaviour
 {
     public Image Viking1;
     public Image Viking2;
+    public Savenick save;
 
     public void Start()
     {
@@ -24,5 +25,8 @@ public class SeleccionPJ : MonoBehaviour
             Viking2.enabled = false;
             Viking1.enabled = true;
         }
+
+        save.GuardarPJ();
+        save.AsignarPJ();
     }
 }

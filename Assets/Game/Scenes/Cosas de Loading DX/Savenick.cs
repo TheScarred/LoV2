@@ -7,7 +7,8 @@ using Photon;
 public class Savenick : PunBehaviour
 {
     public InputField input, NickName;
-    public Image imagenCambiante;
+    public Image Viking1;
+    public Image Viking2;
     public static string nombrePJ;
     string Name;
     string UIImagen;
@@ -31,15 +32,18 @@ public class Savenick : PunBehaviour
 
     public void GuardarPJ()
     {
-        UIImagen = imagenCambiante.sprite.name;
+        if (Viking1.enabled)
+            UIImagen = "Viking1";
+        else
+            UIImagen = "Viking2";
     }
     public void AsignarPJ()
     {
-        if (UIImagen == "Viking2P")
+        if (UIImagen == "Viking2")
         {            
             nombrePJ = "PlayerNetN";
         }
-        if (UIImagen == "Viking1P")
+        if (UIImagen == "Viking1")
         {
             nombrePJ = "PlayerNetIvan";
         }
