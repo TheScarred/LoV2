@@ -12,11 +12,6 @@ public class Loading : MonoBehaviour
     private string sceneToLoad;
     public Text NickName;
 
-    void Start()
-    {
-        
-    }
-
     public void LoadScene()
     {
         Debug.Log("Hey");
@@ -25,43 +20,5 @@ public class Loading : MonoBehaviour
             PhotonNetwork.player.NickName = "JugadorRandom" + Random.Range(0, 99999);
         }
         SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);
-    }
-    //Corrutina
-
-        /*
-    IEnumerator LoadScene()
-    {
-       
-        // yield return new WaitForSeconds(1.5f); // Solamente para que se visualice la escena de carga, pero esto en el script final se le quitara
-        AsyncOperation loading;
-        //Inciamos la carga asincrona de la escena y guardamos el proceso en 'loading'
-        loading = SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);
-
-        //Bloqueamos el salto automatico entre escenas para asegurarnos el control durante el proceso
-        loading.allowSceneActivation = false;
-      
-        //Cuando la escena llega al 90% de carga, se produce el cambio de escena
-        while (loading.progress < 0.9f)
-        {
-            //input.SetActive(false);
-            //Actualizamos el % de carga de una forma optima
-            //(concatenar con + tiene un alto coste en el rendimiento)
-            percentText.text = string.Format("{0}%", loading.progress * 100);
-
-            //Actualizamos la barra de carga
-            progressImage.fillAmount = loading.progress;
-
-            //Esperamos un frame
-            yield return null;
-        }
-
-        //Mostramos la carga como finalizada
-        percentText.text = "100%";
-        progressImage.fillAmount = 1;
-
-        //Activamos el salto de escena
-        loading.allowSceneActivation = true;
-    }*/
-
-    
+    }  
 }
