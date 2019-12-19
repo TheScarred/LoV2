@@ -212,7 +212,7 @@ public class PlayerStats : PunBehaviour
                 else
                     position.TercerLugar();
             }
-            if(yo==4)
+            if (yo == 4)
             {
                 if (position == null)
                 {
@@ -221,9 +221,14 @@ public class PlayerStats : PunBehaviour
                 else
                     position.CuartoLugar();
             }
-            else
+            else if (yo>4)
             {
-                position.CuartoLugar();
+                if (position == null)
+                {
+
+                }
+                else
+                    position.CuartoLugar();
             }
         }
 
