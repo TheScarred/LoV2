@@ -33,7 +33,7 @@ public class PlayerStats : PunBehaviour
     //SCOREBOARD
     public GameObject scoreboard;
     int playerCount;
-    int Score;
+    public int Score;
 
     //Show Score in UI
     public Text UI_Score;

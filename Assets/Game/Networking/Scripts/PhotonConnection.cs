@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon;
 using Custom.Indicators;
-
+using UnityEngine.UI;
 public class PhotonConnection : PunBehaviour
 {
     #region SINGLETON
@@ -65,6 +65,11 @@ public class PhotonConnection : PunBehaviour
 
     //LoadingCanvas
     public LoadingScreen loadingScreen;
+
+    public FloatingJoystick theJoystick;
+    public Button[] theButtons;
+    public Text ammoLeft;
+
     void Start()
     {
         prefabACrear = Savenick.nombrePJ;

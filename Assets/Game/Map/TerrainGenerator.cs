@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Terrains", menuName = " Data/Terreno", order = 1)]
 public class TerrainGenerator : ScriptableObject
 {
@@ -14,6 +14,7 @@ public class TerrainGenerator : ScriptableObject
     public Vector3 advancePosY;
     public int numberOfTerrains;
     public int maxNumberX;
+
 
     public void SetTerrain(int _numberOfTerrains, Transform _parent)
     {

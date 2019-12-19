@@ -50,13 +50,14 @@ public class Player : PunBehaviour
 
     public OffscreenIndicator indicators;
     //JOYSTICK
-     FloatingJoystick theJoystick;
+    public FloatingJoystick theJoystick;
 
     //BUTTONS
     enum Botones { RANGED, MELEE };
-    public Button[] theButtons;
+    Button[] theButtons;
     Text ammoLeft;
 
+   
     //Particles
     TypesAvailable.particleType particleDeath;
     public TypesAvailable.particleType particleHit;
@@ -81,9 +82,9 @@ public class Player : PunBehaviour
         gravity = 15f;
 
         //SE ASIGNAN EL JOYSTICK Y LOS BOTONES
-        theJoystick = FindObjectOfType<FloatingJoystick>();
-        theButtons = FindObjectsOfType<Button>();
-        ammoLeft = FindObjectOfType<Text>();
+        theJoystick = PhotonConnection.GetInstance().theJoystick;
+        theButtons = PhotonConnection.GetInstance().theButtons;
+        ammoLeft = PhotonConnection.GetInstance().ammoLeft;
 
 
         PhotonConnection.GetInstance().playerList.Add(this);
@@ -386,8 +387,20 @@ public class Player : PunBehaviour
         
         if (col.CompareTag("HitMelee") || (col.CompareTag("Proyectile") && (col.GetComponent<projectile>().owner == photonView.ownerId)))
         {
+            print(col.gameObject.GetComponentInParent<PlayerStats>().Score);
             Attack attack = col.GetComponent<Attack>();
             _myPlayerStats.ReceiveDamage(col.GetComponent<Attack>().armourPen, col.GetComponent<Attack>().damage);
+
+           
+            if(_myPlayerStats.m_HP <= 0)
+            {
+                if(!photonView.isMine)
+                {
+                    col.gameObject.GetComponentInParent<PlayerStats>().KilledTarget(200);
+                }
+               
+            }
+
             PhotonNetwork.RPC(photonView, "TakeDamage", PhotonTargets.All, false, ID);
 
             if (transform.position.x > col.transform.position.x)

@@ -545,8 +545,11 @@ public class EnemyIA : PunBehaviour
 
         ParticleManager.GetInstance().ActivateParticle(this.transform, particleDeath);
     }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
 
-    void SpawnItem(byte seed)
+    }
+        void SpawnItem(byte seed)
     {
         Random.InitState(seed);
         int type1 = Random.Range(0, 2);
