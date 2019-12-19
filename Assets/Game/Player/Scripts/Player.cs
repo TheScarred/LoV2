@@ -396,10 +396,15 @@ public class Player : PunBehaviour
             {
                 if(!photonView.isMine)
                 {
-                    col.gameObject.GetComponentInParent<PlayerStats>().KilledTarget(200);
+                    col.gameObject.GetComponentInParent<PlayerStats>().KilledTarget(100);
+                    if(_myPlayerStats.MVP.activeInHierarchy)
+                    {
+                        col.gameObject.GetComponentInParent<PlayerStats>().KilledTarget(100);
+                    }
                 }
                
             }
+         
 
             PhotonNetwork.RPC(photonView, "TakeDamage", PhotonTargets.All, false, ID);
 
