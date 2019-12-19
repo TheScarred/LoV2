@@ -221,6 +221,10 @@ public class PlayerStats : PunBehaviour
                 else
                     position.CuartoLugar();
             }
+            else
+            {
+                position.CuartoLugar();
+            }
         }
 
 
