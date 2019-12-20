@@ -946,7 +946,8 @@ public class Player : PunBehaviour
     [PunRPC]
     public void KillPlayer(int id)
     {
-        
+        Debug.Log("Call particle Player Death");
+        ParticleManager.GetInstance().ActivateParticle(transform, particleDeath, false);
         vivo = false;
         if(photonView.isMine)
         {
@@ -954,11 +955,5 @@ public class Player : PunBehaviour
             PhotonNetwork.Disconnect();
         }
 
-    }
-
-    private void OnDisable()
-    {
-        Debug.Log("Call particle Player Death");
-        ParticleManager.GetInstance().ActivateParticle(transform, particleDeath, false);
     }
 }
