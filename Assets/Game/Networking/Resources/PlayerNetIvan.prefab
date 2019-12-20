@@ -134,9 +134,7 @@ MonoBehaviour:
   rangedAttack: {fileID: 1900685212297345742, guid: 78a366842ebc8804683c4478b815439b,
     type: 3}
   indicators: {fileID: 0}
-  theButtons: []
-  theImages: []
-  hasAmmo: {fileID: 0}
+  theJoystick: {fileID: 0}
   particleHit: 3
 --- !u!114 &1384256105
 MonoBehaviour:
@@ -426,13 +424,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.33
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 208
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -538,6 +536,7 @@ MonoBehaviour:
   m_Ammo: 0
   MVP: {fileID: 5823951301731490934}
   scoreboard: {fileID: 0}
+  Score: 0
   UI_Score: {fileID: 0}
   position: {fileID: 0}
   HP_bar: {fileID: 7992099855816585950}
