@@ -47,6 +47,7 @@ public class Player : PunBehaviour
     float meleeCooldown;
     float rangedCooldown;
     int damageCooldown;
+    public Text textVersion;
 
     public OffscreenIndicator indicators;
     //JOYSTICK
@@ -85,6 +86,10 @@ public class Player : PunBehaviour
         theJoystick = PhotonConnection.GetInstance().theJoystick;
         theButtons = PhotonConnection.GetInstance().theButtons;
         ammoLeft = PhotonConnection.GetInstance().ammoLeft;
+
+        //SABER LA VERSION DEL MAPA
+        textVersion = PhotonConnection.GetInstance().textVersion;
+        textVersion.text = "V." + PhotonConnection.GetInstance().gameVersion;
 
 
         PhotonConnection.GetInstance().playerList.Add(this);
