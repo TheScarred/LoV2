@@ -69,6 +69,7 @@ public class PhotonConnection : PunBehaviour
     public FloatingJoystick theJoystick;
     public Button[] theButtons;
     public Text ammoLeft;
+    public Text textVersion;
 
     void Start()
     {
@@ -77,7 +78,6 @@ public class PhotonConnection : PunBehaviour
         playerList = new List<Player>();
         loadingScreen.StartLoadingScreen();
         Connect();
-
     }
 
     public void Connect()
